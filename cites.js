@@ -9,8 +9,11 @@ var vis = d3.select("#chart")
 
 d3.json("cites.json", function(json) {
   var force = d3.layout.force()
-      .charge(-125)
+      .charge(-70)
+      .friction(1)
       .linkDistance(50)
+      .linkStrength(.1)
+      .gravity(.025)
       .nodes(json.nodes)
       .links(json.links)
       .size([w, h])
