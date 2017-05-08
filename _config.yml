@@ -1,0 +1,11 @@
+description: ''
+baseurl: ''
+url: '' # the base hostname & protocol for your site, e.g. http://example.com
+encoding: utf-8
+include: ['_pages'] # tell jekyll to process .md files in these directories
+permalink: /:title.html
+name: Douglas Duhaime
+icon: /assets/images/me.jpg
+highlighter: rouge
+github: http://github.com/duhaime
+twitter: http://twitter.com/douglasduhaime

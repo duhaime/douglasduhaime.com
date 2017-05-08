@@ -1,0 +1,15 @@
+{% unless page.header == 'none' %}
+  {% include duotone.html %}
+  <header class='header'>
+    {% if page.image %}
+      {% if page.invert %}
+        <div class='background-image duotone-invert'
+          style='background-image: url({{ page.image }})'></div>
+      {% else %}
+        <div class='background-image duotone'
+          style='background-image: url({{ page.image }})'></div>
+      {% endif %}
+    {% endif %}
+    {% include icons/home.html %}
+  </header>
+{% endunless %}

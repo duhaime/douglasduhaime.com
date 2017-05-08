@@ -1,0 +1,20 @@
+<div id='posts' class='tab-content'>
+  <div class='post-links'>
+    {% for post in site.posts %}
+      <div class='post-link'>
+        <a href='{{ post.url }}'>
+          {% if post.image %}
+            <div class='post-thumbnail background-image'
+              style='background-image: url({{ post.image }})'></div>
+          {% else %}
+            <div class='post-thumbnail background-image'
+              style='background-image: url({{ site.default_header }})'></div>
+          {% endif %}
+
+          <div class='title'>{{ post.title }}</div>
+          <div class='date'>{{ post.date | date_to_string }}</div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>

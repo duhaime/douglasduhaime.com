@@ -1,0 +1,21 @@
+---
+layout: post
+title: Algorithmic Approaches to Sentiment Classification
+date: 2012-06-11
+categories: 
+image: /assets/posts/sentiment-classification/sentiment-classification-thumb.png
+---
+
+Last summer, I had the good fortune of studying the ins and outs of the Software Environment for the Advancement of Scholarly Research (SEASR) platform alongside two of its creators: Boris Capitanu and Loretta Auvil. I quickly learned that the Mellon-funded [SEASR](http://www.seasr.org/) environment offers a robust suite of tools, including GIS technologies and topic modelling applications. The tool that I found most interesting, though, was SEASR’s [sentiment classification routine](http://www.seasr.org/documentation/uima-and-seasr/sentiment-tracking-from-uima-data/), which classifies and analyzes patterns in sentiment across a single text or a directory of texts. Using the sentiment classifier, one can read in a text like Laurence Stern’s <i>Tristram Shandy</i>, and produce output like the following:
+
+<img class='center-image medium' src='/assets/posts/sentiment-classification/tristram-shandy-sentiment.png' />
+
+The algorithm tracks the relative frequency of words associated with five emotions (sadness, joy, etc.) across the text or directory, and then plots those frequencies (with time mapped on the x axis, and relative frequency on the y). The plot above, for instance, helps to shore up an observation many literary scholars have noted; namely, the fact that the early buoyancy of <i>Tristram Shandy</i> eventually gives way to melancholia. Other texts, like Shakespeare’s <i>Romeo and Juliet</i>, show even more emotional dynamism:
+
+<img class='center-image medium' src='/assets/posts/sentiment-classification/romeo-juliet-sentiment.png' />
+
+The fact that these results were unsurprising led me to believe that algorithmic sentiment detection could serve as a potentially useful tool for text analysis. With this hypothesis in mind, I started looking for open source sentiment classification routines.
+
+It wasn’t long before I stumbled across a [routine](https://github.com/gastonstat/Mining_Twitter/blob/master/Rscripts/Sentiment_Analysis_with_Drinks.R) written in R by [Gaston Sanchez](http://gastonsanchez.com/) that analyzes the sentiment of recent tweets on user-defined topics. I admired Sanchez’s work, and began to appreciate the value of [sentiment analysis in Twitter](https://sites.google.com/site/miningtwitter/home). His code, after all, gets a lot of mileage out of the fact that tweets tend to have well-defined topic parameters. Like movie reviews and marketing ploys, tweets tend to be about a small number of topics. Thus if a tweet mentions a particular beverage, or a particular corporation, one can be reasonably confident that the tweet is about that beverage or corporation. This makes it possible to find tweets that discuss a topic of interest, identify the emotive words in that tweet, and then calculate the sentiment attached to that topic, which is precisely what Sanchez’s code does. It is thus little wonder that [financial analysts](http://www.finif.com/) now build sentiment classification routines for Twitter feeds–using methods similar to Sanchez’s, they can leverage social media to make informed investment decisions. 
+
+When it comes to classifying topic-specific sentiment in literary works, however, one encounters new challenges. Because literary works tend to be about a wide range of topics, mining topic-specific sentiment involves using some sort of proximity function. If one wants to analyze the evolution of sentiment attached to the topic of “slavery” in a few thousand nineteenth-century American novels, for instance, it seems one would want to identify all instances of slavery within the target corpus, and then, for each of those instances, find all instances of emotive words (or words that indicate sentiment) within a certain proximity to those topic words. Once these fields have been identified, one can begin to determine with greater precision which emotive words actually correspond to the topic of interest, and then one can begin to visualize the data trends.

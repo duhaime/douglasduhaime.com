@@ -1,0 +1,192 @@
+/*
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+*/
+
+@font-face {
+  font-family: 'Amatic SC';
+  src: url('/assets/vendor/fonts/AmaticSC-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/assets/vendor/fonts/Montserrat-ExtraLight.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url('/assets/vendor/fonts/Merriweather-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/**
+* Page elements
+**/
+
+body {
+  background-color: #222;
+  text-align: center;
+}
+
+h1 {
+  color: #bbd4eb;
+  font-family: 'Amatic SC', cursive;
+  font-size: 50px;
+  margin: 100px 0 20px;
+  line-height: 50px;
+}
+
+p {
+  font-weight: 100;
+  color: #fff;
+}
+
+.home-icon {
+  background: #8aa3b9;
+}
+
+/**
+* Header
+**/
+
+.poet-constellations-header {
+  opacity: 0;
+  transition: opacity 0.4s;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 32px;
+  background: #222;
+  z-index: 1;
+  text-align: left;
+}
+
+.poet-constellations-header h1 {
+  font-size: 22px;
+  margin: 5px 30px;
+  line-height: 22px;
+}
+
+/**
+* Legend
+**/
+
+#legend text {
+  font-family: 'Montserrat';
+  font-weight: 100;
+  fill: #fff;
+}
+
+#legend .poet-friends {
+  fill: none;
+  stroke: rgba(216, 227, 236, 0.3);
+}
+
+.custom-select {
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+select {
+  padding: 1px 27px 1px 5px;
+  background: url(/assets/pages/poet-constellations/images/caret.png);
+  background-repeat: no-repeat;
+  background-position: 101% -1px;
+  background-size: 35px;
+}
+
+/**
+* Search
+**/
+
+.poet-networks-search-container {
+  display: inline-block;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 20px;
+}
+
+#poet-networks-input {
+  border: none;
+  padding: 6px 10px;
+  box-sizing: border-box;
+  font-size: 1em;
+  border-radius: 4px;
+  width: 210px;
+  background: #dcdcdc;
+  height: 32px;
+}
+
+#poet-networks-search {
+  background: #8aa3b9;
+  padding: 4px 27px;
+  border-radius: 4px;
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: top;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+#poet-networks-typeahead {
+  max-height: 120px;
+  background: #222;
+  width: 250px;
+  box-sizing: border-box;
+  overflow: scroll;
+  text-align: left;
+  display: none;
+  float: left;
+  padding: 2px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-top: 2px;
+  font-family: sans-serif;
+  line-height: 1.3em;
+  color: #999;
+  position: absolute;
+  top: 33px;
+  left: 5px;
+}
+
+#poet-networks-typeahead div {
+  cursor: pointer;
+}
+
+/**
+* Chart
+**/
+
+#poet-networks svg {
+  display: inline-block;
+  background-color: #222;
+  margin: 40px 0;
+}
+
+#poet-networks path {
+  fill: none;
+}
+
+#poet-networks circle {
+  cursor: pointer;
+}
+
+#poet-networks .link {
+  stroke: rgba(216, 227, 236, 0.3);
+}
