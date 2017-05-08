@@ -9,6 +9,7 @@ js:
   - /assets/pages/poet-constellations/js/legend.js
   - /assets/pages/poet-constellations/js/poet-constellations.js
   - /assets/pages/poet-constellations/js/header.js
+  - /assets/pages/poet-constellations/js/d3-labeler.js
 css: /assets/pages/poet-constellations/poet-constellations.css
 ---
 
@@ -25,7 +26,7 @@ The chart below represents a network of literary relationships.
 <div id='legend'></div>
 
 <div class='poet-networks-search-container'>
-  <input id='poet-networks-input' placeholder='Search for a poet'>
+  <input id='poet-networks-input' placeholder='Search for a writer'>
   <div id='poet-networks-search'>Search</div>
   <div id='poet-networks-typeahead'></div>
 </div>

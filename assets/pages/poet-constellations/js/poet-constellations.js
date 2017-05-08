@@ -271,8 +271,16 @@
       var labelFoci = [];
       var labelNodes = [];
       linkNodes.map(function(d) {
-        labelFoci.push({ x: d.x, y: d.y });
-        labelNodes.push({ x: d.x, y: d.y, name: d.name })
+        labelFoci.push({ 
+          x: d.x,
+          y: d.y,
+          r: getRadius(d)
+        });
+        labelNodes.push({
+          x: d.x,
+          y: d.y,
+          name: d.name
+        })
       })
 
       /**
@@ -296,27 +304,25 @@
       * Reposition overlapping labels
       **/
 
-      var labelForce = d3.layout.force()
-        .nodes(labelNodes)
-        .charge(-34)
-        .gravity(0)
-        .chargeDistance(90)
-        .size([width, height]);
-
-      labelForce.on('tick', function(e) {
-        var k = .1 * e.alpha;
-        labelNodes.forEach(function(o, j) {
-          // Push the label toward its focus
-          o.y += (labelFoci[j].y - o.y) * 3*k;
-          o.x += (labelFoci[j].x - o.x) * 3*k;
-        });
-
-        svg.selectAll('.node-label')
-          .attr('x', function(d) { return d.x; })
-          .attr('y', function(d) { return d.y; });
+      var index = 0;
+      labels.each(function() {
+        labelNodes[index].width = this.getBBox().width;
+        labelNodes[index].height = this.getBBox().height;
+        index += 1;
       });
 
-      labelForce.start();
+      d3.labeler()
+        .label(labelNodes)
+        .anchor(labelFoci)
+        .width(width)
+        .height(height)
+        .start(100);
+
+      labels
+        .transition()
+        .duration(500)
+        .attr('x', function(d) { return (d.x); })
+        .attr('y', function(d) { return (d.y); });
     }
 
     function interpolateLink(d) {
@@ -330,39 +336,14 @@
     }
 
     /**
-    * Helper to find n choose k for k=2
-    **/
-
-    function getCombinations(l) {
-      var combinations = [];
-      l.map(function(l1, i1) {
-        l.map(function(l2, i2) {
-          if (i1 < i2) {
-            combinations.push([l1, l2])
-          }
-        })
-      })
-      return combinations;
-    }
-
-    /**
-    * Helper to determine if two rectangles intersect
-    * @author: Daniel Vassallo
-    * @source: http://stackoverflow.com/questions/2752349
-    **/
-
-    function doIntersect(r1, r2) {
-      return !(r2.left > r1.right ||
-               r2.right < r1.left ||
-               r2.top > r1.bottom ||
-               r2.bottom < r1.top);
-    }
-
-    /**
     * Clear the graph of selections
     **/
 
     function clearGraph() {
+      
+      // remove last moused node from memory
+      mousedNode = null;
+
       // reset nodes
       g.selectAll('.node').transition()
           .duration(500)
