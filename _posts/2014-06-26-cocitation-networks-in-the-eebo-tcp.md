@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Co-citation Networks in the EEBO TCP
-date:   2014-06-26 10:24:24 -0500
+date:   2014-06-26
 categories: digital-humanities networks
-image: /assets/posts/eebo-cocitation/eebo-cocitation-thumb.png
+image: /assets/posts/eebo-cocitation/eebo-cocitation-thumb.jpg
+banner: /assets/posts/eebo-cocitation/eebo-cocitation-banner.jpg
 ---
 
 I recently had the good fortune of attending a conference on [computational approaches to early modern literature][newcastle] hosted at the University of Newcastle. During the conference, I not only got to meet some outstanding scholars—including Doug Bruster, John Burrows, Hugh Craig, Mac Jackson, and Glenn Roe, to name only a few—but I also had a chance to present some of my recent work on algorithmic approaches to the study of literary influence. In case it might be of interest to others working in related fields, I thought I would share one of the approaches I discussed in what follows below.

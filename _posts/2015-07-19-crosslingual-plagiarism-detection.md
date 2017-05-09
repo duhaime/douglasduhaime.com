@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Crosslingual Plagiarism Detection with Scikit-Learn
-date:   2015-07-19 10:24:24 -0500
+date:   2015-07-19
 categories: classification digital-humanities word-embeddings text-reuse
-image: /assets/posts/crosslingual-plagiarism-detection/crosslingual-plagiarism-detection-thumb.png
+image: /assets/posts/crosslingual-plagiarism-detection/crosslingual-plagiarism-detection-thumb.jpg
+banner: /assets/posts/crosslingual-plagiarism-detection/crosslingual-plagiarism-detection-banner.png
 ---
 
 Oliver Goldsmith, one of the great poets, playwrights, and historians of science from the Enlightenment, was many things. He was 'an idle, orchard-robbing schoolboy; a tuneful but intractable sizar of Trinity; a lounging, loitering, fair-haunting, flute-playing Irish ‘buckeen.’' He was also a brilliant plagiarist. Goldsmith frequently borrowed whole sentences and paragraphs from French <i>philosophes</i> such as Voltaire and Diderot, closely translating their works into his own voluminous books without offering so much as a word that the passages were taken from elsewhere. Over the last several months, I have worked with several others to study the ways Goldsmith adapted and freely translated these source texts into his own writing in order to develop methods that can be used to discover crosslingual text reuse. By outlining below some of the methods that I have found useful within this field of research, the following post attempts to show how automated methods can be used to further advance our understanding of the history of authorship.

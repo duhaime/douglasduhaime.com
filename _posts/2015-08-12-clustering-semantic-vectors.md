@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Clustering Semantic Vectors with Python
-date:   2015-09-12 10:24:24 -0500
+date:   2015-09-12
 categories: word-embeddings clustering
-image: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-thumb.png
+image: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-thumb.jpg
+banner: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-banner.png
 ---
 
 Google's Word2Vec and Stanford's GloVe have recently offered two fantastic open source software packages capable of transposing words into a high dimension vector space. In both cases, a vector's position within the high dimensional space gives a good indication of the word's semantic class (among other things), and in both cases these vector positions can be used in a variety of applications. In the post below, I'll discuss one approach you can take to clustering the vectors into coherent semantic groupings. 

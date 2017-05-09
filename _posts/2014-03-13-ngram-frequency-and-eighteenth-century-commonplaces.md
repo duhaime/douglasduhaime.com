@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Ngram Frequency and Eighteenth-Century Commonplaces
-date:   2014-03-13 10:24:24 -0500
+date:   2014-03-13
 categories: digital-humanities text-analysis
-image: /assets/posts/ngram-frequency/ngram-frequency-thumb.png
+image: /assets/posts/ngram-frequency/ngram-frequency-thumb.jpg
+banner: /assets/posts/ngram-frequency/ngram-frequency-banner.png
 ---
 
 When Samuel Richardson's Mrs. Jewkes remarks that 'Nought can restrain consent of twain,' we confidently conclude she's quoting Harington's translation of <i>Orlando Furioso</i>. When Edmund Burke writes in his <i>Philosophical Enquiry</i>, 'Dark with excessive light thy skirts appear,' we know he's misquoting Milton. While passages like these make their debts fairly clear, though, in most cases literary influence is notoriously difficult to trace. When Mary Wollstonecraft identifies marriage as a form of 'legal prostitution' in her Vindications, for instance, are we meant to reflect on the thrust of that phrase in Defoe's <i>Matrimonial Whoredom</i>? When Ann Radcliffe's Adeline and La Motte stroll 'under the shade of 'melancholy boughs'' in The <i>Romance of the Forest</i>, what gives us the warrant to imagine Orlando 'under the shade of melancholy boughs' in <i>As You Like It</i>?

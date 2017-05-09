@@ -3,7 +3,8 @@ layout: post
 title: Algorithmic Approaches to Sentiment Classification
 date: 2012-06-11
 categories: 
-image: /assets/posts/sentiment-classification/sentiment-classification-thumb.png
+image: /assets/posts/sentiment-classification/sentiment-classification-thumb.jpg
+banner: /assets/posts/sentiment-classification/sentiment-classification-banner.png
 ---
 
 Last summer, I had the good fortune of studying the ins and outs of the Software Environment for the Advancement of Scholarly Research (SEASR) platform alongside two of its creators: Boris Capitanu and Loretta Auvil. I quickly learned that the Mellon-funded [SEASR](http://www.seasr.org/) environment offers a robust suite of tools, including GIS technologies and topic modelling applications. The tool that I found most interesting, though, was SEASR’s [sentiment classification routine](http://www.seasr.org/documentation/uima-and-seasr/sentiment-tracking-from-uima-data/), which classifies and analyzes patterns in sentiment across a single text or a directory of texts. Using the sentiment classifier, one can read in a text like Laurence Stern’s <i>Tristram Shandy</i>, and produce output like the following:

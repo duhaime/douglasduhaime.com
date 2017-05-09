@@ -1,10 +1,10 @@
 ---
 layout: post
 title:  Plagiary Poets
-date:   2016-02-06 10:24:24 -0500
+date:   2016-02-06
 categories: digital-humanities text-reuse d3
-image: /assets/posts/plagiary-poets/plagiary-poets-thumb.png
-invert: true
+image: /assets/posts/plagiary-poets/plagiary-poets-thumb.jpg
+banner: /assets/posts/plagiary-poets/plagiary-poets-banner.png
 ---
 
 Last week I wrapped up [PlagiaryPoets.io][plagiary-poets], an interactive app that visualizes text reuse within early poetry:

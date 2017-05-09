@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Identifying Poetry in Unstructured Corpora
-date:   2014-05-05 10:24:24 -0500
+date:   2014-05-05
 categories: digital-humanities poetry
-image: /assets/posts/identifying-poetry/identifying-poetry-thumb.png
+image: /assets/posts/identifying-poetry/identifying-poetry-thumb.jpg
+banner: /assets/posts/identifying-poetry/identifying-poetry-banner.png
 ---
 
 Over the last few months, I've been working with colleagues at Notre Dame to develop computational approaches we can use to identify the genres to which a literary work belongs. Initially, we focused our research on the georgic, a class of agricultural-cum-labour poems that flourished in the seventeenth and eighteenth centuries. Eventually, though, our limited research corpus led us to investigate methods we could use to identify more period poetry, and these investigations helped reveal a fascinating if simple method one can use to identify poetic works in unstructured corpora. 

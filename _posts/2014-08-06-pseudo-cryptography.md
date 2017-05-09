@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Pseudo-Cryptography in Jonathan Swift's Tale of a Tub
-date:   2014-08-06 10:24:24 -0500
+date:   2014-08-06
 categories: digital-humanities cryptography
-image: /assets/posts/pseudo-cryptography/pseudo-cryptography-thumb.png
+image: /assets/posts/pseudo-cryptography/pseudo-cryptography-thumb.jpg
+banner: /assets/posts/pseudo-cryptography/pseudo-cryptography-banner.png
 ---
 
 "I do here humbly propose for an Experiment," Jonathan Swift writes near the end of his <i>Tale of a Tub</i>, "that every Prince in Christendom will take seven of the deepest Scholars in his Dominions, and shut them up close for seven Years, in seven Chambers, with a Command to write seven ample Commentaries upon [<i>A Tale of a Tub</i>]." In order to promote so useful a Work, Swift informs readers that he has encrypted some hidden messages in the <i>Tale</i>: "I have couched a very profound Mystery in the Number of O's multiply'd by Seven, and divided by Nine." Not wishing to leave the alchemically inclined out of his game, Swift adds: "Also, if a devout Brother of the Rosy Cross will pray fervently for sixty three Mornings, with a lively Faith, and then transpose certain Letters and Syllables according to Prescription, in the second and fifth Section; they will certainly reveal into a full Receipt of the <i>Opus Magnum</i>." Swift then completes his triumvirate of puzzles with the following remark: "Lastly, Whoever will be at the Pains to calculate the whole Number of each Letter in this Treatise, and sum up the Difference exactly between the several Numbers, assigning the true natural Cause for every such Difference; the Discoveries in the Product, will plentifully reward his Labour" (Section X).

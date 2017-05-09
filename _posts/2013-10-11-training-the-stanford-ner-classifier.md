@@ -2,8 +2,8 @@
 layout: post
 title: Training the Stanford NER Classifier
 date: 2013-11-10
-categories: 
-image: /assets/posts/training-stanford-ner/training-stanford-ner-thumb.png
+image: /assets/posts/training-stanford-ner/training-stanford-ner-thumb.jpg
+banner: /assets/posts/training-stanford-ner/training-stanford-ner-banner.png
 ---
 
 Working with Professor Matthew Wilkens, my fellow doctoral student Suen Wong, and undergraduates at Notre Dame, I have spent the last few months using the [Stanford Named Entity Recognition (NER) classifier](https://nlp.stanford.edu/software/CRF-NER.shtml) to identify locations in a few thousand works of nineteenth-century American literature. Using the NER classifier—an enormously powerful tool that can identify such "named entities" in texts as people, places, and company names—our mission was to find all of the locations within Professor Wilkens' corpus of nineteenth-century novels. While Stanford's out-of-the-box classifier could be used for such a purpose, we elected to retrain the tool with nineteenth-century text files in order to improve the classifier's performance. In case others are curious about the process involved in retraining and testing a trained classifier, I thought it might be worthwhile to provide a quick summation of our method and findings to date.

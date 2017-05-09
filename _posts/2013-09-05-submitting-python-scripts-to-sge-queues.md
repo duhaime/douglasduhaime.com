@@ -3,7 +3,8 @@ layout: post
 title: Submitting Python Scripts to SGE Queues
 date: 2013-09-05
 categories: hpc
-image: /assets/posts/sge-queues/sge-thumb.png
+image: /assets/posts/sge-queues/sge-thumb.jpg
+banner: /assets/posts/sge-queues/sge-banner.png
 invert: true
 ---
 

@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Classifing Shakeseparean Drama with Sparse Feature Sets
-date:   2014-10-12 10:24:24 -0500
+date:   2014-10-12
 categories: digital-humanities shakespeare
-image: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-thumb.png
+image: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-thumb.jpg
+banner: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-banner.png
 ---
 
 In her fantastic series of lectures on early modern England, Emma Smith identifies an interesting feature that differentiates the tragedies and comedies of Elizabethan drama: 'Tragedies tend to have more streamlined plots, or less plot—you know, fewer things happening. Comedies tend to enjoy a multiplication of characters, disguises, and trickeries. I mean, you could partly think about the way [tragedies tend to move] towards the isolation of a single figure on the stage, getting rid of other people, moving towards a kind of solitude, whereas comedies tend to end with a big scene at the end where everybody's on stage' ([6:02-6:37][emma-smith]). 

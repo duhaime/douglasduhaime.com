@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  Mapping the Early English Book Trade
-date:   2015-01-07 10:24:24 -0500
+date:   2015-01-07
 categories: digital-humanities gis
-image: /assets/posts/mapping-early-books/mapping-early-books-thumb.png
+image: /assets/posts/mapping-early-books/mapping-early-books-thumb.jpg
+banner: /assets/posts/mapping-early-books/mapping-early-books-banner.png
 ---
 
 Historians often call attention to the tremendous influence the 1710 Act of Anne had on the early English book trade. Commonly identified as the origin of modern copyright law, the Act laid the statutory foundations for fixed-term copyright in England, extended the ability to hold such copyrights to all individuals, and eventually toppled the monopoly that London booksellers had held on English printing since the incorporation of the Stationers' Company in 1557. Reading scholarship on this legal development over the last few months, I became curious to see how well the English Short Title Catalogue ([ESTC][estc-link]) could substantiate some of the claims made in discussions of the Act. The ESTC seemed an ideal resource for this kind of analysis because, as Stephen Tabor has written, it represents “the fullest and most up-to-date bibliographical account of 'English' printing (in the broadest sense) for its first 328 years” ([367][tabor-link]). The database lists the authors, titles, imprint lines, publication dates, and many other metadata fields for each of the ~470,000 editions known to have been printed in England or its colonies between 1473 and 1800, and can therefore serve as a helpful resource with which to investigate the relationship between copyright law and literary history in the early modern period.

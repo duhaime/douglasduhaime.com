@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  Visualizing Shakespearean Characters
-date:   2015-12-13 10:24:24 -0500
+date:   2015-12-13
 categories: digital-humanities shakespeare
 css: /assets/posts/shakespearean-characters/shakespeare.css
 js: 
@@ -11,7 +11,8 @@ js:
   - /assets/posts/shakespearean-characters/min-max-words.js
   - /assets/posts/shakespearean-characters/min-max-entrances.js
   - /assets/posts/shakespearean-characters/shakespearean-characters.js
-image: '/assets/posts/shakespearean-characters/visualizing-shakespeare-thumb.png'
+image: assets/posts/shakespearean-characters/shakespearean-characters-thumb.jpg
+banner: assets/posts/shakespearean-characters/shakespearean-characters-banner.png
 ---
 
 Some time ago, I was intrigued to discover that Shakespeare’s Histories have a noticeable lack of female characters [[link]][previous-shakes-post]. Since then, I’ve been curious to further explore the nuances of Shakespearean characters, paying particular respect to the gender dynamics of the Bard’s plays. This post is a quick sketch of some of the insights to which that curiosity has led.

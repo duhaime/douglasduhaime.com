@@ -3,7 +3,8 @@ layout: post
 title: Image Transitions with D3 and Primitive
 date: 2017-04-15
 categories: 
-image: /assets/posts/image-transitions/francis-bacon.jpg
+image: /assets/posts/image-transitions/image-transitions-thumb.jpg
+banner: /assets/posts/image-transitions/image-transitions-banner.jpg
 js: /assets/posts/image-transitions/draw.js
 css: /assets/posts/image-transitions/image-transitions.css
 ---
