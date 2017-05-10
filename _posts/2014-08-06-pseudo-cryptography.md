@@ -2,7 +2,7 @@
 layout: post
 title:  Pseudo-Cryptography in Jonathan Swift's Tale of a Tub
 date:   2014-08-06
-categories: digital-humanities cryptography
+categories: cryptography python
 image: /assets/posts/pseudo-cryptography/pseudo-cryptography-thumb.jpg
 banner: /assets/posts/pseudo-cryptography/pseudo-cryptography-banner.png
 ---
@@ -37,4 +37,4 @@ The analysis above was conducted using the [1710 edition][tale] of the Tale digi
 
 [tale]:http://www.lehigh.edu/~amsp/tubb0-0.html
 [pyplot]:http://matplotlib.org/api/pyplot_api.html
-[scripts]:/assets/scripts/posts/pseudo-cryptography/swift_tale_scripts.zip
+[scripts]:/assets/posts/pseudo-cryptography/swift_tale_scripts.zip
