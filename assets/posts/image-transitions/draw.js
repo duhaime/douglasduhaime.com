@@ -27,7 +27,6 @@
   // randomly initialize plot
   d3.json(inputs[inputIndex], function(error, data) {
     if (error) throw error;
-    console.log(data)
 
     svg.selectAll('.dot')
         .data(data.points)
