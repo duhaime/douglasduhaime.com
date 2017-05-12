@@ -18,8 +18,7 @@
     // make the relevant tab content visible
     var tabContent = document.querySelectorAll('.tab-content');
     tabContent.forEach(function(tab, i) {
-      var display = i == selectedIndex ? 'block' : 'none';
-      tab.style.display = display;
+      tab.style.display = i == selectedIndex ? 'block' : 'none';
     })
   }
 
@@ -34,8 +33,7 @@
 
   initialize = function() {
     // show the first tab content option
-    var tabContent = document.querySelectorAll('.tab-content');
-    tabContent[0].style.display = 'block';
+    document.querySelector('.tab-content').style.display = 'block';
 
     // add the click listeners to show/hide content as users click tabs
     addListeners();
