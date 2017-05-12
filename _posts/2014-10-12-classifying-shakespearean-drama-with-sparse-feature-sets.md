@@ -2,8 +2,8 @@
 layout: post
 title:  Classifing Shakeseparean Drama with Sparse Feature Sets
 date:   2014-10-12
-categories: digital-humanities shakespeare
-image: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-thumb.jpg
+categories: classification python
+thumbnail: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-thumb.jpg
 banner: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-banner.png
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title:  Plagiary Poets
 date:   2016-02-06
 categories: digital-humanities text-reuse d3
-image: /assets/posts/plagiary-poets/plagiary-poets-thumb.jpg
+thumbnail: /assets/posts/plagiary-poets/plagiary-poets-thumb.jpg
 banner: /assets/posts/plagiary-poets/plagiary-poets-banner.png
 ---
 

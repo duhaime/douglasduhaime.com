@@ -2,22 +2,22 @@
 layout: post
 title: Introducing the Literature Online API
 date: 2013-09-13
-categories: 
-image: /assets/posts/literature-online-api/literature-online-api-thumb.jpg
-banner: /assets/posts/literature-online-api/literature-online-api-banner.jpg
+categories: python api gui
+thumbnail: /assets/posts/lion-api/lion-api-thumb.jpg
+banner: /assets/posts/lion-api/lion-api-banner.jpg
 ---
 
 When it comes to literary research, Literature Online is no doubt one of the best digital resources around. The site hosts a third of a million full-length texts, the definitive collection of digitized criticism, and a robust interface that boasts such advanced features as lemmatized and fuzzy spelling search options. When I started looking for a public API that would allow users to mobilize the site's resources in an algorithmic fashion, though, there was no API to be found. So I decided to build my own.
 
 Using Python's Selenium package, I built an [API](https://github.com/duhaime/Literature-Online-API) that sends queries to Literature Online in a procedural fashion and generates clean, user-friendly output data. The program runs as follows: After double-clicking the literatureonlineapi.exe file (or the literatureonlineapi.app file) linked in the Tools tab of this site, the following GUI appears:
 
-<img class='center-image medium' src='/assets/posts/literature-online-api/LiteratureOnlineApiMac.png' />
+<img class='center-image medium' src='/assets/posts/lion-api/lion-api-mac.png' />
 
 Using this interface, users may select the appropriate checkboxes pictured above to identify whether they would like to employ Literature Online's fuzzy spelling and/or lemmatized search features. Additionally, users can limit potential matches by publication date and author date ranges. Then, users may click the "Select Input File" button to select a file they would like to use to query Literature Online. This file should be a plain text file that contains one or more words or series of words one would like to use to search Literature Online. The program will send the first n words of this file to Literature Online, where n = the value of "window size" (in the image above, n = 3). The program will then record the name, publication date, and author of texts that contain the first n words of your file. This match will be an exact match--i.e. if n = 3 and the first three words of your file are "the king will", the program will find all texts in the Literature Online database that contain the exact string "the king will".
 
 Then the script will look at words p through n + p in your plain text file, where p = window slide interval. In the image above, p = 1 and n = 3, so in its second pass through our hypothetical text file the program would look at words 2 through 4 (inclusive). The program will once again pull down all relevant metadata for the found hits. It will then slide p words forward once again, examining words 3 through 5, and so forth, until it reaches the end of the document. Then, once it has reached the end, it will go back to the beginning of the document and repeat the process, this time submitting not exact searches, but proximity searches. E.g. instead of searching "the king will", the program will find all instances of "the near.3 king near.3 will" and then slide its search window forward in the customary fashion. Finally, the program will write its .tsv output to the directory selected with the "Select Output Location" button. In the case of the sample string discussed in this paragraph, the output file looks like this:
 
-<img class='center-image medium' src='/assets/posts/literature-online-api/LiteratureOnlineApiSampleOutput.jpg' />
+<img class='center-image medium' src='/assets/posts/lion-api/lion-api-sample-output.jpg' />
 
 Users can then use this output to create plots, inform stylometric analysis, or simply to help allocate their readerly attention in a more efficient manner.
 

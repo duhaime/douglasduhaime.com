@@ -2,8 +2,8 @@
 layout: post
 title: Algorithmic Approaches to Sentiment Classification
 date: 2012-06-11
-categories: 
-image: /assets/posts/sentiment-classification/sentiment-classification-thumb.jpg
+categories: sentiment
+thumbnail: /assets/posts/sentiment-classification/sentiment-classification-thumb.jpg
 banner: /assets/posts/sentiment-classification/sentiment-classification-banner.png
 ---
 

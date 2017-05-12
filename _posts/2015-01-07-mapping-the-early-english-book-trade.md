@@ -2,8 +2,8 @@
 layout: post
 title:  Mapping the Early English Book Trade
 date:   2015-01-07
-categories: digital-humanities gis
-image: /assets/posts/mapping-early-books/mapping-early-books-thumb.jpg
+categories: mapping digital-humanities
+thumbnail: /assets/posts/mapping-early-books/mapping-early-books-thumb.jpg
 banner: /assets/posts/mapping-early-books/mapping-early-books-banner.png
 ---
 

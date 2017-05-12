@@ -2,8 +2,8 @@
 layout: post
 title:  Clustering Semantic Vectors with Python
 date:   2015-09-12
-categories: word-embeddings clustering
-image: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-thumb.jpg
+categories: word-embeddings clustering python
+thumbnail: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-thumb.jpg
 banner: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-banner.png
 ---
 

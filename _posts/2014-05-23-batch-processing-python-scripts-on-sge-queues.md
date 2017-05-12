@@ -3,7 +3,7 @@ layout: post
 title:  Batch Processing Python Scripts on Sun Grid Engine Queues
 date:   2014-06-26
 categories: python hpc
-image: /assets/posts/batch-processing/batch-processing-thumb.png
+thumbnail: /assets/posts/batch-processing/batch-processing-thumb.png
 banner: /assets/posts/batch-processing/batch-processing-banner.png
 invert: true
 ---

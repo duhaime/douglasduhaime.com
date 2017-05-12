@@ -2,8 +2,8 @@
 layout: post
 title:  Co-citation Networks in the EEBO TCP
 date:   2014-06-26
-categories: digital-humanities networks
-image: /assets/posts/eebo-cocitation/eebo-cocitation-thumb.jpg
+categories: network-analysis python
+thumbnail: /assets/posts/eebo-cocitation/eebo-cocitation-thumb.jpg
 banner: /assets/posts/eebo-cocitation/eebo-cocitation-banner.jpg
 ---
 

@@ -2,8 +2,8 @@
 layout: post
 title: CRUD Operations on Static File Sites
 date: 2017-04-28
-categories: 
-image: /assets/posts/crud-operations/crud-operations-thumb.jpg
+categories: javascript databases
+thumbnail: /assets/posts/crud-operations/crud-operations-thumb.jpg
 banner: /assets/posts/crud-operations/crud-operations-banner.png
 js: /assets/posts/crud-operations/crud-operations.js
 css: /assets/posts/crud-operations/crud-operations.css

@@ -2,8 +2,8 @@
 layout: post
 title:  Ngram Frequency and Eighteenth-Century Commonplaces
 date:   2014-03-13
-categories: digital-humanities text-analysis
-image: /assets/posts/ngram-frequency/ngram-frequency-thumb.jpg
+categories: python api gui
+thumbnail: /assets/posts/ngram-frequency/ngram-frequency-thumb.jpg
 banner: /assets/posts/ngram-frequency/ngram-frequency-banner.png
 ---
 

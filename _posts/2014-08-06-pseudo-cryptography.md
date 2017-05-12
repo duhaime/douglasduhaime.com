@@ -3,7 +3,7 @@ layout: post
 title:  Pseudo-Cryptography in Jonathan Swift's Tale of a Tub
 date:   2014-08-06
 categories: cryptography python
-image: /assets/posts/pseudo-cryptography/pseudo-cryptography-thumb.jpg
+thumbnail: /assets/posts/pseudo-cryptography/pseudo-cryptography-thumb.jpg
 banner: /assets/posts/pseudo-cryptography/pseudo-cryptography-banner.png
 ---
 

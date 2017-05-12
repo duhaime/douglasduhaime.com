@@ -2,7 +2,8 @@
 layout: post
 title: Training the Stanford NER Classifier
 date: 2013-11-10
-image: /assets/posts/training-stanford-ner/training-stanford-ner-thumb.jpg
+categories: ner machine-learning python
+thumbnail: /assets/posts/training-stanford-ner/training-stanford-ner-thumb.jpg
 banner: /assets/posts/training-stanford-ner/training-stanford-ner-banner.png
 ---
 

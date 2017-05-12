@@ -2,7 +2,7 @@
 layout: post
 title:  Visualizing Shakespearean Characters
 date:   2015-12-13
-categories: digital-humanities shakespeare
+categories: digital-humanities python d3
 css: /assets/posts/shakespearean-characters/shakespeare.css
 js: 
   - http://d3js.org/d3.v3.min.js
@@ -11,7 +11,7 @@ js:
   - /assets/posts/shakespearean-characters/min-max-words.js
   - /assets/posts/shakespearean-characters/min-max-entrances.js
   - /assets/posts/shakespearean-characters/shakespearean-characters.js
-image: assets/posts/shakespearean-characters/shakespearean-characters-thumb.jpg
+thumbnail: assets/posts/shakespearean-characters/shakespearean-characters-thumb.jpg
 banner: assets/posts/shakespearean-characters/shakespearean-characters-banner.png
 ---
 

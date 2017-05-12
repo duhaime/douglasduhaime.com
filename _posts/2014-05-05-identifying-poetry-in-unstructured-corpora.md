@@ -2,8 +2,8 @@
 layout: post
 title:  Identifying Poetry in Unstructured Corpora
 date:   2014-05-05
-categories: digital-humanities poetry
-image: /assets/posts/identifying-poetry/identifying-poetry-thumb.jpg
+categories: classification python
+thumbnail: /assets/posts/identifying-poetry/identifying-poetry-thumb.jpg
 banner: /assets/posts/identifying-poetry/identifying-poetry-banner.png
 ---
 
