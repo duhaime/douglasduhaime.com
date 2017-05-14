@@ -84,7 +84,7 @@ p {
 
 #legend .poet-friends {
   fill: none;
-  stroke: rgba(216, 227, 236, 0.3);
+  stroke: rgba(216, 227, 236, 0.2);
 }
 
 .custom-select {
@@ -167,6 +167,10 @@ select {
 
 #poet-networks-typeahead div {
   cursor: pointer;
+}
+
+#poet-networks-typeahead div.active {
+  color: #fff;
 }
 
 /**

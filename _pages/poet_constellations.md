@@ -26,7 +26,7 @@ The chart below represents a network of literary relationships.
 <div id='legend'></div>
 
 <div class='poet-networks-search-container'>
-  <input id='poet-networks-input' placeholder='Search for a writer'>
+  <input id='poet-networks-input' placeholder='Search for a poet'>
   <div id='poet-networks-search'>Search</div>
   <div id='poet-networks-typeahead'></div>
 </div>
