@@ -15,7 +15,8 @@ Frameworks like Jekyll, Middleman, and Gatsby make it fun and easy to build stat
 
 For a quick example of the way Google App Script stores data, try the following minigame and save your score and name at the end.
 
-<iframe id='ghost-iframe' name='ghost-iframe' style='display:none'></iframe>
+<iframe id='ghost-iframe' name='ghost-iframe' style='display:none;'></iframe>
+
 <div class='ghost-container'>
   <div class='greeting'>
     <div class='text'>Press Start</div>

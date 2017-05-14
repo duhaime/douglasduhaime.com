@@ -21,7 +21,8 @@
 
   var state = {
     time: 11,
-    score: 0
+    score: 0,
+    started: false
   }
 
   var postUrl = 'https://script.google.com/macros/s/AKfycbzJhcQAb01-jNJyNhU3OOxoSga2JiTu8HhnDlChJExVJJSSGiU/exec'
@@ -36,6 +37,7 @@
   **/
 
   function startGame() {
+    state.started = true;
     greeting.style.display = 'none';
     decrementTime()
   }
@@ -79,6 +81,9 @@
   **/
 
   function getTopScores() {
+    // firefox calls iframe.load on document.load
+    if (!state.started) return;
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', postUrl + '?callback=""');
     xhr.onreadystatechange = function(e) {

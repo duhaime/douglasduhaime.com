@@ -285,7 +285,7 @@ body {
 }
 
 .footer {
-  height: 26px;
+  height: 36px;
   display: table;
   width: 100%;
   color: #fff;
@@ -296,7 +296,7 @@ body {
 .footer img {
   height: 15px;
   position: relative;
-  top: 4px;
+  top: 10px;
   margin: 0 3px;
 }
 

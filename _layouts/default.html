@@ -4,11 +4,13 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>{{ page.title }}</title>
+    <link rel='stylesheet' href='/assets/css/fonts.css' type='text/css'>
     <link rel='stylesheet' href='/assets/css/reset.css' type='text/css'>
     <link rel='stylesheet' href='/assets/css/main.css' type='text/css'>
+    {% include assets/page-css.html %}
   </head>
   <body>
     <div id='content'>{{ content }}</div>
   </body>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Montserrat:100,400,500|Merriweather'>
+  {% include assets/page-js.html %}
 </html>

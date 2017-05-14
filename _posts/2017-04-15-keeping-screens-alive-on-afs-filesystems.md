@@ -3,7 +3,7 @@ layout: post
 title: Keeping Screens Alive on AFS Filesystems
 date: 2016-04-14
 categories: hpc
-thumbnail: /assets/posts/afs-sessions/afs-sessions-thumb.png
+thumbnail: /assets/posts/afs-sessions/afs-sessions-thumb.jpg
 banner: /assets/posts/afs-sessions/afs-sessions-banner.png
 invert: true
 ---

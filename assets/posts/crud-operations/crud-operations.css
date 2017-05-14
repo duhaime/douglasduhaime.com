@@ -30,6 +30,13 @@
   transition: height 0.5s;
 }
 
+@media(max-width: 550px) {
+  .ghost-container {
+    font-size: 12px;
+    height: 160px;
+  }
+}
+
 /**
 * Message containers
 **/
@@ -122,6 +129,16 @@
   display: inline-block;
   padding: 10px;
   border-radius: 0;
+}
+
+@media(max-width: 550px) {
+  .ghost-container .user-name {
+    width: 180px;
+  }
+
+  .ghost-container .save-score {
+    margin-top: 7px;
+  }
 }
 
 /**
