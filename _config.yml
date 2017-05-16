@@ -3,6 +3,7 @@ baseurl: ''
 url: '' # the base hostname & protocol for your site, e.g. http://example.com
 encoding: utf-8
 include: ['_pages'] # tell jekyll to process .md files in these directories
+keep_files: ['assets/bundle.js', 'assets/style.css'] # don't let jekyll wipe these
 permalink: /:title.html
 name: Douglas Duhaime
 icon: /assets/images/me.jpg
