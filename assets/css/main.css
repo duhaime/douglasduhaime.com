@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  overflow-y: scroll;
 }
 
 body {
@@ -281,7 +282,6 @@ body {
 .home, .post, .about {
   flex: 1;
   max-width: 100%;
-  overflow: scroll;
 }
 
 .footer {
@@ -620,17 +620,20 @@ label {
 }
 
 .center-image {
-  width: 80%;
   margin: 25px auto;
   display: block;
 }
 
-.center-image.small {
-  width: 200px;
+.center-image.large {
+  width: 80%;
 }
 
 .center-image.medium {
   width: 60%;
+}
+
+.center-image.small {
+  width: 200px;
 }
 
 .duotone {

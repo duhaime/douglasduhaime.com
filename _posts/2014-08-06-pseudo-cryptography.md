@@ -13,19 +13,19 @@ The probability that Swift actually altered his language so as to conceal occult
 
 Riddle One: The Mystery of the Number of O's in Swift’s <i>Tale</i>. Some simple analysis reveals that there are 16,092 O’s in the 1710 edition of Swift’s <i>Tale of a Tub</i>. If we multiply this value by seven and divide the result by nine—the operations Swift suggests one must perform to uncover his profound Mystery—we get 12,516, a number whose significance I leave to others to determine. While this number might carry significance, the more fundamental question is whether Swift’s use of the letter O appears to be unusual or premeditated in any way. To answer this question, we can compare the relative frequency of the letter O in Swift’s Tale to the relative frequency of the letter in other documents from the eighteenth century:
 
-<img class='center-image' src='/assets/posts/pseudo-cryptography/relative_frequency_o.jpg'>
+<img class='center-image large' src='/assets/posts/pseudo-cryptography/relative_frequency_o.jpg'>
 
 If Swift's usage of the letter O were premeditated or unusual in any way, we should expect to see the relative frequency of the letter depart from the norm established by his contemporaries. As the plot above indicates, however, his use of the letter is perfectly in keeping with the trend of his times, which suggests Swift's first riddle is a jest.
 
 Riddle Two: "[If readers] transpose certain Letters and Syllables according to Prescription, in the second and fifth Section; they will certainly reveal into a full Receipt of the Opus Magnum". To analyze this puzzle, we can again look at the distribution of letters in Swift’s <i>Tale</i>, this time investigating the degree to which the distribution of any letter in sections two and five look out of keeping with the distributions of those letters in other sections. More generally, we can look to see if there are any unusual distributions of letters across the sections of the text, and if there are, we can begin considering appropriate methods of transposing those letters to get the syllables with which the <i>Magnum Opus</i> is communicated.
 
-<img class='center-image' src='/assets/posts/pseudo-cryptography/tale_letter_distributions.png'>
+<img class='center-image large' src='/assets/posts/pseudo-cryptography/tale_letter_distributions.png'>
 
 Each section of the <i>Tale</i> is given a consistent color in this plot, so if any section contains an unusual proportion of any particular letter(s), we should expect to see a wider distribution of frequencies for that letter or those letters. Much to the would-be alchemist’s chagrin, however, the plot above indicates that there are no letters in the Tale that have wildly aberrant distributions, which effectively closes the book on the second riddle.
 
 Riddle Three: "Whoever will . . . calculate the whole Number of each Letter in this Treatise, and sum up the Difference exactly between the several Numbers, assigning the true natural Cause for every such Difference; the Discoveries in the Product, will plentifully reward his Labour." We can easily calculate the number of times each letter occurs in Swift’s <i>Tale</i>:
 
-<img class='center-image' src='/assets/posts/pseudo-cryptography/tale_raw_letter_freqs.png'>
+<img class='center-image large' src='/assets/posts/pseudo-cryptography/tale_raw_letter_freqs.png'>
 
 Using these frequencies, Swift suggests, one can find "the Discoveries in the Product," which value "will plentifully reward his Labour." He leaves it comically unclear what is meant by "the Product," though: does he mean the product of the difference between each letter and each other letter, or the product between the difference of each letter and the "whole Number of each Letter in this Treatise", or some other mad metric?
 

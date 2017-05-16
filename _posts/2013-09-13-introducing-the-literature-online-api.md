@@ -4,7 +4,7 @@ title: Introducing the Literature Online API
 date: 2013-09-13
 categories: python api gui
 thumbnail: /assets/posts/lion-api/lion-api-thumb.jpg
-banner: /assets/posts/lion-api/lion-api-banner.jpg
+banner: /assets/posts/lion-api/lion-api-banner.png
 ---
 
 When it comes to literary research, Literature Online is no doubt one of the best digital resources around. The site hosts a third of a million full-length texts, the definitive collection of digitized criticism, and a robust interface that boasts such advanced features as lemmatized and fuzzy spelling search options. When I started looking for a public API that would allow users to mobilize the site's resources in an algorithmic fashion, though, there was no API to be found. So I decided to build my own.

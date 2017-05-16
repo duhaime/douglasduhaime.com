@@ -35,11 +35,11 @@ After determining all of the comparisons to be run, we will want to render that 
 
 If you want to batch process a different kind of routine on an SGE system, you can modify your iteration schedule appropriately. If you only want to calculate the type-token ratios of each of your files, for instance, you'll only need two columns: iteration_number and text_name. Once this iteration schedule is all set, we can turn to the script to be run during each of these iterations. [Here's mine][script-two]: If you want to run a different kind of analysis, just keep lines 1-21 and line 102 of that script, and use the variable “iteration_number” to guide which texts you will analyze in each iteration. Once your routine is all set, save it as “test.py” and upload it—along with your iteration schedule, the files you wish to compare, and these two [higher order scripts][script-three]—to a single directory on your SGE server:
 
-<img class='center-image' src='/assets/posts/batch-processing/prepared_for_batch_submission.png'>
+<img class='center-image large' src='/assets/posts/batch-processing/prepared_for_batch_submission.png'>
 
 Once all of these files are in the same directory, you are ready to submit your script for batch processing. To do so using the University of Notre Dame's Center for Research Computing system, you can simply type `python _run_me.py cmd_run.py your_netid` with no quotation marks:
 
-<img class='center-image' src='/assets/posts/batch-processing/batch_sge_submission.png'>
+<img class='center-image large' src='/assets/posts/batch-processing/batch_sge_submission.png'>
 
 After you submit this command, the higher-order Python scripts `_run_me.py` and `cmd_run.py` will create new copies of your `test.py` script, changing the input files for each iteration according to your iteration schedule. If all has gone well, and you refresh the directory after a few moments, you'll see a few (or more than a few, depending on the number of iterations you are running!) new files in your directory. More specifically, you'll have a collection of new job files that give you feedback on the result of each of your iterations. If errors cropped up during your analysis, those errors should be recorded in these job files. Provided that there were no exceptions, though, those files will be empty, and you will find in your directory whatever output you requested in your test.py script. Et voila, now you can finish your analysis in a few minutes, rather than a few millennia!
 
