@@ -1,12 +1,16 @@
-description: ''
-baseurl: ''
-url: '' # the base hostname & protocol for your site, e.g. http://example.com
-encoding: utf-8
-include: ['_pages'] # tell jekyll to process .md files in these directories
-keep_files: ['assets/bundle.js', 'assets/style.css'] # don't let jekyll wipe these
-permalink: /:title.html
+keep_files: ['assets/bundle.js', 'assets/style.css']
+collections:
+  posts:
+    output: true
+    permalink: /posts/:title.html
+  pages:
+    output: true
+    permalink: /pages/:title.html
+
+# site instance config
 name: Douglas Duhaime
 icon: /assets/images/me.jpg
-highlighter: rouge
 github: http://github.com/duhaime
 twitter: http://twitter.com/douglasduhaime
+dark: 213, 58, 38
+light: 255, 236, 179
