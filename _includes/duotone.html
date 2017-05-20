@@ -1,5 +1,5 @@
 <svg style='width:0px; height:0px;'>
-  <filter id='duotone' color-interpolation-filters='sRGB'
+  <filter id='header-duotone' color-interpolation-filters='sRGB'
           x='0' y='0' height='100%' width='100%'>
     <feColorMatrix type='matrix'
       values='1  0  0  0  0
@@ -8,21 +8,4 @@
               0  0  0  1  0'/>
   </filter>
 </svg>
-
-<script>
-function convertToDuotone(color1, color2) {
-  var matrix = document.querySelector('feColorMatrix');
-  var value = [];
-  value = value.concat(
-  [color1[0]/256 - color2[0]/256, 0, 0, 0, color2[0]/256]);
-  value = value.concat(
-  [color1[1]/256 - color2[1]/256, 0, 0, 0, color2[1]/256]);
-  value = value.concat(
-  [color1[2]/256 - color2[2]/256, 0, 0, 0, color2[2]/256]);
-  value = value.concat([0, 0, 0, 1, 0]);
-  matrix.setAttribute('values', value.join(' '));
-}
-
-// light then dark
-convertToDuotone([107, 198, 219], [209, 56, 33]);
-</script>
+<script src='/assets/js/duotone.js'></script>
