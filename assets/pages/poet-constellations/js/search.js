@@ -4,16 +4,16 @@
   * Create search *
   ****************/
 
-  var body = document.querySelector('body')
-  var input = document.getElementById('poet-networks-input')
-  var button = document.getElementById('poet-networks-search')
-  var typeahead = document.getElementById('poet-networks-typeahead')
+  var body = document.querySelector('body');
+  var input = document.getElementById('poet-networks-input');
+  var button = document.getElementById('poet-networks-search');
+  var typeahead = document.getElementById('poet-networks-typeahead');
 
-  body.addEventListener('click', handlePageClick)
-  input.addEventListener('click', stopPropagation)
-  input.addEventListener('keyup', updateTypeahead)
-  typeahead.addEventListener('click', selectTypeahead)
-  button.addEventListener('click', runSearch)
+  body.addEventListener('click', handlePageClick);
+  input.addEventListener('click', stopPropagation);
+  input.addEventListener('keyup', updateTypeahead);
+  typeahead.addEventListener('click', selectTypeahead);
+  button.addEventListener('click', runSearch);
 
   var state = {
     typeaheadIndex: -1
@@ -37,23 +37,23 @@
     }
 
     // get all names the user's query could match
-    var names = getNames()
+    var names = getNames();
 
     // get the names that match the user's query
     var matchingNames = getMatchingNames(names, searchTerm);
 
     // if the user sent an arrow key, update the typeahead index
-    if (e.keyCode == 40) incrementTypeaheadIndex(matchingNames)
-    if (e.keyCode == 38) decrementTypeaheadIndex()
+    if (e.keyCode == 40) incrementTypeaheadIndex(matchingNames);
+    if (e.keyCode == 38) decrementTypeaheadIndex();
 
     // if the user sent the enter key, set the input value and search
     if (e.keyCode == 13) {
-      handleTypeaheadSearch(matchingNames)
+      handleTypeaheadSearch(matchingNames);
       return;
     }
 
     // update the name divs
-    setTypeaheadValues(matchingNames)
+    setTypeaheadValues(matchingNames);
   }
 
   /**
@@ -82,7 +82,7 @@
 
   function getMatchingNames(names, searchTerm) {
     return _.filter(names, function(n) {
-      return (n.toLowerCase().includes(searchTerm))
+      return (n.toLowerCase().includes(searchTerm));
     })
   }
 
@@ -114,7 +114,7 @@
   function decrementTypeaheadIndex() {
     state.typeaheadIndex -= 1;
     if (state.typeaheadIndex < 0) {
-      state.typeaheadIndex = 0
+      state.typeaheadIndex = 0;
     }
   }
 
@@ -132,8 +132,8 @@
     var query = matchingNames[state.typeaheadIndex];
     if (query) {
       input.value = query;
-      hideTypeahead()
-      runSearch()
+      hideTypeahead();
+      runSearch();
 
       // reset the typeahead index state
       state.typeaheadIndex = -1;
@@ -151,10 +151,10 @@
   **/
 
   function selectTypeahead(e) {
-    e.stopPropagation()
+    e.stopPropagation();
     input.value = e.target.textContent;
-    hideTypeahead()
-    runSearch()
+    hideTypeahead();
+    runSearch();
   }
 
   /**
@@ -180,8 +180,8 @@
   **/
 
   function handlePageClick(e) {
-    window.poetNetwork.clearGraph()
-    hideTypeahead()
+    window.poetNetwork.clearGraph();
+    hideTypeahead();
   }
 
   /**
@@ -198,7 +198,6 @@
     e ? e.stopPropagation() : {};
     var query = input.value;
     var poetId = window.poetNetwork.nameToId[query];
-    console.log(poetId)
     if (poetId) {
       window.poetNetwork.findPoet(poetId);
       scrollToPoet(poetId);  
@@ -238,31 +237,31 @@
   function scrollToPoet(poetId) {
     var elem = d3.select('#node-' + poetId);
     var offsetTop = elem.node().getBoundingClientRect().top;
-    scrollTo(document.body, offsetTop - 300, 150)
+    scrollTo(offsetTop - 300, 100);
   }
 
   /**
   * Function to smooth scroll on a page
   *
   * @args:
-  *   {elem} element: the element within which we're scrolling
-  *   {int} to: the distance to scroll
+  *   {int} to: the y position of document to which we should scroll
   *   {int} duration: the duration of the scroll
   * @returns:
   *   none
-  * @author: TimWolla
-  * @source: http://stackoverflow.com/questions/8917921
   **/
 
-  function scrollTo(element, to, duration) {
+  function scrollTo(to, duration) {
     if (duration <= 0) return;
-    var difference = to - element.scrollTop;
+    var doc = document.documentElement;
+    var scrolled = (window.pageYOffset || doc.scrollTop) -
+        (doc.clientTop || 0);
+    var difference = to - scrolled;
     var perTick = difference / duration * 10;
 
     setTimeout(function() {
-        element.scrollTop = element.scrollTop + perTick;
-        if (element.scrollTop === to) return;
-        scrollTo(element, to, duration - 10);
+      window.scrollTo(0, scrolled + perTick);
+      if (scrolled + perTick === to) return;
+      scrollTo(to, duration - 10);
     }, 10);
   }
 
