@@ -5,7 +5,7 @@
   **********************/
 
   var width = 1000,
-    height = 2000;
+    height = 1300;
 
   var margin = {
     top: 40,
@@ -18,9 +18,12 @@
     container: '#poet-networks',
     height: height - margin.top - margin.bottom,
     width: width - margin.right - margin.left,
-    dataPath: '/assets/pages/poet-constellations/poet_constellations.json',
     accentColor: '#b0cce7',
-    headshotSize: 15
+    headshotSize: 15,
+    data: {
+      dir: '/assets/pages/poet-constellations/',
+      file: 'poet_constellations_static.json'
+    }
   }
 
   var svg = d3.select(chart.container).append('svg')
@@ -152,7 +155,7 @@
   * Loda data
   **/
 
-  d3.json(chart.dataPath, function(error, graph) {
+  d3.json(chart.data.dir + chart.data.file, function(error, graph) {
     if (error) throw error;
 
     /**
@@ -175,6 +178,7 @@
     window.poetNetwork = window.poetNetwork || {
       graphNodes: graph.nodes,
       nameToId: nameToId,
+      idToNode: idToNode,
       findPoet: findPoet,
       clearGraph: clearGraph
     };
@@ -183,47 +187,9 @@
     * Scales
     **/
 
-    var y = d3.scale.linear()
-      .domain( d3.extent( _.map(graph.nodes, 'year') ) )
-      .range([margin.top, chart.height])
-
     var color = d3.scale.ordinal()
       .domain( _.map(graph.nodes, 'gender') )
       .range(['#e5e5e5', '#e45656'])
-
-    /**
-    * Force configuration
-    **/
-
-    var force = d3.layout.force()
-      .gravity(0)
-      .friction(0.95)
-      .charge(function(d) {
-        return _.includes(imageIds, d.id) ?
-            -1 * ((d.associates*150) - 50)
-          : -1 * ((d.associates*80) - 50)
-      })
-      .alpha(0.5)
-      .linkDistance(10)
-      .size([chart.width, chart.height])
-      .nodes(graph.nodes)
-      .links(graph.links)
-      .on('tick', tick)
-      .start();
-
-    function tick(e) {
-      var k = .1 * e.alpha;
-
-      // gravitate points toward their year
-      // and the center of the chart
-      graph.nodes.forEach(function(d) { 
-        d.y += (y(d.year) - d.y) * 70*k;
-        d.x += (chart.width/2 - d.x) * 20*k;
-      })
-
-      node.attr('cx', function(d) { return d.x; })
-      node.attr('cy', function(d) { return d.y; })
-    }
 
     /**
     * Enter and update
@@ -249,11 +215,17 @@
       .enter().append('circle')
         .attr('class', 'node')
         .attr('id', function(d) { return 'node-' + d.id })
+        .attr('cx', function(d) { return d.x })
+        .attr('cy', function(d) { return d.y })
+        .style('opacity', 0)
         .attr('r', getRadius)
         .style('fill', getFill)
         .style('filter', getFilter)
-        .on('mouseenter', handleMouseenter)
-        .call(force.drag)
+        .on('mouseenter', handleMouseenter);
+
+    node.transition()
+      .duration(1000)
+      .style('opacity', 1)
 
     /**
     * Node attribute functions
@@ -262,13 +234,13 @@
     function getRadius(d) {
       return _.includes(imageIds, d.id) ?
           chart.headshotSize
-        : Math.log(d.associates + 2) * 1.7
+        : Math.log(d.associates.length + 2) * 1.7
     }
 
     function getFill(d) {
       return _.includes(imageIds, d.id) ?
           'url(#' + d.id + ')'
-        : d3.rgb(color(d.gender)).brighter(Math.log(d.associates+.1)/4)
+        : d3.rgb(color(d.gender)).brighter(Math.log(d.associates.length+.1)/4)
     }
 
     function getActiveFill(d) {
@@ -297,48 +269,45 @@
       mousedNode = d;
 
       /**
-      * Get link data
+      * Get transition data
       **/
 
-      var linkData = _.filter(graph.links, function(l) {
-        return l.source.index === d.index || l.target.index === d.index
-      })
+      var linkData = [];
+      var linkNodeIds = [d.id];
+      var labelNodes = [{
+        x: d.x,
+        y: d.y,
+        name: d.name,
+        r: getRadius(d)
+      }];
+      var labelAnchors = [{
+        x: d.x,
+        y: d.y,
+        r: getRadius(d)
+      }]
 
-      /**
-      * Get node data
-      **/
+      d.associates.forEach(function(associateId) {
+        var associateNode = idToNode[associateId];
 
-      var linkNodeSet = new Set();
-      var linkNodeIds = new Set();
+        // used to draw links between nodes
+        linkData.push({
+          source: d,
+          target: associateNode
+        })
 
-      linkData.map(function(l) {
-        linkNodeSet.add(l.source)
-        linkNodeSet.add(l.target)
-        linkNodeIds.add(l.source.id)
-        linkNodeIds.add(l.target.id)
-      })
+        // used to update node attributes
+        linkNodeIds.push(associateId)
 
-      linkNodeIds.add(d.id)
-
-      var linkNodes = Array.from(linkNodeSet)
-      var linkNodeIds = Array.from(linkNodeIds)
-
-      /**
-      * Get label data
-      **/
-
-      var labelFoci = [];
-      var labelNodes = [];
-      linkNodes.map(function(d) {
-        labelFoci.push({ 
-          x: d.x,
-          y: d.y,
-          r: getRadius(d)
-        });
+        // used to update labels
         labelNodes.push({
-          x: d.x,
-          y: d.y,
-          name: d.name
+          x: associateNode.x,
+          y: associateNode.y,
+          name: associateNode.name
+        })
+        labelAnchors.push({
+          x: associateNode.x,
+          y: associateNode.y,
+          r: getRadius(associateNode)
         })
       })
 
@@ -400,16 +369,14 @@
       * Reposition overlapping labels
       **/
 
-      var index = 0;
-      labels.each(function() {
-        labelNodes[index].width = this.getBBox().width;
-        labelNodes[index].height = this.getBBox().height;
-        index += 1;
+      labels.each(function(d, i) {
+        labelNodes[i].width = this.getBBox().width;
+        labelNodes[i].height = this.getBBox().height;
       });
 
       d3.labeler()
         .label(labelNodes)
-        .anchor(labelFoci)
+        .anchor(labelAnchors)
         .width(width)
         .height(height)
         .start(100);

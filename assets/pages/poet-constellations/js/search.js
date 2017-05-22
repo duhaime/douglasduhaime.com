@@ -40,7 +40,7 @@
     var names = getNames();
 
     // get the names that match the user's query
-    var matchingNames = getMatchingNames(names, searchTerm);
+    var matchingNames = _.take(getMatchingNames(names, searchTerm), 5);
 
     // if the user sent an arrow key, update the typeahead index
     if (e.keyCode == 40) incrementTypeaheadIndex(matchingNames);
@@ -264,5 +264,15 @@
       scrollTo(to, duration - 10);
     }, 10);
   }
+
+  /**
+  * Tie an event listener to the Poet Constellations text in the
+  * mini navbar to scroll users to the top of the page
+  **/
+
+  var tag = document.querySelector('.poet-constellations-header h1');
+  tag.addEventListener('click', function(d) {
+    scrollTo(0, 100)
+  })
 
 })()

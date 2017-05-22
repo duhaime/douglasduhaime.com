@@ -5,7 +5,7 @@
   **********************/
 
   var width = 1000,
-    height = 2000;
+    height = 1300;
 
   var margin = {
     top: 40,
@@ -200,24 +200,24 @@
       .friction(0.95)
       .charge(function(d) {
         return _.includes(imageIds, d.id) ?
-            -1 * ((d.associates*150) - 50)
-          : -1 * ((d.associates*80) - 50)
+            -1 * ((d.associates.length*260) + 400)
+          : -1 * ((d.associates.length*80))
       })
       .alpha(0.5)
-      .linkDistance(10)
+      .linkDistance(0)
       .size([chart.width, chart.height])
       .nodes(graph.nodes)
       .links(graph.links)
       .on('tick', tick)
       .start();
 
-    function tick(e) {
+    function tick(e, i) {
       var k = .1 * e.alpha;
 
       // gravitate points toward their year
       // and the center of the chart
       graph.nodes.forEach(function(d) { 
-        d.y += (y(d.year) - d.y) * 70*k;
+        d.y += (y(d.year) - d.y) * 90*k;
         d.x += (chart.width/2 - d.x) * 20*k;
       })
 
@@ -262,13 +262,13 @@
     function getRadius(d) {
       return _.includes(imageIds, d.id) ?
           chart.headshotSize
-        : Math.log(d.associates + 2) * 1.7
+        : Math.log(d.associates.length + 2) * 1.7
     }
 
     function getFill(d) {
       return _.includes(imageIds, d.id) ?
           'url(#' + d.id + ')'
-        : d3.rgb(color(d.gender)).brighter(Math.log(d.associates+.1)/4)
+        : d3.rgb(color(d.gender)).brighter(Math.log(d.associates.length+.1)/4)
     }
 
     function getActiveFill(d) {
