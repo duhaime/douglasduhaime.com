@@ -25,4 +25,20 @@ Let's suppose you wanted to find all texts in the Literature Online database tha
 
 Next, set the slide interval to 1, so that the program will know to send the first query ("king"), then slide forward 1 word to "queen" and submit that search term. Finally, click Start. If all goes to plan, a Firefox window will open up and the program will be off and running. If you need to terminate the program, just close that Firefox window. Doing so, however, will prevent the out.tsv output from documenting any found matches. If this happens, you can merely restart the program.
 
-Building this tool was a blast, not least of all because doing so allowed me to learn much more about Webdriver, GUIs, and code compilation. Here's hoping the finished tool will help others create stimulating literary and historical research! 
+Building this tool was a blast, not least of all because doing so allowed me to learn much more about Webdriver, GUIs, and code compilation. Here's hoping the finished tool will help others create stimulating literary and historical research!
+
+### 2017 Update: The New Oxford Shakespeare Published
+
+In 2017, Oxford University Press published the volume for which the tool described above was built--The New Oxford Shakespeare:
+
+<img class='center-image small' src='/assets/posts/lion-api/new-oxford-shakespeare.jpg'>
+
+This collection of volumes contains an enormous wealth of scholarship that revises our understanding of the works of William Shakespeare. The <i>[Authorship Companion](https://books.google.com/books?id=jTG3DAEACAAJ)</i> volume in the collection focuses in particular on reassessing the body of work that William Shakespeare wrote, leveraging stylometric analysis to isolate the portions of Shakespeare's plays most probably written by playwrights with whom the bard collaborated (a common practice in his day).
+
+The premier Shakespearean Gary Taylor wrote a tremendous amount of scholarship for this collection, including a chapter on which we collaborated using the tool described above. If you have a chance to review the stylometric work we undertake in the volume, it would be great to hear your thoughts:
+
+<div class='iframe-container' style='width: 80%; margin-left: 10%;'>
+  <iframe frameborder="0" width="100%" height="600" src="https://books.google.com/books?id=LBDxDQAAQBAJ&lpg=PA73&pg=PA67&printsec=frontcover&source=gbs_ViewAPI&output=embed#%257B%257D"></iframe>
+</div>
+
+I'll close by noting that the LION API itself is no longer publicly available, but ProQuest does make raw data exports available for partner institutions in case other data-driver scholars wish to conduct related research.
