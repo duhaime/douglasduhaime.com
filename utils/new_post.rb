@@ -10,8 +10,8 @@ def get_post_content(title, date)
   lines << 'title: ' + title
   lines << 'date: ' + date.to_s
   lines << 'categories: '
-  lines << 'image: '
-  lines << 'header: '
+  lines << 'thumbnail: '
+  lines << 'banner: '
   lines << 'js: '
   lines << 'css: '
   lines << '---'
