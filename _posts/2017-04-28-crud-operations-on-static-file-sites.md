@@ -22,9 +22,11 @@ For a quick example of the way Google App Script stores data, try the following 
     <div class='text'>Press Start</div>
     <button class='start'>Start</button>
   </div>
-  <div class='score'>Score: 0</div>
-  <div class='timer'>Time: 11</div>
-  <div class='instructions'>Click the ghost!</div>
+  <div class='game'>
+    <div class='score'>Score: 0</div>
+    <div class='timer'>Time: 11</div>
+    <div class='instructions'>Click the ghost!</div>
+  </div>
   <div class='game-over'>
     <div class='text'>Game Over</div>
     <div class='end-score'></div>
@@ -34,6 +36,7 @@ For a quick example of the way Google App Script stores data, try the following 
       <input class='save-score' type='submit' value='submit'>
     </form>
   </div>
+  <div id='loader'>{% include posts/loader.html %}</div>
   <div class='ghost'></div>
 </div>
 
@@ -111,7 +114,8 @@ function writeToSheet(e) {
   try {
     var doc = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = doc.getActiveSheet(); // get active sheet
-    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var lastCol = sheet.getLastColumn();
+    var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
     var nextRow = sheet.getLastRow()+1; // get the next row in the sheet
     var row = [ new Date() ]; // initialize row data with a timestamp
 

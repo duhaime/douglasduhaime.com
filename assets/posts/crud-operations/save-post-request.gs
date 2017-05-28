@@ -15,7 +15,8 @@ function doGet(e) {
     var callback = e.parameter.callback;
     var doc = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = doc.getActiveSheet(); // get active sheet
-    var data = sheet.getRange(1, 1, 100, sheet.getLastColumn()).getValues();
+    var lastCol = sheet.getLastColumn();
+    var data = sheet.getRange(1, 1, 100, lastCol).getValues();
     var result = 'success';
 
   } catch(error) {
@@ -66,7 +67,8 @@ function writeToSheet(e) {
   try {
     var doc = SpreadsheetApp.getActiveSpreadsheet();
     var sheet = doc.getActiveSheet(); // get active sheet
-    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var lastCol = sheet.getLastColumn()
+    var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
     var nextRow = sheet.getLastRow()+1; // get the next row in the sheet
     var row = [ new Date() ]; // initialize row data with a timestamp
 

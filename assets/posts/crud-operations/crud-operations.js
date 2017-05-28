@@ -4,6 +4,7 @@
   var container = document.querySelector('.ghost-container');
   var greeting = document.querySelector('.greeting');
   var ghost = document.querySelector('.ghost');
+  var game = document.querySelector('.game');
   var start = document.querySelector('.start');
   var score = document.querySelector('.score');
   var timer = document.querySelector('.timer');
@@ -15,8 +16,10 @@
   var userScore = document.querySelector('.user-score');
 
   // scoreboard elements
+  var loader = document.querySelector('#loader');
   var loadScores = document.querySelector('#load-scores');
   var ghostIframe = document.querySelector('#ghost-iframe');
+  var saveScore = document.querySelector('.save-score');
   var form = document.querySelector('.ghost-container form');
 
   var state = {
@@ -29,8 +32,9 @@
 
   start.addEventListener('click', startGame)
   ghost.addEventListener('click', incrementClicks)
-  loadScores.addEventListener('click', getTopScores)
+  saveScore.addEventListener('click', showLoader)
   ghostIframe.addEventListener('load', getTopScores)
+  loadScores.addEventListener('click', getTopScores)
 
   /**
   * Start the game
@@ -77,12 +81,26 @@
   }
 
   /**
+  * Show the loader
+  **/
+
+  function showLoader() {
+    ghost.style.display = 'none';
+    greeting.style.display = 'none';
+    game.style.display = 'none';
+    gameOver.style.display = 'none';
+    loader.style.display = 'block';
+  }
+
+  /**
   * Function to request top scores
   **/
 
-  function getTopScores() {
+  function getTopScores(e) {
     // firefox calls iframe.load on document.load
-    if (!state.started) return;
+    if (e.type === 'load' && !state.started) return;
+
+    showLoader()
 
     var xhr = new XMLHttpRequest();
     xhr.open('GET', postUrl + '?callback=""');
@@ -109,7 +127,10 @@
       if (!data[i][0]) {
         container.innerHTML = table + rows.join('') + '</table>';
         container.style.height = '280px';
-        container.style.overflow = 'scroll';
+        container.style.overflow = 'auto';
+
+        // hide the loader
+        loader.style.display = 'none';
       } else {
         var date = new Date(data[i][0]);        
         var rowData = data[i];
