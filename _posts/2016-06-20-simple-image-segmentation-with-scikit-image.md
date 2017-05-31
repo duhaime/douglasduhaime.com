@@ -3,10 +3,10 @@ layout: post
 title: Simple Image Segmentation with Scikit-Image
 date: 2016-06-20
 categories: image-processing clustering
-thumbnail: assets/posts/image-segmentation/image-segmentation-thumb.jpg
-banner: assets/posts/image-segmentation/image-segmentation-banner.png
+thumbnail: /assets/posts/image-segmentation/image-segmentation-thumb.jpg
+banner: /assets/posts/image-segmentation/image-segmentation-banner.jpg
 js: 
-css: assets/posts/image-segmentation/image-segmentation.css
+css: /assets/posts/image-segmentation/image-segmentation.css
 ---
 
 Several months ago, I worked with University of Michigan Professor David Corso and a team of his researchers to subdivide newspaper articles from full newspaper sheets. Our [project](http://mdp.engin.umich.edu/projects/2017-proquest2/) revolved around analyzing a sheet from a newspaper, identifying each of the "articles" within that sheet of paper, and saving each to a unique file. The purpose of the exercise was to allow downstream applications to run OCR on the subdivided images, so that OCR text could be produced for each individual newspaper article, rather than each individual newspaper sheet.
@@ -17,16 +17,16 @@ In the months that followed, a number of additional image segmentation tasks cro
 
 The case study discussed below grows out work I pursued when a major research institution asked if my lab could help process a large image collection in their possession. This image collection consisted of a large collection of scrapbooks wherein each page contained several advertisements for eighteenth-century plays. Here's a sample image from their collection:
 
-<img src='assets/posts/image-segmentation/sample-periodical-image.jpg' class='center-image small'>
+<img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='center-image small'>
 
 Given an image such as the above, they wanted to save each of the clippings from that page to its own file:
 
 <div class='partitioned-images'>
-  <img src='assets/posts/image-segmentation/partitioned-images/0.jpg' class='partitioned-image'>
-  <img src='assets/posts/image-segmentation/partitioned-images/1.jpg' class='partitioned-image'>
-  <img src='assets/posts/image-segmentation/partitioned-images/2.jpg' class='partitioned-image'>
-  <img src='assets/posts/image-segmentation/partitioned-images/3.jpg' class='partitioned-image'>
-  <img src='assets/posts/image-segmentation/partitioned-images/4.jpg' class='partitioned-image'>
+  <img src='/assets/posts/image-segmentation/partitioned-images/0.jpg' class='partitioned-image'>
+  <img src='/assets/posts/image-segmentation/partitioned-images/1.jpg' class='partitioned-image'>
+  <img src='/assets/posts/image-segmentation/partitioned-images/2.jpg' class='partitioned-image'>
+  <img src='/assets/posts/image-segmentation/partitioned-images/3.jpg' class='partitioned-image'>
+  <img src='/assets/posts/image-segmentation/partitioned-images/4.jpg' class='partitioned-image'>
 </div>
 
 This is a fairly tidy example of an image segmentation task, and one that our lab achieved quickly with Python's scikit image package. The post below documents the approaches we considered and leveraged for this task in case this write up might be useful to others facing a similar task.
@@ -58,7 +58,7 @@ To invoke this script, save the above to a file (e.g. image_segmentation.py) and
 
 If you do so, you'll instantiate an `im` object. If you print that object, you'll see it's a matrix. The shape of this matrix depends on the input image type, as discussed in the relevant [scipy](https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.misc.imread.html) and [skimage](http://scikit-image.org/docs/dev/api/skimage.io.html#skimage.io.imread) docs. In the case of the grayscale images above, the `im` object is a 2d matrix, or array of arrays. Each subarray represents one row of pixels in the image, and each integer in a given subarray represent the luminescence of a pixel in the given row in 8bit scale (0 = black, 255 = white):
 
-```
+{% highlight bash %}
 >>> print(im)
 [[255 255 255 ..., 255 255 255]
  [255 255 255 ..., 255 255 255]
@@ -67,7 +67,7 @@ If you do so, you'll instantiate an `im` object. If you print that object, you'l
  [254 254 254 ..., 255 255 255]
  [254 254 254 ..., 255 255 255]
  [254 254 254 ..., 255 255 255]]
-```
+{% endhighlight %}
 
 One can run a wide range of numerical operations on this image pixel matrix in order to achieve different tasks. Below we'll look at two approaches one can use to save each subimage in a composite image to its own file.
 
@@ -78,8 +78,8 @@ One approach that's often useful in image processing is "pixel dilation." This t
 Given a matrix representation of the composite image discussed above, for example, one can easily find the aggregate luminesence of each column of pixels. The plot below on the right visualizes the aggregate luminesence of each column of pixels for the image on the left below: 
 
 <div class='dilations-x'>
-  <img src='assets/posts/image-segmentation/sample-periodical-image.jpg' class='image'>
-  <img src='assets/posts/image-segmentation/x-dimension-pixels.png' class='pixels'>
+  <img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='image'>
+  <img src='/assets/posts/image-segmentation/pixel-sums.png' class='pixels'>
 </div>
 
 Examining this chart, we can tell there are two dark bands of pixels within the image on the left: one that stretches from roughly pixels 100-800 in the image, and another that stretches from roughly 1200-1900. Given just this representation of the image's contents, one would have enough information to partition the image into two regions. From there, one could repeat the procedure, this time dilating pixels along the y axis and again splitting the image based on the resulting blocks within the pixel histogram.
@@ -197,4 +197,4 @@ for c, cropped_image in enumerate(cropped_images):
 
 ## Conclusion
 
-This post has attempted to show some of the ways one can approach some simple image segmentation problems with scikit-image. If you have any troubles with the snippets above, feel free to consult the [full source code](http://github.com/yaledhlab/image-segmentation/british_library_periodicals) used to process the samples above. If you get interested this line of analysis, feel free to drop me a note--I'd be curious to hear what brings you to image segmentation!
+This post has attempted to show some of the ways one can approach some simple image segmentation problems with scikit-image. If you have any troubles with the snippets above, feel free to consult the [full source code](https://github.com/YaleDHLab/image-segmentation/tree/master/british_library_periodicals) used to process the samples above. If you get interested this line of analysis, feel free to drop me a note--I'd be curious to hear what brings you to image segmentation!

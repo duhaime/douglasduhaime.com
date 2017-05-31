@@ -11,6 +11,7 @@
 .dilations-x {
   max-width: 550px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .dilations-x img {
@@ -19,9 +20,9 @@
 }
 
 .dilations-x .image {
-  width: 40%;
+  width: 28%;
 }
 
 .dilations-x .pixels {
-  width: 55%;
+  width: 67%;
 }
