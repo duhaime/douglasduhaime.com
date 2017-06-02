@@ -10,8 +10,8 @@ d3.json(json, function(error, data) {
   // specify font spec
   fontSpec = 'bold 13pt Arial';
   var margin = {top: 20, right: 20, bottom: 50, left: 75},
-      width = 750 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 650 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
   var x = d3.scale.linear()
       .range([0, width]);
@@ -49,10 +49,10 @@ d3.json(json, function(error, data) {
       .call(xAxis)
     .append('text')
       .attr('class', 'label')
-      .attr('x', width/2 + 180)
-      .attr('y', +45)
+      .attr('x', 415)
+      .attr('y', 45)
       .style('text-anchor', 'end')
-      .text('Words spoken before first gendered character enters play')
+      .text('Words before first gendered character')
       .style('font-size','16px');
 
   svg.append('g')
@@ -64,7 +64,7 @@ d3.json(json, function(error, data) {
       .attr('y', -60)
       .attr('x', -30)
       .style('text-anchor', 'end')
-      .text('Words spoken before last gendered character enters play')
+      .text('Words before last gendered character')
       .style('font-size', '16px');
 
   svg.selectAll('.dot')

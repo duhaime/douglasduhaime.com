@@ -9,8 +9,8 @@ function select_json(new_json) {
       bottom: 10,
       left: 180
   };
-  var width = 600;
-  var height = 600;
+  var width = 500;
+  var height = 500;
 
   var x = d3.scale.ordinal().rangeBands([0, width]),
     z = d3.scale.linear().domain([0, 4]).clamp(true),

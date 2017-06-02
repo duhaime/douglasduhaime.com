@@ -8,8 +8,8 @@ d3.json(minMaxWordsJson, function(error, data) {
   // specify font spec
   fontSpec = 'bold 13pt Arial';
   var margin = {top: 20, right: 20, bottom: 50, left: 75},
-      width = 750 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 650 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
   var x = d3.scale.linear()
       .range([0, width]);
   var y = d3.scale.linear()
@@ -38,10 +38,10 @@ d3.json(minMaxWordsJson, function(error, data) {
       .call(xAxis)
     .append('text')
       .attr('class', 'label')
-      .attr('x', width/2 + 180)
-      .attr('y', +45)
+      .attr('x', 380)
+      .attr('y', 45)
       .style('text-anchor', 'end')
-      .text('Words spoken by the smallest gendered role') 
+      .text('Maximum words for gender')
       .style('font-size','16px');
   svg.append('g')
       .attr('class', 'y axis')
@@ -50,9 +50,9 @@ d3.json(minMaxWordsJson, function(error, data) {
       .attr('class', 'label')
       .attr('transform', 'rotate(-90)')
       .attr('y', -60)
-      .attr('x', -30)
+      .attr('x', -60)
       .style('text-anchor', 'end')
-      .text('Words spoken by the largest gendered role')
+      .text('Minimum words for gender')
       .style('font-size', '16px');
   svg.selectAll('.dot')
       .data(data)

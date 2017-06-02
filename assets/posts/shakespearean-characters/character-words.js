@@ -1,10 +1,10 @@
 function getTextWidth(text, font) {
-    // re-use canvas object for better performance
-    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
-    var context = canvas.getContext('2d');
-    context.font = font;
-    var metrics = context.measureText(text);
-    return metrics.width;
+  // re-use canvas object for better performance
+  var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+  var context = canvas.getContext('2d');
+  context.font = font;
+  var metrics = context.measureText(text);
+  return metrics.width;
 };
 
 var characterWordsJson = 'https://s3.amazonaws.com/duhaime-shakespeare/words_by_entrance.json';
@@ -19,8 +19,8 @@ d3.json(characterWordsJson, function(error, data) {
   var fontSpec = '13pt Arial';
   
   var margin = {top: 20, right: 20, bottom: 50, left: 75},
-      width = 750 - margin.left - margin.right,
-      height = 500 - margin.top - margin.bottom;
+      width = 650 - margin.left - margin.right,
+      height = 400 - margin.top - margin.bottom;
 
   var x = d3.scale.linear()
       .range([0, width]);
@@ -71,7 +71,7 @@ d3.json(characterWordsJson, function(error, data) {
       .attr('class', 'label')
       .attr('transform', 'rotate(-90)')
       .attr('y', -60)
-      .attr('x', -100)
+      .attr('x', -75)
       .style('text-anchor', 'end')
       .text('Words spoken by character')
       .style('font-size', '16px');
@@ -86,23 +86,23 @@ d3.json(characterWordsJson, function(error, data) {
       .style('opacity', .9)
       .style('fill', function(d) { return color(d.gender); })
       .on('mouseover', function(d) {
+        tooltip.transition()
+        .duration(200)
+        .style('opacity', .96);  
+        tooltip.html(d.name + ' (' + d.play + ')') 
+           .style('left', (parseInt(d3.select(this).attr('cx')) + 
+                document.getElementById(vizDivStr).offsetLeft) +78 + 'px')     
+           .style('top', (parseInt(d3.select(this).attr('cy')) +
+                document.getElementById(vizDivStr).offsetTop) +5 + 'px') 
+           .style('background-color', '#ffffff')
+           .style('width', getTextWidth(d.name, fontSpec) + getTextWidth(d.play, fontSpec) + 2 + 'px')
+           .style('height', 15 + 'px'); 
+        })
+      .on('mouseout', function(d) {
           tooltip.transition()
-          .duration(200)
-          .style('opacity', .96);  
-          tooltip.html(d.name + ' (' + d.play + ')') 
-                   .style('left', (parseInt(d3.select(this).attr('cx')) + 
-                        document.getElementById(vizDivStr).offsetLeft) +78 + 'px')     
-                   .style('top', (parseInt(d3.select(this).attr('cy')) +
-                        document.getElementById(vizDivStr).offsetTop) +5 + 'px') 
-                   .style('background-color', '#ffffff')
-                   .style('width', getTextWidth(d.name, fontSpec) + getTextWidth(d.play, fontSpec) + 2 + 'px')
-                   .style('height', 15 + 'px'); 
-          })
-          .on('mouseout', function(d) {
-              tooltip.transition()
-                   .duration(500)
-                   .style('opacity', 0);
-          });    
+               .duration(500)
+               .style('opacity', 0);
+      });    
  
   var legend = svg.selectAll('.legend')
       .data(color.domain())

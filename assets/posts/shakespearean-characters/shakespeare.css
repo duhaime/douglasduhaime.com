@@ -27,7 +27,13 @@
 #min-max-words,
 #min-max-entrance {
   font: 13px sans-serif;
-  height: 500px;
+  height: 400px;
+}
+
+.chart {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 /**
@@ -70,4 +76,18 @@
 
 .selection-menu select {
   margin-right: 5px;
+  max-width: 200px;
+}
+
+.select-container {
+  display: inline-block;
+}
+
+@media(max-width: 700px) {
+  .select-container {
+    width: 260px;
+    display: block;
+    text-align: right;
+    margin: 10px auto;
+  }
 }
