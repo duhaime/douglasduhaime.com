@@ -1,0 +1,41 @@
+.nearest-neighbors button {
+  margin: 15px auto;
+}
+
+.masonry-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.random {
+  max-height: 340px;
+}
+
+.masonry-container img {
+  display: flex;
+  flex: 1 1 auto;
+  width: 20%;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
+.matches {
+  margin-top: 15px;
+  background: #efefef;
+  max-height: 190px;
+}
+
+.guide {
+  padding: 53px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.clear-both {
+  clear: both;
+}
