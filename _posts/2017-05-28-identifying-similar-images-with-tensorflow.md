@@ -33,7 +33,9 @@ source activate 3.5
 conda install -c conda-forge tensorflow
 {% endhighlight %}
 
-You should see `(3.5)` as a preface in your terminal. If you don't, then you've somehow left the virtual environment named 3.5, so you'll need to re-enter that environment by typing `source activate 3.5` again. If you are in the virtual environment and you type `python`, you'll enter the Python interpreter. Inside the interpreter, you should be able to load Tensorflow by typing `import tensorflow`. If no error springs, you've installed TensorFlow and can type `quit()` to leave the interpreter. If you do get an error, you'll need to install TensorFlow before proceeding.
+You should see `(3.5)` as a preface in your terminal. If you don't, then you've somehow left the virtual environment named 3.5, so you'll need to re-enter that environment by typing `source activate 3.5` again.
+
+If you are in the virtual environment and you type `python`, you'll enter the Python interpreter. Inside the interpreter, you should be able to load Tensorflow by typing `import tensorflow`. If no error springs, you've installed TensorFlow and can leave the interpreter by typing `quit()`. If you do get an error, you'll need to install TensorFlow before proceeding.
 
 ## Classifying Images with TensorFlow
 
