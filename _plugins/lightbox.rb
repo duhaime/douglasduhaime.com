@@ -6,12 +6,23 @@ module Jekyll
       @lightbox = []
       @hash = rand(0..2**32).to_s
 
-      @lightbox << '<a class="default-image" href="#' + @hash + '">'
-      @lightbox << '<img src="' + text + '" alt="lightbox image">'
-      @lightbox << '</a>'
+      text = text.strip!
+
+      if text.end_with? '-background'
+        @url = text.chomp('-background')
+        @lightbox << '<a class="default-image background-image"'
+        @lightbox << ' href="#' + @hash + '"'
+        @lightbox << ' style="background-image:url(' + @url + ');" >'
+        @lightbox << '</a>'
+      else
+        @url = text
+        @lightbox << '<a class="default-image" href="#' + @hash + '">'
+        @lightbox << '<img src="' + @url + '" alt="lightbox image">'
+        @lightbox << '</a>'
+      end
 
       @lightbox << '<a href="#_" class="lightbox" id="' + @hash + '">'
-      @lightbox << '<img src="' + text + '" alt="lightbox image">'
+      @lightbox << '<img src="' + @url + '" alt="lightbox image">'
       @lightbox << '</a>'
       @lightbox = @lightbox.join(' ')
     end
