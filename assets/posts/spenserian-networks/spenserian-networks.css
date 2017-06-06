@@ -1,0 +1,281 @@
+/**
+* Page elements
+**/
+
+h2 {
+  text-align: center;
+}
+
+/**
+* Factor buttons
+**/
+
+.factor-buttons {
+  font-family: courier;
+  text-align: center;
+  font-size: 15px;
+}
+
+.factor-button {
+  display: inline-block;
+  margin: 14px 1px 0 1px;
+  width: 93px;
+  background: #e8e8e8;
+  padding: 16px 3px 11px;
+  border-radius: 4px;
+  border: 2px solid rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+.factor-button.active {
+  background: #f1f1f1;
+  border: 2px solid #9f9f9f;
+}
+
+.factor-button img {
+  width: 38px;
+}
+
+/**
+* Chart scrolls
+**/
+
+.chart {
+  max-width: 100%;
+  overflow: auto;
+}
+
+/**
+* Selects and Inputs
+**/
+
+.center-selects {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.select-container {
+  display: inline-block;
+}
+
+.select-container select,
+.select-container input {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+@media(max-width: 750px) {
+  .select-container {
+    width: 250px;
+    display: block;
+    text-align: right;
+    margin: 10px auto;
+  }
+}
+
+/**
+* Tooltip
+**/
+
+.tooltip {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  background: #efefef;
+  box-sizing: border-box;
+  padding: 15px;
+  text-align: center;
+}
+
+.tooltip * {
+  display: inline-block;
+}
+
+.tooltip .value {
+  color: #52beda;
+  font-weight: 800;
+  font-size: 24px;
+  vertical-align: bottom;
+}
+
+/**
+* Chart axes
+**/
+
+.domain {
+  fill: none;
+  stroke: darkgray;
+}
+
+text {
+  font-family: 'courier';
+  font-size: 15px;
+  fill: #666;
+}
+
+/**
+* Bar chart
+**/
+
+#bar-chart .axis path,
+#bar-chart .axis line {
+  fill: none;
+  stroke: #000;
+}
+
+/**
+* Correlation chart
+**/
+
+#correlation-chart {
+  text-align: center;
+}
+
+@media(min-width: 900px) {
+  #correlation-chart svg {
+    margin-left: -80px;
+  }
+}
+
+/**
+* Steam chart
+**/
+
+.steam-chart-container {
+  position: relative;
+}
+
+#steam-chart-tooltip {
+  width: 340px;
+}
+
+#steam-chart {
+  cursor: default;
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+/**
+* Multiple foci
+**/
+
+.samples-controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.samples-buttons {
+  margin: 20px 0;
+}
+
+.sample-button {
+  display: inline-block;
+  background: #43a5be;
+  opacity: 1;
+}
+
+.samples-container {
+  margin: 10px;
+}
+
+.samples-container div {
+  display: inline-block;
+  font-size: 18px;
+  vertical-align: top;
+}
+
+.observed-samples {
+  height: 31px;
+}
+
+div#observed-samples {
+  color: #52beda;
+  font-size: 28px;
+  width: 54px;
+  text-align: left;
+  margin-right: 12px;
+}
+
+input#total-samples {
+  margin-top: -9px;
+  width: 46px;
+}
+
+div#multiple-foci {
+  text-align: center;
+}
+
+/**
+* Poet relationship chart
+**/
+
+.discrete-scatterplot-container {
+  position: relative;
+}
+
+@media(min-width: 900px) {
+  #discrete-scatterplot {
+    margin-left: -40px;
+  }
+}
+
+#discrete-scatterplot .grid {
+  fill: #fff;
+}
+
+#discrete-scatterplot line {
+  stroke: #cdcdcd;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+#discrete-scatterplot line.neutral-line {
+  stroke: #7f7f7f;
+}
+
+#discrete-scatterplot-tooltip {
+  width: 340px;
+}
+
+/**
+* Graph link image
+**/
+
+.graph-link-container {
+  position: relative;
+}
+
+.graph-link-container img {
+  display: block;
+}
+
+.graph-link-container a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.graph-link-hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  opacity: 0;
+  transition: 0.5s;
+  text-align: center;
+}
+
+.invitation {
+  height: 24px;
+  line-height: 24px;
+  font-size: 24px;
+  display: inline-block;
+  position: relative;
+  top: 48%;
+  margin-top: -12px;
+}
+
+.graph-link-container:hover .graph-link-hover {
+  opacity: 1;
+}
