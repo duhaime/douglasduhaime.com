@@ -4,7 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
-  entry: './assets/index.js',
+  entry: './_site/assets/index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '_site', 'assets')
