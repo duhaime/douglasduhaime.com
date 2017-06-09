@@ -1,23 +1,13 @@
 {% unless page.header == 'none' %}
   {% include duotone.html %}
   <header class='header'>
-    {% if page.banner or page.image %}
-      {% if page.banner %}
-        {% if page.invert %}
-          <div class='background-image duotone-invert'
-            style='background-image: url({{ page.banner }})'></div>
-        {% else %}
-          <div class='background-image duotone'
-            style='background-image: url({{ page.banner }})'></div>
-        {% endif %}
+    {% if page.banner %}
+      {% if page.invert %}
+        <div class='background-image duotone-invert'
+          style='background-image: url({{ page.banner }})'></div>
       {% else %}
-        {% if page.invert %}
-          <div class='background-image duotone-invert'
-            style='background-image: url({{ page.image }})'></div>
-        {% else %}
-          <div class='background-image duotone'
-            style='background-image: url({{ page.image }})'></div>
-        {% endif %}
+        <div class='background-image duotone'
+          style='background-image: url({{ page.banner }})'></div>
       {% endif %}
     {% endif %}
     {% include icons/home.html %}
