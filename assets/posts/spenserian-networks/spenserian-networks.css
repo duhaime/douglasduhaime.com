@@ -18,22 +18,21 @@ h2 {
 
 .factor-button {
   display: inline-block;
-  margin: 14px 1px 0 1px;
-  width: 93px;
-  background: #e8e8e8;
+  margin: 5px 0;
+  width: 90px;
   padding: 16px 3px 11px;
   border-radius: 4px;
-  border: 2px solid rgba(0,0,0,0);
+  border: 1px solid rgba(0,0,0,0);
   cursor: pointer;
 }
 
 .factor-button.active {
   background: #f1f1f1;
-  border: 2px solid #9f9f9f;
+  border: 1px solid #9f9f9f;
 }
 
 .factor-button img {
-  width: 38px;
+  width: 45px;
 }
 
 /**

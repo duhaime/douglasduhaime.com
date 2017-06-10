@@ -17,7 +17,11 @@
     factor: 'occupations',
     levels: [],
     years: [],
-    mouseoverX: function() {}
+    mouseoverX: function() {},
+    mouse: {
+      x: null,
+      y: null
+    }
   }
 
   var colors = {
@@ -37,7 +41,7 @@
     yellow3: '#cf9f13'
   }
 
-  var width = 700,
+  var width = 690,
     height = 500;
 
   var margin = {
@@ -211,7 +215,7 @@
         value = state.nestedData[state.factor][level][year];
 
     tooltip
-      .style('left', mousePosition[0] - 100 + 'px')
+      .style('left', mousePosition[0] - 140 + 'px')
       .style('top', mousePosition[1] - 100 + 'px')
       .style('opacity', 1)
       .style('z-index', 10);
@@ -251,6 +255,12 @@
     d.addEventListener('click', function() {
       selectButton(d)
     })
+  })
+
+  var chartContainer = document.querySelector(chart.container);
+  chartContainer.addEventListener('mousemove', function(e) {
+    state.mouse.x = e.clientX;
+    state.mouse.y = e.clientY;
   })
 
   redraw()

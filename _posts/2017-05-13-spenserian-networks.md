@@ -4,7 +4,7 @@ title: Spenserian Networks
 date: 2017-05-13
 categories: 
 thumbnail: /assets/posts/spenserian-networks/spenserian-networks-thumb.jpg
-banner: /assets/posts/spenserian-networks/spenserian-networks-banner.png
+banner: /assets/posts/spenserian-networks/spenserian-networks-banner.jpg
 js:
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
@@ -212,8 +212,6 @@ The chart below offers a visual explanation of this notion. The dashed bars each
 
 <div id='multiple-foci' class='chart'></div>
 
-If you start this simulation and watch the number of samples grow, you should see the observations within each metadata value grow closer to the expected number of observations for the given metadata value.
+If you start this simulation and watch the number of samples grow, you should see the observations within each metadata value grow closer to the expected number of observations for the given metadata value. After sampling all observations, however, you'll find each education level has a little more or less than the expected value. This delta is formally known as "sampling error", or a divergence between the true population statistics and the population statistics observed in a sample from the population. In short, the smaller the sample size, the greater the probability that sample is unrepresentative of the underlying population.
 
-## Larger Networks
-
-The weighted random sample simulator above ultimately indicates the influence sample size has on distributions within the sampled population. In short, the smaller the sample size, the greater the probability that sample is unrepresentative. The analysis of network trends above would therefore benefit from similar analysis on a larger dataset. I'm currently pursuing this line of analysis, and hope to post some updates soon.
+The analysis of network trends is based on the best available curated dataset of early modern networks. That said, the sample is relatively small, and is bound to suffer from sampling error. The only real way around this problem is to increase the sample size by leveraging a larger dataset. I'm currently pursuing this line of analysis, and hope to post some updates soon.
