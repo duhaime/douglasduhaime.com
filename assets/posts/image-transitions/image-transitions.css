@@ -1,3 +1,5 @@
 #target {
   min-height: 525px;
+  max-width: 100%;
+  overflow: auto;
 }

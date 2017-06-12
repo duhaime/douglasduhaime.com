@@ -1,7 +1,7 @@
 (function() {
   var inputs = [
-    'assets/posts/image-transitions/data/kevin-bacon.json',
-    'assets/posts/image-transitions/data/francis-bacon.json'
+    '/assets/posts/image-transitions/data/kevin-bacon.json',
+    '/assets/posts/image-transitions/data/francis-bacon.json'
   ]
 
   var inputIndex = 0,
