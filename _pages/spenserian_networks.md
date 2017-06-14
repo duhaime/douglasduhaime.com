@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: '/pages/spenserian-networks/'
-title: 'Poet Constellations'
+title: 'Spenserian Networks'
 js: 
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
