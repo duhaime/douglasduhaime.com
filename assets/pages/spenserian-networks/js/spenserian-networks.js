@@ -5,7 +5,7 @@
   **********************/
 
   var width = 1300,
-    height = 1300;
+    height = 1360;
 
   var margin = {
     top: 40,
@@ -22,7 +22,7 @@
     headshotSize: 15,
     data: {
       dir: '/assets/pages/spenserian-networks/',
-      file: 'spenserian_networks_static.json'
+      file: 'spenserian-networks-static.json'
     }
   }
 
