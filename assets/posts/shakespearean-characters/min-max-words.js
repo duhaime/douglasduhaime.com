@@ -1,4 +1,4 @@
-var minMaxWordsJson ='https://s3.amazonaws.com/duhaime-shakespeare/min_max_words.json';
+var minMaxWordsJson ='https://s3.amazonaws.com/duhaime/blog/shakespearean-characters/json/min_max_words.json';
 
 d3.json(minMaxWordsJson, function(error, data) {
   if (error) throw error;

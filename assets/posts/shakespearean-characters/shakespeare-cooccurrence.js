@@ -196,7 +196,7 @@ function select_json(new_json) {
 
 var initializeCooccurrence = function() {
   // set initial json selection
-  var jsonPath = 'https://s3.amazonaws.com/duhaime-shakespeare/folger-json/'
+  var jsonPath = 'https://s3.amazonaws.com/duhaime/blog/shakespearean-characters/json/folger-json/'
 
   select_json(jsonPath + '1H4.json', 0);
 

@@ -1,4 +1,4 @@
-var json = 'https://s3.amazonaws.com/duhaime-shakespeare/min_max_entrance.json';
+var json = 'https://s3.amazonaws.com/duhaime/blog/shakespearean-characters/json/min_max_entrance.json';
 
 d3.json(json, function(error, data) {
   if (error) throw error;

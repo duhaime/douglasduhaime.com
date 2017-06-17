@@ -7,7 +7,7 @@ function getTextWidth(text, font) {
   return metrics.width;
 };
 
-var characterWordsJson = 'https://s3.amazonaws.com/duhaime-shakespeare/words_by_entrance.json';
+var characterWordsJson = 'https://s3.amazonaws.com/duhaime/blog/shakespearean-characters/json/words_by_entrance.json';
 d3.json(characterWordsJson, function(error, data) {
   if (error) throw error;
 
