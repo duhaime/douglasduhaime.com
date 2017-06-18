@@ -45,7 +45,8 @@
     d3.json(dataPath, function(json) {
       var json = _.take(json, 5);
       matchImages.forEach(function(d, i) {
-        d.src = data.images + json[i].filename + '.jpg'
+        d.src = data.images + json[i].filename + '.jpg';
+        d.style.display = 'flex';
       })
     })
   }
@@ -56,7 +57,7 @@
     })
 
     _.times(5).map(function(d) {
-      d3.select(matches).append('img');
+      d3.select(matches).append('img').style('display', 'none');
     })
   }
 
