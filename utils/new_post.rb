@@ -12,8 +12,8 @@ def get_post_content(title, date)
   lines << 'categories: '
   lines << 'thumbnail: '
   lines << 'banner: '
-  lines << 'js: '
   lines << 'css: '
+  lines << 'js: '
   lines << '---'
   lines << ''
 
