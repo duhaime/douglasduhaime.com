@@ -15,7 +15,7 @@
     }
   }
 
-  var width = 700,
+  var width = 650,
       height = 760;
 
   var margin = {
