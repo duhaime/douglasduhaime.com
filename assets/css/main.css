@@ -344,7 +344,7 @@ body {
   background: #4c4c4c;
 }
 
-.footer img {
+.footer .footer-icon {
   height: 15px;
   position: relative;
   top: 12px;
@@ -354,7 +354,21 @@ body {
   border-radius: 100%;
 }
 
-.footer img:hover {
+.footer .square-image {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer .square-image img {
+  border-radius: 0;
+  padding: 2px;
+  width: 11px;
+  vertical-align: top;
+  position: relative;
+  background: none;
+}
+
+.footer .footer-icon:hover {
   opacity: 0.8;
 }
 
