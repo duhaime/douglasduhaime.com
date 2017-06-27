@@ -1,9 +1,9 @@
-{% if page.js %}
-  {% if page.js.first %}
-    {% for js in page.js %}
+{%- if page.js -%}
+  {%- if page.js.first -%}
+    {%- for js in page.js %}
       <script type='text/javascript' src={{ js }}></script>
-    {% endfor %}
-  {% else %}
+    {%- endfor %}
+  {%- else %}
   <script type='text/javascript' src={{ page.js }}></script>
-  {% endif %}
-{% endif %}
+  {%- endif %}
+{%- endif %}
