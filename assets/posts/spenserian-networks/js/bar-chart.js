@@ -46,8 +46,8 @@
     .ticks(10);
 
   var svg = d3.select(chart.container).append('svg')
-    .attr('width', width)
-    .attr('height', height)
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .attr('viewBox', '0 0 ' + width + ' ' + height)
   .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -117,23 +117,30 @@
   **/
 
   function selectButton(target) {    
-    var container = document.querySelector(buttons.container);
-    container.querySelectorAll(buttons.elem).forEach(function(d) {
-      d.classList.remove('active');
-      if (d.dataset['id'] === target.dataset['id']) {
-        d.className += ' active';
+    for (var i=0; i<containerButtons.length; i++) {
+      var elem = containerButtons[i];
+      elem.classList.remove('active');
+      if (elem.dataset['id'] === target.dataset['id']) {
+        elem.className += ' active';
         state.factor = target.dataset['id'];
         redraw()
       }
-    })
+    }
   }
 
-  var container = document.querySelector(buttons.container);
-  container.querySelectorAll(buttons.elem).forEach(function(d) {
-    d.addEventListener('click', function() {
-      selectButton(d)
+  var container = document.querySelector(buttons.container),
+      containerButtons = container.querySelectorAll(buttons.elem);
+
+  for (var i=0; i<containerButtons.length; i++) {
+    var elem = containerButtons[i];
+    elem.addEventListener('click', function(e) {
+      var elem = e.target;
+      while (!elem.dataset['id']) {
+        var elem = elem.parentNode;
+      }
+      selectButton(elem)
     })
-  })
+  }
 
   redraw()
 

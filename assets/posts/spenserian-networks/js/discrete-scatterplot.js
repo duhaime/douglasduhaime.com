@@ -38,8 +38,8 @@
   }
 
   var svg = d3.select(chart.container).append('svg')
-    .attr('width', width)
-    .attr('height', height);
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .attr('viewBox', '0 0 ' + width + ' ' + height);
 
   var g = svg.append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
@@ -135,7 +135,7 @@
     **/
 
     svg.transition()
-      .attr('height', height);
+      .attr('viewBox', '0 0 ' + width + ' ' + height);
 
     grid.transition()
       .attr('width', chart.width)
@@ -243,7 +243,7 @@
     height = chart.height + margin.top + margin.bottom;
 
     svg.transition()
-      .attr('height', height)
+      .attr('viewBox', '0 0 ' + width + ' ' + height);
 
     var xAxis = d3.svg.axis()
       .scale(state.scales.x)
@@ -322,11 +322,13 @@
       rows = container.querySelector('#scatterplot-rows'),
       points = container.querySelector('#scatterplot-points'),
       jitter = container.querySelector('#jitterbug-perfume'),
-      discretize = container.querySelector('#discretize');
+      discretize = container.querySelector('#discretize'),
+      selects = container.querySelectorAll('select');
 
-  container.querySelectorAll('select').forEach(function(elem) {
-    elem.addEventListener('change', redraw)
-  });
+  for (var i=0; i<selects.length; i++) {
+    var elem = selects[i];
+    elem.addEventListener('change', redraw);
+  }
 
   jitter.addEventListener('change', handleJitter)
   discretize.addEventListener('change', handleDiscretize)

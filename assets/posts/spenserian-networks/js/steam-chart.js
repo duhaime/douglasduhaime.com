@@ -71,8 +71,8 @@
     .range([colors.blue0, colors.blue1, colors.blue2, colors.blue3]);
 
   var svg = d3.select(chart.container).append('svg')
-    .attr('width', width)
-    .attr('height', height);
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .attr('viewBox', '0 0 ' + width + ' ' + height)
 
   svg.append('g').attr('class', 'steam')
     .attr('transform', 'translate('+ margin.left + ',' + margin.top + ')');
@@ -177,13 +177,14 @@
       levels.push(level);
       var factorArray = [];
       _.keys(json[state.factor][level]).forEach(function(year) {
-        var year = parseInt(year);
-        years.push(year);
-
-        factorArray.push({
-          x: year,
-          y: json[state.factor][level][year]
-        })
+        if (!isNaN(json[state.factor][level][year])) {
+          year = parseInt(year);
+          years.push(year);
+          factorArray.push({
+            x: year,
+            y: json[state.factor][level][year]
+          })
+        }
       })
 
       data.push(factorArray)
@@ -238,24 +239,30 @@
   **/
 
   function selectButton(target) {
-    var container = document.querySelector(buttons.container);
-    container.querySelectorAll(buttons.elem).forEach(function(d) {
-      d.classList.remove('active');
-      if (d.dataset['id'] === target.dataset['id']) {
-        d.className += ' active';
+    for (var i=0; i<containerButtons.length; i++) {
+      var elem = containerButtons[i];
+      elem.classList.remove('active');
+      if (elem.dataset['id'] === target.dataset['id']) {
+        elem.className += ' active';
         state.factor = target.dataset['id'];
         redraw()
       }
-    })
+    }
   }
 
   // add event listeners
-  var container = document.querySelector(buttons.container);
-  container.querySelectorAll(buttons.elem).forEach(function(d) {
-    d.addEventListener('click', function() {
-      selectButton(d)
+  var container = document.querySelector(buttons.container),
+      containerButtons = container.querySelectorAll(buttons.elem);
+
+  for (var i=0; i<containerButtons.length; i++) {
+    containerButtons[i].addEventListener('click', function(e) {
+      var elem = e.target;
+      while (!elem.dataset['id']) {
+        elem = elem.parentNode;
+      }
+      selectButton(elem)
     })
-  })
+  }
 
   var chartContainer = document.querySelector(chart.container);
   chartContainer.addEventListener('mousemove', function(e) {

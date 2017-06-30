@@ -237,6 +237,14 @@ div#multiple-foci {
 }
 
 /**
+* Inline trio
+**/
+
+.inline-trio .default-image {
+  padding-bottom: 20%;
+}
+
+/**
 * Graph link image
 **/
 

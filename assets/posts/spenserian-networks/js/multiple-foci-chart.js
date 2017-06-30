@@ -107,9 +107,7 @@
         .attr('x', function(d) {
           return x(d.level);
         })
-        .attr('y', chart.height)
-        .attr('transform', 'rotate(180)')
-        .attr('transform-origin', 'bottom ' + x.rangeBand()/2)
+        .attr('y', chart.height);
 
     svg.selectAll('.rect-outline').data(data).enter()
       .append('rect')
@@ -155,7 +153,7 @@
         })
       }
 
-      data.sort(function(a,b) { return a.value < b.value });
+      data = _.sortBy(data, 'value').reverse();
 
       var cumulative = 0;
       data.forEach(function(d) {
@@ -239,6 +237,9 @@
         .duration(500)
         .attr('height', function(d) {
           return y(state.samples[d]/state.totalSamples);
+        })
+        .attr('y', function(d) {
+          return chart.height - y(state.samples[d]/state.totalSamples);
         })
     }
 

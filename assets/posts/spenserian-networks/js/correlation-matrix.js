@@ -39,7 +39,7 @@
   var initializeChart = function(data) {
     var svg = d3.select(chart.container).append('svg')
       .attr('width', chart.width)
-      .attr('height', chart.height)
+      .attr('height', chart.height);
       
     svg.append('g')
       .attr('class', cells.container)
@@ -82,11 +82,13 @@
     **/
 
     d3.select(chart.container).select('svg').transition()
-      .attr('width', function() {
-        return data.levels.x.length * cells.size + margin.top + margin.bottom;
-      })
       .attr('height', function() {
-        return data.levels.y.length * cells.size + margin.top + margin.bottom;
+        var yOffset = margin.top + margin.bottom;
+        return (data.levels.y.length * cells.size) + yOffset;
+      })
+      .attr('width', function() {
+        var xOffset = margin.left + margin.right;
+        return (data.levels.x.length * cells.size) + xOffset;
       })
 
     /**
@@ -233,10 +235,11 @@
 
   var selectsContainer = document.querySelector('#correlation-selects');
   var selects = selectsContainer.querySelectorAll('select');
-  selects.forEach(function(d) {
-    d.addEventListener('change', function() {
+  for (var i=0; i<selects.length; i++) {
+    var elem = selects[i];
+    elem.addEventListener('change', function() {
       d3.json(getDatafilePath(), updateChart)
     })
-  })
+  }
 
 })()

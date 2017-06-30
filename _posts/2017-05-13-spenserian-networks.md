@@ -127,7 +127,7 @@ Given this fact, it becomes interesting to consider the historical range of a po
 
 One wonders whether authors with predominantly earlier associates have stylstic traints that separate them from those with predominantly later associates. Hopefully subsequent work will be able to pursue this question at some length.
 
-## Unexpected Relationships
+## Group Dynamics
 
 The plots above examine the metadata or network connections of Spenserian authors to uncover early modern social trends in the aggregate. By combining author-level metadata with author network connections, the analysis below works to uncover "unexpected relationships" among identified metadata groups.
 
