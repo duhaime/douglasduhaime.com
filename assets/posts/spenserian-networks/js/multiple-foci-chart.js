@@ -3,12 +3,12 @@
   var state = {};
 
   var width = 500,
-      height = 400;
+      height = 340;
 
   var margin = {
-    top: 80,
+    top: 120,
     right: 30,
-    bottom: 125,
+    bottom: 40,
     left: 30
   }
 
@@ -37,9 +37,16 @@
   }
 
   var svg = d3.select(chart.container).append('svg')
-      .attr('width', width)
+
+  if (window.innerWidth < 700) {
+    svg.attr('preserveAspectRatio', 'xMidYMid meet')
+      .attr('viewBox', '0 0 ' + width + ' ' + height)
+  } else {
+    svg.attr('width', width)
       .attr('height', height)
-    .append('g')
+  }
+
+  svg.append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   var labels = svg.append('g')
@@ -121,7 +128,9 @@
           return x(d.level);
         })
         .attr('y', function(d) {
-          return chart.height - y(d.value);
+          // fix mobile safari bug
+          var val = chart.height - y(d.value);
+          return val == 0 ? 1 : val;
         })
         .attr('stroke', 'black')
         .attr('stroke-dasharray', '3,3')
