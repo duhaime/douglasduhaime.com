@@ -23,15 +23,16 @@
     var selected = _.sampleSize(json, config.nImages),
       images = random.querySelectorAll('img');
 
-    images.forEach(function(d, i) {
-      d.src = data.images + selected[i].image;
-      d.removeEventListener('mouseover', handleMouseover);
-      d.addEventListener('mouseover', handleMouseover);
+    for (var i=0; i<images.length; i++) {
+      var elem = images[i];
+      elem.src = data.images + selected[i].image;
+      elem.removeEventListener('mouseover', handleMouseover);
+      elem.addEventListener('mouseover', handleMouseover);
+    }
+  }
 
-      function handleMouseover(e) {
-        getSimilarImages(e.target.src)
-      }
-    })
+  function handleMouseover(e) {
+    getSimilarImages(e.target.src)
   }
 
   function getSimilarImages(imageSrc) {
@@ -44,10 +45,11 @@
 
     d3.json(dataPath, function(json) {
       var json = _.take(json, 5);
-      matchImages.forEach(function(d, i) {
-        d.src = data.images + json[i].filename + '.jpg';
-        d.style.display = 'flex';
-      })
+      for (var i=0; i<matchImages.length; i++) {
+        var elem = matchImages[i];
+        elem.src = data.images + json[i].filename + '.jpg';
+        elem.style.display = 'flex';
+      }
     })
   }
 
