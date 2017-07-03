@@ -22,9 +22,19 @@
   box-sizing: border-box;
 }
 
+.masonry-container.hidden-images img {
+  display: none;
+}
+
 @media(max-width: 500px) {
+  .masonry-container {
+    display: block;
+  }
+
   .masonry-container img {
     width: 33%;
+    display: inline-block;
+    vertical-align: top;
   }
 }
 

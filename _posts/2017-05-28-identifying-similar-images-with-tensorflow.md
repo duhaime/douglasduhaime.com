@@ -33,9 +33,9 @@ source activate 3.5
 conda install -c conda-forge tensorflow
 {% endhighlight %}
 
-You should see `(3.5)` as a preface in your terminal. If you don't, then you've somehow left the virtual environment named 3.5, so you'll need to re-enter that environment by typing `source activate 3.5` again.
+You should see (3.5) as a preface in your terminal. If you don't, then you've somehow left the virtual environment named 3.5, so you'll need to re-enter that environment by typing "source activate 3.5" again.
 
-If you are in the virtual environment and you type `python`, you'll enter the Python interpreter. Inside the interpreter, you should be able to load Tensorflow by typing `import tensorflow`. If no error springs, you've installed TensorFlow and can leave the interpreter by typing `quit()`. If you do get an error, you'll need to install TensorFlow before proceeding.
+If you are in the virtual environment and you type "python", you'll enter the Python interpreter. Inside the interpreter, you should be able to load Tensorflow by typing "import tensorflow". If no error springs, you've installed TensorFlow and can leave the interpreter by typing "quit()". If you do get an error, you'll need to install TensorFlow before proceeding.
 
 ## Classifying Images with TensorFlow
 
@@ -56,11 +56,11 @@ The first time you run the script, your machine will download Inception, a convo
 
 Those labels are great for tasks like enhancing image search or algorithmic captioning, but they aren't necessarily optimal for measuring image similarity. For similarity tasks, it's generally better to work with float point vectors than categorical labels, as vectors capture more of the original object's signal.
 
-Happily, one can obtain vector representations of images by only slightly modifying the `classify_image.py` script. In essence, instead of asking the last (softmax) layer of the neural network for the text classifications of input images, we'll ask the penultimate layer of the neural network for the internal model weights for a given image, and we'll store those weights as a vector representation of the input image. This will allow us to perform traditional vector analysis using images.
+Happily, one can obtain vector representations of images by only slightly modifying the classify_image.py script. In essence, instead of asking the last (softmax) layer of the neural network for the text classifications of input images, we'll ask the penultimate layer of the neural network for the internal model weights for a given image, and we'll store those weights as a vector representation of the input image. This will allow us to perform traditional vector analysis using images.
 
 ## Vectorizing Images with TensorFlow
 
-The original classify_image.py evokes a method `run_inference_on_image()` that handles the image classification for an input image. Here's that method:
+The original classify_image.py evokes a method "run_inference_on_image()" that handles the image classification for an input image. Here's that method:
 
 {% highlight python %}
 
@@ -187,7 +187,7 @@ def run_inference_on_images(image_list, output_dir):
   return image_to_labels
 {% endhighlight %}
 
-Here we see the modifications we'll make to `run_inference_on_image()`. They focus on handling a series of input images, using error handling on each image in case a png file or jp2 sneaks into our collection of jpegs, and most importantly on capturing and saving the penultimate layer of the neural network.
+Here we see the modifications we'll make to run_inference_on_image(). They focus on handling a series of input images, using error handling on each image in case a png file or jp2 sneaks into our collection of jpegs, and most importantly on capturing and saving the penultimate layer of the neural network.
 
 To run the modified script, first download the full updated source then install the one new requirement, psutil (which is used for managing open file handlers):
 
@@ -208,7 +208,7 @@ python classify_images.py "images/*"
 
 {% endhighlight %}
 
-This will generate a new directory `image_vectors` and will create one vector for each input image in that directory, using the input image name as the root of the output vector name.
+This will generate a new directory "image_vectors" and will create one vector for each input image in that directory, using the input image name as the root of the output vector name.
 
 ## Finding Nearest Neighbors
 
@@ -217,7 +217,7 @@ The modified version of classify_images.py above generates one image vector for 
 <div class='nearest-neighbors'>
   <button>Refresh</button>
   <div class='random masonry-container'></div>
-  <div class='matches masonry-container'>
+  <div class='matches masonry-container hidden-images'>
     <div class='guide'>Hover on an image</div>
   </div>
 </div>

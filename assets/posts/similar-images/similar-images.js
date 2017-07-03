@@ -5,7 +5,7 @@
 (function() {
 
   var config = {
-    nImages: 12
+    nImages: window.innerWidth < 500 ? 3 : 12
   }
 
   var data = {
@@ -21,13 +21,13 @@
 
   function loadRandomImages(json) {
     var selected = _.sampleSize(json, config.nImages),
-      images = random.querySelectorAll('img');
+        images = random.querySelectorAll('img');
 
     for (var i=0; i<images.length; i++) {
       var elem = images[i];
       elem.src = data.images + selected[i].image;
       elem.removeEventListener('mouseover', handleMouseover);
-      elem.addEventListener('mouseover', handleMouseover);
+      elem.addEventListener('mouseover', handleMouseover)
     }
   }
 
@@ -48,9 +48,10 @@
       for (var i=0; i<matchImages.length; i++) {
         var elem = matchImages[i];
         elem.src = data.images + json[i].filename + '.jpg';
-        elem.style.display = 'flex';
       }
     })
+
+    matches.className = 'matches masonry-container';
   }
 
   function initialize() {
@@ -59,8 +60,10 @@
     })
 
     _.times(5).map(function(d) {
-      d3.select(matches).append('img').style('display', 'none');
+      d3.select(matches).append('img');
     })
+
+    refresh();
   }
 
   function refresh() {
@@ -78,6 +81,5 @@
   **/
 
   initialize();
-  refresh();
 
 })()
