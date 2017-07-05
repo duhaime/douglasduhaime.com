@@ -1,0 +1,28 @@
+import: https://s3.amazonaws.com/duhaime/blog/mapping-early-english-books/mapzen-styles/geometry/matrices.yaml
+styles:
+    geometry-tilt:
+        doc:
+            author: 
+                name: Patricio Gonzalez Vivo
+                twitter: patriciogv
+            version: 0.0.1
+            tangram-version: 0.0.7
+            licence: MIT
+            description: |
+                Allows to TILT the camera while zooming between `TILT_IN` and `TILT_OUT`.
+            examples:
+                tilt:
+                    url: https://tangrams.github.io/tangram-sandbox/styles/tilt.yaml
+                    img: https://tangrams.github.io/tangram-sandbox/styles/tilt.png
+                    lines: 7-28
+                oblivion:
+                    url: https://tangrams.github.io/tangram-sandbox/styles/oblivion.yaml
+                    img: https://tangrams.github.io/tangram-sandbox/styles/oblivion.png
+        mix: geometry-matrices
+        animated: true
+        shaders:
+            defines:
+                TILT: 0
+            blocks:
+                position: |
+                    position.xyz = rotateX3D(TILT) * position.xyz;

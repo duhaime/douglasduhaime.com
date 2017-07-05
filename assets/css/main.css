@@ -691,6 +691,51 @@ label {
 }
 
 /**
+* Click to interact
+**/
+
+.click-to-interact {
+  position: relative;
+  display: block;
+}
+
+.click-to-interact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 10;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.click-to-interact::after {
+  content: 'Click to enter →';
+  display: block;
+  color: #fff;
+  position: absolute;
+  top: 47%;
+  text-align: center;
+  width: 100%;
+  z-index: 11;
+  font-size: 24px;
+  opacity: 0;
+}
+
+.click-to-interact:hover::before,
+.click-to-interact:hover::after {
+  opacity: 1;
+}
+
+.click-to-interact img {
+  display: block;
+}
+
+/**
 *  Image grid
 **/
 
