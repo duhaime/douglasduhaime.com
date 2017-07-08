@@ -3,12 +3,12 @@
   var state = {};
 
   var width = 500,
-      height = 340;
+      height = 320;
 
   var margin = {
-    top: 120,
+    top: 0,
     right: 30,
-    bottom: 40,
+    bottom: 120,
     left: 30
   }
 
@@ -47,7 +47,7 @@
   }
 
   svg.append('g')
-      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   var labels = svg.append('g')
     .attr('class', 'x axis')
@@ -62,11 +62,11 @@
 
     var x = d3.scale.ordinal()
       .domain(_.map(data, 'level'))
-      .rangeBands([0, chart.width])
+      .rangeBands([5, chart.width-5])
 
     var y = d3.scale.linear()
       .domain([0, d3.max(_.map(data, 'value')) ])
-      .range([0, chart.height])
+      .range([0, chart.height-5])
 
     var xAxis = d3.svg.axis()
       .scale(x);
@@ -75,9 +75,11 @@
     * Add legend
     **/
 
+    var legendYOffset = 5;
+
     legend.append('rect')
       .attr('x', 350)
-      .attr('y', -70)
+      .attr('y', legendYOffset)
       .attr('width', 20)
       .attr('height', 20)
       .attr('stroke', 'black')
@@ -86,19 +88,19 @@
 
     legend.append('text')
       .attr('x', 375)
-      .attr('y', -55)
+      .attr('y', legendYOffset + 15)
       .html('Expected')
 
     legend.append('rect')
       .attr('x', 350)
-      .attr('y', -45)
+      .attr('y', legendYOffset + 25)
       .attr('width', 20)
       .attr('height', 20)
       .attr('fill', '#52beda')
 
     legend.append('text')
       .attr('x', 375)
-      .attr('y', -30)
+      .attr('y', legendYOffset + 40)
       .html('Observed')
 
     /**
@@ -128,9 +130,7 @@
           return x(d.level);
         })
         .attr('y', function(d) {
-          // fix mobile safari bug
-          var val = chart.height - y(d.value);
-          return val == 0 ? 1 : val;
+          return chart.height - y(d.value);
         })
         .attr('stroke', 'black')
         .attr('stroke-dasharray', '3,3')
@@ -305,8 +305,8 @@
 
     function removeBarHeight() {
       svg.selectAll('.filled-rect').transition()
-        .duration(500)
         .attr('height', 0)
+        .attr('y', chart.height);
     }
 
     /**
