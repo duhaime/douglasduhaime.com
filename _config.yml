@@ -6,6 +6,8 @@ collections:
   pages:
     output: true
     permalink: /pages/:title.html
+  projects:
+    output: false
 
 # site instance config
 name: Douglas Duhaime

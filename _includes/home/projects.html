@@ -1,0 +1,24 @@
+<div id='projects' class='tab-content'>
+  <div class='project-links'>
+    {%- assign projects = site.projects | sort: 'order' -%}
+    {%- for project in projects reversed -%}
+    <div class='project-card'>
+      <div class='background-image project-image'
+        style='background-image: url({{ project.image }})'></div>
+      <div class='project-content'>
+        <div class='project-title'>{{ project.title }}</div>
+        <div class='project-tech'>
+          {%- for item in project.tech -%}
+            <div>{{ item }}</div>
+          {%- endfor -%}
+        </div>
+        <div class='project-text'>{{ project.content }}</div>
+        <div class='project-links'>
+          <a target='_' href='{{ project.site }}'>View Project</a>
+          <a target='_' href='{{ project.source }}'>View Source</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

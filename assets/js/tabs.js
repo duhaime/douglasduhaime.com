@@ -7,7 +7,8 @@
 
     var tabNames = {
       0: 'posts',
-      1: 'about'
+      1: 'projects',
+      2: 'about'
     };
 
     setActiveTab = function(e) {
@@ -22,7 +23,7 @@
       // make the relevant tab content visible
       var tabContent = document.querySelectorAll('.tab-content');
       tabContent.forEach(function(tab, i) {
-        tab.style.display = i == selectedIndex ? 'block' : 'none';
+        tab.style.display = i == selectedIndex ? 'inline-block' : 'none';
       })
     }
 
@@ -37,7 +38,7 @@
 
     initialize = function() {
       // show the first tab content option
-      document.querySelector('.tab-content').style.display = 'block';
+      document.querySelector('.tab-content').style.display = 'inline-block';
 
       // add the click listeners to show/hide content as users click tabs
       addListeners();
