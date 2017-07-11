@@ -9,13 +9,13 @@ js:
 css: /assets/posts/image-segmentation/image-segmentation.css
 ---
 
-Several months ago, I worked with University of Michigan Professor David Corso and a team of his researchers to subdivide newspaper articles from full newspaper sheets. Our [project](http://mdp.engin.umich.edu/projects/2017-proquest2/) revolved around analyzing a sheet from a newspaper, identifying each of the "articles" within that sheet of paper, and saving each to a unique file. The purpose of the exercise was to allow downstream applications to run OCR on the subdivided images, so that OCR text could be produced for each individual newspaper article, rather than each individual newspaper sheet.
+Several months ago, I worked with Professor David Corso and his team at the University of Michigan on an [MDP Project](http://mdp.engin.umich.edu/mdp-projects/) to subdivide newspaper articles from full newspaper sheets. Our project revolved around analyzing a newspaper sheet, identifying each of the articles within that sheet, and saving each article to a unique file. The purpose of the exercise was to allow downstream applications to run OCR on the subdivided images to improve OCR quality and ultimately improve search relevancy.
 
-In the months that followed, a number of additional image segmentation tasks cropped up, which suggest that this is a growing area of importance in digital research. Given the paucity of material on this task, I thought it would be worthwhile to write up a simple case study that shows how one can perform image segmentation on newspaper like objects to improve OCR quality and searchability.
+In the months that followed, I crossed paths with a number of additional image segmentation tasks in Yale's Digital Humanities Lab, all of which seemed to suggest that image segmentation is an area of increasing importance in digital research. Given the paucity of material on image segmentation, I thought it would be worthwhile to write up a quick case study that shows how one can perform some simple image segmentation.
 
-### Case Study: Segmenting playbills
+## Case Study: Segmenting playbills
 
-The case study discussed below grows out work I pursued when a major research institution asked if my lab could help process a large image collection in their possession. This image collection consisted of a large collection of scrapbooks wherein each page contained several advertisements for eighteenth-century plays. Here's a sample image from their collection:
+The case study discussed below grows out work I pursued when the British Library asked if Yale's Digital Humanities Lab could help process a large image collection in their possession. Their data consisted of scrapbooks wherein each page/image contained several advertisements for eighteenth-century plays. Here's a sample image:
 
 <img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='center-image small'>
 
@@ -29,9 +29,9 @@ Given an image such as the above, they wanted to save each of the clippings from
   <img src='/assets/posts/image-segmentation/partitioned-images/4.jpg' class='partitioned-image'>
 </div>
 
-This is a fairly tidy example of an image segmentation task, and one that our lab achieved quickly with Python's scikit image package. The post below documents the approaches we considered and leveraged for this task in case this write up might be useful to others facing a similar task.
+This is a fairly tidy example of an image segmentation task, and one that our lab achieved quickly with Python's [scikit-image](http://scikit-image.org/docs/dev/api/skimage.html) package. The write-up below documents the approaches we leveraged for this task.
 
-### Converting an image file to a pixel matrix
+## Converting an image file to a pixel matrix
 
 To get started, one must first install skimage. To do so, just open a terminal and type `pip install scikit-image`. From there, one can read a jpg or jp2 into RAM with a script such as the following:
 
@@ -54,7 +54,7 @@ else:
   sys.exit()
 {% endhighlight %}
 
-To invoke this script, save the above to a file (e.g. image_segmentation.py) and run: `python image_segmentation.py path_to/an_image.jpg`, where the sole argument provided to the script is the path to an image file on your machine.
+To invoke this script, save the above to a file (e.g. image_segmentation.py) and run: `python image_segmentation.py PATH_TO/AN_IMAGE.jpg`, where the sole argument provided to the script is the path to an image file on your machine.
 
 If you do so, you'll instantiate an `im` object. If you print that object, you'll see it's a matrix. The shape of this matrix depends on the input image type, as discussed in the relevant [scipy](https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.misc.imread.html) and [skimage](http://scikit-image.org/docs/dev/api/skimage.io.html#skimage.io.imread) docs. In the case of the grayscale images above, the `im` object is a 2d matrix, or array of arrays. Each subarray represents one row of pixels in the image, and each integer in a given subarray represent the luminescence of a pixel in the given row in 8bit scale (0 = black, 255 = white):
 
@@ -71,7 +71,7 @@ If you do so, you'll instantiate an `im` object. If you print that object, you'l
 
 One can run a wide range of numerical operations on this image pixel matrix in order to achieve different tasks. Below we'll look at two approaches one can use to save each subimage in a composite image to its own file.
 
-### Image segmentation with pixel dilations
+## Image segmentation with pixel dilations
 
 One approach that's often useful in image processing is "pixel dilation." This term refers to the process of measuring the total amount of luminescence for each row and each column of an image. Measuring these values can provide helpful inputs with which one can automatically crop or even segment image elements.
 
@@ -102,11 +102,11 @@ plt.show()
 
 {% endhighlight %}
 
-### Image segmentation with pixel clustering
+## Image segmentation with pixel clustering
 
 While pixel dilations can offer significant clues for image processing, many image segmentation tasks involve identifying non-rectilinear patterns, and therefore require more flexible solutions. Below we'll examine one approach to automatically segmenting an image into discrete regions of interest.
 
-#### Binarizing grayscale pixels
+### Binarizing grayscale pixels
 
 The sample image discussed above is an 8bit grayscale image. Each pixel is represented as an integer value between 0 and 255, where 0 = perfect black and 255 = perfect white. One way to simplify image processing for this kind of color scale is to "binarize" the image, or transform the image such that each pixel is either black or white.
 
@@ -133,7 +133,7 @@ plt.show()
 
 {% endhighlight %}
 
-#### Segmenting binarized images
+### Segmenting binarized images
 
 After binarizing a grayscale image, one can use the `label()` function in skimage to partition the image into contiguous areas of self-similar pixel regions:
 
@@ -147,7 +147,7 @@ labeled = label(clean_border)
 
 This method returns a matrix with the same shape as `im` in which each value indicates the segment to which a given pixel has been assigned. The first member of this matrix, for instance, will be an integer indicating the segment to which the pixel at position 0,0 has been assigned, while the second member of the matrix will be an integer indicating the segment to which the pixel at 1,0 has been assigned.
 
-#### Identify large segments to crop
+### Identifying large segments to crop
 
 With these segment assignments in hand, one should filter out the "noise" segments, or the segments to which a small number of pixels have been assigned. These segments are the result of noise in the input image, and can be disregarded in the following way:
 
@@ -177,7 +177,7 @@ for region_index, region in enumerate(regionprops(labeled)):
 
 Having identified all of the images we wish to partition from the composite image, all that's left to do is to save those images to disk.
 
-#### Save cropped images to disk
+### Saving cropped images to disk
 
 To save our cropped images, we only need to create an output directory in which to store the images, then save each of the images we just cropped out of the composite image to that output directory:
 
