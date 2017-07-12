@@ -356,7 +356,8 @@ body {
 
 .project-card .project-image {
   width: 100%;
-  height: 290px;
+  height: 0;
+  padding-bottom: 42%;
   background-position: top center;
 }
 
