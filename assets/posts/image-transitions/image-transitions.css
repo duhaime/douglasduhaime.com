@@ -3,3 +3,7 @@
   max-width: 100%;
   overflow: auto;
 }
+
+#target svg {
+  margin: 0;
+}

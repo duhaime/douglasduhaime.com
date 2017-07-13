@@ -177,8 +177,15 @@
   border: none;
 }
 
-.scoreboard thead,
-.scoreboard tr:nth-child(2n) {
+.scoreboard tr {
+  background: #303346;
+}
+
+.scoreboard thead tr {
+  background: #212234;
+}
+
+.scoreboard tbody tr:nth-child(2n) {
   background: #212234;
 }
 
