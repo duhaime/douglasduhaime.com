@@ -14,15 +14,12 @@ body {
   color: #222;
   line-height: 1.5em;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
 }
 
 body * {
   margin: 0;
   padding: 0;
-}
-
-#content {
-  text-align: center;
 }
 
 /**
@@ -34,7 +31,7 @@ body * {
   max-width: 750px;
   display: inline-block;
   text-align: left;
-  padding: 30px 30px 40px;
+  padding: 40px;
   box-sizing: border-box;
 }
 
@@ -115,7 +112,7 @@ body {
   flex-direction: column;
 }
 
-.home, .post, .about {
+.home, .post {
   flex: 1;
   max-width: 100%;
   overflow: hidden;
@@ -128,6 +125,7 @@ body {
   color: #fff;
   overflow: hidden;
   background: #4c4c4c;
+  text-align: center;
 }
 
 .footer .footer-icon {
@@ -198,105 +196,76 @@ body {
 }
 
 .home .container {
-  text-align: center;
+  display: block;
+  margin: 40px auto;
+  width: 80%;
+  max-width: 980px;
+  padding: 0;
 }
 
-.home .tabs {
-  text-align: center;
-  margin: 10px 0 25px;
+@media(max-width: 600px) {
+  .home .container {
+    width: 85%;
+  }
 }
 
-.home .tab {
-  display: inline-block;
-  cursor: pointer;
-  color: #999;
-  margin: 0 5px;
-}
-
-.home .tab.active {
-  color: inherit;
+.home h1 {
+  font-size: 38px;
+  line-height: 1.4em;
+  color: #454545;
+  margin: 0;
+  margin-left: -2px;
+  text-align: left;
+  font-weight: 100;
 }
 
 .home .bio {
-  padding-top: 10vh;
-  text-align: center;
+  color: #878787;
+  margin-bottom: 5px;
+  line-height: 1.2em;
 }
 
-@media(max-width: 520px) {
-  .home .bio {
-    padding-top: 3vh;
-  }    
-}
-
-.home .bio .icon {
-  width: 120px;
-  height: 120px;
-  border-radius: 100%;
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.home .bio .name {
-  font-size: 2.1em;
-  text-transform: uppercase;
+.home .home-links a {
+  text-decoration: none;
+  color: #6b6b6b;
   font-weight: 500;
+  margin-right: 10px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+.home h2 {
+  text-align: left;
+  font-weight: 100;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
   color: rgb({{ site.dark }});
-  margin: 15px 0;
-  line-height: 1em;
 }
 
 /**
-* Home page tabs
+* Home posts
 **/
 
-.tab-content {
-  display: none;
-}
-
-/**
-* Home page posts
-**/
-
-#posts {
-  text-align: center;
-  box-sizing: border-box;
-}
-
-/* desktop */
-@media(min-width: 731px) {
-  #posts {
-    width: 700px;
-  }
-}
-
-/* tablet */
-@media(max-width: 780px) {
-  #posts {
-    width: 464px;
-  }
-}
-
-/* mobile */
-@media(max-width: 520px) {
-  #posts {
-    width: 230px;
-  }
-}
-
-.post-links {
+.post-links,
+.project-links {
   text-align: left;
   display: inline-block;
   font-size: 0.9em;
+  width: 700px;
+  padding-top: 25px;
+}
+
+@media(max-width: 875px) {
+  .post-links,
+  .project-links {
+    width: 100%;
+  }
 }
 
 .post-link {
-  width: 200px;
-  margin: 0 15px 30px 15px;
+  width: 100%;
+  margin-bottom: 30px;
   display: inline-block;
   vertical-align: top;
 }
@@ -310,17 +279,17 @@ body {
 }
 
 .post-thumbnail {
-  width: 200px;
-  height: 120px;
+  width: 100%;
+  padding-bottom: 16.5%;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   transition: filter 1s;
+  border: 2px solid #777;
 }
 
 .post-links .title {
   display: inline-block;
-  font-family: Merriweather;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 18px;
   color: #666;
   margin: 10px 0 4px;
@@ -330,9 +299,8 @@ body {
 .post-links .date {
   display: block;
   color: #999;
-  font-size: 11px;
-  line-height: 12px;
-  font-family: Merriweather;
+  font-size: 13px;
+  line-height: 14px;
 }
 
 .post-links a {
@@ -349,7 +317,6 @@ body {
 
 .project-card {
   color: #444;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
   margin-bottom: 30px;
   text-align: left;
 }
@@ -357,12 +324,12 @@ body {
 .project-card .project-image {
   width: 100%;
   height: 0;
-  padding-bottom: 42%;
+  padding-bottom: 39%;
   background-position: top center;
 }
 
 .project-card .project-content {
-  padding: 10px 14px;
+  padding: 10px 0;
 }
 
 .project-card .project-title {
@@ -400,20 +367,17 @@ body {
 }
 
 /**
-* Home page about
-**/
-
-#about {
-  text-align: left;
-}
-
-/**
 * Post
 **/
 
 .post {
   height: 100%;
   width: 100%;
+}
+
+.post .container {
+  display: block;
+  margin: 0 auto;
 }
 
 /* mobile */
@@ -802,7 +766,7 @@ label {
 }
 
 /**
-*  Image grid
+* Image grid
 **/
 
 .image-grid {

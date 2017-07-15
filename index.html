@@ -1,4 +1,59 @@
 ---
-layout: home
+layout: default
 title: Home
 ---
+<div class='home'>
+  <div class='container'>
+    <h1>{{ site.name }}</h1>
+    <div class='bio'>Digital Humanities Developer in Yale University's <a href='http://web.library.yale.edu/dhlab'>DHLab</a>.</div>
+    <div class='home-links'>
+      <a href='#posts'>Posts</a>
+      <a href='#projects'>Projects</a>
+      <a href='#contact'>Contact</a>
+    </div>
+
+    <!-- POST LINKS -->
+    <div id='posts' class='post-links'>
+      {% for post in site.posts -%}
+      <div class='post-link'>
+        <a href='{{ post.url }}'>
+          {%- if post.thumbnail %}
+          <div class='post-thumbnail background-image'
+            style='background-image: url({{ post.thumbnail }})'></div>
+          {%- else %}
+          <div class='post-thumbnail background-image'
+            style='background-image: url({{ site.default_thumbnail }})'></div>
+          {%- endif %}
+          <div class='title'>{{ post.title }}</div>
+          <div class='date'>{{ post.date | date_to_string }}</div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- PROJECT LINKS -->
+    <div id='projects' class='project-links'>
+      <h2>Projects</h2>
+      {%- assign projects = site.projects | sort: 'order' -%}
+      {%- for project in projects reversed -%}
+      <a target='_' href='{{ project.site }}'>
+        <div class='project-card'>
+          <div class='background-image project-image'
+            style='background-image: url({{ project.image }})'></div>
+          <div class='project-content'>
+            <div class='project-title'>{{ project.title }}</div>
+            <div class='project-tech'>
+              {%- for item in project.tech -%}
+                <div>{{ item }}</div>
+              {%- endfor -%}
+            </div>
+            <div class='project-text'>{{ project.content }}</div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% include footer.html %}
