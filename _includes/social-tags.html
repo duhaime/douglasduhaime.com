@@ -8,12 +8,12 @@
     <meta name='og:title' content='{{ site.title }}' />
     {%- endif %}
     {%- if page.content %}
-    <meta name='og:description' content='{{ page.content | strip_html | xml_escape | truncate: 200 }}' />
+    <meta name='og:description' content="{{ content | strip_html | xml_escape | | truncatewords: 20  }}" />
     {%- else %}
       {{ site.description }}
     {%- endif -%}
     {%- if page.banner %}
     <meta property='og:image' content='{{ page.banner | prepend: site.url }}' />
     {%- else -%}
-    <meta property='og:image' content='{{ site.fallback_image }}' />
+    <meta property='og:image' content='{{ site.fallback_image | prepend: site.url }}' />
     {%- endif -%}
