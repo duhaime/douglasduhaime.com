@@ -35,12 +35,27 @@
   }
 
   function handleMouseover(e) {
-    getSimilarImages(e.target.style.backgroundImage)
+    setOpacities(e);
+    getSimilarImages(e.target.style.backgroundImage);
+  }
+
+  function setOpacities(e) {
+    var target = e.target;
+    while (!target.className.includes('image-cell-container')) {
+      target = target.parentNode;
+    }
+
+    var imgs = random.querySelectorAll('.image-cell-container');
+    for (var i=0; i<imgs.length; i++) {
+      imgs[i].style.opacity = 0.4;
+    }
+
+    target.style.opacity = 1;
   }
 
   function getSimilarImages(imageSrc) {
     var matchImages = matches.querySelectorAll('.' + config.imageClass),
-        imageSrc = imageSrc.substring(5, imageSrc.length-2), // remove url(' ')
+        imageSrc = cleanImageSrc(imageSrc),
         imageName = imageSrc.split('/images/')[1].replace('.jpg', '.json'),
         dataPath = data.neighbors + imageName;
 
@@ -57,6 +72,18 @@
     })
 
     matches.className = 'matches masonry-container';
+  }
+
+  // Safari doesn't include the "" in url("")
+  function cleanImageSrc(imageSrc) {
+    imageSrc = imageSrc.substring(4, imageSrc.length-1);
+    if (imageSrc[0] === '"') {
+      imageSrc = imageSrc.substring(1)
+    }
+    if (imageSrc[imageSrc.length-1] === '"') {
+      imageSrc = imageSrc.substring(0, imageSrc.length-1)
+    }
+    return imageSrc;
   }
 
   function getImage() {

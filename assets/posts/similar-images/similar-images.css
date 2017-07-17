@@ -23,7 +23,7 @@
   bottom: 5px;
   left: 5px;
   background-position: top left;
-  border: 1px solid #2f2f2f;
+  border: 1px solid #777;
   border-radius: 2px;
 }
 
@@ -40,7 +40,7 @@
 
 .matches {
   margin-top: 15px;
-  background: #dedede;
+  background: #efefef;
 }
 
 .guide {
