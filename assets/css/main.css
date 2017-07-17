@@ -211,17 +211,16 @@ body {
 
 .home h1 {
   font-size: 38px;
-  line-height: 1.4em;
+  line-height: 1em;
   color: #454545;
-  margin: 0;
-  margin-left: -2px;
+  margin: 0 0 0 -3px;
   text-align: left;
   font-weight: 100;
 }
 
 .home .bio {
   color: #878787;
-  margin-bottom: 5px;
+  margin: 5px 0 3px;
   line-height: 1.2em;
 }
 
@@ -284,7 +283,8 @@ body {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   transition: filter 1s;
-  border: 2px solid #777;
+  border: 1px solid #777;
+  background-color: #777;;
 }
 
 .post-links .title {
@@ -390,7 +390,7 @@ body {
 .post .title {
   font-size: 1.8em;
   font-weight: 500;
-  margin: 20px 0 10px;
+  margin: 0;
   text-align: center;
   color: rgb({{ site.dark }});
   line-height: 1.2em;
@@ -400,6 +400,7 @@ body {
   color: #777;
   font-size: 0.9em;
   text-align: center;
+  margin-top: 5px;
 }
 
 /***
