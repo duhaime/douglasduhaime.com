@@ -24,27 +24,30 @@
   svg.append('g')
       .attr('class', 'points-container');
 
-  // randomly initialize plot
-  d3.json(inputs[inputIndex], function(error, data) {
-    if (error) throw error;
+  function initialize() {
+    d3.json(inputs[inputIndex], function(error, data) {
+      if (error) throw error;
 
-    svg.selectAll('.dot')
-        .data(data.points)
-      .enter().append('ellipse')
-        .attr('class', 'dot')
-        .attr('rx', 0.5)
-        .attr('ry', 0.5)
-        .attr('cx', function() {return Math.random() * width})
-        .attr('cy', function() {return Math.random() * height})
-        .style('fill', '#fff')
-  });
+      svg.selectAll('.dot')
+          .data(data.points)
+        .enter().append('ellipse')
+          .attr('class', 'dot')
+          .attr('rx', 0.5)
+          .attr('ry', 0.5)
+          .attr('cx', function() {return Math.random() * width})
+          .attr('cy', function() {return Math.random() * height})
+          .style('fill', '#fff')
 
-  var changeScene = function() {
+      transition();
+    });
+  }
+
+  function changeScene() {
     inputIndex = (inputIndex + 1) % inputs.length;
     transition()
   }
 
-  var transition = function() {
+  function transition() {
     d3.json(inputs[inputIndex], function(error, data) {
       if (error) throw error;
 
@@ -79,5 +82,6 @@
   }
 
   document.querySelector('body').addEventListener('click', changeScene)
-  transition();
-})()
+  initialize();
+
+})();

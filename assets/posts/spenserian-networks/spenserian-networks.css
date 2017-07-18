@@ -278,9 +278,12 @@ div#multiple-foci {
   line-height: 24px;
   font-size: 24px;
   display: inline-block;
-  position: relative;
+  position: absolute;
   top: 48%;
   margin-top: -12px;
+  width: 100%;
+  text-align: center;
+  left: 0;
 }
 
 .graph-link-container:hover .graph-link-hover {

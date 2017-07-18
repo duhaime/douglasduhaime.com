@@ -2,36 +2,48 @@ var minMaxWordsJson ='https://s3.amazonaws.com/duhaime/blog/shakespearean-charac
 
 d3.json(minMaxWordsJson, function(error, data) {
   if (error) throw error;
+
   // specify the div (id) to which we'll attach the svg
   var vizDiv = '#min-max-words';
   var vizDivStr = vizDiv.replace('#','');
+
   // specify font spec
   fontSpec = 'bold 13pt Arial';
   var margin = {top: 20, right: 20, bottom: 50, left: 75},
       width = 650 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
+
   var x = d3.scale.linear()
       .range([0, width]);
+
   var y = d3.scale.linear()
       .range([height, 0]);
+
   var color = d3.scale.ordinal()
     .range(['#17becf', '#d62728']);
+
   var xAxis = d3.svg.axis()
       .scale(x)
       .orient('bottom');
+
   var yAxis = d3.svg.axis()
       .scale(y)
       .orient('left');
+
   var tooltip = d3.select(vizDiv).append('div')
       .attr('class', 'tooltip')
       .style('opacity', 1);
+
   var svg = d3.select(vizDiv).append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .attr('viewBox', '0 0 ' + (width + margin.left + margin.right)
+        + ' ' + (height + margin.top + margin.bottom))
     .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
   x.domain(d3.extent(data, function(d) { return d.min['val']; })).nice();
   y.domain(d3.extent(data, function(d) { return d.max['val']; })).nice();
+
   svg.append('g')
       .attr('class', 'x axis')
       .attr('transform', 'translate(0,' + height + ')')

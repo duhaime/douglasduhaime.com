@@ -220,26 +220,16 @@ body {
 
 .home .bio {
   color: #878787;
-  margin: 5px 0 3px;
+  margin-top: 4px;
   line-height: 1.2em;
-}
-
-.home .home-links a {
-  text-decoration: none;
-  color: #6b6b6b;
-  font-weight: 500;
-  margin-right: 10px;
-  text-transform: uppercase;
-  margin-bottom: 25px;
 }
 
 .home h2 {
   text-align: left;
   font-weight: 100;
-  font-size: 30px;
-  text-transform: uppercase;
+  font-size: 31px;
   margin-bottom: 20px;
-  color: rgb({{ site.dark }});
+  color: #444;
 }
 
 /**
@@ -264,9 +254,13 @@ body {
 
 .post-link {
   width: 100%;
-  margin-bottom: 30px;
   display: inline-block;
   vertical-align: top;
+}
+
+.post-link,
+.project-card {
+  margin-bottom: 30px;
 }
 
 .post-link:hover .post-thumbnail {
@@ -283,8 +277,12 @@ body {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   transition: filter 1s;
-  border: 1px solid #777;
-  background-color: #777;;
+}
+
+.post-thumbnail,
+.project-image {
+  background-color: #aaa;
+  border: 1px solid #aaa;
 }
 
 .post-links .title {
@@ -317,7 +315,6 @@ body {
 
 .project-card {
   color: #444;
-  margin-bottom: 30px;
   text-align: left;
 }
 
@@ -333,8 +330,8 @@ body {
 }
 
 .project-card .project-title {
-  font-weight: 500;
-  font-size: 24px;
+  font-weight: 100;
+  font-size: 22px;
   margin: 7px 0 2px;
 }
 
@@ -383,7 +380,7 @@ body {
 /* mobile */
 @media (max-width: 520px) {
   .post .container {
-    padding: 10px 20px;
+    padding: 20px;
   }
 }
 
@@ -692,7 +689,7 @@ label {
 }
 
 .center-image {
-  margin: 25px auto;
+  margin: 15px auto;
   display: block;
 }
 

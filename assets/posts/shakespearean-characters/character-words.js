@@ -18,7 +18,7 @@ d3.json(characterWordsJson, function(error, data) {
   // specify font spec
   var fontSpec = '13pt Arial';
   
-  var margin = {top: 20, right: 20, bottom: 50, left: 75},
+  var margin = {top: 20, right: 20, bottom: 70, left: 75},
       width = 650 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
@@ -44,8 +44,9 @@ d3.json(characterWordsJson, function(error, data) {
       .style('opacity', 1);
 
   var svg = d3.select(vizDiv).append('svg')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom)
+      .attr('preserveAspectRatio', 'xMidYMid meet')
+      .attr('viewBox', '0 0 ' + (width + margin.left + margin.right)
+        + ' ' + (height + margin.top + margin.bottom))
     .append('g')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -58,9 +59,9 @@ d3.json(characterWordsJson, function(error, data) {
       .call(xAxis)
     .append('text')
       .attr('class', 'label')
-      .attr('x', width/2 + 160)
-      .attr('y', +45)
-      .style('text-anchor', 'end')
+      .attr('x', width/2)
+      .attr('y', 45)
+      .style('text-anchor', 'middle')
       .text('Words spoken before character enters play')
       .style('font-size','16px');
 
@@ -71,8 +72,8 @@ d3.json(characterWordsJson, function(error, data) {
       .attr('class', 'label')
       .attr('transform', 'rotate(-90)')
       .attr('y', -60)
-      .attr('x', -75)
-      .style('text-anchor', 'end')
+      .attr('x', -(height/2))
+      .style('text-anchor', 'middle')
       .text('Words spoken by character')
       .style('font-size', '16px');
 
@@ -88,20 +89,20 @@ d3.json(characterWordsJson, function(error, data) {
       .on('mouseover', function(d) {
         tooltip.transition()
         .duration(200)
-        .style('opacity', .96);  
-        tooltip.html(d.name + ' (' + d.play + ')') 
-           .style('left', (parseInt(d3.select(this).attr('cx')) + 
-                document.getElementById(vizDivStr).offsetLeft) +78 + 'px')     
-           .style('top', (parseInt(d3.select(this).attr('cy')) +
-                document.getElementById(vizDivStr).offsetTop) +5 + 'px') 
-           .style('background-color', '#ffffff')
-           .style('width', getTextWidth(d.name, fontSpec) + getTextWidth(d.play, fontSpec) + 2 + 'px')
-           .style('height', 15 + 'px'); 
+        .style('opacity', .96);
+        tooltip.html(d.name + ' (' + d.play + ')')
+          .style('left', (parseInt(d3.select(this).attr('cx')) +
+            document.getElementById(vizDivStr).offsetLeft) +78 + 'px')
+          .style('top', (parseInt(d3.select(this).attr('cy')) +
+            document.getElementById(vizDivStr).offsetTop) +5 + 'px')
+          .style('background-color', '#ffffff')
+          .style('width', getTextWidth(d.name, fontSpec) + getTextWidth(d.play, fontSpec) + 2 + 'px')
+          .style('height', 15 + 'px');
         })
       .on('mouseout', function(d) {
-          tooltip.transition()
-               .duration(500)
-               .style('opacity', 0);
+        tooltip.transition()
+          .duration(500)
+          .style('opacity', 0);
       });    
  
   var legend = svg.selectAll('.legend')

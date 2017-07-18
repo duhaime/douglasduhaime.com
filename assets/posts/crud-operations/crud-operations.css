@@ -30,13 +30,6 @@
   transition: height 0.5s;
 }
 
-@media(max-width: 550px) {
-  .ghost-container {
-    font-size: 12px;
-    height: 160px;
-  }
-}
-
 /**
 * Message containers
 **/
@@ -132,12 +125,38 @@
 }
 
 @media(max-width: 550px) {
+  .ghost-container {
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 12px;
+    height: 160px;
+  }
+
+  .ghost-conatiner .game-over {
+    line-height: 20px;
+  }
+
+  .ghost-container .game-over .text {
+    padding-top: 15px;
+  }
+
+  .ghost-container form {
+    margin-top: 7px;
+  }
+
   .ghost-container .user-name {
     width: 180px;
   }
 
   .ghost-container .save-score {
-    margin-top: 7px;
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+  .ghost-container .scoreboard td,
+  .ghost-container .scoreboard th {
+    padding: 4px;
+    line-height: 12px;
   }
 }
 

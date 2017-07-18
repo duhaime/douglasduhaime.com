@@ -17,8 +17,9 @@ function select_json(new_json) {
     c = ['#9467bd', '#17becf', '#d62728', '#bcbd22', '#ff7f0e', '#1f77b4', '#e377c2'];  
  
   var svg = d3.select('#cooccurrence').append('svg')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom)
+    .attr('preserveAspectRatio', 'xMidYMid meet')
+    .attr('viewBox', '0 0 ' + (width + margin.left + margin.right)
+      + ' ' + (height + margin.top + margin.bottom))
     .attr('preserveAspectRatio', 'xMidYMid meet')
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');  

@@ -27,7 +27,6 @@
 #min-max-words,
 #min-max-entrance {
   font: 13px sans-serif;
-  height: 400px;
 }
 
 .chart {
@@ -80,7 +79,7 @@
 
 .selection-menu select {
   margin-right: 5px;
-  max-width: 200px;
+  max-width: 140px;
 }
 
 .select-container {
