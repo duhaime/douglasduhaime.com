@@ -30,7 +30,7 @@ title: Home
     <div id='projects' class='project-links'>
       <h2>Projects</h2>
       {%- assign projects = site.projects | sort: 'order' -%}
-      {%- for project in projects reversed -%}
+      {%- for project in projects -%}
       <a target='_' href='{{ project.site }}'>
         <div class='project-card'>
           <div class='background-image project-image'
