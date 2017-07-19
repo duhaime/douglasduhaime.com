@@ -29,7 +29,7 @@
     margin: margin,
     domains: domains,
     stroke: function(d) { return 'rgba(31, 119, 180, 0.5)'; },
-    fill: function(d) { return 'rgba(31, 119, 180, 0.6)' },
+    fill: function(d) { return 'rgba(31, 119, 180, 0.4)' },
     xLabel: 'Price in Farthings After 1774',
     yLabel: 'Price in Farthings Before 1774',
     xLabelOffset: 15,

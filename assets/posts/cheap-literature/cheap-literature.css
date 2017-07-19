@@ -448,7 +448,11 @@ path.line {
   vertical-align: top;
 }
 
-@media(max-width: 700px) {
+@media(max-width: 800px) {
+  .author-publications .author-row {
+    display: block;
+  }
+
   .author-publications .author-headshot {
     display: none;
   }

@@ -37,7 +37,7 @@
   var options = function() {
     return {
       height: 60,
-      width: 400,
+      width: 600,
       margin: {
         top: 5,
         right: 10,
