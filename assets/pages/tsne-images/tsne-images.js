@@ -3,7 +3,7 @@
   var chart = {
     canvas: '#tsne-canvas',
     svg: '#tsne-svg',
-    height: 1200,
+    height: 900,
     width: 1700,
     data: {
       projections: '/assets/posts/similar-images/data/image_tsne_projections.json',
@@ -27,11 +27,11 @@
 
     var x = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.x }))
-      .range([0, chart.width])
+      .range([50, chart.width - 50])
 
     var y = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.y }))
-      .range([0, chart.height])
+      .range([50, chart.height - 50])
 
     /**
     * Paint the canvas black
