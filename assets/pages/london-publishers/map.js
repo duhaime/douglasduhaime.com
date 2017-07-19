@@ -129,10 +129,14 @@ var map = (function () {
 
           buildingData.workers.forEach(function(worker) {
             workerHtml += '<div class="worker">';
-            workerHtml +=   '<div class="name">' + worker.name + '</div>';
+            workerHtml +=   '<div class="name-container">'
+            workerHtml +=     '<div class="name">' + worker.name + '</div>';
             if (worker.years) {
-              workerHtml += '<div class="years">' + worker.years.join('-') + '</div>';
+              workerHtml +=   '<div class="years">';
+              workerHtml +=      worker.years.join('-')
+              workerHtml +=   '</div>';
             }
+            workerHtml +=   '</div>';
             if (worker.labels) {
               workerHtml += '<div class="label">' + worker.labels[0] + '</div>';
             }

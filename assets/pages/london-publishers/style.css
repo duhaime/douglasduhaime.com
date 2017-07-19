@@ -35,10 +35,11 @@
 
 .legend-description-container {
   position: absolute;
-  top: 80px;
-  margin: 0 40px;
+  top: 85px;
+  margin: 0 46px;
   border: 10px solid transparent;
   border-image: url(/assets/pages/london-publishers/images/beige-border.png) 15 15 round;
+  text-align: center;
 }
 
 .legend-description {
@@ -85,13 +86,20 @@
   color: #d0d0d0;
 }
 
+.worker .name-container {
+  display: block;
+  white-space: nowrap;
+  position: relative;
+}
+
 .worker .name {
   white-space: nowrap;
-  margin-right: 10px;
+  padding-right: 76px;
 }
 
 .worker .years {
-  float: right;
+  position: absolute;
+  right: 0;
 }
 
 .worker .label {
