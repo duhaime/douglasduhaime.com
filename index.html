@@ -5,7 +5,7 @@ title: Home
 <div class='home' id='#home'>
   <div class='container'>
     <h1>{{ site.name }}</h1>
-    <div class='bio'>Digital Humanities Developer in Yale University's <a href='http://web.library.yale.edu/dhlab'>DHLab</a>.</div>
+    <div class='bio'>Full stack developer in Yale University's <a href='http://web.library.yale.edu/dhlab'>DHLab</a>.</div>
 
     <!-- POST LINKS -->
     <div id='posts' class='post-links'>
@@ -28,7 +28,7 @@ title: Home
 
     <!-- PROJECT LINKS -->
     <div id='projects' class='project-links'>
-      <h2>Projects</h2>
+      <h2>Recent Projects</h2>
       {%- assign projects = site.projects | sort: 'order' -%}
       {%- for project in projects -%}
       <a target='_' href='{{ project.site }}'>
