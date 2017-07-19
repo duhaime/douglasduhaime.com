@@ -11,7 +11,7 @@ collections:
 
 # site instance config
 name: Douglas Duhaime
-url: http://duhaime.github.io
+url: https://duhaime.github.io
 title: Hello Cello
 description: Data mining + visualization
 fallback_image: /assets/images/fallback.png
