@@ -229,7 +229,7 @@ A nice way to achieve this functionality is to leverage Erik Bern's Approximate 
 
 Another fun application for image vectors are TSNE projections. If you haven't used TSNE before, it's essentially a dimension reduction technique similar in some ways to Principal Component Analysis, except it's optimized for learning and preserving non-linear patterns in high dimensional datasets. If we load all of the image vectors into a TSNE model then project the data down two two dimensions, we can create a two-dimensional representation of the image collection. Within this representation of the data, each image is positioned near the images to which it's most similar (click for interactive view):
 
-<a href='/pages/tsne-images'>
+<a href='/pages/tsne-images' class='click-to-interact'>
   <img src='/assets/posts/similar-images/tsne-images.jpg'>
 </a>
 

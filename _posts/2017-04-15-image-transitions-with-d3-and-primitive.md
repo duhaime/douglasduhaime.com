@@ -5,13 +5,14 @@ date: 2017-04-15
 categories: d3 image-processing
 thumbnail: /assets/posts/image-transitions/image-transitions-thumb.jpg
 banner: /assets/posts/image-transitions/image-transitions-banner.jpg
-js: /assets/posts/image-transitions/draw.js
+js:
+  - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js 
+  - /assets/posts/image-transitions/draw.js
 css: /assets/posts/image-transitions/image-transitions.css
 ---
 
 [D3.js](https://d3js.org/) does magic with svgs, and [Primitive](https://github.com/fogleman/primitive) transforms images into svgs. Put them together and you can turn Kevin Bacon into Francis Bacon (click the page):
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js'></script>
 <div id='target'></div>
 
 To help others produce image transitions like this, I put together a quick proof of concept [repository](https://github.com/duhaime/d3-image-transitions). The general approach is to transform each image from a raster object to an SVG object using Primitive. Here's a simple Python function that accomplishes this goal:
@@ -38,7 +39,7 @@ def img_to_svg(img):
   return out_file
 {% endhighlight %}
 
-From there, one can transform the svg file to JSON for consumption within D3. Using BeautifulSoup (installed via `pip install beautifulsoup4`) makes it relatively to parse out each attribute from the elements in the SVG and transform them into a JSON object:
+From there, one can transform the svg file to JSON for consumption within D3. Using BeautifulSoup installed via `pip install beautifulsoup4` makes it relatively to parse out each attribute from the elements in the SVG and transform them into a JSON object:
 
 {% highlight python %}
 def svg_to_json(svg):

@@ -9,7 +9,7 @@ banner: /assets/posts/crosslingual-plagiarism-detection/crosslingual-plagiarism-
 
 Oliver Goldsmith, one of the great poets, playwrights, and historians of science from the Enlightenment, was many things. He was 'an idle, orchard-robbing schoolboy; a tuneful but intractable sizar of Trinity; a lounging, loitering, fair-haunting, flute-playing Irish ‘buckeen.’' He was also a brilliant plagiarist. Goldsmith frequently borrowed whole sentences and paragraphs from French <i>philosophes</i> such as Voltaire and Diderot, closely translating their works into his own voluminous books without offering so much as a word that the passages were taken from elsewhere. Over the last several months, I have worked with several others to study the ways Goldsmith adapted and freely translated these source texts into his own writing in order to develop methods that can be used to discover crosslingual text reuse. By outlining below some of the methods that I have found useful within this field of research, the following post attempts to show how automated methods can be used to further advance our understanding of the history of authorship.
 
-<h4>Sample Training Data</h4>
+### Sample Training Data
 
 In order to identify the passages within Goldsmith's corpus that were taken from other writers, I decided to train a machine learning algorithm to differentiate between plagiarisms and non-plagiarisms. To distinguish between these classes of writing, John Dillon and I collected a large number of plagiarized and non-plagiarized passages within Goldsmith's writing, and provided annotations to identify whether the target passage had been plagiarized or not. Here are a few sample rows from the training data:
 
@@ -31,7 +31,7 @@ In order to identify the passages within Goldsmith's corpus that were taken from
 
 Given this training data, the goal was to identify some features that commonly appear in Goldsmith’s plagiarized passages but don’t commonly appear in his non-plagiarized passages. If we could derive a set of features that differentiate between these two classes, we would be ready to search through Goldsmith’s corpus and tease out only those passages that had been borrowed from elsewhere.
 
-<h4>Feature Selection: Alzahrani Similarity</h4>
+### Feature Selection: Alzahrani Similarity
 
 Because a plagiarized passage can be expected to have language that is similar but not necessarily identical to the language used within the plagiarized source text, I decided to test some fuzzy string similarity measures. One of the more promising leads on this front was adapted from the work of Salha M. Alzahrani et al. [2012], who has produced a number of great papers on plagiarism detection. The specific similarity measure adapted from Alzahrani calculates the similarity between two passages (call them Passage A and Passage B) in the following way:
 
@@ -77,7 +77,8 @@ In order to investigate how sensitive this similarity method is to passage lengt
 
 <img class='center-image large' src='/assets/posts/crosslingual-plagiarism-detection/alzahrani_subwindows.png' alt='Alzahrani Similarity Subwindows' style='width:100%; height:100%'>
 
-<h4>Feature Selection: Word2vec Similarity</h4>
+### Feature Selection: Word2vec Similarity
+
 Although the method discussed above provides helpful separation between plagiarized and non-plagiarized passages, it reduces word pairs to one of three states: equivalent, synonymous, and irrelevant. Intuitively, this model feels limited, because one senses that words can have <i>degrees</i> of similarity. Consider the words <i>small</i>, <i>tiny</i>, and <i>humble</i>. The thesaurus discussed above identifies these terms as synonyms, and the algorithm described above essentially treats the words as interchangeable synonyms. This is slightly unsatisfying because the word <i>small</i> seems more similar to the word <i>tiny</i> than the word <i>humble</i>.
 
 To capture some of these finer gradations in meaning, I called on [Word2Vec][word2vec-link], a method that uses backpropagation to represent words in high-dimensional vector spaces. Once a word has been transposed into this vector space, one can compare a word's vector to another word's vector and obtain a measure of the similarity of those words. The following snippet, for instance, uses a cosine distance metric to measure the degree to which tiny and humble are similar to the word small:
@@ -109,7 +110,7 @@ As one can see, the Word2Vec similarity measure achieves very promising separati
 
 <img class='center-image large' src='/assets/posts/crosslingual-plagiarism-detection/word2vec_subwindows.png' alt='Word2Vec Subwindow Similarity' style='width:100%; height:100%'>
 
-<h4>Feature Selection: Syntactic Similarity</h4>
+### Feature Selection: Syntactic Similarity
 
 Much like the semantic features discussed above, syntactic similarity can also serve as a clue of plagiarism. While a thoroughgoing pursuit of syntactic features might lead one deep into sophisticated analysis of dependency trees, it turns out one can get reasonable results by simply examining the distribution of part of speech tags within Goldsmith's plagiarisms and their source texts. Using the Stanford Part of Speech (POS) Tagger's French and English models, and a custom mapping I put together to link the French POS tags to the universal tagset, I transformed each of the paired passages in the training data into a POS sequence such as the following: 
 
@@ -122,7 +123,7 @@ Using these sequences, two similarity metrics were used to measure the similarit
 
 <img class='center-image large' src='/assets/posts/crosslingual-plagiarism-detection/syntax.png' alt='Syntactic Similarity'>
 
-<h4>Classifier Results</h4>
+### Classifier Results
 From the similarity metrics discussed above, I selected a bare-bones set of six features that could be fed to a plagiarism classifier: (1) the aggregate 'Alzahrani similarity' score, (2) the maximum six-gram Alzahrani similarity score, (3) the aggregate Word2Vec similarity score, (4) the cosine distance between the part of speech tag sets, (5) the longest common part of speech string, and (6) the longest contiguous common part of speech string. Those values were all represented in a matrix format with one pair of passages per row and one feature per column. Once this matrix was prepared, a small selection of classifiers hosted within Python's [Scikit Learn][sklearn-link] library were chosen for comparison. Cross-classifier comparison is valuable, because different classifiers use very different logic to classify observations. The following plot from the Scikit Learn documentation shows that using a common set of input data (the first column below), the various classifiers in the given row classify that data rather differently:
 
 <img src='/assets/posts/crosslingual-plagiarism-detection/classifier_comparison.png' alt='Classifier Comparison'>
@@ -145,7 +146,7 @@ Generally speaking, precision values were higher than recall, perhaps because so
   <tr><td>Il n'est point de genre de poésie qui n'ait son caractere particulier; cette diversité, que les anciens  observerent si religieusement, est fondée sur la nature même des sujets imités par les poëtes. Plus leurs imitations sont vraies, mieux ils ont rendu les caracteres qu'ils avoient à exprimer....Ainsi l'églogue ne quitte pas ses chalumeaux pour entonner la trompette, l' élégie n'emprunte point les sublimes accords de la lyre.</td><td>There is no species of poetry that has not its particular character; and this diversity, which the ancients have so religiously observed, is founded in nature itself. The more just their imitations are found, the more perfectly are those characters distinguished. Thus the pastoral never quits his pipe, in order to sound the trumpet; nor does elegy venture to strike the lyre.</td></tr>
 </table>
 
-<h4>Conclusion</h4>
+### Conclusion
 Samuel Johnson once observed that Oliver Goldsmith was "at no pains to fill his mind with knowledge. He transplanted it from one place to another; and it did not settle in his mind; so he could not tell what was his in his own books" (<i>Life of Johnson</i>). Reading the borrowed passages above, one can perhaps understand why Goldsmith struggled to recall what he had written in his books–much of his writing was not really his. As scholars continue to advance the art of detecting textual reuse, we will be better equipped to map these borrowed words at larger and more ambitious scales. For the present, writers like Goldsmith offer plenty of data on which to hone those methods.
 
 <div class='center-text'>* * *</div>
