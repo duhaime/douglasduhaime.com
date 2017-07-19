@@ -3,7 +3,7 @@ title: DHREES
 site: http://dhrees.yale.edu/
 source: https://github.com/YaleDHLab/dh-rees
 image: /assets/projects/dhrees/dhrees-thumbnail.jpg
-order: 0
+order: 4
 tech:
   - Wordpress
   - jQuery
