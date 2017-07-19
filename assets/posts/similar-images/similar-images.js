@@ -21,7 +21,7 @@
       random = container.querySelector('.random'),
       matches = container.querySelector('.matches');
 
-  function loadRandomImages(json) {
+  function loadRandomImages(json, autoselect=false) {
     var selected = _.sampleSize(json, config.nImages),
         images = random.querySelectorAll('.' + config.imageClass);
 
@@ -32,6 +32,19 @@
       elem.removeEventListener('mouseover', handleMouseover);
       elem.addEventListener('mouseover', handleMouseover);
     }
+
+    if (autoselect) selectFirstImage()
+  }
+
+  function selectFirstImage() {
+    var images =  document.querySelectorAll('.image-cell-container'),
+        selected = images[0],
+        child = selected.querySelector('.image-cell');
+
+    darkenImages();
+    selected.style.opacity = 1;
+
+    getSimilarImages(child.style.backgroundImage);
   }
 
   function handleMouseover(e) {
@@ -40,17 +53,20 @@
   }
 
   function setOpacities(e) {
+    darkenImages();
+
     var target = e.target;
     while (!target.className.includes('image-cell-container')) {
       target = target.parentNode;
     }
+    target.style.opacity = 1;
+  }
 
+  function darkenImages() {
     var imgs = random.querySelectorAll('.image-cell-container');
     for (var i=0; i<imgs.length; i++) {
       imgs[i].style.opacity = 0.4;
     }
-
-    target.style.opacity = 1;
   }
 
   function getSimilarImages(imageSrc) {
@@ -106,18 +122,18 @@
       matches.appendChild(getImage());
     })
 
-    refresh();
-  }
-
-  function refresh() {
-    d3.json(data.projections, loadRandomImages)  
+    d3.json(data.projections, loadRandomImages)
   }
 
   /**
   * Add event listeners
   **/
 
-  button.addEventListener('click', refresh)
+  button.addEventListener('click', function() {
+    d3.json(data.projections, function(json) {
+      loadRandomImages(json, autoselect=true)
+    })
+  })
 
   /**
   * Initialize the view
