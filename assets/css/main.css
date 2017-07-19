@@ -79,12 +79,6 @@ h1, h2, h3, h4 {
   background-color: rgb({{ site.light }});
 }
 
-@media(min-width: 1400px) {
-  .header {
-    height: 250px;
-  }
-}
-
 @media(max-width: 500px) {
   .header {
     height: 120px;
@@ -220,7 +214,7 @@ body {
 
 .home .bio {
   color: #878787;
-  margin-top: 4px;
+  margin-top: 3px;
   line-height: 1.2em;
 }
 
