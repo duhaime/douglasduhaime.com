@@ -178,7 +178,7 @@ body {
 
 .home-icon img {
   height: 22px;
-  margin: 13px;
+  margin: 14px;
 }
 
 /**
@@ -204,25 +204,20 @@ body {
 }
 
 .home h1 {
-  font-size: 38px;
-  line-height: 1em;
+  font-size: 45px;
+  line-height: 1.2em;
   color: #454545;
-  margin: 0 0 0 -3px;
+  margin: 0 0 10px -3px;
   text-align: left;
   font-weight: 100;
-}
-
-.home .bio {
-  color: #878787;
-  margin-top: 3px;
-  line-height: 1.2em;
+  letter-spacing: -1px;
 }
 
 .home h2 {
   text-align: left;
   font-weight: 100;
   font-size: 31px;
-  margin-bottom: 20px;
+  margin: 0 0 25px;
   color: #444;
 }
 
@@ -295,6 +290,17 @@ body {
   line-height: 14px;
 }
 
+@media(min-width: 875px) {
+  .post-links .title {
+    max-width: 600px;
+  }
+
+  .post-links .date {
+    float: right;
+    margin-top: 10px;
+  }
+}
+
 .post-links a {
   text-decoration: none;
   display: block;
@@ -319,14 +325,11 @@ body {
   background-position: top center;
 }
 
-.project-card .project-content {
-  padding: 10px 0;
-}
-
 .project-card .project-title {
   font-weight: 100;
   font-size: 22px;
   margin: 7px 0 2px;
+  color: #444;
 }
 
 .project-tech div {
@@ -355,6 +358,23 @@ body {
   margin: 10px 6px 3px 0;
   border-radius: 3px;
   font-weight: 100;
+}
+
+/**
+* Noscript warning
+**/
+
+.noscript-warning {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0;
+  background: #d61010;
+  color: #fff;
+  font-weight: 500;
+  font-size: 17px;
+  z-index: 100;
 }
 
 /**
