@@ -1,13 +1,11 @@
 ---
 layout: default
-title: Home
+title: Douglas Duhaime - Full stack developer @YaleDH
 ---
 <div class='home' id='#home'>
   <div class='container'>
     <h1>{{ site.name }}</h1>
-    <div class='bio'>Full stack developer in Yale University's <a href='http://web.library.yale.edu/dhlab'>DHLab</a>.</div>
 
-    <!-- POST LINKS -->
     <div id='posts' class='post-links'>
       {% for post in site.posts -%}
       <div class='post-link'>
@@ -26,7 +24,6 @@ title: Home
       {% endfor %}
     </div>
 
-    <!-- PROJECT LINKS -->
     <div id='projects' class='project-links'>
       <h2>Recent Projects</h2>
       {%- assign projects = site.projects | sort: 'order' -%}
