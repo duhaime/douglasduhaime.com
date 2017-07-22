@@ -8,7 +8,6 @@ tech:
   - Rails
   - MongoDB
   - React.js
-  - Coffeescript
 ---
 
 Ensemble helps users identify metadata in Yale Drama playbills since the 1920's. Built on the Scribe framework developed by Zooniverse and the New York Public Library, Ensemble features several custom views for filtering, marking, and transcribing playbill records.

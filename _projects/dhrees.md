@@ -6,6 +6,7 @@ image: /assets/projects/dhrees/dhrees-thumbnail.jpg
 order: 4
 tech:
   - Wordpress
+  - MySQL
   - jQuery
 ---
 
