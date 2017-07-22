@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack --config webpack.config.js",
+    "compress": "./node_modules/.bin/webpack --config webpack.config.js",
     "compress-post": "./node_modules/.bin/webpack --config ./utils/webpack/webpack.post.config.js",
+    "build": "JEKYLL_ENV=production bundle exec jekyll build",
+    "deploy": "npm run build && aws s3 cp --recursive _site/ s3://douglas-duhaime/ --acl public-read",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

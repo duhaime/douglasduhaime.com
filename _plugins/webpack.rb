@@ -3,5 +3,5 @@
 ##
 
 Jekyll::Hooks.register :site, :post_write do |jekyll|
-  system('npm run build')
+  system('npm run compress')
 end
