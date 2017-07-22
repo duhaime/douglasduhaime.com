@@ -82,6 +82,6 @@
   }
 
   document.querySelector('body').addEventListener('click', changeScene)
-  initialize();
+  window.setTimeout(initialize, 500);
 
 })();
