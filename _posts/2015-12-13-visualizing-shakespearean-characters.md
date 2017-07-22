@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  Visualizing Shakespearean Characters
-date:   2015-12-13
+title: Visualizing Shakespearean Characters
+date: 2015-12-13
+description: Visualizing speaking patterns in Shakespearean drama with D3.js.
 categories: digital-humanities python d3
 css: /assets/posts/shakespearean-characters/shakespeare.css
 js: 

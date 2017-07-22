@@ -2,6 +2,7 @@
 layout: post
 title: Training the Stanford NER Classifier
 date: 2013-11-10
+description: A brief walkthrough of the process my team used to train Stanford's Named Entity Recognizer to better identify nineteenth-century locations.
 categories: ner machine-learning python
 thumbnail: /assets/posts/training-stanford-ner/training-stanford-ner-thumb.jpg
 banner: /assets/posts/training-stanford-ner/training-stanford-ner-banner.png

@@ -2,6 +2,7 @@
 layout: post
 title: CRUD Operations on Static File Sites
 date: 2017-04-28
+description: A brief guide to using Google App script to Create, Read, Update, and Destroy database records from static file sites.
 categories: javascript databases
 thumbnail: /assets/posts/crud-operations/crud-operations-thumb.jpg
 banner: /assets/posts/crud-operations/crud-operations-banner.png

@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  Plagiary Poets
-date:   2016-02-06
+title: Plagiary Poets
+date: 2016-02-06
+description: Exploring patterns in historic text reuse with Approximate Nearest Neighbors (Oh Ya!) and D3.js.
 categories: digital-humanities text-reuse d3
 thumbnail: /assets/posts/plagiary-poets/plagiary-poets-thumb.jpg
 invert: true

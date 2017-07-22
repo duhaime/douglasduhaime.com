@@ -2,6 +2,7 @@
 layout: post
 title: Image Transitions with D3 and Primitive
 date: 2017-04-15
+description: Fun and simple transitions between images using D3.js and @fogleman's Primitive library.
 categories: d3 image-processing
 thumbnail: /assets/posts/image-transitions/image-transitions-thumb.jpg
 banner: /assets/posts/image-transitions/image-transitions-banner.jpg

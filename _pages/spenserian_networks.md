@@ -1,5 +1,6 @@
 ---
 layout: page
+description: Visualizing early modern poet networks with D3.js.
 permalink: '/pages/spenserian-networks/'
 title: 'Spenserian Networks'
 js: 

@@ -2,9 +2,10 @@
 layout: post
 title: Identifying Similar Images with TensorFlow
 date: 2017-05-28
-categories: 
+categories: d3 canvas tensorflow
 thumbnail: /assets/posts/similar-images/similar-images-thumb.jpg
 banner: /assets/posts/similar-images/similar-images-banner.jpg
+description: Detecting similar images in large data collections with Tensorflow and Scikit Learn's TSNE implementation.
 css: /assets/posts/similar-images/similar-images.css
 js:
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js

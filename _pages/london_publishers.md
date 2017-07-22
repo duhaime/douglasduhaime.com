@@ -1,5 +1,6 @@
 ---
 layout: page
+description: Mapping the distribution of early London printers (1473-1852) with Tangram.js.
 permalink: '/pages/london-publishers/'
 title: 'London Publishers'
 js: 

@@ -1,7 +1,8 @@
 ---
 layout: post
-title:  Classifing Shakeseparean Drama with Sparse Feature Sets
-date:   2014-10-12
+title: Classifing Shakeseparean Drama with Sparse Feature Sets
+date: 2014-10-12
+description: Identifying a minimal set of metadata features for classifying the genre of Shakespearean plays.
 categories: classification python
 thumbnail: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-thumb.jpg
 banner: /assets/posts/classifying-shakespearean-drama/classifying-shakespearean-drama-banner.png

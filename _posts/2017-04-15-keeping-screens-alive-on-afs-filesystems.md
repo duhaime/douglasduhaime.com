@@ -2,6 +2,7 @@
 layout: post
 title: Keeping Screens Alive on AFS Filesystems
 date: 2016-04-14
+description: A simple solution to renewing authentication tokens and prolonging user sessions on AFS filesystems.
 categories: hpc
 thumbnail: /assets/posts/afs-sessions/afs-sessions-thumb.jpg
 banner: /assets/posts/afs-sessions/afs-sessions-banner.png
