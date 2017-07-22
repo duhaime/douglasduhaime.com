@@ -2,12 +2,12 @@
 layout: default
 title: Douglas Duhaime - Full stack developer @YaleDH
 ---
-<div class='home' id='#home'>
+<div class='home'>
   <div class='container'>
     <h1>{{ site.name }}</h1>
 
     <div id='posts' class='post-links'>
-      {% for post in site.posts -%}
+      {%- for post in site.posts %}
       <div class='post-link'>
         <a href='{{ post.url }}'>
           {%- if post.thumbnail %}
@@ -21,7 +21,7 @@ title: Douglas Duhaime - Full stack developer @YaleDH
           <div class='date'>{{ post.date | date_to_string }}</div>
         </a>
       </div>
-      {% endfor %}
+      {%- endfor %}
     </div>
 
     <div id='projects' class='project-links'>
@@ -43,9 +43,9 @@ title: Douglas Duhaime - Full stack developer @YaleDH
           </div>
         </div>
       </a>
-      {% endfor %}
+      {%- endfor %}
     </div>
 
   </div>
 </div>
-{% include footer.html %}
+{% include footer.html -%}

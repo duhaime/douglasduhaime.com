@@ -1,6 +1,7 @@
 <meta charset='utf-8'>
     <meta http-equiv='x-ua-compatible' content='ie=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='google-site-verification' content='eYLUlW-Cr452cLvMYOYoqYtyqArzYvYYryVJV1jsV5o'>
     <meta name='twitter:card' content='summary_large_image'>
     <meta name='twitter:site' content='@{{ site.twitter }}'>
     <meta name='twitter:creator' content='@{{ site.twitter }}'>
@@ -16,8 +17,8 @@
     {%- else %}
     <meta name='description' content="{{ site.description }}">
     <meta name='og:description' content="{{ site.description }}">
-    {%- endif -%}
-    {%- if page.banner %}
+    {%- endif %}
+    {% if page.banner %}
     <meta property='og:image' content='{{ page.banner | prepend: site.url }}'>
     {%- else -%}
     <meta property='og:image' content='{{ site.fallback_image | prepend: site.url }}'>
