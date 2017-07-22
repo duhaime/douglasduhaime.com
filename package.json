@@ -7,8 +7,16 @@
     "compress": "./node_modules/.bin/webpack --config webpack.config.js",
     "compress-post": "./node_modules/.bin/webpack --config ./utils/webpack/webpack.post.config.js",
     "build": "JEKYLL_ENV=production bundle exec jekyll build",
-    "deploy": "npm run build && aws s3 cp --recursive _site/ s3://douglas-duhaime/ --acl public-read",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "npm run build && npm run gzip && npm run sync",
+    "gzip": "find _site/ -type f \\( -name '*.css' -o -name '*.js' -o -name -'*.json' -o -name '*.html' -o -name '*.svg' \\) -exec gzip '{}' \\; -exec mv '{}.gz' '{}' \\;",
+    "sync": "npm run sync-css && npm run sync-js && npm run sync-json && npm run sync-html && npm run sync-unzipped",
+    "sync-css":  "aws s3 sync _site/ s3://douglasduhaime.com/ --exclude '*' --include '*.css'  --content-type text/css --acl public-read --cache-control max-age=2592000 --content-encoding gzip",
+    "sync-js":   "aws s3 sync _site/ s3://douglasduhaime.com/ --exclude '*' --include '*.js'   --content-type text/javascript --acl public-read --cache-control max-age=2592000 --content-encoding gzip",
+    "sync-json": "aws s3 sync _site/ s3://douglasduhaime.com/ --exclude '*' --include '*.json' --content-type application/json --acl public-read --cache-control max-age=2592000 --content-encoding gzip",
+    "sync-html": "aws s3 sync _site/ s3://douglasduhaime.com/ --exclude '*' --include '*.html' --content-type 'text/html; charset=UTF-8' --acl public-read --cache-control max-age=2592000 --content-encoding gzip",
+    "sync-svg":  "aws s3 sync _site/ s3://douglasduhaime.com/ --exclude '*' --include '*.svg'  --content-type 'image/svg+xml' --acl public-read --cache-control max-age=2592000 --content-encoding gzip",
+    "sync-unzipped": "aws s3 sync _site/ s3://douglasduhaime.com/ --include '*' --exclude '*.css' --exclude '*.js' --exclude '*.json' --exclude '*.html' --exclude '*.svg' --acl public-read --cache-control max-age=2592000",
+    "test": "echo 'Error: no test specified' && exit 1"
   },
   "repository": {
     "type": "git",
