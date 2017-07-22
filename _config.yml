@@ -11,7 +11,7 @@ collections:
 
 # site instance config
 name: Douglas Duhaime
-url: http://douglas-duhaime.s3-website-us-east-1.amazonaws.com/
+url: http://douglasduhaime.com.s3-website-us-east-1.amazonaws.com
 title: Data Mining + Visualization
 description: Working notes on data mining and interactive data visualization.
 fallback_image: /assets/images/fallback.png
