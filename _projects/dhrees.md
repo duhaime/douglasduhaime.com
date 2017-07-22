@@ -9,4 +9,4 @@ tech:
   - jQuery
 ---
 
-DHREES is a custom Wordpress theme built for Yale University's Digital Humanities & Russian and Eastern European Studies researchers. Built in just under one month, the theme features a number of Russian modernist inspired views with plenty of angular geometry.
+DHREES is a custom Wordpress theme built for Yale University's Digital Humanities & Russian and Eastern European Studies researchers. Largely built in four one-week sprints, the theme features a number of Russian modernist-inspired views with plenty of angular geometry.

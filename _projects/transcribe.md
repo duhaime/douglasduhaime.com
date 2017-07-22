@@ -3,7 +3,7 @@ title: Transcribe
 site: http://transcribe.library.yale.edu/projects/
 source: https://github.com/YaleDHLab/omeka-plugin-PaginateCollections
 image: /assets/projects/transcribe/transcribe-thumbnail.jpg
-order: 1
+order: 2
 tech:
   - Omeka
   - jQuery
