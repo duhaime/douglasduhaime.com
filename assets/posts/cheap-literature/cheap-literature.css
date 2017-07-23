@@ -1,3 +1,7 @@
+---
+process: true
+---
+
 /**
 * Page overrides
 **/
@@ -556,4 +560,17 @@ path.line {
   .feature-label {
     display: inline-block;
   }
+}
+
+/**
+* Works cited
+**/
+
+.works-cited div {
+  margin-bottom: 20px;
+  line-height: 20px;
+}
+
+.works-cited div:target {
+  color: rgb({{ site.dark }});
 }
