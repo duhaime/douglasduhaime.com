@@ -23,20 +23,26 @@ html, body {
 * Chart
 **/
 
-.banner {
-  position: fixed;
-  top: 0;
-  height: 140px;
-  background: linear-gradient(180deg, black, rgba(0, 0, 0, 0) 90%);
-  font-weight: 800;
-  color: #c0c0c0;
-  width: 100%;
-  text-align: left;
-  z-index: 1;
+.legend {
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  width: 404px;
+  z-index: 100;
 }
 
-.banner a {
-  color: inherit;
+.legend h1 {
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  font-size: 28px;
+}
+
+.legend p {
+  color: #fff;
+  line-height: 16px;
+  font-size: 14px;
+  margin: 8px 10px;
 }
 
 .return-link {

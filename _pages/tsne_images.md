@@ -9,10 +9,12 @@ js:
   - /assets/pages/tsne-images/tsne-images.js
 ---
 {% include icons/home.html %}
-<div class='banner'>
+<div class='legend'>
   <a href='/posts/identifying-similar-images-with-tensorflow.html'>
-    <div class='return-link'>TSNE IMAGES</div>
+    <h1 class='return-link'>TSNE IMAGES</h1>
   </a>
+  <p>This plot contains 500 images from the NYPL's Farm Security Administration <a href='https://digitalcollections.nypl.org/collections/farm-security-administration-photographs#/?tab=navigation'>collection</a> that were vectorized, run through a TSNE implementation, and projected onto two dimensions such that similar images appear close together. Read more about this work <a href='/posts/identifying-similar-images-with-tensorflow.html'>here</a>.
+  </p>
 </div>
 <div id='tooltip'>
   <img/>

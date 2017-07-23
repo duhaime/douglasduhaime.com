@@ -3,8 +3,8 @@
   var chart = {
     canvas: '#tsne-canvas',
     svg: '#tsne-svg',
-    height: 900,
-    width: 1700,
+    height: 1100,
+    width: 2200,
     data: {
       projections: '/assets/posts/similar-images/data/image_tsne_projections.json',
       images: 'https://s3.amazonaws.com/duhaime/blog/image-similarity/images/'
@@ -27,11 +27,11 @@
 
     var x = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.x }))
-      .range([50, chart.width - 50])
+      .range([80, chart.width - 80])
 
     var y = d3.scale.linear()
       .domain(d3.extent(data, function(d) { return d.y }))
-      .range([50, chart.height - 50])
+      .range([140, chart.height - 140])
 
     /**
     * Paint the canvas black
@@ -92,7 +92,7 @@
 
       tooltip
         .style('left', mouse[0] - image.width*2 + 'px')
-        .style('top', mouse[1] - 200 + 'px')
+        .style('top', mouse[1] - 170 + 'px')
         .style('opacity', 1)
         .select('img')
           .attr('src', chart.data.images + image.image)
