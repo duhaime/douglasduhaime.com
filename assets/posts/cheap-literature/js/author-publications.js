@@ -1,5 +1,7 @@
 (function() { 
 
+  var breakpoint = 600; // transition from mobile to desktop view
+
   var state = {
     start: 0, // idx of first author represented
     end: 5    // idx of last author represented+1 (for slice)
@@ -58,7 +60,7 @@
       stroke: function(d) { return '#ee6559'; },
       fill: function(d) { return '#ee6559' },
       drawArea: true,
-      autoResize: window.innerWidth < 600 ? true : false
+      autoResize: window.innerWidth < breakpoint ? true : false
     }
   }
 
@@ -155,6 +157,16 @@
 
   next.addEventListener('click', function() {
     updateAuthorRange(5)
+  })
+
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > breakpoint) {
+      var svgs = d3.select(container).selectAll('svg'),
+          config = new options();
+      svgs.transition()
+        .attr('width', config.width)
+        .attr('height', config.height)
+    }
   })
 
   redraw();
