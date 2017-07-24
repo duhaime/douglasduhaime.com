@@ -53,7 +53,7 @@ function doPost(e) {
   }
 
   // send a success/failure message
-  return ContextService.createTextOutput(JSON.stringify({
+  return ContentService.createTextOutput(JSON.stringify({
     'result': result,
     'event': e,
   })).setMimeType(ContentService.MimeType.JSON);
