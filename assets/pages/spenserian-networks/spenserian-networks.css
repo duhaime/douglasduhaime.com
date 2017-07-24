@@ -179,12 +179,24 @@ body {
 
 #poet-networks path {
   fill: none;
+  transition: opacity 0.5s;
 }
 
 #poet-networks circle {
   cursor: pointer;
+  transition: opacity 0.5s;
+  opacity: 0.1;
 }
 
 #poet-networks .link {
   stroke: rgba(216, 227, 236, 0.3);
+  transition: opacity 0.5s;
+}
+
+#poet-networks .visible {
+  opacity: 1;
+}
+
+#poet-networks .invisible {
+  opacity: 0;
 }

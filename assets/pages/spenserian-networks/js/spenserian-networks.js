@@ -219,15 +219,14 @@
         .attr('id', function(d) { return 'node-' + d.id })
         .attr('cx', function(d) { return d.x })
         .attr('cy', function(d) { return d.y })
-        .style('opacity', 0)
         .attr('r', getRadius)
         .style('fill', getFill)
         .style('filter', getFilter)
         .on('mouseenter', handleMouseenter);
 
-    node.transition()
-      .duration(1000)
-      .style('opacity', 1)
+    window.setTimeout(function() {
+      d3.selectAll('.node').classed('visible', true);
+    }, 100);
 
     /**
     * Node attribute functions
@@ -328,17 +327,16 @@
       * Begin node transitions
       **/
 
-      g.selectAll('.node').transition()
+      g.selectAll('.node').classed('visible', function(d) {
+        return _.includes(linkNodeIds, d.id) ?
+          true
+        : false
+      }).transition()
         .duration(500)
         .style('fill', function(d) {
           return _.includes(linkNodeIds, d.id) ?
             getActiveFill(d)
           : getFill(d)
-        })
-        .style('opacity', function(d) {
-          return _.includes(linkNodeIds, d.id) ?
-            1
-          : 0.1
         })
         .select(function(d) {
           // remove and reappend selected nodes to stack
@@ -410,23 +408,19 @@
       mousedNode = null;
 
       // reset nodes
-      g.selectAll('.node').transition()
+      g.selectAll('.node').classed('visible', true).transition()
           .duration(500)
           .style('fill', getFill)
-          .attr('r', getRadius)
-          .style('opacity', 1)
+          .attr('r', getRadius);
 
       // clear links
-      g.selectAll('.link').transition()
+      g.selectAll('.link').classed('invisible', true).transition()
           .duration(500)
-          .style('opacity', 0)
           .remove()
 
       // clear labels
-      g.selectAll('.node-label')
-          .transition()
+      g.selectAll('.node-label').classed('invisible', true).transition()
           .duration(500)
-          .style('opacity', 0)
           .remove()
     }
 
