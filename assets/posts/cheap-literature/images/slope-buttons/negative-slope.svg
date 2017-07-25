@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 503.37 373.86">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ee6559;
+        stroke: #ee6559;
+        stroke-miterlimit: 10;
+        stroke-width: 24px;
+      }
+      .cls-2 {
+        fill: #ee6559;
+      }
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <title>negative-slope</title>
+  <line class="cls-1" x1="61.38" y1="70.24" x2="163.76" y2="157.15"/>
+  <circle class="cls-2" cx="175.77" cy="167.35" r="50"/>
+  <circle class="cls-3" cx="175.77" cy="166.35" r="13.25"/>
+  <circle class="cls-2" cx="50" cy="50" r="50"/>
+  <circle class="cls-3" cx="50" cy="50.02" r="13.25"/>
+  <line class="cls-1" x1="190.59" y1="171.91" x2="320.05" y2="207.64"/>
+  <circle class="cls-2" cx="335.37" cy="211.86" r="50"/>
+  <circle class="cls-3" cx="335.37" cy="210.86" r="13.25"/>
+  <line class="cls-1" x1="343.65" y1="225.13" x2="446.03" y2="312.04"/>
+  <circle class="cls-2" cx="453.37" cy="323.86" r="50"/>
+  <circle class="cls-3" cx="453.37" cy="322.86" r="13.25"/>
+</svg>

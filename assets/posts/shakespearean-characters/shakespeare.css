@@ -1,0 +1,96 @@
+/**
+* Visualizing Shakespearean Characters
+**/
+
+.domain {
+  fill: none;
+  stroke: #000;
+}
+
+.dot {
+  stroke: #000;
+}
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  color: #000000;
+}
+
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+#character-words,
+#min-max-words,
+#min-max-entrance {
+  font: 13px sans-serif;
+}
+
+.chart {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/**
+* Cooccurrences
+**/
+
+#cooccurrence {
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+#cooccurrence svg {
+  display: block;
+  margin-left: -50px;
+}
+
+#cooccurrence .background {
+  height: 700;
+  width: 700; 
+  fill: #eee;
+}
+
+#cooccurrence line {
+  stroke: #fff;
+}
+
+#cooccurrence text {
+  font-size: 0.85em;
+}
+
+#cooccurrence text.active {
+  fill: red;
+}
+
+.selection-menu {
+  text-align:center;
+  margin: 20px;
+}
+
+.selection-menu span {
+  margin-left: 5px;
+}
+
+.selection-menu select {
+  margin-right: 5px;
+  max-width: 140px;
+}
+
+.select-container {
+  display: inline-block;
+}
+
+@media(max-width: 700px) {
+  .select-container {
+    width: 260px;
+    display: block;
+    text-align: right;
+    margin: 10px auto;
+  }
+}

@@ -1,0 +1,56 @@
+.nearest-neighbors button {
+  margin: 15px auto;
+}
+
+.masonry-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.image-cell-container {
+  width: 20%;
+  height: 0;
+  padding-bottom: 20%;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.image-cell {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  bottom: 5px;
+  left: 5px;
+  background-position: top left;
+  border: 1px solid #777;
+  border-radius: 2px;
+}
+
+.hidden-images .image-cell-container {
+  display: none;
+}
+
+@media(max-width: 500px) {
+  .image-cell-container {
+    width: 33%;
+    padding-bottom: 33%;
+  }
+}
+
+.matches {
+  margin-top: 15px;
+  background: #efefef;
+}
+
+.guide {
+  padding: 53px;
+  text-align: center;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.clear-both {
+  clear: both;
+}

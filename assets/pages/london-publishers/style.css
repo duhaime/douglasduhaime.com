@@ -1,0 +1,109 @@
+#map {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  z-index: 0;
+  background: #666;
+}
+
+/**
+* Legend
+**/
+
+#legend {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  width: 300px;
+}
+
+#legend img {
+  width: 300px;
+}
+
+.legend-label {
+  font-size: 22px;
+  position: absolute;
+  top: 19px;
+  left: 56px;
+  color: #444;
+  font-family: Pirata One;
+}
+
+.legend-description-container {
+  position: absolute;
+  top: 85px;
+  margin: 0 46px;
+  border: 10px solid transparent;
+  border-image: url(/assets/pages/london-publishers/images/beige-border.png) 15 15 round;
+  text-align: center;
+}
+
+.legend-description {
+  background: rgb(245, 240, 231);
+  padding: 5px;
+  font-size: 19px;
+  line-height: 1.2em;
+  font-family: Pirata One;
+  border: 2px solid #6a6a6a;
+  border-radius: 4px;
+}
+
+#legend .legend-description a {
+  color: #e45f4a;
+}
+
+/**
+* Building tooltip
+**/
+
+#building-details {
+  position: absolute;
+  z-index: 10001;
+  font-weight: 800;
+  background: rgba(0,0,0,0.7);
+  padding: 8px;
+  font-size: 13px;
+  transform: translateX(-50%) translateY(-100%);
+  max-height: 215px;
+  overflow: auto;
+  text-align: left;
+}
+
+.building-address {
+  font-size: 17px;
+  display: inline-block;
+  margin-right: 5px;
+  white-space: nowrap;
+  color: #f5a293;
+}
+
+.worker * {
+  display: inline-block;
+  color: #d0d0d0;
+}
+
+.worker .name-container {
+  display: block;
+  white-space: nowrap;
+  position: relative;
+}
+
+.worker .name {
+  white-space: nowrap;
+  padding-right: 76px;
+}
+
+.worker .years {
+  position: absolute;
+  right: 0;
+}
+
+.worker .label {
+  display: block;
+  color: #888;
+  margin-left: 10px;
+}

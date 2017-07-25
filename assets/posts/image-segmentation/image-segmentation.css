@@ -1,0 +1,28 @@
+.partitioned-images {
+  display: table;
+}
+
+.partitioned-image {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.dilations-x {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.dilations-x img {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dilations-x .image {
+  width: 28%;
+}
+
+.dilations-x .pixels {
+  width: 67%;
+}

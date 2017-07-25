@@ -1,0 +1,8 @@
+_site
+.jekyll-metadata
+ngrok
+*.pem
+*.swp
+*.DS_Store
+node_modules
+utils/webpack/build
