@@ -1,5 +1,11 @@
 <a href='http://twitter.com/{{ site.twitter }}'>
-  <img class='footer-icon'
-    src='/assets/images/icons/twitter.svg'
-    onerror="this.src='/assets/images/icons/twitter.png'">
+  {%- if include.style == 'dark' -%}
+    <img class='footer-icon'
+      src='/assets/images/icons/twitter-dark.svg'
+      onerror="this.src='/assets/images/icons/twitter-dark.png'">
+  {%- else -%}
+    <img class='footer-icon'
+      src='/assets/images/icons/twitter-light.svg'
+      onerror="this.src='/assets/images/icons/twitter-light.png'">
+  {%- endif -%}
 </a>

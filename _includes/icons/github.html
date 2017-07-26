@@ -1,5 +1,11 @@
 <a href='http://github.com/{{ site.github }}'>
-  <img class='footer-icon'
-    src='/assets/images/icons/github.svg'
-    onerror="this.src='/assets/images/icons/github.png'">
+  {%- if include.style == 'dark' -%}
+    <img class='footer-icon'
+      src='/assets/images/icons/github-dark.svg'
+      onerror="this.src='/assets/images/icons/github-dark.png'">
+  {%- else -%}
+    <img class='footer-icon'
+      src='/assets/images/icons/github-light.svg'
+      onerror="this.src='/assets/images/icons/github-light.png'">
+  {%- endif -%}
 </a>

@@ -122,14 +122,15 @@ body {
   text-align: center;
 }
 
-.footer .footer-icon {
+.footer-icon {
+  width: 15px;
   height: 15px;
-  position: relative;
-  top: 12px;
-  margin: 0 1px;
+  margin: 12px 1px 0;
   background: #ededed;
   padding: 6px;
   border-radius: 100%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .footer .square-image {
@@ -137,10 +138,11 @@ body {
   vertical-align: top;
 }
 
-.footer .square-image img {
+.footer .square-image img,
+.home-footer .square-image img {
   border-radius: 0;
-  padding: 2px;
-  width: 11px;
+  padding: 1px 1px;
+  width: 13px;
   vertical-align: top;
   position: relative;
   background: none;
@@ -315,7 +317,7 @@ body {
 }
 
 /**
-* Home page projects
+* Home projects
 **/
 
 .project-card {
@@ -363,6 +365,25 @@ body {
   margin: 10px 6px 3px 0;
   border-radius: 3px;
   font-weight: 100;
+}
+
+/**
+* Home footer
+**/
+
+.home-footer {
+  width: 100%;
+  overflow: auto;
+}
+
+.home-footer a {
+  float: left;
+  margin-right: 2px;
+}
+
+.home-footer .footer-icon {
+  background: #4c4c4c;
+  margin-top: 0;
 }
 
 /**

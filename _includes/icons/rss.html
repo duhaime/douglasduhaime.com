@@ -1,6 +1,11 @@
 <a href='/feed.xml'>
   <div class='footer-icon square-image'>
-    <img src='/assets/images/icons/rss.svg'
-      onerror="this.src='/assets/images/icons/rss.png'">
-  </div>
+    {%- if include.style == 'dark' -%}
+      <img src='/assets/images/icons/rss-dark.svg'
+        onerror="this.src='/assets/images/icons/rss-dark.png'">
+    {%- else -%}
+      <img src='/assets/images/icons/rss-light.svg'
+        onerror="this.src='/assets/images/icons/rss-light.png'">
+    {% endif %}
+  <div class='footer-icon square-image'>
 </a>
