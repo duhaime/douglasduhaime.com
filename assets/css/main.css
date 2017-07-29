@@ -240,7 +240,7 @@ body {
   padding-top: 25px;
 }
 
-@media(max-width: 875px) {
+@media(max-width: 874px) {
   .post-links,
   .project-links {
     width: 100%;
