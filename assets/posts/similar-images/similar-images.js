@@ -29,8 +29,8 @@
       var elem = images[i],
           elemSrc = data.images + selected[i].image;
       elem.style.backgroundImage = 'url(' + elemSrc + ')';
-      elem.removeEventListener('mouseover', handleMouseover);
-      elem.addEventListener('mouseover', handleMouseover);
+      elem.removeEventListener('mouseenter', handleMouseenter);
+      elem.addEventListener('mouseenter', handleMouseenter);
     }
 
     if (autoselect) selectFirstImage()
@@ -47,7 +47,7 @@
     getSimilarImages(child.style.backgroundImage);
   }
 
-  function handleMouseover(e) {
+  function handleMouseenter(e) {
     setOpacities(e);
     getSimilarImages(e.target.style.backgroundImage);
   }

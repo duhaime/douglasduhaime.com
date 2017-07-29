@@ -50,7 +50,7 @@ wget https://raw.githubusercontent.com/tensorflow/models/master/tutorials/image/
 wget http://thecatapi.com/api/images/get?type=jpg -O cat.jpg
 
 # run the script to generate text labels for an input image
-python classify_image.py kitten.jpg
+python classify_image.py cat.jpg
 {% endhighlight %}
 
 The first time you run the script, your machine will download Inception, a convolutional neural network pretrained on ImageNet and discussed in the original paper [Going Deeper with Convolutions](https://arxiv.org/pdf/1409.4842.pdf). After downloading the model, the script will print to the terminal several labels for the provided input image, each with a weight to show the model's confidence for the given label.
@@ -111,10 +111,10 @@ This method notes that the tensor pool_3:0 contains the weights for the penultim
 def run_inference_on_images(image_list, output_dir):
   """Runs inference on an image list.
   Args:
-    image_list: a list of images.
-    output_dir: the directory in which image vectors will be saved
+    image_list: {list} a list of paths to image files
+    output_dir: {string} name of the directory where image vectors will be saved
   Returns:
-    image_to_labels: a dictionary with image file keys and predicted
+    image_to_labels: {dict} a dictionary with image file keys and predicted
       text label values
   """
   image_to_labels = defaultdict(list)
@@ -190,7 +190,9 @@ def run_inference_on_images(image_list, output_dir):
 
 Here we see the modifications we'll make to run_inference_on_image(). They focus on handling a series of input images, using error handling on each image in case a png file or jp2 sneaks into our collection of jpegs, and most importantly on capturing and saving the penultimate layer of the neural network.
 
-To run the modified script, first download the full updated source then install the one new requirement, psutil (which is used for managing open file handlers):
+## Finding Similar Images
+
+To identify similar images in large image collections, one can run the lines below to download the full updated classify image script, install psutil (which is used for managing open file handlers), and run the updated script on a directory full of images:
 
 {% highlight python %}
 
@@ -201,8 +203,8 @@ wget https://gist.githubusercontent.com/duhaime/2a71921c9f4655c96857dbb6b6ed9bd6
 pip install psutil
 
 # download a collection of jpg images (or use one you have)
-wget https://goo.gl/Lf9vmN
-tar -zxf fsa-images.tar.gz
+wget https://goo.gl/Lf9vmN -O images.tar.gz
+tar -zxf images.tar.gz
 
 # run the script on a glob of images
 python classify_images.py "images/*"
@@ -213,7 +215,7 @@ This will generate a new directory "image_vectors" and will create one vector fo
 
 ## Finding Nearest Neighbors
 
-The modified version of classify_images.py above generates one image vector for each input image. With those vectors in hand, one can run subsequent analysis to achieve different effects. For example, suppose you wanted to find the n most similar images for each of your input images. The browser below offers one example of this kind of functionality:
+The modified version of classify_images.py above generates one image vector for each input image. With those vectors in hand, one can run subsequent analysis to achieve different effects. For example, suppose you wanted to find the most similar images for each of your input images. The browser below offers one example of this kind of functionality:
 
 <div class='nearest-neighbors'>
   <button>Refresh</button>
@@ -224,14 +226,24 @@ The modified version of classify_images.py above generates one image vector for 
 </div>
 <div class='clear-both'></div>
  
-A nice way to achieve this functionality is to leverage Erik Bern's Approximate Nearest Neighbors Oh Yeah [library](https://github.com/spotify/annoy) to identify the approximate nearest neighbors for each image. I generated the data for the image viewer above with this [nearest neighbors script](/assets/posts/similar-images/utils/cluster_vectors.py).
+A nice way to achieve this functionality is to leverage Erik Bern's Approximate Nearest Neighbors Oh Yeah [library](https://github.com/spotify/annoy) to identify the approximate nearest neighbors for each image. The similar image viewer above uses ANN to identify similar images [I used this [nearest neighbors script](/assets/posts/similar-images/utils/cluster_vectors.py)]. To identify the nearest neighbors for the image vectors we created above, one can run:
+
+{% highlight bash %}
+wget {{ site.url }}/assets/posts/similar-images/utils/cluster_vectors.py
+pip install annoy && pip install scipy && pip install nltk
+python cluster_vectors.py
+{% endhighlight %}
+
+These commands will generate a directory named `nearest_neighbors` in your current working directory, and will create one outfile for each image in the collection. Each of those outfiles will identify the 30 images most similar to the given image. To search for more or fewer nearest neighbors, one just needs to update the `n_nearest_neighbors` variable in the nearest neighbors script.
 
 ## Image TSNE Projections
 
-Another fun application for image vectors are TSNE projections. If you haven't used TSNE before, it's essentially a dimension reduction technique similar in some ways to Principal Component Analysis, except it's optimized for learning and preserving non-linear patterns in high dimensional datasets. If we load all of the image vectors into a TSNE model then project the data down two two dimensions, we can create a two-dimensional representation of the image collection. Within this representation of the data, each image is positioned near the images to which it's most similar (click for interactive view):
+Another fun application for image vectors are TSNE projections. If you haven't used TSNE before, it's essentially a dimension reduction technique similar in some ways to Principal Component Analysis, except it's optimized for learning and preserving non-linear patterns in high dimensional datasets. TSNE projections are often used in data visualizations as they are great at making similar high-dimensional vectors appear next to one another even in two dimensional projections.
+
+If we load all of the image vectors into a TSNE model then project the data down two two dimensions, we can create a two-dimensional representation of the image collection that preserves similarity between images. Within this representation of the data, each image is positioned near the images to which it's most similar (click for interactive view):
 
 <a href='/pages/tsne-images' class='click-to-interact'>
-  <img src='/assets/posts/similar-images/tsne-images.jpg'>
+  <img src='/assets/posts/similar-images/tsne-images.jpg' alt='TSNE projection of similar images from the New York Public Library collection of Works Progress Administration photos'>
 </a>
 
 This plot itself is generated with native HTML5 canvas methods, but D3.js helps provide data fetching, DOM manipulation, and a Voronoi mouseover map. The data for the plot was produced by this [tsne clustering script](/assets/posts/similar-images/utils/get_tsne_vector_projections.py).
