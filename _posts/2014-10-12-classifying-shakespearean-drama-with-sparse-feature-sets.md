@@ -14,11 +14,11 @@ The distinction Smith draws between tragedies and comedies is fairly intuitive: 
 
 To pursue the question, I ran some analysis on the Folger Digital Texts edition of the Bard's plays. This delightful collection uses a custom XML schema to indicate when characters enter and exit the stage, which makes it possible to track the number of characters on stage over the course of a play:
 
-<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/tempest.png'>
+<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/tempest.png' alt='Visualization of the number of characters on stage throughout The Tempest.'>
 
 This visualization of <i>The Tempest</i>, for instance, traces the number of characters on stage from the play's opening scene—in which the Shipmaster and his Boatswain are quickly joined by Alonso, Sebastian, Antonio, Ferdinand, and Ganzalo—through Prospero's staff-dashing monologue around the 15,000 word mark to the play's crowded conclusion. Here are the stagings for the other Shakespearean plays in the FDT canon, ordered by their date of first performance according to Alfred Harbage's <i>Annals of English Drama</i>:
 
-<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/chars_on_stage_all.png'>
+<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/chars_on_stage_all.png' alt='Visualization of the number of characters on stage throughout each Shakespearean play.'>
 
 These plots afford ample evidence to suggest that Shakespearean comedies tend to end with large scenes in which everybody's on stage. Unfortunately, many of the comedies and tragedies also end with large gatherings of characters. It therefore seems that the number of characters on stage during a play's conclusion might not be an ideal feature with which to classify the genres of Shakespeare's plays.
 
@@ -32,7 +32,7 @@ With these results in hand, I decided to measure how often Shakespeare isolates 
 
 While these plots reveal some interesting features of the works, such as the fact that <i>Two Gentlemen of Verona</i> truly does revolve around dyadic pairs, they make it difficult to compare the amount of time tragedies and comedies feature only a single character on stage. To make this latter comparison, one can find the average amount of time a single character occupies the stage for each genre:
 
-<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/means_by_genre.png'>
+<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/means_by_genre.png' alt='Mean character-on-stage counts by genre.'>
 
 Surprisingly, the chief difference between the comedies and tragedies has less to do with the way each handles isolated actors on stage than with the way each handles triads and quadrads. It seems tragedies have a greater tendency to revolve around sets of three characters, while comedies are more often organized around sets of four characters. That said, the similarities between the two genres are far more striking than their differences, and far less encouraging for one in search of distinguishing features.
 
@@ -48,7 +48,7 @@ Analyzing these figures, I was struck by what should have been a fairly obvious 
 
 Either way, the last trio of plots shows a fairly even distribution of commanding figures among the comedies, histories, and tragedies. But those plots also reveal that the histories include rather few words spoken by women, as well as the fact that the comedies tend to be shorter than the tragedies and histories:
 
-<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/female_presence_vs_length.png'>
+<img class='center-image large' src='/assets/posts/classifying-shakespearean-drama/female_presence_vs_length.png' alt='Visualization of the percent of lines spoken by women and play length of each Shakespearean play.'>
 
 By analyzing only the length of a play and the number of words women speak in that play, one can start to get reasonably good separation between the genres: comedies tend to be shorter and include more female dialogue, histories tend to be longer and include less female dialogue, and tragedies split provocatively between the upper right and lower left. Reviewing these figures, I can't shake the suspicion that a third dimension of data could unite these divided tragedies. But what would that dimension consist of? 
 
