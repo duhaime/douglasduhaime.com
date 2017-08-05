@@ -1,11 +1,13 @@
-<a target='_' href='http://twitter.com/{{ site.twitter }}'>
-  {%- if include.style == 'dark' -%}
+<a target='_blank' href='http://twitter.com/{{ site.twitter }}'>
+  {%- if include.style == 'dark' %}
     <img class='footer-icon'
       src='/assets/images/icons/twitter-dark.svg'
-      onerror="this.src='/assets/images/icons/twitter-dark.png'">
-  {%- else -%}
+      onerror="this.src='/assets/images/icons/twitter-dark.png'"
+      alt='Twitter Icon'>
+  {%- else %}
     <img class='footer-icon'
       src='/assets/images/icons/twitter-light.svg'
-      onerror="this.src='/assets/images/icons/twitter-light.png'">
-  {%- endif -%}
+      onerror="this.src='/assets/images/icons/twitter-light.png'"
+      alt='Twitter Icon'>
+  {%- endif %}
 </a>
