@@ -28,7 +28,7 @@ title: Douglas Duhaime // Home
       <h2>Recent Projects</h2>
       {%- assign projects = site.projects | sort: 'order' -%}
       {%- for project in projects -%}
-      <a target='_' href='{{ project.site }}'>
+      <a target='_blank' href='{{ project.site }}'>
         <div class='project-card'>
           <div class='background-image project-image'
             style='background-image: url({{ project.image }})'></div>
@@ -46,7 +46,7 @@ title: Douglas Duhaime // Home
       {%- endfor %}
     </div>
     <div class='home-footer'>
-      {%- assign icon_style='light' -%}
+      {%- assign icon_style='light' %}
       {% include icons/github.html style=icon_style %}
       {% include icons/blocks.html style=icon_style %}
       {% include icons/twitter.html style=icon_style %}
