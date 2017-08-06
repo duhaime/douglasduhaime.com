@@ -3,7 +3,7 @@ title: Yale Voices
 site: http://voices.library.yale.edu/
 source: https://github.com/YaleDHLab/voices
 image: /assets/projects/voices/voices-thumbnail.jpg
-order: 1
+order: 4
 tech:
   - Rails
   - PostgreSQL
