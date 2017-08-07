@@ -203,7 +203,7 @@ body {
   font-size: 45px;
   line-height: 1.2em;
   color: #454545;
-  margin: 0 0 10px -3px;
+  margin: 0 0 0 -3px;
   text-align: left;
   font-weight: 100;
   letter-spacing: -1px;
@@ -215,6 +215,11 @@ body {
   font-size: 31px;
   margin: 0 0 25px;
   color: #444;
+}
+
+.home .about {
+  color: #555;
+  margin-bottom: 15px;
 }
 
 @media(max-width: 600px) {
@@ -231,8 +236,8 @@ body {
 * Home posts
 **/
 
-.post-links,
-.project-links {
+.posts,
+.projects {
   text-align: left;
   display: inline-block;
   font-size: 0.9em;
@@ -241,8 +246,8 @@ body {
 }
 
 @media(max-width: 874px) {
-  .post-links,
-  .project-links {
+  .posts,
+  .projects {
     width: 100%;
     padding-top: 15px;
   }
@@ -281,7 +286,7 @@ body {
   border: 1px solid #aaa;
 }
 
-.post-links .title {
+.posts .title {
   display: inline-block;
   font-size: 18px;
   line-height: 18px;
@@ -290,7 +295,7 @@ body {
   transition: color 1s;
 }
 
-.post-links .date {
+.posts .date {
   display: block;
   color: #999;
   font-size: 13px;
@@ -298,17 +303,17 @@ body {
 }
 
 @media(min-width: 875px) {
-  .post-links .title {
+  .posts .title {
     max-width: 600px;
   }
 
-  .post-links .date {
+  .posts .date {
     float: right;
     margin-top: 10px;
   }
 }
 
-.post-links a {
+.posts a {
   text-decoration: none;
   display: block;
   font-size: 1.2em;
@@ -330,6 +335,7 @@ body {
   height: 0;
   padding-bottom: 39%;
   background-position: top center;
+  position: relative;
 }
 
 .project-card .project-title {
@@ -337,6 +343,7 @@ body {
   font-size: 22px;
   margin: 7px 0 2px;
   color: #444;
+  display: inline-block;
 }
 
 .project-tech div {
@@ -344,6 +351,22 @@ body {
   margin-right: 8px;
   color: #aaa;
   font-size: 14px;
+}
+
+.project-links {
+  display: inline-block;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1px 7px;
+  width: auto;
+  max-width: 90px;
+}
+
+.project-links a {
+  color: #fff;
 }
 
 .project-card .project-text p {
@@ -355,16 +378,6 @@ body {
 .project-card .project-categories {
   float: right;
   margin-right: -10px;
-}
-
-.project-card .project-links a {
-  display: inline-block;
-  color: #fff;
-  background: rgb({{ site.dark }});
-  padding: 3px 10px;
-  margin: 10px 6px 3px 0;
-  border-radius: 3px;
-  font-weight: 100;
 }
 
 /**

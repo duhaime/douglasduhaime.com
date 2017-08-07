@@ -5,8 +5,9 @@ title: Douglas Duhaime // Home
 <div class='home'>
   <div class='container'>
     <h1>{{ site.name }}</h1>
+    <div class='about'>Full Stack Developer in Yale University's Digital Humanities <a href='http://web.library.yale.edu/dhlab' target='_blank'>Lab.</a></div>
 
-    <div id='posts' class='post-links'>
+    <div id='posts' class='posts'>
       {%- for post in site.posts %}
       <div class='post-link'>
         <a href='{{ post.url }}'>
@@ -24,25 +25,29 @@ title: Douglas Duhaime // Home
       {%- endfor %}
     </div>
 
-    <div id='projects' class='project-links'>
+    <div id='projects' class='projects'>
       <h2>Recent Projects</h2>
-      {%- assign projects = site.projects | sort: 'order' -%}
+      {%- assign projects = site.projects | sort: 'order' | reverse -%}
       {%- for project in projects -%}
-      <a target='_blank' href='{{ project.site }}'>
-        <div class='project-card'>
-          <div class='background-image project-image'
-            style='background-image: url({{ project.image }})'></div>
-          <div class='project-content'>
-            <div class='project-title'>{{ project.title }}</div>
-            <div class='project-tech'>
-              {%- for item in project.tech -%}
-                <div>{{ item }}</div>
-              {%- endfor -%}
-            </div>
-            <div class='project-text'>{{ project.content }}</div>
+      <div class='project-card'>
+        <div class='background-image project-image'
+            style='background-image: url({{ project.image }})'>
+          <div class='project-links'>
+            <a href='{{ project.site }}'>Site</a>
+            <span>//</span>
+            <a href='{{ project.source }}'>Source</a>
           </div>
         </div>
-      </a>
+        <div class='project-content'>
+          <div class='project-title'>{{ project.title }}</div>
+          <div class='project-tech'>
+            {%- for item in project.tech -%}
+              <div>{{ item }}</div>
+            {%- endfor -%}
+          </div>
+          <div class='project-text'>{{ project.content }}</div>
+        </div>
+      </div>
       {%- endfor %}
     </div>
     <div class='home-footer'>
