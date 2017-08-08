@@ -1,4 +1,4 @@
-keep_files: ['assets/bundle.js', 'assets/style.css']
+keep_files: ['assets/bundle.js', 'assets/style.css', 'blog', 'about']
 collections:
   posts:
     output: true
@@ -6,9 +6,6 @@ collections:
   pages:
     output: true
     permalink: /pages/:title.html
-  redirects:
-    output: true
-    permalink: /blog/:title
   projects:
     output: false
 
