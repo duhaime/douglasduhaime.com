@@ -218,8 +218,10 @@ body {
 }
 
 .home .about {
-  color: #555;
+  color: #666;
   margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 @media(max-width: 600px) {
@@ -229,6 +231,18 @@ body {
 
   .home h1 {
     font-size: 31px;
+  }
+
+  .home .about {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+@media(max-width: 400px) {
+  .home .about {
+    font-size: 13px;
+    line-height: 14px;
   }
 }
 
@@ -284,12 +298,13 @@ body {
 .project-image {
   background-color: #aaa;
   border: 1px solid #aaa;
+  box-sizing: border-box;
 }
 
 .posts .title {
   display: inline-block;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   color: #666;
   margin: 10px 0 4px;
   transition: color 1s;
@@ -362,7 +377,7 @@ body {
   right: 0;
   padding: 1px 7px;
   width: auto;
-  max-width: 90px;
+  max-width: 100px;
 }
 
 .project-links a {
