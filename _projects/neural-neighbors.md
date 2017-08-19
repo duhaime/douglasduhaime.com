@@ -2,7 +2,7 @@
 title: Neural Neighbors
 site: https://yaledhlab.github.io/neural-neighbors/
 source: https://github.com/YaleDHLab/neural-neighbors
-image: /assets/projects/neural-neighbors/neural-neighbors.png
+image: /assets/projects/neural-neighbors/neural-neighbors.jpg
 order: 5
 tech:
   - Tensorflow
