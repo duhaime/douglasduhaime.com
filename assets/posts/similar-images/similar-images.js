@@ -31,6 +31,8 @@
       elem.style.backgroundImage = 'url(' + elemSrc + ')';
       elem.removeEventListener('mouseenter', handleMouseenter);
       elem.addEventListener('mouseenter', handleMouseenter);
+      elem.removeEventListener('click', handleClick);
+      elem.addEventListener('click', handleClick);
     }
 
     if (autoselect) selectFirstImage()
@@ -45,6 +47,11 @@
     selected.style.opacity = 1;
 
     getSimilarImages(child.style.backgroundImage);
+  }
+
+  function handleClick(e) {
+    setOpacities(e);
+    getSimilarImages(e.target.style.backgroundImage);
   }
 
   function handleMouseenter(e) {
