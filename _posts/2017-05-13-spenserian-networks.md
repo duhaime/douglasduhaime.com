@@ -108,7 +108,7 @@ If the charts above reveal some of the relationships between Spenserian author m
 The following chart visualizes these relationships. By hovering on individual writers within the network, you can visualize that poet's relationships with other poets (click the image to enter):
 
 <a href='/pages/spenserian-networks/' class='click-to-interact'>
-  <img src='/assets/posts/spenserian-networks/images/horace-walpole-associates.jpg' />
+  <img src='/assets/posts/spenserian-networks/images/horace-walpole-associates.jpg' alt="Network visualization of Horace Walpole's connections with other poets" />
 </a>
 
 Those familiar with literary history might recognize that the y-axis of the network above indicates the passage of time&mdash;from Spenser at the top through the Metaphysical poets, on through the Neoclassical poets, and finally to the Romantics at the bottom. Each poet's position along the y axis is set by the publication year of their first work within the Spenserian database.

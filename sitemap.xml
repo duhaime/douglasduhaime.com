@@ -17,7 +17,7 @@ process: true
   </url>
   {% for post in site.posts %}
   <url>
-    <loc>{{ post.url | prepend: site.url }}/</loc>
+    <loc>{{ post.url | prepend: site.url }}</loc>
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

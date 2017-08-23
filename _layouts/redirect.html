@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <link rel='canonical' href='{{ page.redirect_to | prepend: site.url  }}'>
+  </head>
+  <body>
+    <pre>
+      <code>
+        <span>This page is now located</span>
+        <a href='{{ page.redirect_to | prepend: site.url }}'>here...</a>
+      </a>
+    </pre>
+    <script>location='{{ page.redirect_to | prepend: site.url }}'</script>
+  </body>
+</html>

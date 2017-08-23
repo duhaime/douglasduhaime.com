@@ -29,7 +29,7 @@ t.build(trees)
 if not os.path.exists('nearest_neighbors'):
   os.makedirs('nearest_neighbors')
 
-for i in file_index_to_file_name.iterkeys():
+for i in file_index_to_file_name.keys():
   master_file_name = file_index_to_file_name[i]
   master_vector = file_index_to_file_vector[i]
 

@@ -331,6 +331,10 @@ path.line {
 * Price by factor brush
 **/
 
+#price-by-factor-brush .group {
+  pointer-events: none;
+}
+
 #price-by-factor-brush .x.axis text,
 #price-by-factor-brush .axis .domain {
   display: none;

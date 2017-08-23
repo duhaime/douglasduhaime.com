@@ -33,7 +33,7 @@ Each new line contains a token followed by 300 signed floats, and those values a
 
 There are a variety of methods for clustering vectors, including density-based clustering, hierarchical clustering, and centroid clustering. One of the most intuitive and most commonly used centroid-based methods is K-Means. Given a collection of points in a space, K-Means uses a Hunger Games style random lottery to pick a few lucky points (colored green below), then assigns each of the non-lucky points to the lucky point to which it's closest. Using these preliminary groupings, the next step is to find the "centroid" (or geometric center) of each group, using the same technique one would use to find the center of a square. These centroids become the new lucky points, and again each non-lucky point is again assigned to the lucky point to which it's closest. This process continues until the centroids settle down and stop moving, after which the clustering is complete. Here's a nice visual description of K-Means [[source]][kmeans-source]:
 
-<img src='/assets/posts/clustering-semantic-vectors/kmeans.gif' id='gif'/>
+<img src='/assets/posts/clustering-semantic-vectors/kmeans.gif' id='gif' alt='Visualization of the K-Means clustering algorithm.'/>
 
 To cluster the GloVe vectors in a similar fashion, one can use the sklearn package in Python, along with a few other packages:
 

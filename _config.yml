@@ -1,4 +1,4 @@
-keep_files: ['assets/bundle.js', 'assets/style.css']
+keep_files: ['assets/bundle.js', 'assets/style.css', 'blog', 'about']
 collections:
   posts:
     output: true
@@ -11,7 +11,7 @@ collections:
 
 # site instance config
 name: Douglas Duhaime
-url: http://douglasduhaime.com.s3-website-us-east-1.amazonaws.com
+url: http://douglasduhaime.com
 title: Data Mining + Visualization
 description: Working notes on data mining and interactive data visualization.
 fallback_image: /assets/images/fallback.png

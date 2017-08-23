@@ -122,14 +122,15 @@ body {
   text-align: center;
 }
 
-.footer .footer-icon {
+.footer-icon {
+  width: 15px;
   height: 15px;
-  position: relative;
-  top: 12px;
-  margin: 0 1px;
+  margin: 12px 1px 0;
   background: #ededed;
   padding: 6px;
   border-radius: 100%;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .footer .square-image {
@@ -137,10 +138,11 @@ body {
   vertical-align: top;
 }
 
-.footer .square-image img {
+.footer .square-image img,
+.home-footer .square-image img {
   border-radius: 0;
-  padding: 2px;
-  width: 11px;
+  padding: 1px 1px;
+  width: 13px;
   vertical-align: top;
   position: relative;
   background: none;
@@ -201,7 +203,7 @@ body {
   font-size: 45px;
   line-height: 1.2em;
   color: #454545;
-  margin: 0 0 10px -3px;
+  margin: 0 0 0 -3px;
   text-align: left;
   font-weight: 100;
   letter-spacing: -1px;
@@ -215,6 +217,13 @@ body {
   color: #444;
 }
 
+.home .about {
+  color: #666;
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 22px;
+}
+
 @media(max-width: 600px) {
   .home .container {
     width: 85%;
@@ -223,14 +232,26 @@ body {
   .home h1 {
     font-size: 31px;
   }
+
+  .home .about {
+    font-size: 16px;
+    line-height: 16px;
+  }
+}
+
+@media(max-width: 400px) {
+  .home .about {
+    font-size: 13px;
+    line-height: 14px;
+  }
 }
 
 /**
 * Home posts
 **/
 
-.post-links,
-.project-links {
+.posts,
+.projects {
   text-align: left;
   display: inline-block;
   font-size: 0.9em;
@@ -238,9 +259,9 @@ body {
   padding-top: 25px;
 }
 
-@media(max-width: 875px) {
-  .post-links,
-  .project-links {
+@media(max-width: 874px) {
+  .posts,
+  .projects {
     width: 100%;
     padding-top: 15px;
   }
@@ -277,18 +298,19 @@ body {
 .project-image {
   background-color: #aaa;
   border: 1px solid #aaa;
+  box-sizing: border-box;
 }
 
-.post-links .title {
+.posts .title {
   display: inline-block;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   color: #666;
   margin: 10px 0 4px;
   transition: color 1s;
 }
 
-.post-links .date {
+.posts .date {
   display: block;
   color: #999;
   font-size: 13px;
@@ -296,17 +318,17 @@ body {
 }
 
 @media(min-width: 875px) {
-  .post-links .title {
+  .posts .title {
     max-width: 600px;
   }
 
-  .post-links .date {
+  .posts .date {
     float: right;
     margin-top: 10px;
   }
 }
 
-.post-links a {
+.posts a {
   text-decoration: none;
   display: block;
   font-size: 1.2em;
@@ -315,7 +337,7 @@ body {
 }
 
 /**
-* Home page projects
+* Home projects
 **/
 
 .project-card {
@@ -328,6 +350,7 @@ body {
   height: 0;
   padding-bottom: 39%;
   background-position: top center;
+  position: relative;
 }
 
 .project-card .project-title {
@@ -335,6 +358,7 @@ body {
   font-size: 22px;
   margin: 7px 0 2px;
   color: #444;
+  display: inline-block;
 }
 
 .project-tech div {
@@ -342,6 +366,22 @@ body {
   margin-right: 8px;
   color: #aaa;
   font-size: 14px;
+}
+
+.project-links {
+  display: inline-block;
+  background: rgba(0,0,0,0.65);
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1px 7px;
+  width: auto;
+  max-width: 100px;
+}
+
+.project-links a {
+  color: #fff;
 }
 
 .project-card .project-text p {
@@ -355,14 +395,23 @@ body {
   margin-right: -10px;
 }
 
-.project-card .project-links a {
-  display: inline-block;
-  color: #fff;
-  background: rgb({{ site.dark }});
-  padding: 3px 10px;
-  margin: 10px 6px 3px 0;
-  border-radius: 3px;
-  font-weight: 100;
+/**
+* Home footer
+**/
+
+.home-footer {
+  width: 100%;
+  overflow: auto;
+}
+
+.home-footer a {
+  float: left;
+  margin-right: 2px;
+}
+
+.home-footer .footer-icon {
+  background: #4c4c4c;
+  margin-top: 0;
 }
 
 /**
