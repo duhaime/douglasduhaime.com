@@ -68,6 +68,58 @@ h1, h2, h3, h4 {
 }
 
 /**
+* Images
+**/
+
+.container img {
+  max-width: 100%;
+}
+
+.background-image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.center-image {
+  margin: 15px auto;
+  display: block;
+}
+
+.center-image.large {
+  width: auto;
+}
+
+.center-image.medium {
+  width: 60%;
+}
+
+.center-image.small {
+  width: 200px;
+}
+
+.inline-trio {
+  display: table;
+  width: 100%;
+  border-spacing: 5px;
+}
+
+.inline-trio .default-image {
+  width: 33%;
+  display: table-cell;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+
+.grayscale {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+/**
 * Header
 **/
 
@@ -220,7 +272,7 @@ body {
 .home .about {
   color: #666;
   margin-bottom: 15px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 22px;
 }
 
@@ -243,6 +295,8 @@ body {
   .home .about {
     font-size: 13px;
     line-height: 14px;
+    color: #999;
+    margin-top: 3px;
   }
 }
 
@@ -250,8 +304,8 @@ body {
 * Home posts
 **/
 
-.posts,
-.projects {
+.post-cards,
+.project-cards {
   text-align: left;
   display: inline-block;
   font-size: 0.9em;
@@ -260,35 +314,35 @@ body {
 }
 
 @media(max-width: 874px) {
-  .posts,
-  .projects {
+  .post-cards,
+  .project-cards {
     width: 100%;
     padding-top: 15px;
   }
 }
 
-.post-link {
+.post-card {
   width: 100%;
   display: inline-block;
   vertical-align: top;
 }
 
-.post-link,
+.post-card,
 .project-card {
   margin-bottom: 30px;
 }
 
-.post-link:hover .post-thumbnail {
+.post-card:hover .post-thumbnail {
   filter: grayscale(0%);
 }
 
-.post-link:hover .title {
+.post-card:hover .title {
   color: rgb({{ site.dark }});
 }
 
 .post-thumbnail {
   width: 100%;
-  padding-bottom: 16.5%;
+  padding-bottom: 13.5%;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   transition: filter 1s;
@@ -301,16 +355,16 @@ body {
   box-sizing: border-box;
 }
 
-.posts .title {
+.post-cards .title {
   display: inline-block;
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 18px;
   color: #666;
   margin: 10px 0 4px;
   transition: color 1s;
 }
 
-.posts .date {
+.post-cards .date {
   display: block;
   color: #999;
   font-size: 13px;
@@ -318,17 +372,23 @@ body {
 }
 
 @media(min-width: 875px) {
-  .posts .title {
+  .post-cards .title {
     max-width: 600px;
   }
 
-  .posts .date {
+  .post-cards .date {
     float: right;
     margin-top: 10px;
   }
 }
 
-.posts a {
+@media(max-width: 600px) {
+  .post-cards .title {
+    font-size: 16px;
+  }
+}
+
+.post-cards a {
   text-decoration: none;
   display: block;
   font-size: 1.2em;
@@ -356,19 +416,19 @@ body {
 .project-card .project-title {
   font-weight: 100;
   font-size: 22px;
-  margin: 7px 0 2px;
+  margin: 7px 0 0;
   color: #444;
   display: inline-block;
 }
 
-.project-tech div {
+.project-card .project-tech div {
   display: inline-block;
   margin-right: 8px;
   color: #aaa;
   font-size: 14px;
 }
 
-.project-links {
+.project-card .project-links {
   display: inline-block;
   background: rgba(0,0,0,0.65);
   color: #fff;
@@ -380,7 +440,7 @@ body {
   max-width: 100px;
 }
 
-.project-links a {
+.project-card .project-links a {
   color: #fff;
 }
 
@@ -728,62 +788,6 @@ fieldset {
 
 label {
   margin: 5px;
-}
-
-/**
-* Image filters
-**/
-
-.grayscale {
-  -webkit-filter: grayscale(1);
-  filter: grayscale(1);
-}
-
-/**
-* Images
-**/
-
-.container img {
-  max-width: 100%;
-}
-
-.background-image {
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.center-image {
-  margin: 15px auto;
-  display: block;
-}
-
-.center-image.large {
-  width: auto;
-}
-
-.center-image.medium {
-  width: 60%;
-}
-
-.center-image.small {
-  width: 200px;
-}
-
-.inline-trio {
-  display: table;
-  width: 100%;
-  border-spacing: 5px;
-}
-
-.inline-trio .default-image {
-  width: 33%;
-  display: table-cell;
-  padding: 0 4px;
-  box-sizing: border-box;
 }
 
 /**
