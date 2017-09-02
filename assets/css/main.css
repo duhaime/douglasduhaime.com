@@ -272,7 +272,7 @@ body {
 .home .about {
   color: #666;
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
 }
 
@@ -357,8 +357,8 @@ body {
 
 .post-cards .title {
   display: inline-block;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   color: #666;
   margin: 10px 0 4px;
   transition: color 1s;
@@ -1169,7 +1169,7 @@ div#disqus_thread {
 **/
 
 .lost .caveman {
-  width:180px; height:180px;
+  width: 180px; height:180px;
   position: absolute;
   bottom: 35%;
   transition: left 0.2s;
