@@ -6,3 +6,5 @@ ngrok
 *.DS_Store
 node_modules
 utils/webpack/build
+_redirects/
+about/
