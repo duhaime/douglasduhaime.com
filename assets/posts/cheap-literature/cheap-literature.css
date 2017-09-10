@@ -138,17 +138,18 @@ path.line {
   height: 140px;
   box-sizing: border-box;
   text-align: center;
-  width: 690px;
+  width: 670px;
 }
 
 .lightbox-pages-container .default-image img {
-  max-width: 16%;
+  max-width: 14%;
   height: 170px;
   padding: 0 10px;
   margin: 0 7px;
   background: #fff;
   border: 1px solid #ababab;
   border-radius: 3px;
+  margin-bottom: -4px;
 }
 
 /**
