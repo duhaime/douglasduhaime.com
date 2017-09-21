@@ -150,6 +150,7 @@ path.line {
   border: 1px solid #ababab;
   border-radius: 3px;
   margin-bottom: -4px;
+  display: inline-block;
 }
 
 /**
@@ -455,6 +456,7 @@ path.line {
   width: 44px;
   border-radius: 100%;
   vertical-align: top;
+  display: inline-block;
 }
 
 @media(max-width: 800px) {

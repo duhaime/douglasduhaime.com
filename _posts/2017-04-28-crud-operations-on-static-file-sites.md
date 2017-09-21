@@ -73,7 +73,7 @@ To allow users to send forms from a static site, the first thing we'll need is a
 
 With our form in place, let's create a new Google Sheet to store user responses. In the spreadsheet, enter "Timestamp", "Name", and "Email" in cells A1, B1, and C1 [[example](https://docs.google.com/spreadsheets/d/1ev0FF_BOgLGrYAWpQry1lK2XiboTAVQBaQhhrVVi45s/edit?usp=sharing)]:
 
-<img class='center-image medium' src='/assets/posts/crud-operations/google-sheet-template.png' alt='Google Sheets template in which data sent through POST requests will be kept'>
+<img class='medium' src='/assets/posts/crud-operations/google-sheet-template.png' alt='Google Sheets template in which data sent through POST requests will be kept'>
 
 ### Creating the Google App Script
 

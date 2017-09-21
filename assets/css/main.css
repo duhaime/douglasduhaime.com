@@ -73,6 +73,20 @@ h1, h2, h3, h4 {
 
 .container img {
   max-width: 100%;
+  margin: 15px auto;
+  display: block;
+}
+
+img.large {
+  width: auto;
+}
+
+img.medium {
+  width: 60%;
+}
+
+img.small {
+  width: 200px;
 }
 
 .background-image {
@@ -82,23 +96,6 @@ h1, h2, h3, h4 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-.center-image {
-  margin: 15px auto;
-  display: block;
-}
-
-.center-image.large {
-  width: auto;
-}
-
-.center-image.medium {
-  width: 60%;
-}
-
-.center-image.small {
-  width: 200px;
 }
 
 .inline-trio {
@@ -198,6 +195,8 @@ body {
   vertical-align: top;
   position: relative;
   background: none;
+  display: inline-block;
+  margin: 0;
 }
 
 .footer .footer-icon:hover {
