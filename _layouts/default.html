@@ -1,13 +1,8 @@
----
-process: true
----
 <!DOCTYPE html>
 <html lang='en'>
   <head>
     {% include meta.html %}
     <title>{{ page.title }}</title>
-    <link rel='stylesheet' type='text/css' href='/assets/style.css?v={{ site.time | date: "%s%N" }}'>
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat:400,500%7CMerriweather' media='(min-width: 600px)'>
     <link rel='icon' href='/assets/images/favicon.ico' type='image/x-icon'>
     {%- include page-css.html %}
   </head>
@@ -15,8 +10,6 @@ process: true
     <div id='content'>
       {{ content }}
     </div>
-    <script src='/assets/bundle.js?v={{ site.time | date: "%s%N" }}' type='text/javascript'></script>
-    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Montserrat:400,500%7CMerriweather' media='(max-width: 600px)'>
   {%- include page-js.html %}
   {% include analytics.html %}
   </body>

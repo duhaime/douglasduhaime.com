@@ -1,3 +1,4 @@
+basename: ''
 keep_files: ['assets/bundle.js', 'assets/style.css', 'blog', 'about']
 collections:
   posts:
