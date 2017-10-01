@@ -2,7 +2,8 @@
 layout: post
 title: Submitting Python Scripts to SGE Queues
 date: 2012-06-11
-description: A brief guide on submitting Python scripts to Sun Grid Engine server clusters.
+description: |
+  A brief guide on submitting Python scripts to Sun Grid Engine server clusters.
 categories: hpc python
 thumbnail: /assets/posts/sge-queues/sge-thumb.jpg
 banner: /assets/posts/sge-queues/sge-banner.png

@@ -2,7 +2,8 @@
 layout: post
 title: Introducing the Literature Online API
 date: 2013-09-13
-description: The Literature Online API allows researchers to run automated analysis on nearly half a million classic works of literature.
+description: |
+  The Literature Online API allows researchers to run automated analysis on nearly half a million classic works of literature.
 categories: python api gui
 thumbnail: /assets/posts/lion-api/lion-api-thumb.jpg
 banner: /assets/posts/lion-api/lion-api-banner.png

@@ -2,7 +2,8 @@
 layout: post
 title: Batch Processing Python Scripts on Sun Grid Engine Queues
 date: 2014-06-26
-description: How to run parameter sweeps over variable ranges and submit each to a Sun Grid Engine server cluster.
+description: |
+  How to run parameter sweeps over variable ranges and submit each to a Sun Grid Engine server cluster.
 categories: python hpc
 thumbnail: /assets/posts/batch-processing/batch-processing-thumb.jpg
 banner: /assets/posts/batch-processing/batch-processing-banner.png

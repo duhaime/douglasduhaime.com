@@ -2,7 +2,8 @@
 layout: post
 title: Crosslingual Plagiarism Detection with Scikit-Learn
 date: 2015-07-19
-description: Using Word2Vec and Scikit Learn to identify text reuse between French and English language historic documents.
+description: |
+  Using Word2Vec and Scikit Learn to identify text reuse between French and English language historic documents.
 categories: classification digital-humanities word-embeddings text-reuse
 thumbnail: /assets/posts/crosslingual-plagiarism-detection/crosslingual-plagiarism-detection-thumb.jpg
 banner: /assets/posts/crosslingual-plagiarism-detection/crosslingual-plagiarism-detection-banner.png

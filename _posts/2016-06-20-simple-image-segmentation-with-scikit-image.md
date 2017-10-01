@@ -2,7 +2,8 @@
 layout: post
 title: Simple Image Segmentation with Scikit-Image
 date: 2016-06-20
-description: A guide to segmenting images using pixel dilations and Otsu thresholding with Scikit Image.
+description: |
+  A guide to segmenting images using pixel dilations and Otsu thresholding with Scikit Image.
 categories: image-processing clustering
 thumbnail: /assets/posts/image-segmentation/image-segmentation-thumb.jpg
 banner: /assets/posts/image-segmentation/image-segmentation-banner.jpg

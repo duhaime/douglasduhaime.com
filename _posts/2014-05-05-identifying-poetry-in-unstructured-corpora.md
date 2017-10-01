@@ -2,7 +2,8 @@
 layout: post
 title: Identifying Poetry in Unstructured Corpora
 date: 2014-05-05
-description: A simple method for classifying poetic works in unstructured text corpora.
+description: |
+  A simple method for classifying poetic works in unstructured text corpora.
 categories: classification python
 thumbnail: /assets/posts/identifying-poetry/identifying-poetry-thumb.jpg
 banner: /assets/posts/identifying-poetry/identifying-poetry-banner.png

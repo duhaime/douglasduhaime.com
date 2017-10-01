@@ -2,10 +2,12 @@
 layout: post
 title: Spenserian Networks
 date: 2017-05-13
-description: Visualizing in-group and out-of-group statistics among early modern poets across gendered, educational, and professional lines.
 categories: d3 networks
 thumbnail: /assets/posts/spenserian-networks/spenserian-networks-thumb.jpg
 banner: /assets/posts/spenserian-networks/spenserian-networks-banner.jpg
+description: |
+  Visualizing in-group and out-of-group statistics among early modern poets across gendered, educational, and professional lines.
+preview: /assets/posts/spenserian-networks/preview/
 js:
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js

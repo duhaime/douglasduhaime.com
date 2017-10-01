@@ -2,7 +2,8 @@
 layout: post
 title: Mapping the Early English Book Trade
 date: 2015-01-07
-description: Charting the geographic terrain of the early book market before and after the 1710 Statute of Anne.
+description: |
+  Charting the geographic terrain of the early book market before and after the 1710 Statute of Anne.
 categories: mapping digital-humanities
 thumbnail: /assets/posts/mapping-early-books/mapping-early-books-thumb.jpg
 banner: /assets/posts/mapping-early-books/mapping-early-books-banner.jpg

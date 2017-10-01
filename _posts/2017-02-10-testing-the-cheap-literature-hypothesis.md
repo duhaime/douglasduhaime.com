@@ -2,10 +2,12 @@
 layout: post
 title: Testing the Cheap Literature Hypothesis
 date: 2017-02-10
-description: Scholars claim the creation of fixed-term copyright in 1774 led to lower book prices. New data from half a million text records suggests otherwise.
 categories: d3
 thumbnail: /assets/posts/cheap-literature/cheap-literature-thumb.jpg
 banner: /assets/posts/cheap-literature/cheap-literature-banner.png
+description: |
+  Scholars claim the creation of fixed-term copyright in 1774 led to lower book prices. New data from half a million text records suggests otherwise.
+preview: /assets/posts/cheap-literature/preview/
 css: /assets/posts/cheap-literature/cheap-literature.css
 js:
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
