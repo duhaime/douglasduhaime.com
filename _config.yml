@@ -1,5 +1,5 @@
 basename: ''
-keep_files: ['assets/bundle.js', 'assets/style.css', 'blog', 'about']
+keep_files: ['assets/bundle.js', 'assets/style.css']
 collections:
   posts:
     output: true
@@ -10,12 +10,21 @@ collections:
   projects:
     output: false
 
+# specify plugins
+plugins:
+  - octopress-minify-html
+
+# minify html
+minify_html: true
+
 # site instance config
+# instant cello
 name: Douglas Duhaime
 url: http://douglasduhaime.com
 title: Data Mining + Visualization
 description: Working notes on data mining and interactive data visualization.
 fallback_image: /assets/images/fallback.png
+preview: /assets/images/preview/
 github: duhaime
 twitter: douglasduhaime
 dark: 213, 58, 38
