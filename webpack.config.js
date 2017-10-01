@@ -1,12 +1,11 @@
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
 const paths = {
-  src: path.resolve(__dirname, '_site', 'assets'),
-  build: path.resolve(__dirname, '_site'),
+  src: path.resolve(__dirname, '_site', 'assets', 'index.js'),
+  build: path.resolve(__dirname, '_site', 'assets'),
 };
 
 const uglifyConfig = {
@@ -15,18 +14,11 @@ const uglifyConfig = {
   sourceMap: false
 };
 
-const htmlConfig = {
-  template: './_site/index.html',
-  minify: {
-    collapseWhitespace: true,
-  },
-}
-
 module.exports = {
-  entry: path.resolve(__dirname, paths.src, 'index.js'),
+  entry: paths.src,
   output: {
     path: paths.build,
-    filename: 'bundle.[chunkhash].js'
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -41,8 +33,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin(uglifyConfig),
-    new HtmlWebpackPlugin(htmlConfig),
-    new ExtractTextPlugin('style.[contenthash].css'),
+    new ExtractTextPlugin('style.css'),
     new OptimizeCssAssetsPlugin()
   ]
 };

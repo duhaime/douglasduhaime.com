@@ -7,9 +7,8 @@
     "compress": "./node_modules/.bin/webpack --config webpack.config.js",
     "compress-post": "./node_modules/.bin/webpack --config ./utils/webpack/webpack.post.config.js",
     "build": "JEKYLL_ENV=production bundle exec jekyll build",
-    "deploy": "npm run build && npm run copy-all-unzipped && npm run copy-redirects",
+    "deploy": "npm run build && npm run copy-all-unzipped",
     "copy-all-unzipped": "aws s3 cp _site/ s3://douglasduhaime.com/ --include '*' --acl public-read --cache-control max-age=604800 --recursive --metadata-directive='REPLACE'",
-    "copy-redirects": "aws s3 cp _site/blog/ s3://douglasduhaime.com/blog/ --recursive --content-type 'text/html; charset=UTF-8' --acl public-read --cache-control max-age=2592000 --metadata-directive='REPLACE'",
     "test": "echo 'Error: no test specified' && exit 1"
   },
   "repository": {
@@ -25,7 +24,6 @@
   "devDependencies": {
     "css-loader": "^0.28.1",
     "extract-text-webpack-plugin": "^2.1.0",
-    "html-webpack-plugin": "^2.30.1",
     "node-pre-gyp": "^0.6.36",
     "optimize-css-assets-webpack-plugin": "^1.3.1",
     "style-loader": "^0.17.0",
