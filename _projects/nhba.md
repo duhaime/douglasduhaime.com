@@ -1,7 +1,7 @@
 ---
 title: New Haven Building Archive
 site: https://yaledh.review/
-source: https://github.com/duhaime/nhba
+source: https://github.com/yaledhlab/nhba
 image: /assets/projects/nhba/nhba-thumbnail.jpg
 order: 4
 tech:
