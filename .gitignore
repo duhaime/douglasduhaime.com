@@ -1,8 +1,8 @@
 _site
-.jekyll-metadata
 ngrok
 *.pem
 *.swp
 *.DS_Store
+.ruby_version
 node_modules
 utils/webpack/build

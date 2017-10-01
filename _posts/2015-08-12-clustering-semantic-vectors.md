@@ -2,7 +2,8 @@
 layout: post
 title: Clustering Semantic Vectors with Python
 date: 2015-09-12
-description: Hard clustering semantic vectors using Stanford's GloVe word embeddings and Scikit Learn's K-Means implementation.
+description: |
+  Hard clustering semantic vectors using Stanford's GloVe word embeddings and Scikit Learn's K-Means implementation.
 categories: word-embeddings clustering python
 thumbnail: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-thumb.jpg
 banner: /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-banner.png

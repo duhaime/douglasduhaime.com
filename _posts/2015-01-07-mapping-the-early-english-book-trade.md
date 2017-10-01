@@ -2,7 +2,8 @@
 layout: post
 title: Mapping the Early English Book Trade
 date: 2015-01-07
-description: Charting the geographic terrain of the early book market before and after the 1710 Statute of Anne.
+description: |
+  Charting the geographic terrain of the early book market before and after the 1710 Statute of Anne.
 categories: mapping digital-humanities
 thumbnail: /assets/posts/mapping-early-books/mapping-early-books-thumb.jpg
 banner: /assets/posts/mapping-early-books/mapping-early-books-banner.jpg
@@ -27,11 +28,11 @@ One of the debates surrounding the Act of Anne concerns the degree to which the 
 
 The usual cautions concerning false imprints and varying survival rates notwithstanding, the ESTC clearly demonstrates the decentralization of English printing in the wake of the Act of Anne. London of course remained the primary site of publication throughout the years covered by the ESTC—publishing two-thirds of all records from the period—though its annual share in the trade fell quite dramatically across the eighteenth century:
 
-<img class='center-image large img-link' src='{{ dir }}/images/london_printing.png' alt='Visualization of the percent of English printing in London, 1473-1800.'>
+<img class='large' src='{{ dir }}/images/london_printing.png' alt='Visualization of the percent of English printing in London, 1473-1800.'>
 
 One can explain some of that decline by examining the growth of printing in major metropolitan areas outside of London, such as Edinburgh (responsible for 6.5% of total editions in the ESTC), Dublin (5.4%), and Boston (3.7%), which claimed the second, third, and fourth overall largest shares of the book trade according to the ESTC:
 
-<img class='center-image large img-link' src='{{ dir }}/images/publishing_beyond_london.png' alt='Visualization of the percent of English printing in major publishing cities outside London, 1473-1800.'>
+<img class='large' src='{{ dir }}/images/publishing_beyond_london.png' alt='Visualization of the percent of English printing in major publishing cities outside London, 1473-1800.'>
 
 Among these figures, the explosion of printing in Edinburgh after 1750 is particularly interesting, and appears to be the result of further changes in the legal code. As John Feather notes, "The Copyright Act of 1710 (8 Anne c. 21) implied, but did not state, that it was illegal to import any English-language books into England and Wales if they had been previously printed there" (<a href='{{ dir }}/feather_english_book_trade.pdf'>58</a>). However, he continues, "the legislation in relation to Scotland seems to have lapsed in 1754-1755," after which one observes tremendous growth in Scottish printing. Between 1750 and 1755, the five year average of Edinburgh printing as a percent of all printing recorded in the ESTC is 7.5%. This figure only continues to grow after the lapse of Scottish printing regulations noted by Feather: From 1755-1760, Edinburgh printing climbs to 9.0% of all printing for the five year period, from 1760-1765, the figure rises to 12.3%, and from 1765-1770, it reaches 14.4% of the ESTC totals for the five year range. These values are significant, because they suggest the real surge in the Scottish reprinting industry did not take place in the aftermath of the Donaldson v. Becket decision, as is commonly supposed, but rather with the lapse of Scottish reprinting regulations in 1755.
 

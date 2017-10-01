@@ -1,6 +1,7 @@
 ---
 process: true
 ---
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500|Merriweather');
 
 html {
   height: 100%;
@@ -73,6 +74,20 @@ h1, h2, h3, h4 {
 
 .container img {
   max-width: 100%;
+  margin: 15px auto;
+  display: block;
+}
+
+img.large {
+  width: auto;
+}
+
+img.medium {
+  width: 60%;
+}
+
+img.small {
+  width: 200px;
 }
 
 .background-image {
@@ -82,23 +97,6 @@ h1, h2, h3, h4 {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-
-.center-image {
-  margin: 15px auto;
-  display: block;
-}
-
-.center-image.large {
-  width: auto;
-}
-
-.center-image.medium {
-  width: 60%;
-}
-
-.center-image.small {
-  width: 200px;
 }
 
 .inline-trio {
@@ -198,6 +196,8 @@ body {
   vertical-align: top;
   position: relative;
   background: none;
+  display: inline-block;
+  margin: 0;
 }
 
 .footer .footer-icon:hover {
@@ -272,7 +272,7 @@ body {
 .home .about {
   color: #666;
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 22px;
 }
 
@@ -357,8 +357,8 @@ body {
 
 .post-cards .title {
   display: inline-block;
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 16px;
   color: #666;
   margin: 10px 0 4px;
   transition: color 1s;
@@ -1169,7 +1169,7 @@ div#disqus_thread {
 **/
 
 .lost .caveman {
-  width:180px; height:180px;
+  width: 180px; height:180px;
   position: absolute;
   bottom: 35%;
   transition: left 0.2s;

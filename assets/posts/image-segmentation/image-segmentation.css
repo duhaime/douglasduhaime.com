@@ -2,10 +2,11 @@
   display: table;
 }
 
-.partitioned-image {
+img.partitioned-image {
   width: 20%;
   display: inline-block;
   vertical-align: top;
+  display: inline-block;
 }
 
 .dilations-x {

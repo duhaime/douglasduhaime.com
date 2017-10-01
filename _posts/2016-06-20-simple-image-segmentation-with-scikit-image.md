@@ -2,7 +2,8 @@
 layout: post
 title: Simple Image Segmentation with Scikit-Image
 date: 2016-06-20
-description: A guide to segmenting images using pixel dilations and Otsu thresholding with Scikit Image.
+description: |
+  A guide to segmenting images using pixel dilations and Otsu thresholding with Scikit Image.
 categories: image-processing clustering
 thumbnail: /assets/posts/image-segmentation/image-segmentation-thumb.jpg
 banner: /assets/posts/image-segmentation/image-segmentation-banner.jpg
@@ -17,7 +18,7 @@ In the months that followed, I crossed paths with a number of additional image s
 
 The case study discussed below grows out work I pursued when the British Library asked if Yale's Digital Humanities Lab could help process a large image collection in their possession. Their data consisted of scrapbooks wherein each page/image contained several advertisements for eighteenth-century plays. Here's a sample image:
 
-<img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='center-image small' alt='Sample image that contains several newspaper clippings.'>
+<img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='small' alt='Sample image that contains several newspaper clippings.'>
 
 Given an image such as the above, they wanted to save each of the clippings from that page to its own file:
 

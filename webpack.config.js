@@ -1,13 +1,24 @@
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+
+const paths = {
+  src: path.resolve(__dirname, '_site', 'assets', 'index.js'),
+  build: path.resolve(__dirname, '_site', 'assets'),
+};
+
+const uglifyConfig = {
+  minimize: true,
+  comments: false,
+  sourceMap: false
+};
 
 module.exports = {
-  entry: './_site/assets/index.js',
+  entry: paths.src,
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, '_site', 'assets')
+    path: paths.build,
+    filename: 'bundle.js'
   },
   module: {
     rules: [
@@ -21,12 +32,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      minimize: true,
-      comments: false,
-      sourceMap: false
-    }),
+    new webpack.optimize.UglifyJsPlugin(uglifyConfig),
     new ExtractTextPlugin('style.css'),
     new OptimizeCssAssetsPlugin()
   ]
