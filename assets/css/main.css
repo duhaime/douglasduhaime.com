@@ -816,11 +816,12 @@ label {
 .click-to-interact::after {
   content: 'Click to enter →';
   display: block;
+  width: 100%;
   color: #fff;
   position: absolute;
-  top: 47%;
+  top: 50%;
+  margin-top: -0.5em;
   text-align: center;
-  width: 100%;
   z-index: 11;
   font-size: 24px;
   opacity: 0;
