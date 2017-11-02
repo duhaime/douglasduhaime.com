@@ -1,5 +1,3 @@
-basename: ''
-keep_files: ['assets/bundle.js', 'assets/style.css']
 collections:
   posts:
     output: true
@@ -10,14 +8,23 @@ collections:
   projects:
     output: false
 
+basename: ''
+
+keep_files:
+  - 'assets/bundle.js'
+  - 'assets/style.css'
+
+exclude:
+  - 'node_modules/'
+  - 'utils/'
+
 # specify plugins
 plugins:
   - octopress-minify-html
 
 # minify html
-minify_html: true
+minify_html: false
 
-# site instance config
 # instant cello
 name: Douglas Duhaime
 url: http://douglasduhaime.com

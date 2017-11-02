@@ -1,15 +1,15 @@
-{%- unless page.header == 'none' -%}
+{% unless page.header == 'none' %}
   {% include duotone.html %}
   <header class='header'>
-    {% if page.banner -%}
-      {%- if page.invert -%}
+    {% if page.banner %}
+      {% if page.invert %}
         <div class='background-image duotone-invert'
           style='background-image: url({{ page.banner }})'></div>
-      {%- else -%}
+      {% else %}
         <div class='background-image duotone'
           style='background-image: url({{ page.banner }})'></div>
-      {%- endif -%}
+      {% endif %}
     {% endif %}
     {% include icons/home.html %}
   </header>
-{%- endunless %}
+{% endunless %}

@@ -5,7 +5,7 @@
   **********************/
 
   var width = 1300,
-    height = 1360;
+      height = 1360;
 
   var margin = {
     top: 40,
