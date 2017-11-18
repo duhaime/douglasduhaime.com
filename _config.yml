@@ -1,3 +1,22 @@
+# specify plugins
+plugins:
+  - octopress-minify-html
+
+# minify html
+minify_html: false
+
+# explicit is better than implicit
+basename: ''
+
+# files to keep and exclude
+keep_files:
+  - 'assets/bundle.js'
+  - 'assets/style.css'
+exclude:
+  - 'node_modules/'
+  - 'utils/'
+
+# collections config
 collections:
   posts:
     output: true
@@ -7,23 +26,6 @@ collections:
     permalink: /pages/:title.html
   projects:
     output: false
-
-basename: ''
-
-keep_files:
-  - 'assets/bundle.js'
-  - 'assets/style.css'
-
-exclude:
-  - 'node_modules/'
-  - 'utils/'
-
-# specify plugins
-plugins:
-  - octopress-minify-html
-
-# minify html
-minify_html: false
 
 # instant cello
 name: Douglas Duhaime
