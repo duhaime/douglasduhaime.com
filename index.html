@@ -7,9 +7,9 @@ title: Douglas Duhaime | Data Mining + Visualization
     <h1>{{ site.name }}</h1>
     <div class='about'>Full Stack Developer in Yale University's Digital Humanities <a href='http://web.library.yale.edu/dhlab' target='_blank'>Lab.</a></div>
 
-    <div class='post-cards'>
+    <div class='home-posts'>
       {%- for post in site.posts %}
-      <div class='post-card'>
+      <div class='home-post'>
         <a href='{{ post.url }}'>
           {%- if post.thumbnail %}
           <div class='post-thumbnail background-image'
@@ -25,11 +25,11 @@ title: Douglas Duhaime | Data Mining + Visualization
       {%- endfor %}
     </div>
 
-    <div class='project-cards'>
+    <div class='home-projects'>
       <h2>Recent Projects</h2>
       {%- assign projects = site.projects | sort: 'order' | reverse -%}
       {%- for project in projects -%}
-      <div class='project-card'>
+      <div class='home-project'>
         <div class='background-image project-image'
             style='background-image: url({{ project.image }})'>
           <div class='project-links'>
