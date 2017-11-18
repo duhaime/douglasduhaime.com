@@ -1,9 +1,9 @@
-{%- if page.css -%}
-  {%- if page.css.first -%}
-    {%- for css in page.css -%}
+{% if page.css %}
+  {% if page.css.first %}
+    {% for css in page.css %}
       <link type='text/css' rel='stylesheet' href='{{ css }}'>
-    {%- endfor -%}
-  {%- else -%}
+    {% endfor %}
+  {% else %}
     <link type='text/css' rel='stylesheet' href='{{ page.css }}'>
-  {%- endif -%}
-{%- endif -%}
+  {% endif %}
+{% endif %}

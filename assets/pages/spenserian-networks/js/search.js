@@ -237,7 +237,7 @@
   function scrollToPoet(poetId) {
     var elem = d3.select('#node-' + poetId);
     var offsetTop = elem.node().getBoundingClientRect().top;
-    scrollTo(offsetTop - 300, 100);
+    window.scrollTo(0, offsetTop - 300);
   }
 
   /**

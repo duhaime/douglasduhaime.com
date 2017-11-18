@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: 'Amatic SC';
   src: url('/assets/vendor/fonts/AmaticSC-Regular.ttf') format('truetype');
@@ -60,9 +59,10 @@ body {
 
 .spenserian-networks-header {
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.5s;
   position: fixed;
   top: 0;
+  right: 0;
   left: 25px;
   height: 32px;
   background: #222;
@@ -80,19 +80,14 @@ body {
 }
 
 /**
-* Top text
-**/
-
-.spenserian-networks-top {
-  min-width: 1220px;
-}
-
-/**
 * Legend
 **/
 
 #legend {
   height: 47px;
+  max-width: 450px;
+  display: block;
+  margin: 0 auto;
 }
 
 #legend text {
@@ -126,6 +121,7 @@ body {
   width: 210px;
   background: #dcdcdc;
   height: 32px;
+  margin-right: 5px;
 }
 
 #poet-networks-search {
@@ -141,7 +137,7 @@ body {
 
 #poet-networks-typeahead {
   max-height: 120px;
-  width: 250px;
+  width: 323px;
   box-sizing: border-box;
   overflow: auto;
   text-align: left;
@@ -153,10 +149,12 @@ body {
   margin-top: 2px;
   font-family: sans-serif;
   line-height: 1.3em;
-  color: #999;
+  color: #fff;
   position: absolute;
   top: 33px;
   left: 5px;
+  background: #222;
+  opacity: 0.9;
 }
 
 #poet-networks-typeahead div {
@@ -179,18 +177,15 @@ body {
 
 #poet-networks path {
   fill: none;
-  transition: opacity 0.5s;
 }
 
 #poet-networks circle {
   cursor: pointer;
-  transition: opacity 0.5s;
   opacity: 0.1;
 }
 
 #poet-networks .link {
   stroke: rgba(216, 227, 236, 0.3);
-  transition: opacity 0.5s;
 }
 
 #poet-networks .visible {
@@ -199,4 +194,30 @@ body {
 
 #poet-networks .invisible {
   opacity: 0;
+}
+
+/**
+* Mobile
+**/
+
+@media(max-width: 600px) {
+  .spenserian-networks h1 {
+    margin-top: 20px;
+    font-size: 40px;
+  }
+
+  .spenserian-networks .intro-text {
+    display: inline;
+    padding: 0 20px;
+    margin-bottom: 15px;
+  }
+
+  .spenserian-networks p {
+    display: inline;
+  }
+
+  #legend {
+    padding: 0 20px;
+    height: auto;
+  }
 }

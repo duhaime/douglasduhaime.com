@@ -6,3 +6,5 @@ ngrok
 .ruby_version
 node_modules
 utils/webpack/build
+assets/images/preview/
+assets/posts/*/preview/

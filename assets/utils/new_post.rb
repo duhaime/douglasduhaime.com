@@ -30,13 +30,13 @@ end
 title = ARGV[0]
 if not title
   puts 'please provide a post title: '
-  puts 'ruby utils/new_post.rb "My New Post"'
+  puts 'ruby assets/utils/new_post.rb "My New Post"'
   exit
 end
 
 # get the date
 date = Date.parse(Time.now.to_s)
-outfile_path = '_posts/'
+outfile_path = './_posts/'
 
 # get the post content and outfile name
 post_content = get_post_content(title, date)
