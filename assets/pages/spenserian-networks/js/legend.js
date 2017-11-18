@@ -5,8 +5,8 @@
     ************************/
 
     var legend = d3.select('#legend').append('svg')
-        .attr('width', 465)
-        .attr('height', 40)
+        .attr('viewBox', '0 0 465 40')
+        .attr('preserveAspectRatio', 'xMidYMid meet');
 
     legend.append('path')
         .attr('d', interpolatePath({x: 290, y:20}, {x: 360, y: 20}))

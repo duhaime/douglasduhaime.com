@@ -4,8 +4,8 @@
   * Create poet network *
   **********************/
 
-  var width = 1300,
-      height = 1360;
+  var width = 1550,
+      height = 1600;
 
   var margin = {
     top: 40,
@@ -27,12 +27,18 @@
   }
 
   var svg = d3.select(chart.container).append('svg')
-      .attr('width', width)
-      .attr('height', height);
+      .attr('viewBox', '0 0 ' + chart.width + ' ' + chart.height)
+      .attr('preserveAspectRatio', 'xMidYMid meet');
 
   var g = svg.append('g')
       .attr('class', 'network-container')
       .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+
+  var linkContainer = g.append('g')
+      .attr('class', 'link-container')
+
+  var nodeContainer = g.append('g')
+      .attr('class', 'node-container')
 
   /**
   * Glow filter
@@ -149,9 +155,7 @@
   }
 
   // identify node ids that have images
-  var imageIds = _.keys(idToImage).map(function(k) {
-    return parseInt(k)
-  });
+  var imageIds = _.keys(idToImage).map(Number);
 
   /**
   * Loda data
@@ -197,7 +201,7 @@
     * Enter and update
     **/
 
-    var image = g.selectAll('.selected-node')
+    var image = nodeContainer.selectAll('.selected-node')
         .data( _.keys(idToImage) )
       .enter().append('pattern')
         .attr('id', function(d) { return parseInt(d) })
@@ -212,7 +216,7 @@
           .attr('width', chart.headshotSize * 2 + 'px')
           .attr('xlink:href', function(d) { return imagePath + idToImage[d] });
 
-    var node = g.selectAll('.node')
+    var node = nodeContainer.selectAll('.node')
         .data(graph.nodes, function(d) { return d.id }) 
       .enter().append('circle')
         .attr('class', 'node')
@@ -221,38 +225,35 @@
         .attr('cy', function(d) { return d.y })
         .attr('r', getRadius)
         .style('fill', getFill)
-        .style('filter', getFilter)
         .on('mouseenter', handleMouseenter);
 
-    window.setTimeout(function() {
-      d3.selectAll('.node').classed('visible', true);
-    }, 100);
+    d3.selectAll('.node').classed('visible', true)
 
     /**
     * Node attribute functions
     **/
 
     function getRadius(d) {
-      return _.includes(imageIds, d.id) ?
-          chart.headshotSize
+      return _.includes(imageIds, d.id)
+        ? chart.headshotSize
         : Math.log(d.associates.length + 2) * 1.7
     }
 
     function getFill(d) {
-      return _.includes(imageIds, d.id) ?
-          'url(#' + d.id + ')'
+      return _.includes(imageIds, d.id)
+        ? 'url(#' + d.id + ')'
         : d3.rgb(color(d.gender)).brighter(Math.log(d.associates.length+.1)/4)
     }
 
     function getActiveFill(d) {
-      return _.includes(imageIds, d.id) ?
-          'url(#' + d.id + ')'
+      return _.includes(imageIds, d.id)
+        ? 'url(#' + d.id + ')'
         : '#f7ba39'
     }
 
     function getFilter(d) {
-      return _.includes(imageIds, d.id) ?
-          'url(#glow)'
+      return _.includes(imageIds, d.id)
+        ? 'url(#glow)'
         : null
     }
 
@@ -273,8 +274,10 @@
       * Get transition data
       **/
 
+      var linkNodeIds = {};
+      linkNodeIds[d.id] = true;
+
       var linkData = [];
-      var linkNodeIds = [d.id];
       var labelNodes = [{
         x: d.x,
         y: d.y,
@@ -297,7 +300,7 @@
         })
 
         // used to update node attributes
-        linkNodeIds.push(associateId)
+        linkNodeIds[associateId] = true;
 
         // used to update labels
         labelNodes.push({
@@ -317,7 +320,7 @@
       **/
 
       d3.selectAll('.link').remove()
-      var links = g.selectAll('.link').data(linkData)
+      var links = linkContainer.selectAll('.link').data(linkData)
 
       links.enter().append('path')
         .attr('class', 'link')
@@ -327,33 +330,16 @@
       * Begin node transitions
       **/
 
-      g.selectAll('.node').classed('visible', function(d) {
-        return _.includes(linkNodeIds, d.id) ?
-          true
-        : false
-      }).transition()
-        .duration(500)
-        .style('fill', function(d) {
-          return _.includes(linkNodeIds, d.id) ?
-            getActiveFill(d)
-          : getFill(d)
-        })
-        .select(function(d) {
-          // remove and reappend selected nodes to stack
-          // nodes atop links
-          if (_.includes(linkNodeIds, d.id)) {
-            var parent = this.parentNode;
-            parent.removeChild(this)
-            parent.appendChild(this);
-          }
-        })
+      nodeContainer.selectAll('.node').classed('visible', function(d) {
+        return linkNodeIds[d.id] ? true : false;
+      })
 
       /**
       * Start label transitions
       **/
 
       d3.selectAll('.node-label').remove()
-      var labels = g.selectAll('.node-label')
+      var labels = nodeContainer.selectAll('.node-label')
         .data(labelNodes);
 
       labels.enter().append('text')
@@ -379,11 +365,11 @@
         .anchor(labelAnchors)
         .width(width)
         .height(height)
-        .start(100);
+        .start(50);
 
-      labels
-        .transition()
+      labels.transition()
         .duration(500)
+        .delay(function(d, i) { return (100 + (i * 10)); })
         .attr('x', function(d) { return (d.x); })
         .attr('y', function(d) { return (d.y); });
     }
@@ -408,20 +394,13 @@
       mousedNode = null;
 
       // reset nodes
-      g.selectAll('.node').classed('visible', true).transition()
-          .duration(500)
-          .style('fill', getFill)
-          .attr('r', getRadius);
+      g.selectAll('.node').classed('visible', true)
 
       // clear links
-      g.selectAll('.link').classed('invisible', true).transition()
-          .duration(500)
-          .remove()
+      g.selectAll('.link').remove()
 
       // clear labels
-      g.selectAll('.node-label').classed('invisible', true).transition()
-          .duration(500)
-          .remove()
+      g.selectAll('.node-label').remove()
     }
 
   });
