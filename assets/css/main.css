@@ -20,7 +20,6 @@ body {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 /**
@@ -274,7 +273,6 @@ body {
   margin-bottom: 15px;
   font-size: 17px;
   line-height: 22px;
-  font-weight: 500;
 }
 
 @media(max-width: 600px) {
@@ -331,7 +329,6 @@ body {
   color: #666;
   margin: 10px 0 4px;
   transition: color .2s;
-  font-weight: 500;
 }
 
 .home-post .date {
@@ -346,7 +343,7 @@ body {
   display: block;
   font-size: 1.2em;
   color: #555;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .home-post .post-thumbnail {

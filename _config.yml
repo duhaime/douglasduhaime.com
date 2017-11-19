@@ -5,8 +5,8 @@ plugins:
 # minify html
 minify_html: false
 
-# explicit is better than implicit
-basename: ''
+# bust html cache
+bust_cache: true
 
 # files to keep and exclude
 keep_files:
@@ -28,12 +28,16 @@ collections:
     output: false
 
 # instant cello
-name: Douglas Duhaime
 url: http://douglasduhaime.com
+
+# development
+url: https://s3.amazonaws.com/duhaime-staging
+baseurl: https://s3.amazonaws.com/duhaime-staging
+
+name: Douglas Duhaime
 title: Data Mining + Visualization
 description: Working notes on data mining and interactive data visualization.
 fallback_image: /assets/images/fallback.png
-preview: /assets/images/preview/
 github: duhaime
 twitter: douglasduhaime
 dark: 213, 58, 38

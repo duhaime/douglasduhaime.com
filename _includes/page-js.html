@@ -1,9 +1,19 @@
 {% if page.js %}
   {% if page.js.first %}
     {% for js in page.js %}
-      <script type='text/javascript' src='{{ js }}'></script>
+      {% assign start = js | slice: 0, 4 %}
+      {% if start == 'http' %}
+        <script type='text/javascript' src='{{ js }}'></script>
+      {% else %}
+        <script type='text/javascript' src='{{ js | prepend: site.baseurl }}'></script>
+      {% endif %}
     {% endfor %}
   {% else %}
-    <script type='text/javascript' src='{{ page.js }}'></script>
+    {% assign start = js | slice: 0, 4 %}
+    {% if start == 'http' %}
+      <script type='text/javascript' src='{{ page.js }}'></script>
+    {% else %}
+      <script type='text/javascript' src='{{ page.js | prepend: site.baseurl }}'></script>
+    {% endif %}
   {% endif %}
 {% endif %}

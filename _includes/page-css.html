@@ -1,9 +1,19 @@
 {% if page.css %}
   {% if page.css.first %}
     {% for css in page.css %}
-      <link type='text/css' rel='stylesheet' href='{{ css }}'>
+      {% assign start = css | slice: 0, 4 %}
+      {% if start == 'http' %}
+        <link type='text/css' rel='stylesheet' href='{{ css }}'>
+      {% else %}
+        <link type='text/css' rel='stylesheet' href='{{ css | prepend: site.baseurl }}'>
+      {% endif %}
     {% endfor %}
   {% else %}
-    <link type='text/css' rel='stylesheet' href='{{ page.css }}'>
+    {% assign start = css | slice: 0, 4 %}
+    {% if start == 'http' %}
+      <link type='text/css' rel='stylesheet' href='{{ page.css }}'>
+    {% else %}
+      <link type='text/css' rel='stylesheet' href='{{ page.css | prepend: site.baseurl }}'>
+    {% endif %}
   {% endif %}
 {% endif %}

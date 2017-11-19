@@ -9,19 +9,16 @@ title: Douglas Duhaime | Data Mining + Visualization
 
     <div class='home-posts'>
       {%- for post in site.posts %}
-      <div class='home-post'>
-        <a href='{{ post.url }}'>
-          {%- if post.thumbnail %}
-          <div class='post-thumbnail background-image'
-            style='background-image: url({{ post.thumbnail }})'></div>
-          {%- else %}
-          <div class='post-thumbnail background-image'
-            style='background-image: url({{ site.default_thumbnail }})'></div>
-          {%- endif %}
-          <div class='title'>{{ post.title }}</div>
-          <div class='date'>{{ post.date | date_to_string }}</div>
-        </a>
-      </div>
+        {%- if post.thumbnail %}
+          <div class='home-post'>
+            <a href='{{ post.url | prepend: site.baseurl }}'>
+              <div class='post-thumbnail background-image'
+                style='background-image: url({{ post.thumbnail | prepend: site.baseurl }})'></div>
+              <div class='title'>{{ post.title }}</div>
+              <div class='date'>{{ post.date | date_to_string }}</div>
+            </a>
+          </div>
+        {% endif %}
       {%- endfor %}
     </div>
 
@@ -31,7 +28,7 @@ title: Douglas Duhaime | Data Mining + Visualization
       {%- for project in projects -%}
       <div class='home-project'>
         <div class='background-image project-image'
-            style='background-image: url({{ project.image }})'>
+            style='background-image: url({{ project.image | prepend: site.baseurl }})'>
           <div class='project-links'>
             <a href='{{ project.site }}'>Site</a>
             <span>|</span>

@@ -3,20 +3,6 @@ process: true
 ---
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' xmlns:image='http://www.google.com/schemas/sitemap-image/1.1'>
-  <url>
-    <loc>{{ site.url }}</loc>
-    <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-    {%- for image in site.static_files %}
-      {%- if image.path contains site.preview %}
-      <image:image>
-        <image:loc>{{ image.path | prepend: site.url }}</image:loc>
-        <image:caption>{{ site.description }}</image:caption>
-      </image:image>
-      {%- endif %}
-    {%- endfor %}
-  </url>
   {%- for page in site.pages %}
   <url>
     <loc>{{ page.url | prepend: site.url }}</loc>

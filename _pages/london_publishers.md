@@ -16,7 +16,7 @@ css:
 
 <div id='map'>
   <div id='legend'>
-    <img src='/assets/pages/london-publishers/images/ribbon.svg'>
+    <img src='{{ site.baseurl }}/assets/pages/london-publishers/images/ribbon.svg'>
     <div class='legend-label'>
       <svg width='200' height='150'>
         <defs>
@@ -28,7 +28,7 @@ css:
       </svg>
     </div>
     <div class='legend-description-container'>
-      <div class='legend-description'>Shewing known printers in London, 1473-1851.<div>Read more <a href='/posts/mapping-the-early-english-book-trade.html'>here</a>.</div>
+      <div class='legend-description'>Shewing known printers in London, 1473-1851.<div>Read more <a href='{{ site.baseurl }}/posts/mapping-the-early-english-book-trade.html'>here</a>.</div>
       </div>
     </div>
   </div>

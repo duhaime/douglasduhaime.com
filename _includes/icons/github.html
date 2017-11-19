@@ -1,13 +1,13 @@
 <a target='_blank' href='http://github.com/{{ site.github }}'>
   {%- if include.style == 'dark' %}
     <img class='footer-icon'
-      src='/assets/images/icons/github-dark.svg'
-      onerror="this.src='/assets/images/icons/github-dark.png'"
+      src='{{ site.baseurl }}/assets/images/icons/github-dark.svg'
+      onerror="this.src='{{ site.baseurl }}/assets/images/icons/github-dark.png'"
       alt='GitHub Icon'>
   {%- else %}
     <img class='footer-icon'
-      src='/assets/images/icons/github-light.svg'
-      onerror="this.src='/assets/images/icons/github-light.png'"
+      src='{{ site.baseurl }}/assets/images/icons/github-light.svg'
+      onerror="this.src='{{ site.baseurl }}/assets/images/icons/github-light.png'"
       alt='GitHub Icon'>
   {%- endif %}
 </a>

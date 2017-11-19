@@ -5,8 +5,10 @@ date: 2013-11-10
 description: |
   A brief walkthrough of the process my team used to train Stanford's Named Entity Recognizer to better identify nineteenth-century locations.
 categories: ner machine-learning python
-thumbnail: /assets/posts/training-stanford-ner/training-stanford-ner-thumb.jpg
-banner: /assets/posts/training-stanford-ner/training-stanford-ner-banner.png
+thumbnail: |
+  /assets/posts/training-stanford-ner/training-stanford-ner-thumb.jpg
+banner: |
+  /assets/posts/training-stanford-ner/training-stanford-ner-banner.png
 ---
 
 Working with Professor Matthew Wilkens, my fellow doctoral student Suen Wong, and undergraduates at Notre Dame, I have spent the last few months using the [Stanford Named Entity Recognition (NER) classifier](https://nlp.stanford.edu/software/CRF-NER.shtml) to identify locations in a few thousand works of nineteenth-century American literature. Using the NER classifier—an enormously powerful tool that can identify such "named entities" in texts as people, places, and company names—our mission was to find all of the locations within Professor Wilkens' corpus of nineteenth-century novels. While Stanford's out-of-the-box classifier could be used for such a purpose, we elected to retrain the tool with nineteenth-century text files in order to improve the classifier's performance. In case others are curious about the process involved in retraining and testing a trained classifier, I thought it might be worthwhile to provide a quick summation of our method and findings to date.
@@ -99,31 +101,31 @@ Montauk LOC 0
 
 By measuring the degree to which the tool's classifications match our human classifications, we can measure the accuracy of the trained classifier. After training all ten classifiers, we did precisely this, measuring the success rates of each classifier and plotting the resulting figures in [R](https://github.com/duhaime/Analyzing-Stanford-NER-Classifier-Results/blob/master/Plotting%20NER%20Training%20Results.R):
 
-<img class='medium' src='/assets/posts/training-stanford-ner/TruePositives.jpeg' alt='Frequency of True Positive classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/TruePositives.jpeg' alt='Frequency of True Positive classification results after training the Stanford CoreNLP NER model.' />
 
 This first plot measures the number of true positive locations that both the out-of-the-box Stanford parser identified in each of our .tsv files as well as the number of true positives our trained classifiers identified in each .tsv file. A true positive location is a token that the classifier has identified as a location (this is what makes it "positive") that we have also designated as a location (this is what makes it "true"). If the classifier designates a token as a location but we have identified as a non-location, that counts as a "false positive." The following graph makes it fairly clear that the out-of-the-box classifier tends to produce many more false positives than our trained classifiers:
 
-<img class='medium' src='/assets/posts/training-stanford-ner/FalsePositives.jpeg' alt='Frequency of False Positive classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/FalsePositives.jpeg' alt='Frequency of False Positive classification results after training the Stanford CoreNLP NER model.' />
 
 While measuring true positives and false positives is important, it's also important to measure false negatives, which are tokens that we have identified as locations that the classifier fails to identify as locations. The following graph illustrates the fact that the trained classifier tended to miss many more locations than did the out-of-the-box classifier:
 
-<img class='medium' src='/assets/posts/training-stanford-ner/FalseNegatives.jpeg' alt='Frequency of False Negative classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/FalseNegatives.jpeg' alt='Frequency of False Negative classification results after training the Stanford CoreNLP NER model.' />
 
 Aside from true positives, false positives, and false negatives, the only other possibility is "true negatives", which are so numerous as to almost prevent comparison when plotted together:
 
-<img class='medium' src='/assets/posts/training-stanford-ner/TrueNegatives.jpeg' alt='Frequency of True Negative classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/TrueNegatives.jpeg' alt='Frequency of True Negative classification results after training the Stanford CoreNLP NER model.' />
 
 While the plots of true positives, false positives, and false negatives above speak to some of the strengths and weaknesses of the trained classifiers, those who work in statistics and information retrieval like to combine some of these values in order to offer additional insight into their data. One such combination that is commonly employed is called "Precision", which in our case is a measure of the degree to which those tokens identified as locations by a given classifier are indeed locations. More specifically, precision is calculated by taking the total number of true positives and dividing that number by the combined sum of true positives and false positives (<b>P = TP/TP+FP</b>). Here are the P values of the trained and untrained classifiers:
 
-<img class='medium' src='/assets/posts/training-stanford-ner/Precision.jpeg' alt='Precision classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/Precision.jpeg' alt='Precision classification results after training the Stanford CoreNLP NER model.' />
 
 Another common measure used by statisticians is "Recall", which is calculated by dividing the number of true positives by the sum total of true positives and false negatives (<b>R = TP/TP+FN</b>). In our tests, recall is essentially an indication of the degree to which a given classifier is able to find all of the tokens that we have identified as locations. Clearly the trained classifier did not excel at this task:
 
-<img class='medium' src='/assets/posts/training-stanford-ner/Recall.jpeg' alt='Recall classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/Recall.jpeg' alt='Recall classification results after training the Stanford CoreNLP NER model.' />
 
 Finally, once we have calculated our precision and recall values, we can combine those values into an "F measure," which serves as an abstract index of both. There are many ways to calculate F values, depending on whether precision or recall are more important for one's experiment, but to grant equal weight to both precision and recall, we can use a standard harmonic means equation: <b>F = 2PR/P+R</b>. The F values below may serve as an aggregate index of the success of our classifiers:
 
-<img class='medium' src='/assets/posts/training-stanford-ner/F1.jpeg' alt='F1 classification results after training the Stanford CoreNLP NER model.' />
+<img class='medium' src='{{ site.baseurl }}/assets/posts/training-stanford-ner/F1.jpeg' alt='F1 classification results after training the Stanford CoreNLP NER model.' />
 
 So what do these charts tell us? In the first place, they tell us that the trained classifiers tend to operate with much greater precision than the out-of-the-box classifier. To state the point slightly differently, we could say that the trained classifier had far fewer false positives than did the untrained classifier. On the other hand, the trained classifier had far more false negatives than did the untrained classifier. This means that the trained classifier incorrectly identified many locations as non-locations. In sum, if our classifier were a baseball player, it would swing at only some of the many beautiful pitches it saw, but if it decided to swing, it would hit the ball pretty darn well.
 

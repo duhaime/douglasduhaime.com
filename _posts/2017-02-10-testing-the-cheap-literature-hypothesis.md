@@ -219,7 +219,7 @@ While the plot above allows one to quickly examine the ways in which a publicati
 <div class='price-by-factor'>
   <div class='price-by-factor-buttons'>
     <div class='factor-button' id='subject'>
-      <img src='/assets/posts/cheap-literature/images/icons/subject.svg'>
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/icons/subject.svg'>
       <span>Subject</span>
     </div>
     <div class='factor-button' id='author'>
@@ -291,13 +291,13 @@ Even given the observations above, one could argue that while literary records o
   <div class='slope-buttons'>
     <label>Filter by slope: </label>
     <div class='slope-button' id='negative'>
-      <img src='/assets/posts/cheap-literature/images/slope-buttons/negative-slope.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/slope-buttons/negative-slope.svg' />
     </div>
     <div class='slope-button active' id='neutral'>
-      <img src='/assets/posts/cheap-literature/images/slope-buttons/neutral-slope.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/slope-buttons/neutral-slope.svg' />
     </div>
     <div class='slope-button' id='positive'>
-      <img src='/assets/posts/cheap-literature/images/slope-buttons/positive-slope.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/slope-buttons/positive-slope.svg' />
     </div>
   </div>
 
@@ -305,27 +305,27 @@ Even given the observations above, one could argue that while literary records o
 
   <div class='subject-buttons'>
     <div class='subject-button active' id='england'>
-      <img src='/assets/posts/cheap-literature/images/subject-buttons/england.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/subject-buttons/england.svg' />
       <span>England</span>
     </div>
     <div class='subject-button' id='politics'>
-      <img src='/assets/posts/cheap-literature/images/subject-buttons/scales.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/subject-buttons/scales.svg' />
       <span>Politics</span>
     </div>
     <div class='subject-button' id='poems'>
-      <img src='/assets/posts/cheap-literature/images/subject-buttons/pen.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/subject-buttons/pen.svg' />
       <span>Poems</span>
     </div>
     <div class='subject-button' id='history'>
-      <img src='/assets/posts/cheap-literature/images/subject-buttons/pyramids.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/subject-buttons/pyramids.svg' />
       <span>History</span>
     </div>
     <div class='subject-button' id='plays'>
-      <img src='/assets/posts/cheap-literature/images/subject-buttons/curtain.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/subject-buttons/curtain.svg' />
       <span>Plays</span>
     </div>
     <div class='subject-button' id='sermons'>
-      <img src='/assets/posts/cheap-literature/images/subject-buttons/church.svg' />
+      <img src='{{ site.baseurl }}/assets/posts/cheap-literature/images/subject-buttons/church.svg' />
       <span>Sermons</span>
     </div>
   </div>
