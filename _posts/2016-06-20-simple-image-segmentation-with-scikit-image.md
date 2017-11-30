@@ -82,7 +82,7 @@ Given a matrix representation of the composite image discussed above, for exampl
 
 <div class='dilations-x'>
   <img src='{{ site.baseurl }}/assets/posts/image-segmentation/sample-periodical-image.jpg' class='image' alt='Sample image that contains several newspaper clippings.'>
-  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/pixel-sums.jpg' class='pixels' alt='Cumulative pixel darkness along the X dimension of the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/pixel-sums.png' class='pixels' alt='Cumulative pixel darkness along the X dimension of the input image'>
 </div>
 
 Examining this chart, we can tell there are two dark bands of pixels within the image on the left: one that stretches from roughly pixels 100-800 in the image, and another that stretches from roughly 1200-1900. Given just this representation of the image's contents, one would have enough information to partition the image into two regions. From there, one could repeat the procedure, this time dilating pixels along the y axis and again splitting the image based on the resulting blocks within the pixel histogram.
