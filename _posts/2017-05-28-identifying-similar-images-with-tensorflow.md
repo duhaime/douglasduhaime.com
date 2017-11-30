@@ -2,7 +2,7 @@
 layout: post
 title: Identifying Similar Images with TensorFlow
 date: 2017-05-28
-categories: d3 canvas tensorflow
+categories: d3 canvas tensorflow tsne
 thumbnail: /assets/posts/similar-images/similar-images-thumb.jpg
 banner: /assets/posts/similar-images/similar-images-banner.jpg
 description: |
