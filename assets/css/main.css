@@ -277,7 +277,7 @@ body {
 
 @media(max-width: 600px) {
   .home .container {
-    width: 90%;
+    width: 93%;
   }
 
   .home h1 {
@@ -346,27 +346,20 @@ body {
   font-weight: 400;
 }
 
-.home-post .post-thumbnail {
-  width: 100%;
-  padding-bottom: 13.5%;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  transition: filter .2s;
-}
-
 .home-post .post-thumbnail,
 .home-project .project-image {
   background-color: #aaa;
-  border: 1px solid #aaa;
+  border: 1px solid #757575;
   box-sizing: border-box;
+}
+
+.home-post .post-thumbnail {
+  width: 100%;
+  padding-bottom: 12.5%;
 }
 
 .home-post:hover .title {
   color: rgb({{ site.dark }});
-}
-
-.home-post:hover .post-thumbnail {
-  filter: grayscale(0%);
 }
 
 @media(max-width: 874px) {
@@ -405,10 +398,12 @@ body {
 
 .home-project .project-image {
   width: 100%;
-  height: 0;
-  padding-bottom: 39%;
   background-position: top center;
   position: relative;
+}
+
+.home-project .project-image img {
+  margin: 0;
 }
 
 .home-project .project-title {
@@ -476,7 +471,7 @@ body {
 * Noscript warning
 **/
 
-.noscript-warning {
+noscript {
   position: fixed;
   top: 0;
   width: 100%;
