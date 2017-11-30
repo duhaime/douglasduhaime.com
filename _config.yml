@@ -27,13 +27,11 @@ collections:
   projects:
     output: false
 
-# instant cello
+# site location
 url: http://douglasduhaime.com
+baseurl: ''
 
-# development
-url: https://s3.amazonaws.com/duhaime-staging
-baseurl: https://s3.amazonaws.com/duhaime-staging
-
+# hello cello
 name: Douglas Duhaime
 title: Data Mining + Visualization
 description: Working notes on data mining and interactive data visualization.
