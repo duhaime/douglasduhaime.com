@@ -24,51 +24,63 @@ js:
 <nav>
   <h2>Click an image below to explore a topic:</h2>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES15557.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES15557.png)'></div>
     <div>Boxers</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES13276.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES13276.png)'></div>
     <div>Buildings</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES17700.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES17700.png)'></div>
     <div>Buttons</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES20315.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES20315.png)'></div>
     <div>Chairs</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES22594.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES22594.png)'></div>
     <div>Gowns</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES14735.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES20334.png)'></div>
     <div>Groups</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES04871.jpg'>
-    <div>Hats</div>
-  </div>
-  <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES15328.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES15328.png)'></div>
     <div>Landscapes</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES22336.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES22336.png)'></div>
     <div>Madams</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES15626.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES15626.png)'></div>
     <div>Miniatures</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES22681.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES22681.png)'></div>
     <div>Performers</div>
   </div>
   <div class='hotspot'>
-    <img src='http://localhost:8000/64-thumbs/MES21013.jpg'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES21013.png)'></div>
     <div>Suits</div>
+  </div>
+  <div class='hotspot'>
+    <div class='background-image'
+      style='background-image: url(http://localhost:5000/thumbs/128px/MES16558.png)'></div>
+    <div>Swords</div>
   </div>
 </nav>

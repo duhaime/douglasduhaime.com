@@ -111,3 +111,8 @@ nav.hidden {
   width: 90px;
   font-size: .9em;
 }
+
+.hotspot .background-image {
+  padding-bottom: 110%;
+  background-position: 50% 11%;
+}

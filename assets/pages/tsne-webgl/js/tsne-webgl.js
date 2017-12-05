@@ -4,10 +4,11 @@
 
 // Identify data endpoint
 var dataUrl = 'https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/';
-var dataUrl = 'http://localhost:8000/';
+var dataUrl = 'http://localhost:5000/';
 
 // Create global stores for image and atlas sizes
-var image, atlas;
+var image = { width: 32, height: 32, shownWidth: 64, shownHeight: 64 };
+var atlas = { width: 2048, height: 2048, cols: 2048 / 32, rows: 2048 / 32 };
 
 // Create a store for image position information
 var imagePositions = null;
@@ -20,12 +21,24 @@ var imageToIndex = {};
 // {atlas0: percentLoaded, atlas1: percentLoaded}
 var loadProgress = {};
 
-// Create a store for the image atlas materials. Data structure:
-// {subImageSize: {atlas0: material, atlas1: material}}
-var materials = {32: {}, 64: {}};
+// Create a store for the 32px and 64px atlas materials
+var materials = {
+  32: [],
+  64: []
+}
+
+// Count of 32px and 64px atlas files to fetch
+var atlasCount = 6;
+var largeAtlasCount = atlasCount * 4;
 
 // Create a store for meshes
 var meshes = [];
+
+// Count of the image files loaded
+var loadedImages = 0;
+
+// Number of images to include in each mesh
+var imagesPerMesh = 1024;
 
 /**
 * Scene
@@ -48,7 +61,7 @@ var aspectRatio = window.innerWidth / window.innerHeight;
 Specify the near and far clipping planes. Only objects
 between those planes will be rendered in the scene
 (these values help control the number of items rendered
-at any given time)
+at any given time); see https://threejs.org/docs/#api/math/Frustum
 */
 var nearPlane = 100;
 var farPlane = 50000;
@@ -96,50 +109,41 @@ document.body.appendChild( renderer.domElement );
 
 // Load the image position JSON file
 var fileLoader = new THREE.FileLoader();
-var url = dataUrl + 'image_tsne_projections.json';
+var url = dataUrl + 'tsne_image_positions.json';
 fileLoader.load(url, function(data) {
   imagePositions = JSON.parse(data);
-  JSON.parse(data).forEach(function(d, idx) {
+  imagePositions.forEach(function(d, idx) {
     imageToIndex[ d.img ] = idx;
   })
-  conditionallyBuildGeometries(32)
+  maybeBuildGeometries()
 })
 
 /**
 * Load Atlas Textures
 **/
 
-// List of all textures to be loaded, the size of subimages
-// in each, and the total count of atlas files for each size
-var textureSets = {
-  32: { size: 32, count: 5 },
-  64: { size: 64, count: 20 }
-}
-
 // Create a texture loader so we can load our image files
 var textureLoader = new AjaxTextureLoader();
 
-function loadTextures(size, onProgress) {
-  setImageAndAtlasSize(size)
-  for (var i=0; i<textureSets[size].count; i++) {
+function loadAtlasFiles() {
+  for (var i=0; i<atlasCount; i++) {
     textureLoader.load(
-      dataUrl + 'atlas_files/' + size + 'px/atlas-' + i + '.jpg',
-      handleTexture.bind(null, size, i),
-      onProgress ? onProgress.bind(null, size, i) : null,
+      dataUrl + 'atlas_files/32px/atlas-' + i + '.jpg',
+      handleTexture.bind(null, i),
+      handleProgress.bind(null, i)
     )
   }
 }
 
-function handleProgress(size, atlasIndex, xhr) {
+function handleProgress(atlasIndex, xhr) {
   loadProgress[atlasIndex] = xhr.loaded / xhr.total;
   // Sum the total load progress among all atlas files
   var sum = Object.keys(loadProgress).reduce(function (sum, key) {
     return sum + loadProgress[key];
   }, 0);
-  // Normalize the load progress to a value {0:1}
-  var progress = sum / textureSets[size].count;
   // Update or hide the loader
   var loader = document.querySelector('#loader');
+  var progress = sum / atlasCount;
   progress < 1
     ? loader.innerHTML = parseInt(progress * 100) + '%'
     : loader.style.display = 'none';
@@ -147,30 +151,20 @@ function handleProgress(size, atlasIndex, xhr) {
 
 // Create a material from the new texture and call
 // the geometry builder if all textures have loaded 
-function handleTexture(size, textureIndex, texture) {
+function handleTexture(textureIndex, texture) {
   var material = new THREE.MeshBasicMaterial({ map: texture });
-  materials[size][textureIndex] = material;
-  conditionallyBuildGeometries(size, textureIndex)
+  material.transparent = true;
+  materials['32'][textureIndex] = material;
+  maybeBuildGeometries(textureIndex);
 }
 
 // If the textures and the mapping from image index
 // to image position are loaded, create the geometries
-function conditionallyBuildGeometries(size, textureIndex) {
-  if (size === 32) {
-    var nLoaded = Object.keys(materials[size]).length;
-    var nRequired = textureSets[size].count;
-    if (nLoaded === nRequired && imagePositions) {  
-      // Add the low-res textures and load the high-res textures
-      buildGeometry(size);
-      loadTextures(64)
-    }
-  } else {
-    // Add the new high-res texture to the scene
-    updateMesh(size, textureIndex)
+function maybeBuildGeometries(textureIndex) {
+  if (Object.keys(materials['32']).length === atlasCount && imagePositions) {
+    buildGeometry();
   }
 }
-
-loadTextures(32, handleProgress)
 
 /**
 * Build Image Geometry
@@ -178,7 +172,7 @@ loadTextures(32, handleProgress)
 
 // Iterate over the textures in the current texture set
 // and for each, add a new mesh to the scene
-function buildGeometry(size) {
+function buildGeometry() {
   var atlasIndex = 0;
   var meshIndex = 0;
   var geometry = new THREE.Geometry();
@@ -186,8 +180,8 @@ function buildGeometry(size) {
     geometry = updateVertices(geometry, imageIndex);
     geometry = updateFaces(geometry);
     geometry = updateFaceVertexUvs(geometry, imageIndex);
-    if (imageIndex > 0 && (imageIndex + 1) % 1024 === 0) {
-      buildMesh(geometry, materials[size][atlasIndex], meshIndex);
+    if (imageIndex > 0 && (imageIndex + 1) % imagesPerMesh === 0) {
+      buildMesh(geometry, materials['32'][atlasIndex], meshIndex);
       var geometry = new THREE.Geometry();
       meshIndex++;
     }
@@ -195,6 +189,12 @@ function buildGeometry(size) {
       atlasIndex++;
     }
   }
+  // Build the remaining geometry (if any)
+  if (geometry.vertices.length) {
+    buildMesh(geometry, materials['32'][atlasIndex], meshIndex);
+  }
+  // Load the large atlas files
+  loadLargeAtlasFiles();
 }
 
 // Add one vertex for each corner of the image, using the 
@@ -273,7 +273,7 @@ function updateFaceVertexUvs(geometry, imageIndex) {
   // the bottom edge of the atlas           
   var yOffset = 1 - (Math.floor(imageIndex/atlas.cols) * h) - h;
   // Determine the index position of the first face for this image
-  var faceIndex = 2 * (imageIndex % 1024);
+  var faceIndex = (imageIndex % imagesPerMesh) * 2;
   // Use .set() if the given faceVertex is already defined; see:
   // https://github.com/mrdoob/three.js/issues/7179
   if (geometry.faceVertexUvs[0][faceIndex]) {
@@ -300,14 +300,15 @@ function updateFaceVertexUvs(geometry, imageIndex) {
       new THREE.Vector2(xOffset, yOffset + h)
     ]
   }
+  // Explicitly set the material index for the new faces
+  geometry.faces[faceIndex].materialIndex = 0;
+  geometry.faces[faceIndex + 1].materialIndex = 0;
   return geometry;
 }
 
 function buildMesh(geometry, material, meshIndex) {
-  // Convert the geometry to a BuferGeometry for additional performance
-  //var geometry = new THREE.BufferGeometry().fromGeometry(geometry);
   // Combine the image geometry and material into a mesh
-  var mesh = new THREE.Mesh(geometry, material);
+  var mesh = new THREE.Mesh(geometry, [material]);
   // Store the index position of the image and the mesh
   mesh.userData.meshIndex = meshIndex;
   // Set the position of the image mesh in the x,y,z dimensions
@@ -319,32 +320,81 @@ function buildMesh(geometry, material, meshIndex) {
 }
 
 /**
-* Update Geometries with new VertexUvs and materials
+* Functions to load large atlas files
 **/
 
-function updateMesh(size, textureIndex) {
-  // Update the appropriate material
-  meshes[textureIndex].material = materials[size][textureIndex];
-  meshes[textureIndex].material.needsUpdate = true;
-  // Update the facevertexuvs
-  for (var i=0; i<atlas.cols*atlas.rows; i++) {
-    var newUvs = updateFaceVertexUvs(meshes[textureIndex].geometry, i);
-    meshes[textureIndex].geometry = newUvs;
+function loadLargeAtlasFiles() {
+  image = { width: 64, height: 64, shownWidth: 64, shownHeight: 64 };
+  atlas = { width: 2048, height: 2048, cols: 2048 / 64, rows: 2048 / 64 };
+  for (var i=0; i<largeAtlasCount; i++) {
+    textureLoader.load(
+      dataUrl + 'atlas_files/64px/atlas-' + i + '.jpg',
+      handleLargeTexture.bind(null, i)
+    )
   }
-  meshes[textureIndex].geometry.uvsNeedUpdate = true;
-  meshes[textureIndex].geometry.verticesNeedUpdate = true;
 }
 
+function handleLargeTexture(atlasIndex, texture) {
+  var material = new THREE.MeshBasicMaterial({ map: texture });
+  materials['64'][atlasIndex] = material;
+  updateTexture(atlasIndex)
+}
+
+function updateTexture(atlasIndex) {
+  // Update the material for the mesh, starting at index 1 (0 is taken)
+  meshes[atlasIndex].material = [ materials['64'][atlasIndex] ];
+  meshes[atlasIndex].material.needsUpdate = true;
+  // Update the vertexUvs of each image in the new atlas
+  var geometry = meshes[atlasIndex].geometry;
+  for (var i=0; i<imagesPerMesh; i++) {
+    geometry = updateFaceVertexUvs(geometry, i)
+  }
+  meshes[atlasIndex].geometry = geometry;
+  meshes[atlasIndex].geometry.uvsNeedUpdate = true;
+  meshes[atlasIndex].geometry.verticesNeedUpdate = true;
+}
+
+
 /**
-* Helpers
+* Functions to load individual image files (unused)
 **/
 
-function setImageAndAtlasSize(size) {
-  // Identify the subimage size in px (width/height) and the
-  // size of the image as it will be displayed in the map
-  image = { width: size,  height: size, shownWidth: 64, shownHeight: 64 };
-  // Identify the total number of cols & rows in the image atlas
-  atlas = { width: 2048, height: 2048, cols: 2048/size, rows: 2048/size };
+function loadImage(imageIndex) {
+  if (!imagePositions[imageIndex]) return;
+  var image = imagePositions[imageIndex].img;
+  textureLoader.load(
+    dataUrl + '/64-thumbs/' + image + '.jpg',
+    handleImage.bind(null, imageIndex)
+  )
+}
+
+function handleImage(imageIndex, image) {
+  var material = new THREE.MeshBasicMaterial({ map: image });
+  materials.image[imageIndex] = material;
+  updateImageGeometry(imageIndex);
+  loadImage(imageIndex+1);
+}
+
+function updateImageGeometry(imageIndex) {
+  var atlasIndex = Math.floor(imageIndex / (atlas.rows * atlas.cols));
+  var offsetIndex = Math.floor(imageIndex % (atlas.rows * atlas.cols));
+  var faceIndex = offsetIndex * 2;
+  // Update the material for this image
+  meshes[atlasIndex].material[offsetIndex] = materials.image[imageIndex];
+  meshes[atlasIndex].material[offsetIndex].needsUpdate = true;
+  meshes[atlasIndex].material.needsUpdate = true;
+  // Update the faceVertexUvs for the faces of this image
+  meshes[atlasIndex].geometry.faceVertexUvs[0][faceIndex][0].set(0, 0)
+  meshes[atlasIndex].geometry.faceVertexUvs[0][faceIndex][1].set(1, 0)
+  meshes[atlasIndex].geometry.faceVertexUvs[0][faceIndex][2].set(1, 1)
+  meshes[atlasIndex].geometry.faceVertexUvs[0][faceIndex + 1][0].set(0, 0)
+  meshes[atlasIndex].geometry.faceVertexUvs[0][faceIndex + 1][1].set(1, 1)
+  meshes[atlasIndex].geometry.faceVertexUvs[0][faceIndex + 1][2].set(0, 1)
+  meshes[atlasIndex].geometry.faces[faceIndex].materialIndex = offsetIndex;
+  meshes[atlasIndex].geometry.faces[faceIndex + 1].materialIndex = offsetIndex;
+  meshes[atlasIndex].geometry.uvsNeedUpdate = true;
+  meshes[atlasIndex].geometry.groupsNeedUpdate = true;
+  meshes[atlasIndex].geometry.verticesNeedUpdate = true;
 }
 
 /**
@@ -389,8 +439,8 @@ function onMouseup(event) {
   var faceIndex = selected.faceIndex;
   // Identify the selected item's mesh index
   var meshIndex = selected.object.userData.meshIndex;
-  // 1024 images per mesh, 2 faces per image
-  var imageIndex = (meshIndex * 1024) + (Math.floor(faceIndex / 2));
+  // rows * cols images per mesh, 2 faces per image
+  var imageIndex = (meshIndex * (atlas.rows * atlas.cols)) + (Math.floor(faceIndex / 2));
   // Store the image name in the url hash for reference
   window.location.hash = imagePositions[imageIndex].img;
   flyTo(
@@ -484,3 +534,10 @@ requestAnimationFrame( animate );
   controls.update();
 }
 animate();
+
+/**
+* Main
+**/
+
+// Initialize the requests that bootstrap the application
+loadAtlasFiles()
