@@ -12,13 +12,17 @@ js:
   - https://production-assets.codepen.io/assets/embed/ei.js
 ---
 
-For the last year or so, Yale's DHLab has undertaken a series of experiments organized around analysis of visual culture. Some of those experiments have involved [identifying similar images]({{ site.baseurl }}/posts/identifying-similar-images-with-tensorflow.html) and visualizing patterns uncovered in this process. In this post, I wanted to discuss how we used the awesome Three.js library to build a WebGL-powered visualization that can display tens of thousands of images in an interactive 3D environment:
+For the last year or so, Yale's DHLab has undertaken a series of experiments organized around analysis of visual culture. Some of those experiments have involved [identifying similar images]({{ site.baseurl }}/posts/identifying-similar-images-with-tensorflow.html) and visualizing patterns uncovered in this process. In this post, I wanted to discuss how we used the amazing Three.js library to build a WebGL-powered [visualization](https://s3-us-west-2.amazonaws.com/lab-apps/pix-plot/index.html) that can display tens of thousands of images in an interactive 3D environment [click to enter]:
 
-<img src='{{ site.baseurl }}/assets/posts/tsne-webgl/images/tsne-webgl-preview.jpg' alt='A preview of the WebGL-powered TSNE maps we will build below'>
+<a class='click-to-interact' href='https://s3-us-west-2.amazonaws.com/lab-apps/pix-plot/index.html'>
+  <img src='{{ site.baseurl }}/assets/posts/tsne-webgl/images/tsne-webgl-preview.jpg' alt='A preview of the WebGL-powered TSNE maps we will build below'>
+</a>
 
-## Three.js Foundations
+If you're interested in creating something similar, feel free to check out the [full code](https://github.com/YaleDHLab/pix-plot).
 
-Three.js is a JavaScript library that generates lower-level code for WebGL (the standard API for 3D rendering in a web browser). Using Three.js, one can build complex 3D environments that would take much more code to build in raw WebGL. For a quick sample of the projects others have built with the library, check out the [Three.js homepage](https://threejs.org/).
+## Getting Started with Three.js
+
+Three.js is a JavaScript library that generates lower-level code for WebGL, the standard API for 3D rendering in a web browser. Using Three.js, one can build complex 3D environments that would take much more code to build in raw WebGL. For a quick sample of the projects others have built with the library, check out the [Three.js homepage](https://threejs.org/).
 
 To get started with Three.js, one needs to provide a bit of boilerplate code with the three essential elements of a Three.js page:
 
@@ -74,9 +78,11 @@ document.body.appendChild( renderer.domElement );
 
 {% endhighlight %}
 
-The code above creates our scene, adds a camera, and renders the canvas to the DOM. Now all we need to do is add some objects to the scene.
+The code above creates the scene, adds a camera, and renders the canvas to the DOM. Now all we need to do is add some objects to the scene.
 
-Each item rendered in a Three.js scene has a **geometry** and a **material**. Geometries describe the vertices and faces of a given object, and materials describe the appearance of that shape (including texture and color). A geometry and a material can be combined into a **mesh**, which is a fully composed object ready to be added to a scene:
+Each item rendered in a Three.js scene has a **geometry** and a **material**. Geometries use vertices (points) and faces (polygons described by vertices) to define the shape of an object, and materials use textures and colors to define the appearance of that shape. A geometry and a material can be combined into a **mesh**, which is a fully composed object ready to be added to a scene.
+
+The example below uses the high-level [BoxGeometry](https://threejs.org/docs/#api/geometries/BoxGeometry), which comes with pre-built vertices and faces:
 
 {% highlight javascript %}
 
@@ -89,12 +95,12 @@ var material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
 // Combine the geometry and material into a mesh
 var cube = new THREE.Mesh( geometry, material );
 
-// Add the mesh to our scene
+// Add the mesh to the scene
 scene.add( cube );
 
 {% endhighlight %}
 
-Finally, we can call the `render()` method to render our scene on the page:
+Finally, to render the scene on the page, one must call the `render()` method, passing in the scene and the camera as arguments:
 
 {% highlight javascript %}
 
@@ -102,16 +108,16 @@ renderer.render( scene, camera );
 
 {% endhighlight %}
 
-Combining the snippets above, we get the following result:
+Combining the snippets above gives the following result:
 
 <p data-height='265' data-theme-id='0' data-slug-hash='WXdYpx' data-default-tab='result' data-user='duhaime' data-embed-version='2' data-pen-title='The Simplest Three.js Scene' class='codepen'>See the Pen <a href='https://codepen.io/duhaime/pen/WXdYpx/'>The Simplest Three.js Scene</a> by Douglas Duhaime (<a href='https://codepen.io/duhaime'>@duhaime</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 
-This is great, but our scene is static. To add some **animation** to the scene, we can periodically update the cube's rotation property, then rerender the scene. To do so, delete the `renderer.render()` line we used above, then add the following:
+This is great, but the scene is static. To add some **animation** to the scene, one can periodically update the cube's rotation property, then rerender the scene. To do so, one can replace the `renderer.render()` line above with a render loop that calls itself recursively. Here is a standard render loop in Three.js:
 
 {% highlight javascript %}
 
 function animate() {
-requestAnimationFrame( animate );
+  requestAnimationFrame( animate );
   renderer.render( scene, camera );
 
   // Rotate the object a bit each animation frame
@@ -122,27 +128,27 @@ animate();
 
 {% endhighlight %}
 
-Now the cube will slowly rotate:
+Adding this block at the bottom of the script makes the cube slowly rotate:
 
 <p data-height='265' data-theme-id='0' data-slug-hash='vWpvNL' data-default-tab='result' data-user='duhaime' data-embed-version='2' data-pen-title='Animating the Cube' class='codepen'>See the Pen <a href='https://codepen.io/duhaime/pen/vWpvNL/'>Animating the Cube</a> by Douglas Duhaime (<a href='https://codepen.io/duhaime'>@duhaime</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 
-To make the faces of the cube easier to differentiate, we can add some lights to the scene. To do so, we'll want to change the cube's material, as the [MeshBasicMaterial](https://threejs.org/docs/#api/materials/MeshBasicMaterial) doesn't support lights. Let's replace the material defined above with a [MeshPhongMaterial](https://threejs.org/docs/#api/materials/MeshPhongMaterial):
+Adding **lights** to the scene can make it easier to differentiate the faces of the cube. To add lights to the scene above, we'll first want to change the cube's material, because as the documentation says the [MeshBasicMaterial](https://threejs.org/docs/#api/materials/MeshBasicMaterial) is not affected by lights. Let's replace the material defined above with a [MeshPhongMaterial](https://threejs.org/docs/#api/materials/MeshPhongMaterial):
 
 {% highlight javascript %}
 
-var material = new THREE.MeshPhongMaterial({ color: 0xffff00 })
+var material = new THREE.MeshPhongMaterial({color: 0xffff00})
 
 {% endhighlight %}
 
-Next let's point a light at our cube so that different faces of the cube catch different amounts of light:
+Next let's point a light at the cube so that different faces of the cube catch different amounts of light:
 
 {% highlight javascript %}
 
 // Add a point light with #fff color, .7 intensity, and 0 distance
-var light = new THREE.PointLight( 0xffffff, .7, 0 );
+var light = new THREE.PointLight(0xffffff, .7, 0);
 
-// Specify the light's position
-light.position.set(1, 1, 100 );
+// Specify the light's position in the x, y, and z dimensions
+light.position.set(1, 1, 100);
 
 // Add the light to the scene
 scene.add(light)
@@ -155,23 +161,26 @@ Voila!
 
 ## Adding Images to a Scene
 
-The snippets above give a quick overview of the core elements of a Three.js scene. Let's build upon those ideas to create a TSNE map of images.
+The snippets above give a quick overview of the core elements of a Three.js scene. The following section will build upon those ideas to create a TSNE map of images.
 
-To build a TSNE image viewer, we'll need to load some image files into custom Three.js materials. We can do so by using the [TextureLoader](https://threejs.org/docs/#api/loaders/TextureLoader):
+To build an image viewer, we'll need to load some image files into some Three.js materials. We can do so by using the [TextureLoader](https://threejs.org/docs/#api/loaders/TextureLoader):
 
 {% highlight javascript %}
 
-// Create a texture loader so we can load our image file
+// Create a texture loader so we can load the image file
 var loader = new THREE.TextureLoader();
 
-// Load an image file into a custom material
+// Specify the path to an image
+var url = 'https://s3.amazonaws.com/duhaime/blog/tsne-webgl/assets/cat.jpg';
+
+// Load an image file into a MeshLambert material
 var material = new THREE.MeshLambertMaterial({
-  map: loader.load('https://s3.amazonaws.com/duhaime/blog/tsne-webgl/assets/cat.jpg')
+  map: loader.load(url)
 });
 
 {% endhighlight %}
 
-Now that the material is ready, the remaining steps are to generate a geometry from the image, combine the material and geoemtry into a mesh, and add the mesh to the scene, just like we did for the cube above. Because images are two-dimensional planes, we can use a simple [PlaneGeometry](https://threejs.org/docs/#api/geometries/PlaneGeometry) for this object's geometry:
+Now that the material is ready, the remaining steps are to generate a geometry from the image, combine the material and geoemtry into a mesh, and add the mesh to the scene, just like the cube example above. Because images are two-dimensional planes, we can use a simple [PlaneGeometry](https://threejs.org/docs/#api/geometries/PlaneGeometry) for this object's geometry:
 
 {% highlight javascript %}
 
@@ -179,7 +188,7 @@ Now that the material is ready, the remaining steps are to generate a geometry f
 // and a height that preserves the image's aspect ratio
 var geometry = new THREE.PlaneGeometry(10, 10*.75);
 
-// combine our image geometry and material into a mesh
+// combine the image geometry and material into a mesh
 var mesh = new THREE.Mesh(geometry, material);
 
 // set the position of the image mesh in the x,y,z dimensions
@@ -190,11 +199,11 @@ scene.add(mesh);
 
 {% endhighlight %}
 
-Our image will now appear in the scene:
+The image will now appear in the scene:
 
 <p data-height='265' data-theme-id='0' data-slug-hash='jaYdLg' data-default-tab='result' data-user='duhaime' data-embed-version='2' data-pen-title='Adding an Image to a Three.js Scene' class='codepen'>See the Pen <a href='https://codepen.io/duhaime/pen/jaYdLg/'>Adding an Image to a Three.js Scene</a> by Douglas Duhaime (<a href='https://codepen.io/duhaime'>@duhaime</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 
-It's worth noting that we can swap out the PlanarGeometry for other geometries and Three.js will automatically wrap our material over that geometry. For example, we could swap the PlanarGeometry for a more interesting Icosahedron geometry, and could make the icosahedron rotate by updating the mesh's rotation property inside the render loop:
+It's worth noting that one can swap out the PlanarGeometry for other geometries and Three.js will automatically wrap the material over the new geometry. The example below, for instance, swaps the PlanarGeometry for a more interesting Icosahedron geometry, and rotates the icosahedron inside the render loop:
 
 {% highlight javascript %}
 
@@ -219,7 +228,9 @@ This produces a strange looking cat indeed:
 
 ## Building Custom Geometries
 
-In the examples above we use a few different geometries built into Three.js. Those geometries are based on the fundamental [THREE.Geometry](https://threejs.org/docs/#api/core/Geometry) class, which is a primitive geometry one can use to create custom geometries. THREE.Geometry is lower-level than the prebuilt geometries we've used above, but it gives performance gains that make it worth the effort. Let's create a custom geometry by calling the THREE.Geometry constructor, which takes no arguments:
+The examples above use a few different geometries built into Three.js. Those geometries are based on the fundamental [THREE.Geometry](https://threejs.org/docs/#api/core/Geometry) class, which is a primitive geometry one can use to create custom geometries. THREE.Geometry is lower-level than the prebuilt geometries used above, but it gives performance gains that make it worth the effort.
+
+Let's create a custom geometry by calling the THREE.Geometry constructor, which takes no arguments:
 
 {% highlight javascript %}
 
@@ -227,18 +238,19 @@ var geometry = new THREE.Geometry();
 
 {% endhighlight %}
 
-This geometry object doesn't do much yet, because it doesn't have any vertices, or points with which to ariculate a shape. Let's add four vertices, one for each corner of our image:
+This geometry object doesn't do much yet, because it doesn't have any vertices with which to ariculate a shape. Let's add four vertices to the geometry, one for each corner of the image. Each vertex takes three arguments, which define the vertex's x, y, and z positions respectively:
 
 {% highlight javascript %}
 
-// identify the image size
+// identify the image width and height
 var imageSize = {width: 10, height: 7.5};
 
 // identify the x, y, z coords where the image should be placed
+// inside the scene
 var coords = {x: -5, y: -3.75, z: 0};
 
-// add one vertex for each corner of the image, using the 
-// following order: lower left, lower right, upper right, upper left
+// add one vertex for each image corner in this order:
+// lower left, lower right, upper right, upper left
 geometry.vertices.push(
   new THREE.Vector3(
     coords.x,
@@ -264,7 +276,7 @@ geometry.vertices.push(
 
 {% endhighlight %}
 
-Now that the vertices are in place, we can add some faces to the object. Each face will be a triangle, as triangles are primitives in the WebGL world. We'll use two triangles to create our rectangular image. The first will triangulate the lower-left, lower-right, and upper-right vertices of the image, and the second will triangulate the lower-left, upper-right, and upper-left vertices of the image:
+Now that the vertices are in place, we need to add some faces to the geometry. The code below will model an image as two triangle faces, as triangles are performant primitives in the WebGL world. The first triangle will combine the lower-left, lower-right, and upper-right vertices of the image, and the second will triangulate the lower-left, upper-right, and upper-left vertices of the image:
 
 {% highlight javascript %}
 
@@ -287,9 +299,9 @@ geometry.faces.push(faceOne, faceTwo);
 
 {% endhighlight %}
 
-Awesome, we now have a geometry with four vertices that describe the corners of the image and two faces that fill two triangles described by those vertices. Next we need to describe which portions of the cat image should appear in each of the faces of the geometry. To do so, one must add some [faceVertexUvs](https://threejs.org/docs/#api/core/Geometry.faceVertexUvs) to the geometry, as faceVertexUvs indicate which portions of a texture should appear in which portions of a geometry.
+Awesome, we now have a geometry with four vertices that describe the corners of the image, and two faces that describe the lower-right and upper-left-hand triangles of the image. The next step is to describe which portions of the cat image should appear in each of the faces of the geometry. To do so, one must add some [faceVertexUvs](https://threejs.org/docs/#api/core/Geometry.faceVertexUvs) to the geometry, as faceVertexUvs indicate which portions of a texture should appear in which portions of a geometry.
 
-FaceVertexUvs represent a texture as a two-dimensional plane that stretches from 0 to 1 in the x dimension and 0 to 1 in the y dimension. Within this coordinate system, 0,0 represents the bottom-left-most region of the texture, and 1,1 represents the top-right-most region of the texture. Given this coordinate system, we can map the lower-right triangle of our image to the first face created above, and we can map the upper-left triangle of our image to the second face created above:
+FaceVertexUvs represent a texture as a two-dimensional plane that stretches from 0 to 1 in the x dimension and 0 to 1 in the y dimension. Within this coordinate system, 0,0 represents the bottom-left-most region of the texture, and 1,1 represents the top-right-most region of the texture. Given this coordinate system, we can map the lower-right triangle of the image to the first face created above, and we can map the upper-left triangle of the image to the second face created above:
 
 {% highlight javascript %}
 
@@ -313,36 +325,41 @@ geometry.faceVertexUvs[0].push([
 
 {% endhighlight %}
 
-Once we've finished describing this geometry, we can render the custom geometry within the scene:
+With the uv coordinates in place, one can render the custom geometry within the scene just as above:
 
 <p data-height='265' data-theme-id='0' data-slug-hash='mqpgbV' data-default-tab='result' data-user='duhaime' data-embed-version='2' data-pen-title='Building Custon Geometries' class='codepen'>See the Pen <a href='https://codepen.io/duhaime/pen/mqpgbV/'>Building Custon Geometries</a> by Douglas Duhaime (<a href='https://codepen.io/duhaime'>@duhaime</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 
-This may seem like a lot of work for the same result we achieve with a one-line PlanarGeometry declaration above. When working with a single image, we could certainly use the PlanarGeometry and call it a day. However, each mesh added to a Three.js scene requires an additional 'draw call', so one usually wants to use custom geometries to minimize the number of meshes created and thus the draw calls issued. We'll return to this idea below while working to scale the visualization to many more images.
+This may seem like a lot of work for the same result we achieve with a one-line PlanarGeometry declaration above. If a scene only required one image and nothing else, one could certainly use the PlanarGeometry and call it a day.
 
-## Using an Atlas File
+However, each mesh added to a Three.js scene necessitates an additional "draw call", and each draw call requires the browser agent's CPU to send all mesh related data to the browser agent's GPU. These draw calls happen for each mesh during each animation frame, so if a scene is running at 60 frames per second, each mesh in that scene will require the transportation of data from the CPU to the GPU sixty times per second. In short, more draw calls means more work for the host device, so reducing the number of draw calls is essential if you want to keep animations smooth and close to sixty frames per second.
 
-Let's now load multiple images into a scene. One way to accomplish this task is to pass a series of urls to the texture loader and load each image one-by-one. The trouble with this approach is it requires one new HTTP request for each image to be loaded. If the number of images to be displayed is sufficiently high, the web browser will grind to a halt and the scene will never render.
+The upshot of all this is that a scene with tens of thousands of PlanarGeometry meshes will grind a browser to a halt. To render lots of images in a scene, it's much more performant to use a custom geometry like the one above, and to push lots of vertices, faces, and vertex uvs into that geometry. We'll explore this idea more below.
 
-One way around this problem is to load an 'image atlas', or montage of small images combined into a single larger image:
+## Displaying multiple images
+
+Given the remarks above let's next build a single geometry that contains multiple images. To do so, we'll need to load a number of images into the page in which the scene is running. One way to accomplish this task is to pass a series of urls to the texture loader and load each image individually. The trouble with this approach is it requires one new HTTP request for each image to be loaded, and there are [upper bounds](https://stackoverflow.com/questions/985431/max-parallel-http-connections-in-a-browser) to the number of HTTP requests a given browser can make to a given domain at a time.
+
+A common solution to this problem is to load an "image atlas", or montage of small images combined into a single larger image:
 
 <img src='{{ site.baseurl }}/assets/posts/tsne-webgl/tsne-webgl-banner.jpg'>
 
-If you have ImageMagick installed, you can create one of these montages with the `montage` command:
+One can then use the montage the way that performance-minded sites like Google use [spritesheets](https://www.google.com/images/nav_logo242.png). If you have ImageMagick installed, you can create one of these montages with the `montage` command:
 
 {% highlight bash %}
 
 # download directory of images
-wget goo.gl/keWWPa -O 100-imgs.tar.gz && tar -zxf 100-imgs.tar.gz
+wget https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/100-imgs.tar.gz
+tar -zxf 100-imgs.tar.gz
 
 # create a file that lists all files to be include in the montage
-ls 100-imgs/* > images-to-montage.txt
+ls 100-imgs/* > images_to_montage.txt
 
 # create single montage image from images in a directory
 montage `cat images_to_montage.txt` -geometry +0+0 -background none -tile 10x 100-img-atlas.jpg
 
 {% endhighlight %}
 
-The last command will create an image atlas with 10 images per column and no padding between the images in the atlas. There are 100 images of size 128 x 128px in the sample directory, so the montage will be a 10 x 10 grid that's 1280 x 1280px.
+The last command will create an image atlas with 10 images per column and no padding between the images in the atlas. The sample directory `100-imgs.tar.gz` contains 100 images, and the `-tile` argument in the montage command indicates ouput atlas should have 10 columns, so the command above will generate a 10x10 grid of size 1280px by 1280px.
 
 Let's load the image atlas into a Three.js scene:
 
@@ -356,7 +373,7 @@ var material = new THREE.MeshBasicMaterial({
 });
 {% endhighlight %}
 
-Once the image atlas is loaded in, we'll want to create some helper objects that identify the size of the atlas and its sub images. We'll use these helper objects to help us calculate the FaceVertexUvs:
+Once the image atlas is loaded in, we'll want to create some helper objects that identify the size of the atlas and its sub images. Those helper objects can then be used to calculate the vertex uvs of each face in a geometry:
 
 {% highlight javascript %}
 
@@ -475,60 +492,19 @@ scene.add(mesh);
 
 {% endhighlight %}
 
-Rendering that scene produces a litle scatterplot of images:
+Rendering that scene produces a crazy little scatterplot of images:
 
 <p data-height='265' data-theme-id='0' data-slug-hash='vWdyGe' data-default-tab='result' data-user='duhaime' data-embed-version='2' data-pen-title='Loading Multiple Images' class='codepen'>See the Pen <a href='https://codepen.io/duhaime/pen/vWdyGe/'>Loading Multiple Images</a> by Douglas Duhaime (<a href='https://codepen.io/duhaime'>@duhaime</a>) on <a href='https://codepen.io'>CodePen</a>.</p>
 
-Here we represent one hundred images with just a single mesh! This is much better than giving each image its own mesh, as it reduces the number of potential draw calls from 100 to 1!
+Here we represent one hundred images with just a single mesh! This is much better than giving each image its own mesh, as it reduces the number of required draw calls by two orders of magnitude. It's worth noting, however, that eventually one does need to create additional meshes. A number of graphics devices can only handle 2^16 vertices in a single mesh, so if you need your scene to run on a wide range of devices it's best to ensure each mesh contains 65,536 or fewer vertices.
 
 ## Using Multiple Atlas Files
 
 Having discovered how to visualize multiple images with a single mesh, we can now scale up the image collection size dramatically.
 
-One way to crank up the number of visualized images is to squeeze more images into the image atlas. As it turns out, however, the largest texture size supported by many modern hardware devices is 2048 x 2048px, so let's limit ourselves to atlas files of that size or smaller.
+One way to crank up the number of visualized images is to squeeze more images into the image atlas. As it turns out, however, the largest texture size supported by many devices is 2048 x 2048px, so the code below will stick to atlas files of that size.
 
-To keep the number of atlas files relatively small, let's use 20,000 32 x 32px subimages in each atlas. We can download a sample collection of 20,000 images with wget:
-
-{% highlight bash %}
-wget https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/32-thumbs.tar.gz
-tar -zxf 32-thumbs.tar.gz
-{% endhighlight %}
-
-Then we can combine those images into a series of atlas files with the following Python script:
-
-{% highlight python %}
-# create_atlas_files.py
-import glob, os
-
-def subdivide(l, n):
-  '''Return n-sized sublists from iterable l'''
-  for i in range(0, len(l), n):
-    yield l[i:i + n]
-
-# identify the maximum number of images to process
-max_imgs = 20480 # 5 atlas files, each with 64 rows & 64 cols
-
-# get up to `max_imgs` images from a directory of 64x64 images
-images = glob.glob('32-thumbs/*')[:max_imgs]
-
-# create a list of files to montage for each montage to make
-# use 4096 images per atlas as the atlas is 2048 x 2048px
-# and there will be 64 cols and 64 rows of images
-# sized 32 x 32px
-for idx, atlas_images in enumerate(subdivide(images, 4096)):
-  with open('images_to_montage.txt', 'w') as out:
-    out.write('\n'.join(atlas_images))
-
-  # identify the name for the new montage to create
-  name = 'atlas-' + str(idx) + '.jpg'
-
-  # create a new image montage with 64 rows & 64 columns
-  # using the images in images_to_montage.txt
-  os.system('montage @images_to_montage.txt -geometry +0+0 -background none -tile 64x ' + name)
-
-{% endhighlight %}
-
-Running that script on a directory with 20,000 images generates 5 atlas files, each with 4096 images [[sample atlas](https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/atlas_files/32px/atlas-0.jpg)]. Once those atlas files are loaded onto a static file server, one can load each atlas with a simple loop:
+For the examples below, I took roughly 20,480 images, resized each to 32px thumbs, then used the montage technique discuss above to build the following atlas files: [1](https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/atlas_files/32px/atlas-0.jpg), [2](https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/atlas_files/32px/atlas-1.jpg), [3](https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/atlas_files/32px/atlas-2.jpg), [4](https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/atlas_files/32px/atlas-3.jpg), [5](https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/atlas_files/32px/atlas-4.jpg). Once those atlas files are loaded onto a static file server, one can load each atlas into a scene with a simple loop:
 
 {% highlight javascript %}
 
@@ -536,7 +512,7 @@ Running that script on a directory with 20,000 images generates 5 atlas files, e
 // to its material
 var materials = {};
 
-// Create a texture loader so we can load our image file
+// Create a texture loader so we can load the image file
 var loader = new THREE.TextureLoader();
 
 for (var i=0; i<5; i++) {
@@ -566,7 +542,7 @@ So far we've used random coordinates to place images within a scene. Let's now p
 
 ### Generating TSNE Coordinates
 
-First things first, let's create a vector representation of each image. If you have tensorflow installed, you can create vectorized representations of each image in `32-thumbs` by running:
+First things first, let's create a vector representation of each image. If you have tensorflow installed, you can create vectorized representations of each image in `100-imgs` by running:
 
 {% highlight bash %}
 
@@ -577,11 +553,11 @@ wget https://gist.githubusercontent.com/duhaime/2a71921c9f4655c96857dbb6b6ed9bd6
 pip install psutil
 
 # run the script on a glob of images
-python classify_images.py '32-thumbs/*'
+python classify_images.py '100-imgs/*'
 
 {% endhighlight %}
 
-This script will generate one image vector for each image in `32-thumbs/`. We can then run the following script to create a 2D TSNE projection of those image vectors:
+This script will generate one image vector for each image in `100-imgs/`. We can then run the following script to create a 2D TSNE projection of those image vectors:
 
 {% highlight python %}
 
@@ -608,7 +584,11 @@ fit_model = model.fit_transform( np.array(image_vectors) )
 
 # store the coordinates of each image in the chart data
 for c, i in enumerate(fit_model):
-  chart_data.append({ 'x': i[0], 'y': i[1], 'idx': c })
+  chart_data.append({
+    'x': float(i[0]),
+    'y': float(i[1]),
+    'idx': c
+  })
 
 with open('image_tsne_projections.json', 'w') as out:
   json.dump(chart_data, out)
@@ -645,11 +625,11 @@ loader.load('https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/image_tsne_pr
 
 {% endhighlight %}
 
-We can then use the index position of each item in that JSON file to identify the appropriate atlas file and x, y offsets for a given image. To do so, we'll need to store each atlas material by its index position:
+We can then use the index position of each item in that JSON file to identify the appropriate atlas file and x, y offsets for a given image. To do so, we'll need to store each material by its index position:
 
 {% highlight javascript %}
 
-// Create a texture loader so we can load our image file
+// Create a texture loader so we can load the image file
 var loader = new THREE.TextureLoader();
 for (var i=0; i<5; i++) {
   var url = 'https://s3.amazonaws.com/duhaime/blog/tsne-webgl/data/';
@@ -754,11 +734,16 @@ The result is an interactive visualization of the images in a 2D TSNE projection
 
 ## Getting Fancy
 
-We've now achieved a basic TSNE map with Three.js, but there's much more that could be done to improve a user's experience of the visualization. In particular:
+We've now achieved a basic TSNE map with Three.js, but there's much more that could be done to improve a user's experience of the visualization. In particular, within the extant plot:
 
 <ul>
 * Users get no indication of load progress<br/>
 * Users can't see details within the small images<br/>
-* Users can't get more information about particular images<br/>  
-* Users have no guide through the visualization<br/>
+* Users have no <i>guide</i> through the visualization<br/>
 </ul>
+
+To see how our team resolved those challenges, feel free to visit the [live site](https://s3-us-west-2.amazonaws.com/lab-apps/pix-plot/index.html) or the [GitHub repository](https://github.com/YaleDHLab/pix-plot) with the full source code. Otherwise, if you're working on something similar, feel free to send me a note or a comment below--I'd love to see what you're building.
+
+<div class='center-text'>* * *</div>
+
+I want to thank Cyril Diagne, a lead developer on the spectacular [Google Arts Experiments TSNE viewer](https://artsexperiments.withgoogle.com/tsnemap/), for generously sharings ideas and optimization techniques that we used to build our own TSNE viewer.
