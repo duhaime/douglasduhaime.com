@@ -2,7 +2,7 @@
 layout: post
 title: Identifying Similar Images with TensorFlow
 date: 2017-05-28
-categories: d3 canvas tensorflow
+categories: d3 canvas tensorflow tsne
 thumbnail: /assets/posts/similar-images/similar-images-thumb.jpg
 banner: /assets/posts/similar-images/similar-images-banner.jpg
 description: |
@@ -228,7 +228,7 @@ The modified version of classify_images.py above generates one image vector for 
 </div>
 <div class='clear-both'></div>
  
-A nice way to achieve this functionality is to leverage Erik Bern's Approximate Nearest Neighbors Oh Yeah [library](https://github.com/spotify/annoy) to identify the approximate nearest neighbors for each image. The similar image viewer above uses ANN to identify similar images [I used this [nearest neighbors script](/assets/posts/similar-images/utils/cluster_vectors.py)]. To identify the nearest neighbors for the image vectors we created above, one can run:
+A nice way to achieve this functionality is to leverage Erik Bern's Approximate Nearest Neighbors Oh Yeah [library](https://github.com/spotify/annoy) to identify the approximate nearest neighbors for each image. The similar image viewer above uses ANN to identify similar images [I used this [nearest neighbors script]({{ site.baseurl }}/assets/posts/similar-images/utils/cluster_vectors.py)]. To identify the nearest neighbors for the image vectors we created above, one can run:
 
 {% highlight bash %}
 wget {{ site.url }}/assets/posts/similar-images/utils/cluster_vectors.py
@@ -244,8 +244,8 @@ Another fun application for image vectors are TSNE projections. If you haven't u
 
 If we load all of the image vectors into a TSNE model then project the data down two two dimensions, we can create a two-dimensional representation of the image collection that preserves similarity between images. Within this representation of the data, each image is positioned near the images to which it's most similar (click for interactive view):
 
-<a href='/pages/tsne-images' class='click-to-interact'>
-  <img src='/assets/posts/similar-images/tsne-images.jpg' alt='TSNE projection of similar images from the New York Public Library collection of Works Progress Administration photos'>
+<a href='{{ site.baseurl }}/pages/tsne-images' class='click-to-interact'>
+  <img src='{{ site.baseurl }}/assets/posts/similar-images/tsne-images.jpg' alt='TSNE projection of similar images from the New York Public Library collection of Works Progress Administration photos'>
 </a>
 
-This plot itself is generated with native HTML5 canvas methods, but D3.js helps provide data fetching, DOM manipulation, and a Voronoi mouseover map. The data for the plot was produced by this [tsne clustering script](/assets/posts/similar-images/utils/get_tsne_vector_projections.py).
+This plot itself is generated with native HTML5 canvas methods, but D3.js helps provide data fetching, DOM manipulation, and a Voronoi mouseover map. The data for the plot was produced by this [tsne clustering script]({{ site.baseurl }}/assets/posts/similar-images/utils/get_tsne_vector_projections.py).

@@ -4,10 +4,10 @@
     {% if page.banner %}
       {% if page.invert %}
         <div class='background-image duotone-invert'
-          style='background-image: url({{ page.banner }})'></div>
+          style='background-image: url({{ page.banner | prepend: site.baseurl }})'></div>
       {% else %}
         <div class='background-image duotone'
-          style='background-image: url({{ page.banner }})'></div>
+          style='background-image: url({{ page.banner | prepend: site.baseurl }})'></div>
       {% endif %}
     {% endif %}
     {% include icons/home.html %}

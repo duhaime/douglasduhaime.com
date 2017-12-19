@@ -13,6 +13,7 @@ js:
   - /assets/pages/spenserian-networks/js/d3-labeler.js
 css: /assets/pages/spenserian-networks/spenserian-networks.css
 ---
+
 <div class='spenserian-networks'>
 
   <div class='spenserian-networks-header'>
@@ -26,7 +27,7 @@ css: /assets/pages/spenserian-networks/spenserian-networks.css
     <div class='intro-text'>
       <p>The chart below represents a network of literary relationships.</p>
       <p>Hover an author to see their connections, or search for an author below.</p>
-      <p>You can read more about this work <a href='/posts/spenserian-networks.html'>here</a>.</p>
+      <p>You can read more about this work <a href='{{ site.baseurl }}/posts/spenserian-networks.html'>here</a>.</p>
     </div>
     <div id='legend'></div>
 

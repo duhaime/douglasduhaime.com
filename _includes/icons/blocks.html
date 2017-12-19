@@ -1,12 +1,12 @@
 <a target='_blank' href='http://bl.ocks.org/{{ site.github }}'>
   <div class='footer-icon square-image'>
     {%- if include.style == 'dark' %}
-      <img src='/assets/images/icons/blocks-dark.svg'
-        onerror="this.src='/assets/images/icons/blocks-dark.png'"
+      <img src='{{ site.baseurl }}/assets/images/icons/blocks-dark.svg'
+        onerror="this.src='{{ site.baseurl }}/assets/images/icons/blocks-dark.png'"
         alt='Blocks Icon'>
     {% else %}
-      <img src='/assets/images/icons/blocks-light.svg'
-        onerror="this.src='/assets/images/icons/blocks-light.png'"
+      <img src='{{ site.baseurl }}/assets/images/icons/blocks-light.svg'
+        onerror="this.src='{{ site.baseurl }}/assets/images/icons/blocks-light.png'"
         alt='Blocks Icon'>
     {%- endif %}
   </div>

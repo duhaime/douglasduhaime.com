@@ -13,8 +13,10 @@ js:
   - /assets/posts/shakespearean-characters/min-max-words.js
   - /assets/posts/shakespearean-characters/min-max-entrances.js
   - /assets/posts/shakespearean-characters/shakespeare-cooccurrence.js
-thumbnail: /assets/posts/shakespearean-characters/shakespearean-characters-thumb.jpg
-banner: /assets/posts/shakespearean-characters/shakespearean-characters-banner.png
+thumbnail: |
+  /assets/posts/shakespearean-characters/shakespearean-characters-thumb.jpg
+banner: |
+  /assets/posts/shakespearean-characters/shakespearean-characters-banner.png
 ---
 
 Some time ago, I was intrigued to discover that Shakespeare’s Histories have a noticeable lack of female characters [[link]][previous-shakes-post]. Since then, I’ve been curious to further explore the nuances of Shakespearean characters, paying particular respect to the gender dynamics of the Bard’s plays. This post is a quick sketch of some of the insights to which that curiosity has led.
@@ -111,5 +113,5 @@ In sum, the plots above show that a number of heretofore undisclosed patterns em
 
 <p>Finally, a number of female characters—such as Queen Margaret in <i>2 Henry VI</i> and Adrianna in <i>Comedy of Errors</i>—appear on stage more frequently than any other character in their respective plays, despite the fact that they say fewer words than their respective plays' most outspoken characters. That is to say, their visual presence on stage is disproportionate to their verbal presence on stage. This raises a number of questions: To what extent were female characters meant to fulfill the role of a spectacle in Shakespearean drama? It’s difficult to imagine that the male players who acted as females projected authentic feminine voices. Did the limitations of imitative speech help mitigate the number of lines given to these prominent female characters? These and other questions remain to be explored in future work.</p> 
 
-[previous-shakes-post]:/posts/classifying-shakespearean-drama-with-sparse-feature-sets.html
+[previous-shakes-post]:{{ site.baseurl }}/posts/classifying-shakespearean-drama-with-sparse-feature-sets.html
 [folger-digital-library]:http://www.folgerdigitaltexts.org/

@@ -3,17 +3,20 @@
   <head>
     {% include meta.html %}
     <title>{{ page.title }}</title>
-    <link rel='icon' href='/assets/images/favicon.ico' type='image/x-icon'>
-    <link rel='stylesheet' type='text/css'
-      href='/assets/style.css?{{ site.time | date: "%s%N" }}'>
+    <link rel='icon' href='{{ site.baseurl }}/assets/images/favicon.ico' type='image/x-icon'>
+    {% assign time = site.time | date: '%s%N' %}
+    {% capture href %}{{ site.baseurl }}/assets/style.css?{{ time }}{% endcapture %}
+    <link rel='stylesheet' type='text/css' href='{{ href }}'>
     {% include page-css.html %}
   </head>
   <body>
     <div id='content'>
       {{ content }}
     </div>
-  <script src='/assets/bundle.js?{{ site.time | date: "%s%N" }}'
-    type='text/javascript'></script>
+  {% unless layout.bundle == false %}
+    {% capture src %}{{ site.baseurl }}/assets/bundle.js?{{ time }}{% endcapture %}
+    <script src='{{ src }}' type='text/javascript'></script>
+  {% endunless %}
   {% include page-js.html %}
   {% include analytics.html %}
   </body>

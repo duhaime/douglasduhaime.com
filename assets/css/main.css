@@ -20,7 +20,6 @@ body {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5em;
-  -webkit-font-smoothing: antialiased;
 }
 
 /**
@@ -274,12 +273,11 @@ body {
   margin-bottom: 15px;
   font-size: 17px;
   line-height: 22px;
-  font-weight: 500;
 }
 
 @media(max-width: 600px) {
   .home .container {
-    width: 90%;
+    width: 93%;
   }
 
   .home h1 {
@@ -331,7 +329,6 @@ body {
   color: #666;
   margin: 10px 0 4px;
   transition: color .2s;
-  font-weight: 500;
 }
 
 .home-post .date {
@@ -346,30 +343,23 @@ body {
   display: block;
   font-size: 1.2em;
   color: #555;
-  font-weight: 500;
-}
-
-.home-post .post-thumbnail {
-  width: 100%;
-  padding-bottom: 13.5%;
-  -webkit-filter: grayscale(100%);
-  filter: grayscale(100%);
-  transition: filter .2s;
+  font-weight: 400;
 }
 
 .home-post .post-thumbnail,
 .home-project .project-image {
   background-color: #aaa;
-  border: 1px solid #aaa;
+  border: 1px solid #757575;
   box-sizing: border-box;
+}
+
+.home-post .post-thumbnail {
+  width: 100%;
+  padding-bottom: 12.5%;
 }
 
 .home-post:hover .title {
   color: rgb({{ site.dark }});
-}
-
-.home-post:hover .post-thumbnail {
-  filter: grayscale(0%);
 }
 
 @media(max-width: 874px) {
@@ -408,10 +398,12 @@ body {
 
 .home-project .project-image {
   width: 100%;
-  height: 0;
-  padding-bottom: 39%;
   background-position: top center;
   position: relative;
+}
+
+.home-project .project-image img {
+  margin: 0;
 }
 
 .home-project .project-title {
@@ -479,7 +471,7 @@ body {
 * Noscript warning
 **/
 
-.noscript-warning {
+noscript {
   position: fixed;
   top: 0;
   width: 100%;

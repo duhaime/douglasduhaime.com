@@ -5,8 +5,10 @@ date: 2016-06-20
 description: |
   A guide to segmenting images using pixel dilations and Otsu thresholding with Scikit Image.
 categories: image-processing clustering
-thumbnail: /assets/posts/image-segmentation/image-segmentation-thumb.jpg
-banner: /assets/posts/image-segmentation/image-segmentation-banner.jpg
+thumbnail: |
+  /assets/posts/image-segmentation/image-segmentation-thumb.jpg
+banner: |
+  /assets/posts/image-segmentation/image-segmentation-banner.jpg
 css: /assets/posts/image-segmentation/image-segmentation.css
 ---
 
@@ -18,16 +20,16 @@ In the months that followed, I crossed paths with a number of additional image s
 
 The case study discussed below grows out work I pursued when the British Library asked if Yale's Digital Humanities Lab could help process a large image collection in their possession. Their data consisted of scrapbooks wherein each page/image contained several advertisements for eighteenth-century plays. Here's a sample image:
 
-<img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='small' alt='Sample image that contains several newspaper clippings.'>
+<img src='{{ site.baseurl }}/assets/posts/image-segmentation/sample-periodical-image.jpg' class='small' alt='Sample image that contains several newspaper clippings.'>
 
 Given an image such as the above, they wanted to save each of the clippings from that page to its own file:
 
 <div class='partitioned-images'>
-  <img src='/assets/posts/image-segmentation/partitioned-images/0.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
-  <img src='/assets/posts/image-segmentation/partitioned-images/1.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
-  <img src='/assets/posts/image-segmentation/partitioned-images/2.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
-  <img src='/assets/posts/image-segmentation/partitioned-images/3.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
-  <img src='/assets/posts/image-segmentation/partitioned-images/4.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/partitioned-images/0.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/partitioned-images/1.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/partitioned-images/2.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/partitioned-images/3.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/partitioned-images/4.jpg' class='partitioned-image' alt='Newspaper clipping segmented from the input image'>
 </div>
 
 This is a fairly tidy example of an image segmentation task, and one that our lab achieved quickly with Python's [scikit-image](http://scikit-image.org/docs/dev/api/skimage.html) package. The write-up below documents the approaches we leveraged for this task.
@@ -79,8 +81,8 @@ One approach that's often useful in image processing is "pixel dilation." This t
 Given a matrix representation of the composite image discussed above, for example, one can easily find the aggregate luminesence of each column of pixels. The plot below on the right visualizes the aggregate luminesence of each column of pixels for the image on the left below: 
 
 <div class='dilations-x'>
-  <img src='/assets/posts/image-segmentation/sample-periodical-image.jpg' class='image' alt='Sample image that contains several newspaper clippings.'>
-  <img src='/assets/posts/image-segmentation/pixel-sums.jpg' class='pixels' alt='Cumulative pixel darkness along the X dimension of the input image'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/sample-periodical-image.jpg' class='image' alt='Sample image that contains several newspaper clippings.'>
+  <img src='{{ site.baseurl }}/assets/posts/image-segmentation/pixel-sums.png' class='pixels' alt='Cumulative pixel darkness along the X dimension of the input image'>
 </div>
 
 Examining this chart, we can tell there are two dark bands of pixels within the image on the left: one that stretches from roughly pixels 100-800 in the image, and another that stretches from roughly 1200-1900. Given just this representation of the image's contents, one would have enough information to partition the image into two regions. From there, one could repeat the procedure, this time dilating pixels along the y axis and again splitting the image based on the resulting blocks within the pixel histogram.

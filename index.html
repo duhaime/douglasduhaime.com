@@ -9,19 +9,18 @@ title: Douglas Duhaime | Data Mining + Visualization
 
     <div class='home-posts'>
       {%- for post in site.posts %}
-      <div class='home-post'>
-        <a href='{{ post.url }}'>
-          {%- if post.thumbnail %}
-          <div class='post-thumbnail background-image'
-            style='background-image: url({{ post.thumbnail }})'></div>
-          {%- else %}
-          <div class='post-thumbnail background-image'
-            style='background-image: url({{ site.default_thumbnail }})'></div>
-          {%- endif %}
-          <div class='title'>{{ post.title }}</div>
-          <div class='date'>{{ post.date | date_to_string }}</div>
-        </a>
-      </div>
+        {% assign url = post.thumbnail | prepend: site.baseurl %}
+        {%- if post.thumbnail %}
+          <div class='home-post'>
+            <a href='{{ post.url | prepend: site.baseurl }}'>
+              <div class='post-thumbnail background-image'
+                style='background-image: url({{ url }})'>
+              </div>
+              <div class='title'>{{ post.title }}</div>
+              <div class='date'>{{ post.date | date_to_string }}</div>
+            </a>
+          </div>
+        {% endif %}
       {%- endfor %}
     </div>
 
@@ -29,25 +28,25 @@ title: Douglas Duhaime | Data Mining + Visualization
       <h2>Recent Projects</h2>
       {%- assign projects = site.projects | sort: 'order' | reverse -%}
       {%- for project in projects -%}
-      <div class='home-project'>
-        <div class='background-image project-image'
-            style='background-image: url({{ project.image }})'>
-          <div class='project-links'>
-            <a href='{{ project.site }}'>Site</a>
-            <span>|</span>
-            <a href='{{ project.source }}'>Source</a>
+        <div class='home-project'>
+          <div class='project-image'>
+            <img src='{{ project.image | prepend : site.baseurl }}'>
+            <div class='project-links'>
+              <a href='{{ project.site }}'>Site</a>
+              <span>|</span>
+              <a href='{{ project.source }}'>Source</a>
+            </div>
+          </div>
+          <div class='project-content'>
+            <div class='project-title'>{{ project.title }}</div>
+            <div class='project-tech'>
+              {%- for item in project.tech -%}
+                <div>{{ item }}</div>
+              {%- endfor -%}
+            </div>
+            <div class='project-text'>{{ project.content }}</div>
           </div>
         </div>
-        <div class='project-content'>
-          <div class='project-title'>{{ project.title }}</div>
-          <div class='project-tech'>
-            {%- for item in project.tech -%}
-              <div>{{ item }}</div>
-            {%- endfor -%}
-          </div>
-          <div class='project-text'>{{ project.content }}</div>
-        </div>
-      </div>
       {%- endfor %}
     </div>
     {% include home_icons.html %}

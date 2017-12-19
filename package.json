@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "compress": "./node_modules/.bin/webpack --config webpack.config.js",
-    "compress-post": "./node_modules/.bin/webpack --config ./utils/webpack/webpack.post.config.js",
+    "compress-post": "./node_modules/.bin/webpack --config ./assets/utils/webpack/webpack.post.config.js",
     "build": "JEKYLL_ENV=production bundle exec jekyll build",
     "deploy": "npm run build && npm run copy-all-unzipped",
     "copy-all-unzipped": "aws s3 cp _site/ s3://douglasduhaime.com/ --include '*' --acl public-read --cache-control max-age=604800 --recursive --metadata-directive='REPLACE'",
@@ -16,7 +16,7 @@
     "url": "git+ssh://git@github.com/duhaime/duhaime.github.io.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/duhaime/duhaime.github.io/issues"
   },
