@@ -200,24 +200,53 @@ body {
 * Mobile
 **/
 
+.mobile {
+  display: none;
+}
+
 @media(max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
   .spenserian-networks h1 {
     margin-top: 20px;
     font-size: 40px;
   }
 
   .spenserian-networks .intro-text {
-    display: inline;
     padding: 0 20px;
     margin-bottom: 15px;
-  }
-
-  .spenserian-networks p {
-    display: inline;
+    font-size: 0.7em;
+    text-align: left;
   }
 
   #legend {
     padding: 0 20px;
     height: auto;
+  }
+}
+
+@media (max-width: 350px) {
+  .poet-networks-search-container {
+    display: block;
+    padding: 0 20px;
+    margin-top: 5px;
+  }
+
+  #poet-networks-input,
+  #poet-networks-search {
+    display: block;
+    width: 100%;
+    padding: 4px 10px;
+    box-sizing: border-box;
+  }
+
+  #poet-networks-search {
+    margin-top: 5px;
   }
 }

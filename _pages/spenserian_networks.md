@@ -24,10 +24,13 @@ css: /assets/pages/spenserian-networks/spenserian-networks.css
 
   <div class='spenserian-networks-top'>
     <h1>Spenserian Networks</h1>
-    <div class='intro-text'>
+    <div class='intro-text desktop'>
       <p>The chart below represents a network of literary relationships.</p>
       <p>Hover an author to see their connections, or search for an author below.</p>
       <p>You can read more about this work <a href='{{ site.baseurl }}/posts/spenserian-networks.html'>here</a>.</p>
+    </div>
+    <div class='intro-text mobile'>
+      <p>The chart below represents a network of literary relationships. Hover an author to see their connections, or search for an author below. You can read more about this work <a href='{{ site.baseurl }}/posts/spenserian-networks.html'>here</a>.</p>
     </div>
     <div id='legend'></div>
 
