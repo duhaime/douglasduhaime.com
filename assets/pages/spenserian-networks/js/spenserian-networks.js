@@ -40,6 +40,12 @@
   var nodeContainer = g.append('g')
       .attr('class', 'node-container')
 
+  var patternContainer = g.append('g')
+      .attr('class', 'pattern-container')
+
+  var textContainer = g.append('g')
+      .attr('class', 'text-container')
+
   /**
   * Glow filter
   **/
@@ -201,7 +207,7 @@
     * Enter and update
     **/
 
-    var image = nodeContainer.selectAll('.selected-node')
+    var image = patternContainer.selectAll('.selected-node')
         .data( _.keys(idToImage) )
       .enter().append('pattern')
         .attr('id', function(d) { return parseInt(d) })
@@ -339,7 +345,7 @@
       **/
 
       d3.selectAll('.node-label').remove()
-      var labels = nodeContainer.selectAll('.node-label')
+      var labels = textContainer.selectAll('.node-label')
         .data(labelNodes);
 
       labels.enter().append('text')
@@ -369,7 +375,9 @@
 
       labels.transition()
         .duration(500)
-        .delay(function(d, i) { return (100 + (i * 10)); })
+        .delay(function(d, i) {
+          return (100 + (i * 10));
+        })
         .attr('x', function(d) { return (d.x); })
         .attr('y', function(d) { return (d.y); });
     }

@@ -1,4 +1,4 @@
-# creates a 1400x194px image for landing page post thumbnail
+# creates a 1400x151px image for landing page post thumbnail
 # usage: ruby utils/resize_post_thumbnail.rb {input.jpg} {output.jpg}
 # nb: requires imagemagick (brew install imagemagick)
 
@@ -12,9 +12,9 @@ two_x_extension = output.sub(extension, '-2x' + extension)
 
 # make 2x thumbnail
 command =  'convert ' + input
-command += ' -resize "1400x180^"'
+command += ' -resize "1400x151^"'
 command += ' -gravity center'
-command += ' -crop 1400x180+0+0'
+command += ' -crop 1400x151+0+0'
 command += ' -sampling-factor 4:2:0'
 command += ' -strip'
 command += ' -quality 85'
