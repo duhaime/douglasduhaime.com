@@ -346,16 +346,16 @@ body {
   font-weight: 400;
 }
 
-.home-post .post-thumbnail,
+.home-post img,
 .home-project .project-image {
   background-color: #aaa;
   border: 1px solid #757575;
   box-sizing: border-box;
 }
 
-.home-post .post-thumbnail {
+.home-post img {
   width: 100%;
-  padding-bottom: 10.5%;
+  margin: 0;
 }
 
 .home-post:hover .title {
