@@ -13,7 +13,7 @@ two_x_extension = output.sub(extension, '-2x' + extension)
 # make 2x thumbnail
 command =  'convert ' + input
 command += ' -resize "1380x580^"'
-command += ' -gravity north'
+command += ' -gravity northwest'
 command += ' -crop 1380x580+0+0'
 command += ' -sampling-factor 4:2:0'
 command += ' -strip'
