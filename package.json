@@ -8,7 +8,7 @@
     "compress-post": "./node_modules/.bin/webpack --config ./assets/utils/webpack/webpack.post.config.js",
     "build": "JEKYLL_ENV=production bundle exec jekyll build",
     "deploy": "npm run build && npm run copy-all-unzipped",
-    "copy-all-unzipped": "aws s3 cp _site/ s3://douglasduhaime.com/ --include '*' --acl public-read --cache-control max-age=604800 --recursive --metadata-directive='REPLACE'",
+    "copy-all-unzipped": "aws s3 cp _site/ s3://douglasduhaime.com/ --include '*' --acl public-read --cache-control max-age=604800 --recursive --metadata-directive='REPLACE' --profile default",
     "test": "echo 'Error: no test specified' && exit 1"
   },
   "repository": {
