@@ -3,7 +3,7 @@ plugins:
   - octopress-minify-html
 
 # minify html
-minify_html: true
+minify_html: false
 
 # bust html cache
 bust_cache: true
