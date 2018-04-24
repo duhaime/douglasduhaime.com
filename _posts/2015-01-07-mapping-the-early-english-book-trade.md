@@ -10,12 +10,7 @@ thumbnail: |
 banner: |
   /assets/posts/mapping-early-books/mapping-early-books-banner.jpg
 css:
-  - https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css
-  - /assets/posts/mapping-early-books/mapping-early-books.css
 js:
-  - https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.js
-  - https://mapzen.com/tangram/0.12/tangram.min.js
-  - /assets/posts/mapping-early-books/mapping-early-books.js
 ---
 
 {% capture dir %}{{ site.baseurl }}/assets/posts/mapping-early-books{% endcapture %}
@@ -24,9 +19,7 @@ Historians often call attention to the tremendous influence the 1710 Act of Anne
 
 One of the debates surrounding the Act of Anne concerns the degree to which the statute altered the geography of the English book trade. Prior to the passage of the Act, legal historian Diane Zimmerman notes, the Stationers' Company dominated the book industry, and because the company's printers were primarily stationed in London, the book trade was also centered in the metropole. With the passage of the Statute of Anne, however, authors could sell or trade their copyrights to printers outside of London: "Now any printer [or] bookseller, wherever located within the country, could register a copyright with the Company" and "since purchasers of the copies could be located anywhere in the United Kingdom, the Stationers' Company did not regain its monopoly [on the book trade]" (7). Contra Zimmerman, William Patry argues that the Act of Anne failed to undermine London's control of the book trade: "After the Statute of Anne, as before," he writes, "the only purchasers of authors' works were a small group of London booksellers" ([84][patry-link]). To investigate what the ESTC had to say on this question, I analyzed the geographical distribution of English printers before and after the passage of the 1710 Act:
 
-<div id='map'>
-  <div id='current-year'></div>
-</div>
+<img class='large' src='{{ dir }}/images/provincial_printing.png' alt='Visualization of English printing before and after the Act of Anne.'>
 
 The usual cautions concerning false imprints and varying survival rates notwithstanding, the ESTC clearly demonstrates the decentralization of English printing in the wake of the Act of Anne. London of course remained the primary site of publication throughout the years covered by the ESTC—publishing two-thirds of all records from the period—though its annual share in the trade fell quite dramatically across the eighteenth century:
 
