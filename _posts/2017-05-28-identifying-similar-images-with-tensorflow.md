@@ -10,7 +10,7 @@ description: |
 preview: /assets/posts/similar-images/preview/
 css: /assets/posts/similar-images/similar-images.css
 js:
-  - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
+  - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js
   - https://d3js.org/d3.v3.min.js
   - /assets/posts/similar-images/similar-images.js
 ---
@@ -139,7 +139,7 @@ def run_inference_on_images(image_list, output_dir):
         print("parsing", image_index, image, "\n")
         if not tf.gfile.Exists(image):
           tf.logging.fatal('File does not exist %s', image)
-        
+
         with tf.gfile.FastGFile(image, 'rb') as f:
           image_data =  f.read()
 
@@ -155,7 +155,7 @@ def run_inference_on_images(image_list, output_dir):
           feature_tensor = sess.graph.get_tensor_by_name('pool_3:0')
           feature_set = sess.run(feature_tensor,
                           {'DecodeJpeg/contents:0': image_data})
-          feature_vector = np.squeeze(feature_set)        
+          feature_vector = np.squeeze(feature_set)
           outfile_name = os.path.basename(image) + ".npz"
           out_path = os.path.join(output_dir, outfile_name)
           np.savetxt(out_path, feature_vector, delimiter=',')
@@ -227,7 +227,7 @@ The modified version of classify_images.py above generates one image vector for 
   </div>
 </div>
 <div class='clear-both'></div>
- 
+
 A nice way to achieve this functionality is to leverage Erik Bern's Approximate Nearest Neighbors Oh Yeah [library](https://github.com/spotify/annoy) to identify the approximate nearest neighbors for each image. The similar image viewer above uses ANN to identify similar images [I used this [nearest neighbors script]({{ site.baseurl }}/assets/posts/similar-images/utils/cluster_vectors.py)]. To identify the nearest neighbors for the image vectors we created above, one can run:
 
 {% highlight bash %}
