@@ -10,8 +10,8 @@ description: |
 preview: /assets/posts/cheap-literature/preview/
 css: /assets/posts/cheap-literature/cheap-literature.css
 js:
-  - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
+  - /assets/vendor/js/lodash.min.js
+  - /assets/vendor/js/d3.min.js
   - /assets/posts/cheap-literature/js/price-data-sampler.js
   - /assets/posts/cheap-literature/js/price-sample-size.js
   - /assets/posts/cheap-literature/js/price-by-size-boxplot.js

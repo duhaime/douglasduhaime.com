@@ -9,7 +9,7 @@ description: |
   Fun and simple transitions between images using D3.js and @fogleman's Primitive library.
 preview: /assets/posts/image-transitions/preview/
 js:
-  - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js 
+  - /assets/vendor/js/d3.min.js
   - /assets/posts/image-transitions/draw.js
 css: /assets/posts/image-transitions/image-transitions.css
 ---
@@ -30,11 +30,11 @@ def img_to_svg(img):
   basename = os.path.basename(img)
   new_name = os.path.splitext(basename)[0] + '.svg'
   out_file = os.path.join(output_directory, new_name)
-  call =  'primitive -i ' + img 
+  call =  'primitive -i ' + img
   call += ' -o ' + out_file
   call += ' -r ' + str(size)
   call += ' -s ' + str(size)
-  call += ' -n 300' 
+  call += ' -n 300'
   call += ' -m 4'
 
   print(' * running', call)
@@ -69,7 +69,7 @@ def svg_to_json(svg):
     group = soup.find('g')
     data['group'] = {
       'transform': group['transform']
-    } 
+    }
 
     rect = soup.find('rect')
     data['rect'] = {

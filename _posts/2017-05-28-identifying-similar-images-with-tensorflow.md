@@ -10,8 +10,8 @@ description: |
 preview: /assets/posts/similar-images/preview/
 css: /assets/posts/similar-images/similar-images.css
 js:
-  - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js
-  - https://d3js.org/d3.v3.min.js
+  - /assets/vendor/js/lodash.min.js
+  - /assets/vendor/js/d3.min.js
   - /assets/posts/similar-images/similar-images.js
 ---
 

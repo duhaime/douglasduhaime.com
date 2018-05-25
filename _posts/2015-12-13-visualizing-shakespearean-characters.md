@@ -6,7 +6,7 @@ description: |
   Visualizing speaking patterns in Shakespearean drama with D3.js.
 categories: digital-humanities python d3
 css: /assets/posts/shakespearean-characters/shakespeare.css
-js: 
+js:
   - http://d3js.org/d3.v3.min.js
   - http://code.jquery.com/jquery-1.7.2.min.js
   - /assets/posts/shakespearean-characters/character-words.js
@@ -111,7 +111,7 @@ In sum, the plots above show that a number of heretofore undisclosed patterns em
 
 <p>In this visualization, "Frequency" represents the number of times a character appears on stage, "Gender" is indicated by the markup within the Folger Shakespeare Digital Collection XML (red = female, blue = male, green = unspecified), and "Cluster" reflects the subgroup of characters with whom a given character regularly appears, as determined by a fast greedy modularity ranking algorithm. Interacting with this plot allows one to uncover a number of insights. In the first place, we can see that the Histories consistently feature more "clusters" of characters than do Comedies or Tragedies. That is to say, while Comedies tend to be wildly interconnected affairs, Histories tend to include many small, isolated groups of characters that interact rather little with each other.  Looking at the gender dynamics of these groups, we can also see that in Comedies such as <i>Merry Wives of Windsor</i> and Histories such as <i>Richard III</i> and <i>Henry V</i>, female characters tend to appear on stage together, almost creating a coherent collective over the course of the play.</p>
 
-<p>Finally, a number of female characters—such as Queen Margaret in <i>2 Henry VI</i> and Adrianna in <i>Comedy of Errors</i>—appear on stage more frequently than any other character in their respective plays, despite the fact that they say fewer words than their respective plays' most outspoken characters. That is to say, their visual presence on stage is disproportionate to their verbal presence on stage. This raises a number of questions: To what extent were female characters meant to fulfill the role of a spectacle in Shakespearean drama? It’s difficult to imagine that the male players who acted as females projected authentic feminine voices. Did the limitations of imitative speech help mitigate the number of lines given to these prominent female characters? These and other questions remain to be explored in future work.</p> 
+<p>Finally, a number of female characters—such as Queen Margaret in <i>2 Henry VI</i> and Adrianna in <i>Comedy of Errors</i>—appear on stage more frequently than any other character in their respective plays, despite the fact that they say fewer words than their respective plays' most outspoken characters. That is to say, their visual presence on stage is disproportionate to their verbal presence on stage. This raises a number of questions: To what extent were female characters meant to fulfill the role of a spectacle in Shakespearean drama? It’s difficult to imagine that the male players who acted as females projected authentic feminine voices. Did the limitations of imitative speech help mitigate the number of lines given to these prominent female characters? These and other questions remain to be explored in future work.</p>
 
 [previous-shakes-post]:{{ site.baseurl }}/posts/classifying-shakespearean-drama-with-sparse-feature-sets.html
 [folger-digital-library]:http://www.folgerdigitaltexts.org/
