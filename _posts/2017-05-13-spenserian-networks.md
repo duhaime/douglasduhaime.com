@@ -9,8 +9,8 @@ description: |
   Visualizing in-group and out-of-group statistics among early modern poets across gendered, educational, and professional lines.
 preview: /assets/posts/spenserian-networks/preview/
 js:
-  - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
-  - https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js
+  - /assets/vendor/js/lodash.min.js
+  - /assets/vendor/js/d3.min.js
   - /assets/posts/spenserian-networks/js/bar-chart.js
   - /assets/posts/spenserian-networks/js/correlation-matrix.js
   - /assets/posts/spenserian-networks/js/steam-chart.js
@@ -61,7 +61,7 @@ It's helpful to remember the metadata value counts above are not static but chan
 
 Occupation-wise, one finds here that while early poets were often secretaries and courtiers, later poets rarely pursued these professions. Writing-wise, the chart reflects a strong rise of editor-poets, a growth that mirrors the increasingly pervasive presence of the printing press over the seventeenth and eighteenth centuries. Religion-wise, the clear trend is away from Anglicanism and toward a larger polyphony of religious devotions. Nationality-wise, English poets are strongly represented in early decades, while American, Irish, and Scottish poets grow better represented over the eighteenth century. Gender-wise, females only become represented in the seventeenth century, and unfortunately never achieve a significant portion of the poet population within the database.
 
-The charts above capture metadata counts within the Spenserians database, but they don't capture relationships between metadata values in the database. To show the relationships between poet occupations and education levels, for example, the plot below uses a matrix-like view. In the initial chart, each column represents an occupation and each row represents an education level. Changing the first two dropdowns below updates the metadata fields used for column and row values. The color of each cell is controlled by the third dropdown&mdash;normalizizing by row makes each row's values sum to 1, while normalizing by column makes each column's values sum to 1. By toggling between these values, one can normalize the cell values by either column or row-level metadata values: 
+The charts above capture metadata counts within the Spenserians database, but they don't capture relationships between metadata values in the database. To show the relationships between poet occupations and education levels, for example, the plot below uses a matrix-like view. In the initial chart, each column represents an occupation and each row represents an education level. Changing the first two dropdowns below updates the metadata fields used for column and row values. The color of each cell is controlled by the third dropdown&mdash;normalizizing by row makes each row's values sum to 1, while normalizing by column makes each column's values sum to 1. By toggling between these values, one can normalize the cell values by either column or row-level metadata values:
 
 ## Poet Metadata Correlations
 
@@ -145,7 +145,7 @@ To do so, we first find the total number of associates that exist for each combi
       <option value='writing'>Writing</option>
     </select>
   </div>
-  
+
   <div class='select-container'>
     <label>Points:</label>
     <select id='scatterplot-points'>

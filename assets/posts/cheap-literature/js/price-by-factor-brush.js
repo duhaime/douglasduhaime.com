@@ -93,8 +93,8 @@
 
     var transition = groups.transition()
       .duration(500);
-    
-    transition.select('.vertical-line')
+
+    transition.select('.vertical-line').transition()
       .duration(500)
       .attr('x1', function(d) { return getX(d) + getWidth(d)/2; })
       .attr('x2', function(d) { return getX(d) + getWidth(d)/2; })
@@ -256,7 +256,7 @@
     d3.json(chart.data.dir + chart.data.file, function(json) {
       var factorData = json[self.id],
           sortedData = _.sortBy(factorData, '50');
-  
+
       title.textContent = self.textContent;
       chart.json = sortedData;
       updateBrush(sortedData);
