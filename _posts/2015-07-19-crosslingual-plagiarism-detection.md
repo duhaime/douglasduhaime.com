@@ -30,7 +30,7 @@ In order to identify the passages within Goldsmith's corpus that were taken from
     <td>Bothwell was possessed of all the insolence which attends great crimes: he assembled the principal Lords of the state, and compelled them to sign an instrument, purporting, that they judged it the Queen's interest to marry Bothwell, as he had lain with her against her will.</td>
     <td style='text-align: center'>1</td>
   </tr>
-  
+
   <tr>
     <td>Histoire c'est le récit des faits donnés pour vrais; au contraire de la fable, qui est le récit des faits donnés pour faux.</td>
     <td>In the early part of history a want of real facts hath induced many to spin out the little that was known with conjecture.</td>
@@ -47,8 +47,8 @@ In order to identify the passages within Goldsmith's corpus that were taken from
     <td>Comme il y a en Peinture différentes écoles, il y en a aussi en Sculpture, en Architecture, en Musique, & en général dans tous les beaux Arts.</td>
     <td>A school in the polite arts, properly signifies, that succession of artists which has learned the principles of the art from some eminent master, either by hearing his lessons, or studying his works.</td>
     <td style='text-align: center'>0</td>
-  </tr>  
-  
+  </tr>
+
   <tr>
     <td>Des étoiles qui tombent, des montagnes qui se fendent, des fleuves qui reculent, le Soleil & la Lune qui se dissolvent, des comparaisons fausses & gigantesques, la nature toûjours outrée, sont le caractere de ces écrivains, parce que dans ces pays où l'on n'a jamais parlé en public.</td>
     <td>Falling stars, splitting mountains, rivers flowing to their sources, the sun and moon dissolving, false and unnatural comparisons, and nature everywhere exaggerated, form the character of these writers; and this arises from their never, in these countries, being permitted to speak in public.</td>
@@ -83,7 +83,7 @@ def alzahrani_similarity( a_passage, b_passage ):
     else:
 
       # For each word in Passage B
-      for b_word in b_passage:  
+      for b_word in b_passage:
 
         # If the current words from Passages A and B are synonymous
         if a_word in find_synonyms( b_word ):
@@ -114,7 +114,7 @@ To capture some of these finer gradations in meaning, I called on [Word2Vec][wor
 
 {% highlight python %}
 from gensim.models.word2vec import Word2Vec
-from sklearn.metrics.pairwise import cosine_similarity    
+from sklearn.metrics.pairwise import cosine_similarity
 
 # Load the Google pretrained word vectors
 google_dir = '../google_pretrained_word_vectors/'
@@ -141,7 +141,7 @@ As one can see, the Word2Vec similarity measure achieves very promising separati
 
 ### Feature Selection: Syntactic Similarity
 
-Much like the semantic features discussed above, syntactic similarity can also serve as a clue of plagiarism. While a thoroughgoing pursuit of syntactic features might lead one deep into sophisticated analysis of dependency trees, it turns out one can get reasonable results by simply examining the distribution of part of speech tags within Goldsmith's plagiarisms and their source texts. Using the Stanford Part of Speech (POS) Tagger's French and English models, and a custom mapping I put together to link the French POS tags to the universal tagset, I transformed each of the paired passages in the training data into a POS sequence such as the following: 
+Much like the semantic features discussed above, syntactic similarity can also serve as a clue of plagiarism. While a thoroughgoing pursuit of syntactic features might lead one deep into sophisticated analysis of dependency trees, it turns out one can get reasonable results by simply examining the distribution of part of speech tags within Goldsmith's plagiarisms and their source texts. Using the Stanford Part of Speech (POS) Tagger's French and English models, and a custom mapping I put together to link the French POS tags to the universal tagset, I transformed each of the paired passages in the training data into a POS sequence such as the following:
 
 {% highlight python %}
 [(u'Newton', u'NNP'), (u'appeared', u'VBD'),...,(u'amazing', u'JJ'), (u'.', u'.')]
@@ -178,7 +178,7 @@ Generally speaking, precision values were higher than recall, perhaps because so
     <td>L' Eloquence , dit M. de Voltaire, est née avant les regles de la Rhétorique, comme les langues se sont formées avant la Grammaire.</td>
     <td>Thus we see, eloquence is born with us before the rules of rhetoric, as languages have been formed before the rules of grammar.</td>
   </tr>
-  
+
   <tr>
     <td>L' empire Germanique, dans l'état où il est aujourd'hui, n'est qu'une portion des états qui étoient soûmis à Charlemagne. Ce prince possédoit la France par droit de succession; il avoit conquis par la force des armes tous les pays situés depuis le Danube jusqu'à la mer Baltique; il y réunit le royaume de Lombardie, la ville de Rome son territoire, ainsi que l'exarchat de Ravennes, qui étoient presque les seuls domaines qui restassent en Occident aux empereurs de Constantinople.</td>
     <td>The empire of Germany, in its present state is only a part of those states that were once under the dominion of Charlemagne. This prince was possessed of France by right of succession: he had conquered by force of arms all the countries situated between the Baltic Sea and the Danube. He added to his empire the kingdom of Lombardy, the city of Rome and its territory, together with the exarchate of Ravenna, which were almost the only possessions that remained in the West to the emperors of Constantinople.</td>
