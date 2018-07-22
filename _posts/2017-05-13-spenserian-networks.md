@@ -109,7 +109,7 @@ If the charts above reveal some of the relationships between Spenserian author m
 
 The following chart visualizes these relationships. By hovering on individual writers within the network, you can visualize that poet's relationships with other poets (click the image to enter):
 
-<a href='{{ site.baseurl }}/pages/spenserian-networks/' class='click-to-interact'>
+<a href='{{ site.baseurl }}/pages/spenserian-networks/index.html' class='click-to-interact'>
   <img src='{{ site.baseurl }}/assets/posts/spenserian-networks/images/horace-walpole-associates.jpg' alt="Network visualization of Horace Walpole's connections with other poets" />
 </a>
 
