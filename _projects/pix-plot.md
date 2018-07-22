@@ -3,7 +3,7 @@ title: PixPlot
 site: https://s3-us-west-2.amazonaws.com/lab-apps/pix-plot/index.html
 source: https://github.com/YaleDHLab/pix-plot
 image: /assets/projects/pix-plot/pix-plot.jpg
-order: 7
+order: 5
 tech:
   - Three.js
   - Tween.js

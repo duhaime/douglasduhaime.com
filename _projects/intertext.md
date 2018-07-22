@@ -3,7 +3,7 @@ title: Intertext
 site: https://github.com/YaleDHLab/intertext
 source: https://github.com/YaleDHLab/intertext
 image: /assets/projects/intertext/intertext.jpg
-order: 5
+order: 3
 tech:
   - React.js
   - Redux.js
