@@ -432,7 +432,8 @@ body {
   right: 0;
   padding: 1px 7px;
   width: auto;
-  max-width: 100px;
+  max-width: 110px;
+  white-space: nowrap;
 }
 
 .home-project .project-links a {
