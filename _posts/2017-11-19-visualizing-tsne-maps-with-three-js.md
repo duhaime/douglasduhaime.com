@@ -7,8 +7,8 @@ thumbnail: |
   /assets/posts/tsne-webgl/tsne-webgl-thumb.jpg
 banner: |
   /assets/posts/tsne-webgl/tsne-webgl-banner.jpg
-css: 
-js: 
+css:
+js:
   - https://production-assets.codepen.io/assets/embed/ei.js
 ---
 
@@ -62,7 +62,7 @@ camera.position.z = 5;
 
 {% endhighlight %}
 
-**renderer**: The renderer renders the scene to a canvas element on an HTML page:  
+**renderer**: The renderer renders the scene to a canvas element on an HTML page:
 
 {% highlight javascript %}
 
@@ -305,7 +305,7 @@ FaceVertexUvs represent a texture as a two-dimensional plane that stretches from
 
 {% highlight javascript %}
 
-// map the region of the image described by the lower-left, 
+// map the region of the image described by the lower-left,
 // lower-right, and upper-right vertices to the first face
 // of the geometry
 geometry.faceVertexUvs[0].push([
@@ -314,7 +314,7 @@ geometry.faceVertexUvs[0].push([
   new THREE.Vector2(1,1)
 ]);
 
-// map the region of the image described by the lower-left, 
+// map the region of the image described by the lower-left,
 // upper-right, and upper-left vertices to the second face
 // of the geometry
 geometry.faceVertexUvs[0].push([
@@ -401,18 +401,18 @@ function getRandomInt() {
 // Create the empty geometry
 var geometry = new THREE.Geometry();
 
-// For each of the 100 subimages in the montage, add four 
+// For each of the 100 subimages in the montage, add four
 // vertices (one for each corner), in the following order:
 // lower left, lower right, upper right, upper left
 for (var i=0; i<100; i++) {
-  
+
   // Create x, y, z coords for this subimage
   var coords = {
     x: getRandomInt(),
     y: getRandomInt(),
     z: -400
   };
-  
+
   geometry.vertices.push(
     new THREE.Vector3(
       coords.x,
@@ -452,17 +452,17 @@ for (var i=0; i<100; i++) {
 
   // Add those faces to the geometry
   geometry.faces.push(faceOne, faceTwo);
-  
+
   // Identify this subimage's offset in the x dimension
   // An xOffset of 0 means the subimage starts flush with
   // the left-hand edge of the atlas
   var xOffset = (i % 10) * (image.width / atlas.width);
-  
+
   // Identify the subimage's offset in the y dimension
   // A yOffset of 0 means the subimage starts flush with
   // the top edge of the atlas
   var yOffset = Math.floor(i/10) * (image.height / atlas.height);
-  
+
   // Use the xOffset and yOffset (and the knowledge that
   // each row and column contains only 10 images) to specify
   // the regions of the current image
@@ -472,7 +472,7 @@ for (var i=0; i<100; i++) {
     new THREE.Vector2(xOffset+.1, yOffset+.1)
   ]);
 
-  // Map the region of the image described by the lower-left, 
+  // Map the region of the image described by the lower-left,
   // upper-right, and upper-left vertices to `faceTwo`
   geometry.faceVertexUvs[0].push([
     new THREE.Vector2(xOffset, yOffset),
@@ -521,7 +521,7 @@ for (var i=0; i<5; i++) {
 }
 
 // Callback function that adds the texture to the list of textures
-// and calls the geometry builder if all textures have loaded 
+// and calls the geometry builder if all textures have loaded
 function handleTexture(idx, texture) {
   materials[idx] = new THREE.MeshBasicMaterial({ map: texture })
   if (Object.keys(materials).length === 5) {
@@ -602,7 +602,7 @@ Running that TSNE script on your image vectors will generate a JSON file in whic
 [
   { 'x': 95.027, 'y': 11.80  },
   { 'x': 98.54,  'y': -30.42 }, ...
-] 
+]
 
 {% endhighlight %}
 
@@ -639,7 +639,7 @@ for (var i=0; i<5; i++) {
 }
 
 // Callback function that adds the texture to the list of textures
-// and calls the geometry builder if all textures have loaded 
+// and calls the geometry builder if all textures have loaded
 function handleTexture(idx, texture) {
   materials[idx] = new THREE.MeshBasicMaterial({ map: texture })
   conditionallyBuildGeometries()

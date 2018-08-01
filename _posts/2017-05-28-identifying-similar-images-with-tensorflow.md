@@ -244,7 +244,7 @@ Another fun application for image vectors are TSNE projections. If you haven't u
 
 If we load all of the image vectors into a TSNE model then project the data down two two dimensions, we can create a two-dimensional representation of the image collection that preserves similarity between images. Within this representation of the data, each image is positioned near the images to which it's most similar (click for interactive view):
 
-<a href='{{ site.baseurl }}/pages/tsne-images' class='click-to-interact'>
+<a href='{{ site.baseurl }}/pages/tsne-images/index.html' class='click-to-interact'>
   <img src='{{ site.baseurl }}/assets/posts/similar-images/tsne-images.jpg' alt='TSNE projection of similar images from the New York Public Library collection of Works Progress Administration photos'>
 </a>
 

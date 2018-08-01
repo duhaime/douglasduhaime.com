@@ -3,7 +3,7 @@ title: New Haven Building Archive
 site: https://nhba.yale.edu
 source: https://github.com/yaledhlab/nhba
 image: /assets/projects/nhba/nhba-thumbnail.jpg
-order: 4
+order: null
 tech:
   - Express.js
   - MongoDB

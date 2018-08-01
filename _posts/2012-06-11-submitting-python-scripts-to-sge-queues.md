@@ -29,7 +29,7 @@ Then, once you have your script ready to go, you only need to make a .job file t
 #$ -e tmp.err
 module load python/2.7.3
 echo "Start - `date`"
-python tmp.py 
+python tmp.py
 echo "Finish - `date`"
 {% endhighlight %}
 

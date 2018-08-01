@@ -78,7 +78,7 @@ One can run a wide range of numerical operations on this image pixel matrix in o
 
 One approach that's often useful in image processing is "pixel dilation." This term refers to the process of measuring the total amount of luminescence for each row and each column of an image. Measuring these values can provide helpful inputs with which one can automatically crop or even segment image elements.
 
-Given a matrix representation of the composite image discussed above, for example, one can easily find the aggregate luminesence of each column of pixels. The plot below on the right visualizes the aggregate luminesence of each column of pixels for the image on the left below: 
+Given a matrix representation of the composite image discussed above, for example, one can easily find the aggregate luminesence of each column of pixels. The plot below on the right visualizes the aggregate luminesence of each column of pixels for the image on the left below:
 
 <div class='dilations-x'>
   <img src='{{ site.baseurl }}/assets/posts/image-segmentation/sample-periodical-image.jpg' class='image' alt='Sample image that contains several newspaper clippings.'>
@@ -172,7 +172,7 @@ for region_index, region in enumerate(regionprops(labeled)):
   # draw a rectangle around the segmented articles
   # bbox describes: min_row, min_col, max_row, max_col
   minr, minc, maxr, maxc = region.bbox
-  
+
   # use those bounding box coordinates to crop the image
   cropped_images.append(im[minr-pad:maxr+pad, minc-pad:maxc+pad])
 
