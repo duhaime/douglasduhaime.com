@@ -1,0 +1,153 @@
+/**
+* Main
+**/
+
+/**
+* Inline Equations
+**/
+
+.fraction {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 0.7em;
+  line-height: 0.8em;
+  letter-spacing: 0.001em;
+}
+
+.fraction > span {
+  display: block;
+  padding: 0.1em;
+}
+
+.fraction span.bottom {
+  border-top: thin solid black;
+}
+
+.fraction span.bar {
+  display: none;
+}
+
+/**
+* Captions
+**/
+
+.caption {
+  color: #999;
+  font-size: 12px;
+  line-height: 16px;
+  margin: -10px 60px 20px;
+}
+
+/**
+* Methods Images
+**/
+
+.center-images {
+  text-align: center;
+}
+
+.center-images img {
+  display: inline-block;
+}
+
+img.exposure-l {
+  width: 130px;
+}
+
+img.exposure-r {
+  width: 170px;
+}
+
+img.combined-l1 {
+  width: 150px;
+}
+
+img.combined-l2 {
+  width: 160px;
+}
+
+img.combined-r {
+  width: 160px;
+}
+
+img.alembic-l {
+  width: 140px;
+}
+
+img.alembic-r {
+  width: 150px;
+}
+
+img.cut-l {
+  height: 184px;
+}
+
+img.cut-r {
+  height: 186px;
+}
+
+/**
+* Sample Matches
+**/
+
+#image-browser #sample-images {
+  max-width: 100%;
+  height: 446px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  cursor: pointer;
+  opacity: 1;
+}
+
+#image-browser img.sample-image {
+  height: 34px;
+  display: inline-block;
+  margin: 0;
+  transition: opacity .3s;
+}
+
+#image-browser #sample-images.active img.sample-image {
+  opacity: 0.2;
+}
+
+#image-browser #sample-images.active img.sample-image.active {
+  opacity: 1;
+}
+
+#image-browser #refresh-sample-images {
+  margin: 20px auto 25px;
+}
+
+#image-browser #match-reel {
+  background: #f9f9f9;
+  padding: 4px;
+  border: 1px solid #efefef;
+  margin-bottom: 8px;
+  box-shadow: 0px 0px 2px #555;
+  height: 34px;
+  white-space: nowrap;
+  overflow: auto;
+  text-align: center;
+}
+
+#image-browser #match-reel span {
+  color: #777;
+  font-size: 0.9em;
+  position: relative;
+  top: 5px;
+}
+
+/**
+* Works Cited
+**/
+
+.works-cited div {
+  margin-bottom: 20px;
+  line-height: 20px;
+}
+
+.works-cited div:target {
+  color: rgb({{ site.dark }});
+}
