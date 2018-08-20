@@ -36,7 +36,7 @@
   function addImage(container, id) {
     var child = document.createElement('img');
     child.className = 'sample-image';
-    child.src = dir + '/images/resized/' + id + '.jpg';
+    child.src = s3 + id + '.jpg';
     container.appendChild(child);
   };
 
@@ -68,8 +68,10 @@
     if (e.target.className.includes('sample-image')) return;
     deactivate();
     matches.appendChild(guide);
+    active = null;
   };
 
+  var s3 = 'https://s3.amazonaws.com/duhaime/blog/press-piracy/sample-image-matches/';
   var refresh = document.querySelector('#refresh-sample-images');
   var matches = document.querySelector('#match-reel');
   var guide = document.querySelector('#match-guide');
@@ -82,14 +84,15 @@
   var n = 200;
 
   refresh.addEventListener('click', draw);
-  elem.addEventListener('mousemove', activateImage);
   elem.addEventListener('click', activateImage);
   document.body.addEventListener('click', reset);
 
   get(dir + '/json/' + file, function(raw) {
     data = raw;
     data.forEach(function(i, idx) { map[i[0]] = i; })
-    refresh.click();
+    window.setTimeout(function() {
+      refresh.click();
+    }, 1000);
   });
 
 })();
