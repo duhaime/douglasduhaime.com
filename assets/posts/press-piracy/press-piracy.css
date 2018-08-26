@@ -37,7 +37,37 @@
   color: #999;
   font-size: 12px;
   line-height: 16px;
-  margin: -10px 60px 20px;
+  margin: 10px 60px 20px;
+}
+
+@media (max-width: 600px) {
+  .caption {
+    margin: 10px 10px 20px;
+  }
+}
+
+/**
+* Text Reuse Sample Pages
+**/
+
+.cookery-images {
+  text-align: center;
+}
+
+.cookery-images img {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: 0px 0px 5px #ddd;
+  margin: 6px;
+}
+
+/**
+* Nova Scotia Images
+**/
+
+.center-images.nova-scotia-images img {
+  max-height: 140px;
 }
 
 /**
@@ -50,42 +80,53 @@
 
 .center-images img {
   display: inline-block;
+  margin: 10px auto 0;
+  max-height: 184px;
 }
 
-img.exposure-l {
-  width: 130px;
+.center-images .cut-l {
+  max-height: 210px;
 }
 
-img.exposure-r {
-  width: 170px;
+.center-images .cut-r {
+  max-height: 211px;
 }
 
-img.combined-l1 {
-  width: 150px;
+.center-images .alembic-l {
+  max-height: 220px;
 }
 
-img.combined-l2 {
-  width: 160px;
+.center-images .alembic-r {
+  max-height: 225px;
 }
 
-img.combined-r {
-  width: 160px;
+/**
+* Anson's Maps
+**/
+
+.map-images {
+  max-width: 100%;
+  overflow: auto;
+  white-space: nowrap;
 }
 
-img.alembic-l {
-  width: 140px;
+.map-images img {
+  max-height: 128px;
+  margin-top: 0;
 }
 
-img.alembic-r {
-  width: 150px;
+/**
+* Skeletons
+**/
+
+.center-images.skeleton-images img {
+  max-height: 200px;
+  margin: 0 5px -5px;
+  vertical-align: top;
 }
 
-img.cut-l {
-  height: 184px;
-}
-
-img.cut-r {
-  height: 186px;
+.center-images.skeleton-images img:first-of-type {
+  max-height: 217px;
 }
 
 /**
@@ -105,7 +146,6 @@ img.cut-r {
   height: 34px;
   display: inline-block;
   margin: 0;
-  transition: opacity .3s;
 }
 
 #image-browser #sample-images.active img.sample-image {
@@ -124,11 +164,12 @@ img.cut-r {
   background: #f9f9f9;
   padding: 4px;
   border: 1px solid #efefef;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
   box-shadow: 0px 0px 2px #555;
   height: 34px;
   white-space: nowrap;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   text-align: center;
 }
 
@@ -137,6 +178,56 @@ img.cut-r {
   font-size: 0.9em;
   position: relative;
   top: 5px;
+}
+
+@media(max-width: 600px) {
+  #image-browser #match-reel span {
+    font-size: 0.7em;
+  }
+}
+
+/**
+* Moore's Pages
+**/
+
+.moore {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.moore img {
+  max-height: 240px;
+  margin: 3px;
+}
+
+/**
+* Russia images
+**/
+
+.moore.russia-images img {
+  max-height: 220px;
+  vertical-align: top;
+}
+
+.moore.russia-images img:nth-of-type(1) {
+  max-height: 242px;
+}
+
+.moore.russia-images img:nth-of-type(2) {
+  margin-top: 13px;
+}
+
+/**
+* Natives images
+**/
+
+.moore.native-images {
+  white-space: initial;
+}
+
+.moore.native-images .carver-images img {
+  max-height: 177px;
 }
 
 /**
