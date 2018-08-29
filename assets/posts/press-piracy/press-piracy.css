@@ -142,17 +142,17 @@
   opacity: 1;
 }
 
-#image-browser img.sample-image {
+#image-browser img {
   height: 34px;
   display: inline-block;
   margin: 0;
 }
 
-#image-browser #sample-images.active img.sample-image {
+#image-browser #sample-images.active img {
   opacity: 0.2;
 }
 
-#image-browser #sample-images.active img.sample-image.active {
+#image-browser #sample-images.active img.active {
   opacity: 1;
 }
 
@@ -162,22 +162,27 @@
 
 #image-browser #match-reel {
   background: #f9f9f9;
-  padding: 4px;
+  padding: 9px;
   border: 1px solid #efefef;
   margin-bottom: 18px;
   box-shadow: 0px 0px 2px #555;
-  height: 34px;
+  height: 100px;
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
   text-align: center;
+  box-sizing: border-box;
+}
+
+#image-browser #match-reel img {
+  height: 100%;
 }
 
 #image-browser #match-reel span {
   color: #777;
   font-size: 0.9em;
   position: relative;
-  top: 5px;
+  top: 27px;
 }
 
 @media(max-width: 600px) {
@@ -187,16 +192,33 @@
 }
 
 /**
+* Moore Text Samples
+**/
+
+.paragraphs {
+  text-align: center;
+}
+
+.paragraphs img {
+  display: inline-block;
+  padding: 5px;
+  box-sizing: border-box;
+  width: 44%;
+  vertical-align: top;
+  margin: 0;
+}
+
+/**
 * Moore's Pages
 **/
 
-.moore {
+.moore-voyages {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
 }
 
-.moore img {
+.moore-voyages img {
   max-height: 240px;
   margin: 3px;
 }
@@ -205,16 +227,16 @@
 * Russia images
 **/
 
-.moore.russia-images img {
+.russia-images img {
   max-height: 220px;
   vertical-align: top;
 }
 
-.moore.russia-images img:nth-of-type(1) {
+.russia-images img:nth-of-type(1) {
   max-height: 242px;
 }
 
-.moore.russia-images img:nth-of-type(2) {
+.russia-images img:nth-of-type(2) {
   margin-top: 13px;
 }
 
@@ -222,12 +244,44 @@
 * Natives images
 **/
 
-.moore.native-images {
+.native-images {
   white-space: initial;
 }
 
-.moore.native-images .carver-images img {
-  max-height: 177px;
+.carver-images img {
+  max-height: 194px;
+}
+
+/**
+* Congo images
+**/
+
+.astley-images img {
+  max-height: 261px;
+}
+
+/**
+* Kangaroo images
+**/
+
+.kangaroo-images img {
+  max-height: 130px;
+}
+
+/**
+* Notes
+**/
+
+.code-highlight {
+  background: black;
+  color: #eee;
+  padding: 3px 5px;
+  border-radius: 4px;
+  font-family: courier;
+}
+
+.variable-list {
+  margin: 10px 40px 15px;
 }
 
 /**

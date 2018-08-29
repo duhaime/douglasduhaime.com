@@ -29,14 +29,14 @@
     elem.innerHTML = null;
     shuffle(data).slice(0, n).forEach(function(group, idx) {
       var img = group[0];
-      addImage(elem, img);
+      addImage(elem, img, 'small');
     });
   };
 
-  function addImage(container, id) {
+  function addImage(container, id, imageSize) {
     var child = document.createElement('img');
     child.className = 'sample-image';
-    child.src = s3 + id + '.jpg';
+    child.src = imageDir + '/' + imageSize + '/' + id + '.jpg';
     container.appendChild(child);
   };
 
@@ -51,7 +51,7 @@
     var key = split[split.length-1].split('.')[0];
     var group = map[key];
     group.forEach(function(img) {
-      addImage(matches, img);
+      addImage(matches, img, 'medium');
     });
   };
 
@@ -76,7 +76,8 @@
   var matches = document.querySelector('#match-reel');
   var guide = document.querySelector('#match-guide');
   var elem = document.querySelector('#sample-images');
-  var dir = '/assets/posts/press-piracy';
+  var dataDir = '/assets/posts/press-piracy';
+  var imageDir = dataDir + '/images/resized';
   var file = 'sample-image-matches.json';
   var active = null;
   var data = null;
@@ -87,7 +88,7 @@
   elem.addEventListener('click', activateImage);
   document.body.addEventListener('click', reset);
 
-  get(dir + '/json/' + file, function(raw) {
+  get(dataDir + '/json/' + file, function(raw) {
     data = raw;
     data.forEach(function(i, idx) { map[i[0]] = i; })
     window.setTimeout(function() {
