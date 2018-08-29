@@ -61,7 +61,7 @@ maxLeft=1
 useClassFeature=true
 useWord=true
 # word character ngrams will be included up to length 6 as prefixes
-# and suffixes only 
+# and suffixes only
 useNGrams=true
 noMidNGrams=true
 maxNGramLeng=6
@@ -80,14 +80,14 @@ wordShape=chris2useLC
 We saved this file as propforclassifierone.prop, and then built the classifier by executing the following command within a shell:
 
 {% highlight bash %}
-java -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier \ 
+java -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier \
 -prop propforclassifierone.prop
 {% endhighlight %}
 
 This command generated an NER model that one can evoke within a shell using a command such as the following:
 
 {% highlight bash %}
-java -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier \ 
+java -cp stanford-ner.jar edu.stanford.nlp.ie.crf.CRFClassifier \
 -loadClassifier ner-model.ser.gz -testFile directoryone.tsv
 {% endhighlight %}
 

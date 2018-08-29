@@ -2,7 +2,7 @@
 layout: post
 title: CRUD Operations on Static File Sites
 date: 2017-04-28
-categories: javascript databases
+categories: javascript databases serverless
 thumbnail: /assets/posts/crud-operations/crud-operations-thumb.jpg
 banner: /assets/posts/crud-operations/crud-operations-banner.png
 description: |
@@ -85,7 +85,7 @@ Given this spreadsheet, one can prepare to accept post requests by adding a litt
 
 /**
 * Save HTTP POST data to the current spreadsheet
-* 
+*
 * @params: {Object} e: an event object that contains post data in e.parameters
 * @returns: a success/failure object with data in event.parameters
 * @documentation: https://developers.google.com/apps-script/guides/web
@@ -133,7 +133,7 @@ function writeToSheet(e) {
     // write the row data to the sheet
     sheet.getRange(nextRow, 1, 1, row.length).setValues([row]);
   }
-  
+
   catch(error) {
     Logger.log(e); // log any errors
   }
@@ -151,7 +151,7 @@ After adding these functions to your script, click <b>Save</b> and type a name f
 
 ### Adding the App Url to the Form
 
-Finally, we can make our form post responses to our Sheet by modifying the form we defined above. Let's make the form submit a POST request, and let's use the "Current web app URL" from the Google Sheet as the form action: 
+Finally, we can make our form post responses to our Sheet by modifying the form we defined above. Let's make the form submit a POST request, and let's use the "Current web app URL" from the Google Sheet as the form action:
 
 {% highlight html %}
 <form id='google-form' method='post' action='https://script.google.com/macros/s/AKfycbyVS-FMaTegLw0tYrr00ZhOdwfHD4EYP6vwJSpdwGMywBkir9Y/exec'>

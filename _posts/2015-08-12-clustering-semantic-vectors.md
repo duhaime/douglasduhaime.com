@@ -11,7 +11,7 @@ banner: |
   /assets/posts/clustering-semantic-vectors/clustering-semantic-vectors-banner.png
 ---
 
-Google's Word2Vec and Stanford's GloVe have recently offered two fantastic open source software packages capable of transposing words into a high dimension vector space. In both cases, a vector's position within the high dimensional space gives a good indication of the word's semantic class (among other things), and in both cases these vector positions can be used in a variety of applications. In the post below, I'll discuss one approach you can take to clustering the vectors into coherent semantic groupings. 
+Google's Word2Vec and Stanford's GloVe have recently offered two fantastic open source software packages capable of transposing words into a high dimension vector space. In both cases, a vector's position within the high dimensional space gives a good indication of the word's semantic class (among other things), and in both cases these vector positions can be used in a variety of applications. In the post below, I'll discuss one approach you can take to clustering the vectors into coherent semantic groupings.
 
 Both Word2Vec and GloVe can create vector spaces given a large training corpus, but both maintain pretrained vectors as well. To get started with ~1GB of pretrained vectors from GloVe, one need only run the following lines:
 
@@ -43,7 +43,7 @@ To cluster the GloVe vectors in a similar fashion, one can use the sklearn packa
 {% highlight python %}
 
 from __future__ import division
-from sklearn.cluster import KMeans 
+from sklearn.cluster import KMeans
 from numbers import Number
 from pandas import DataFrame
 import sys, codecs, numpy
@@ -114,7 +114,7 @@ Finally, we can call the methods above, perform K-Means clustering, and print th
 {% highlight python %}
 if __name__ == "__main__":
   input_vector_file = sys.argv[1] # Vector file input (e.g. glove.6B.300d.txt)
-  n_words = int(sys.argv[2]) # Number of words to analyze 
+  n_words = int(sys.argv[2]) # Number of words to analyze
   reduction_factor = float(sys.argv[3]) # Amount of dimension reduction {0,1}
   n_clusters = int( n_words * reduction_factor ) # Number of clusters to make
   df, labels_array = build_word_vector_matrix(input_vector_file, n_words)

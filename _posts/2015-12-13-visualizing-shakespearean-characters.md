@@ -7,8 +7,8 @@ description: |
 categories: digital-humanities python d3
 css: /assets/posts/shakespearean-characters/shakespeare.css
 js:
-  - http://d3js.org/d3.v3.min.js
-  - http://code.jquery.com/jquery-1.7.2.min.js
+  - https://d3js.org/d3.v3.min.js
+  - https://code.jquery.com/jquery-1.7.2.min.js
   - /assets/posts/shakespearean-characters/character-words.js
   - /assets/posts/shakespearean-characters/min-max-words.js
   - /assets/posts/shakespearean-characters/min-max-entrances.js

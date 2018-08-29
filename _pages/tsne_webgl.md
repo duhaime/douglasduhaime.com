@@ -6,7 +6,7 @@ description: |
 permalink: '/pages/tsne-webgl/'
 title: 'TSNE WebGL'
 css: /assets/pages/tsne-webgl/tsne-webgl.css
-js: 
+js:
   - https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js
   - /assets/pages/tsne-webgl/js/trackball-controls.js
