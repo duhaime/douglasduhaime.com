@@ -36,7 +36,7 @@
   function addImage(container, id, imageSize) {
     var child = document.createElement('img');
     child.className = 'sample-image';
-    child.src = imageDir + '/' + imageSize + '/' + id + '.jpg';
+    child.src = s3 + '/' + imageSize + '/' + id + '.jpg';
     container.appendChild(child);
   };
 
@@ -71,7 +71,7 @@
     active = null;
   };
 
-  var s3 = 'https://s3.amazonaws.com/duhaime/blog/press-piracy/sample-image-matches/';
+  var s3 = 'https://s3.amazonaws.com/duhaime/blog/press-piracy/sample-image-matches';
   var refresh = document.querySelector('#refresh-sample-images');
   var matches = document.querySelector('#match-reel');
   var guide = document.querySelector('#match-guide');
