@@ -497,9 +497,10 @@ path.line {
   color: #fff;
   padding: 3px 7px;
   border-radius: 4px;
-  width: 105px;
+  width: 115px;
   margin: 0 1px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .author-publications svg .axis text {
