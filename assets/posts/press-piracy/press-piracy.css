@@ -1,33 +1,4 @@
-/**
-* Main
-**/
-
-/**
-* Inline Equations
-**/
-
-.fraction {
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 0.7em;
-  line-height: 0.8em;
-  letter-spacing: 0.001em;
-}
-
-.fraction > span {
-  display: block;
-  padding: 0.1em;
-}
-
-.fraction span.bottom {
-  border-top: thin solid black;
-}
-
-.fraction span.bar {
-  display: none;
-}
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
 /**
 * Captions
@@ -63,11 +34,94 @@
 }
 
 /**
+* Text Reuse Sampler
+**/
+
+#sample-text-matches {
+  text-align: center;
+}
+
+#sample-text-a {
+  margin-bottom: 8px;
+}
+
+.match-text-outer {
+  width: 300px;
+  display: inline-block;
+  vertical-align: top;
+  box-shadow: 0px 0px 5px #ddd;
+  margin: 0 5px;
+}
+
+.match-text-inner {
+  text-align: left;
+}
+
+.match-text-inner div {
+  display: inline-block;
+}
+
+.match-text-inner .text-passage {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 16px;
+  font-family: 'Special Elite', cursive;
+  text-shadow: 0.025em 0.025em black;
+  text-align: justify;
+}
+
+.match-text-inner .text-passage,
+.match-text-inner .text-meta {
+  padding: 11px;
+}
+
+.match-text-inner .text-meta {
+  font-size: 11px;
+  line-height: 14px;
+  padding-top: 0;
+}
+
+.match-text-inner .text-author {
+  font-weight: 500;
+  color: #656565;
+}
+
+.match-text-inner .text-title {
+  font-style: italic;
+  color: #999;
+}
+
+#sample-text-refresh {
+  margin-top: 15px;
+}
+
+/**
+* Clip passages to constant height
+**/
+
+.match-text-inner.clipped .text-passage {
+  box-sizing: border-box;
+  height: 218px;
+  overflow: hidden;
+}
+
+.match-text-inner.clipped .text-meta {
+  height: 50px;
+  overflow: hidden;
+}
+
+/**
 * Nova Scotia Images
 **/
 
+.nova-scotia-images a {
+  display: inline-block;
+}
+
 .center-images.nova-scotia-images img {
   max-height: 140px;
+  filter: grayscale(100%);
 }
 
 /**
@@ -203,7 +257,7 @@
   display: inline-block;
   padding: 5px;
   box-sizing: border-box;
-  width: 44%;
+  width: 300px;
   vertical-align: top;
   margin: 0;
 }
@@ -282,6 +336,33 @@
 
 .variable-list {
   margin: 10px 40px 15px;
+}
+
+/**
+* Inline Equations
+**/
+
+.fraction {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 0.7em;
+  line-height: 0.8em;
+  letter-spacing: 0.001em;
+}
+
+.fraction > span {
+  display: block;
+  padding: 0.1em;
+}
+
+.fraction span.bottom {
+  border-top: thin solid black;
+}
+
+.fraction span.bar {
+  display: none;
 }
 
 /**
