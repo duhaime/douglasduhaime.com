@@ -105,7 +105,8 @@
     var xhr = new XMLHttpRequest();
     xhr.open('GET', postUrl + '?callback=""');
     xhr.onreadystatechange = function(e) {
-      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+      if (xhr.readyState === XMLHttpRequest.DONE &&
+          xhr.status === 200) {
         var result = JSON.parse(e.target.response);
         buildResultTable(result.data)
       }
@@ -121,44 +122,23 @@
     var table = '<table class="scoreboard">';
     table += '<caption>Scoreboard</caption>';
     table += '<thead><th>Date</th><th>Name</th><th>Score</th></thead>';
-    var rows = [];
-    
-    for (var i=1; i<data.length; i++) {
-      if (!data[i][0]) {
-        container.innerHTML = table + rows.join('') + '</table>';
-        container.style.height = '280px';
-        container.style.overflow = 'auto';
+    var rows = [],
+        data = data.splice(21, data.length);
 
-        // hide the loader
-        loader.style.display = 'none';
-      } else {
-        var date = new Date(data[i][0]);        
-        var rowData = data[i];
-        rowData[0] = formatDate(date);
-        rows.unshift(getRow(rowData))
+    var str = data.reduce(function(s, row) {
+      if (row[0] && row[1] && row[2]) {
+        s += '<tr>' +
+          '<td>' + row[0].substring(0, 10) + '</td>' +
+          '<td>' + row[1] + '</td>' +
+          '<td>' + row[2] + '</td>' +
+          '</tr>';
       }
-    }
-  }
+      return s;
+    }, '')
 
-  function formatDate(date) {
-    var formatted = ''
-    formatted += date.getMonth() + 1 + '-';
-    formatted += date.getDate() + '-';
-    formatted += date.getFullYear();
-    return formatted; 
-  }
-
-  function getRow(rowData) {
-    var row = '<tr>';
-    rowData.map(function(d) {
-      row += getCell(d)
-    });
-    row += '</tr>';
-    return row;
-  }
-
-  function getCell(cellData) {
-    return '<td>' + cellData + '</td>';
+    container.innerHTML = table + str + '</table>';
+    container.style.height = '280px';
+    container.style.overflow = 'auto';
   }
 
 })()
