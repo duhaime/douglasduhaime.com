@@ -7,10 +7,13 @@ thumbnail:
 banner: /assets/posts/press-piracy/press-piracy-banner.png
 css: /assets/posts/press-piracy/press-piracy.css
 js:
+  - https://cdnjs.cloudflare.com/ajax/libs/three.js/95/three.min.js
+  - https://rawgit.com/YaleDHLab/pix-plot/master/assets/js/trackball-controls.js
   - https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js
   - /assets/posts/press-piracy/js/sample-text-matches.js
   - /assets/posts/press-piracy/js/sample-image-matches.js
   - /assets/posts/press-piracy/js/toggle-ecco-coverage.js
+  - /assets/posts/press-piracy/js/moore-text-matches.js
 ---
 
 {% capture image_dir %}{{ site.baseurl }}/assets/posts/press-piracy/images{% endcapture %}
@@ -110,7 +113,7 @@ When viewed in the aggregate, instances of text reuse appear to grow in frequenc
   The plot above displays the number of texts published between 1700 and 1800 that contain at least 100, 200, and 500 matching passages (respectively) with other works from the period. Note the apparent rapid growth of derivative text rates after the 1750's.
 </div>
 
-As we have seen above, however, the number of titles printed annually also grows quite rapidly at the end of the eighteenth century. In order to properly evaluate the rate of change in derivative printing practices, it is therefore important to "normalize" the raw counts above by dividing each by the total number of titles published in the given year. Normalizing the derivative text counts in this way results in the plot below:
+As we have seen above, however, the number of titles printed annually also grows quite rapidly at the end of the eighteenth century. In order to properly evaluate the rate of change in derivative printing practices, it is therefore important to "normalize" the raw counts above by dividing each by the total number of titles published in the given year. Normalizing the derivative text counts in this way results in the figures displayed below:
 
 <img src='{{ image_dir }}/plots/derivative-text-counts-normalized.jpg' />
 
@@ -118,13 +121,7 @@ As we have seen above, however, the number of titles printed annually also grows
   The relative frequency of derivative printing grows most rapidly in the early decades of the eighteenth century, then achieves equilibrium and almost entirely levels out by the final decades of the century.
 </div>
 
-Examining this plot, one finds that derivative text rates increase rapidly in the early decades of the century, then slowly asymptote on an equilibrium point. Instead of a "sudden flood" of derivative works after the <i>Gyles v. Wilcox</i> or <i>Donaldson v. Beckett</i> cases, we find that authors and printers steadily continued to reuse more and more material from earlier publications.
-
-The increasing rates of derivative printing practices documented above depart quite significantly from the dominant history of eighteenth-century authorship. According to this received history, the eighteenth century slowly evolved from a culture organized around imitative artistic practices to one organized around the production of original utterances. Since at least the publication of Harold Ogden White's <i>Plagiarism and Imitation during the English Renaissance</i>, scholars have maintained that seventeenth and early eighteenth century authors endorsed the forms of <i>imitatio</i> one finds throughout classical writing. "That early modern writing does not operate according to the logic of original invention is well known," observes Max Thomas: "Between the residual medieval tradition of <i>compilatio</i> and the humanistic practices of <i>copia</i> and <i>inventio</i>, the dominant structure of writing was largely imitative" [[282](#thomas)].
-
-However, by the 1750's, scholars argue, authors began to reject the derivative practices of the ancients and idealize instead notions of original authorship. "It is in the middle of the 18th century", write George Buelow, that "the concept of originality ... become[s] [a] significant elemen[t] in critical writings, and it is on this foundation of new ideas that much of the further development of aesthetic criticism as well as actual artistic achievement in all the arts was made possible in the 19th century" [[123](#buelow)]. During this transitional period, the narrative goes, celebrated works like Edward Young's <i>Conjectures on Original Composition</i> helped make "Originality . . . the main force in the creative process," driving out earlier endorsements of imitation with an insistence on each author's individual genius [[123](#buelow)].
-
-The data displayed above tells a very different story about the changing nature of authorship in the eighteenth century. In the transition from Augustan circles at the century's start to Romantic bards at the century's close, we do not find a shift from highly imitative to highly original authorship practices. We find instead that authors and publishers throughout the dawn of the Romantic age grew increasingly willing to imitate and rework the print output of their ancestors. Instead of rejecting imitation, early Romantic culture embraced it, transforming the 1704 world in which Daniel Defoe announced "no Man has a Right to make any abridgment of a Book" into a 1791 world in which Fichte declared "everyone has a right to reprint every book" [[Defoe 20](#defoe), [Fichte 237](#fichte)]. Armed with a copyright regime that in fact recognized derivative publications as new, original works, the early Romantic book market reached new heights of derivative artistic output.
+Examining this plot, one finds that derivative text rates increase rapidly in the early decades of the century, then slowly approach an equilibrium point in the later decades of the century. Rather than a "sudden flood" of derivative works after the <i>Gyles v. Wilcox</i> or <i>Donaldson v. Beckett</i> cases, one finds instead that authors and printers steadily continued to reuse more and more text material from earlier publications. This data suggests that authors and publishers were less influenced by the legal transformations of the eighteenth century than scholars previously believed. Turning to the history of image reuse within the period in what follows, we will observe a similar trend, and will set the stage for a fascinating case study that remixes both text and images from contemporary works in innovative ways.
 
 ## The Engraving Act and Copyright in Images
 
@@ -331,6 +328,114 @@ Elsewhere in his <i>Voyages and Travels</i>, Moore weaves source material into h
 <div class='caption'>
   Jonathan Carver's 1778 <i>Travels Through the Interior Parts of North America</i> (left, T133718) serves as the foundation for much of Moore's section on travels in America (right).
 </div>
+
+Astley and Carver are only two of many authors who share text with Moore's <i>Voyages and Travels</i>. Indeed, within Moore's work, one finds echoes of Samuel Johnson, Captain Cook, Joseph Addison, Tobias Smollett, and a wide range of other authors from the period, both prominent and obscure. At the same time, by comparing Moore's volume to later works from the century, one finds dozens of travel narratives that in turn adapt language and images from Moore. The interactive graphic below displays a subset of the volumes that share text with just the second volume of Moore's <i>Voyages and Travels</i>. To browse the matches, use your keyboard's left and right arrow keys to advance through the text:
+
+<!-- Moore text matches -->
+<script type='x-shader/x-vertex' id='vertex-shader'>
+precision highp float;
+
+uniform mat4 modelViewMatrix;
+uniform mat4 projectionMatrix;
+uniform vec3 cameraPosition;
+uniform float pointScale;
+
+attribute vec3 position;
+attribute vec3 translation;
+
+#ifdef PICKING
+  attribute vec3 uidColor;
+  varying vec3 vUidColor;
+#else
+  attribute vec3 color;
+#endif
+
+varying vec3 vColor;
+
+float scalePointZ(in vec3 pos, in vec3 cameraPosition) {
+  float zDelta = pow( pow(pos[2] - cameraPosition[2], 2.0), 0.5);
+  float scaled = 5000.0 / zDelta;
+  return scaled;
+}
+
+void main() {
+  #ifdef PICKING
+    vUidColor = uidColor;
+  #else
+    vColor = color;
+  #endif
+
+  // set point position
+  vec3 raw = position + translation;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(raw, 1.0);
+
+  // set point size
+  gl_PointSize =  5.0; //scalePointZ(raw, cameraPosition);
+}
+</script>
+
+<script type='x-shader/x-fragment' id='fragment-shader'>
+precision highp float;
+
+#ifdef PICKING
+  varying vec3 vUidColor;
+#else
+  varying vec3 vColor;
+#endif
+
+void main() {
+
+  // make point circular
+  vec2 coord = gl_PointCoord - vec2(0.5);
+  if (length(coord) > 0.5) discard;
+
+  // color the point
+  #ifdef PICKING
+    gl_FragColor = vec4(vUidColor, 1.0);
+  #else
+    gl_FragColor = vec4(vColor, 1.0);
+  #endif
+}
+</script>
+
+<div class='gl-wrap'>
+  <div class='gl-container'>
+    <div id='gl-line' style='opacity:0'></div>
+    <div id='gl-target'>
+      <img class='keys-display'
+        src='{{ image_dir }}/keys.svg'>
+    </div>
+  </div>
+  <div id='match-target'></div>
+</div>
+
+<script type='text/html' id='match-template'>
+  <div class='match-row'>
+    <div class='match-meta'>
+      <span class='match-year'><%= meta.imprint_year %>:</span>
+      <span class='match-author'><%= meta.marc_name || 'Unknown' %>:</span>
+      <span class='match-title'>
+        <i><%= meta.display_title.substring(0,80) + '...' %></i>
+      </span>
+    </div>
+    <div class='match-passage'>
+      <span>...<%= window.pre %></span>
+      <span class='match-hit'><%= window.match %></span>
+      <span><%= window.post %>...</span>
+    </div>
+  </div>
+</script>
+
+<script type='text/html' id='match-target-template'>
+  <div class='moore-match-table'>
+    <% _.forEach(matches, function(match) { %>
+      <%= renderMatch(match) %>
+    <% }) %>
+  </div>
+</script>
+
+
+
 
 In addition to abridging dozens of volumes in his <i>Voyages and Travels</i>, Moore also reprints great quantities of visual material from earlier works. For example, in anticipation of the map controversies that lay in his future, Moore adapts a chart of England (left) from Robert Sanders's <i>Complete English Traveller; or, a New Survey and Description of England and Wales</i> (1771, center), the exact plate of which appears to have been reprinted in Sydney Temple's <i>New and Complete History of England</i> (1774, right):
 
