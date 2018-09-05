@@ -370,7 +370,7 @@ void main() {
   gl_Position = projectionMatrix * modelViewMatrix * vec4(raw, 1.0);
 
   // set point size
-  gl_PointSize =  5.0; //scalePointZ(raw, cameraPosition);
+  gl_PointSize =  5.0;
 }
 </script>
 
