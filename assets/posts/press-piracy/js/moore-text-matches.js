@@ -204,6 +204,9 @@
     var material = getMaterial(false),
         mesh = new THREE.Points(geometry, material);
 
+    // add some axis labels
+    this.labelAxes(levels, levelToIdx);
+
     // build the scene
     mesh.frustumCulled = false; // don't clip mesh on drag
     this.scene.add(mesh);
@@ -222,6 +225,38 @@
     requestAnimationFrame(this.render.bind(this));
     this.renderer.render(this.scene, this.camera);
     this.controls.update();
+  }
+
+  // add axis labels
+  World.prototype.labelAxes = function(yLevels, yLevelToIdx) {
+
+    // label y levels
+    var yLevelsElem = document.createElement('div');
+    yLevelsElem.id = 'gl-labels';
+    for (var i=0; i<yLevels.length; i++) {
+      var level = yLevels[i],
+          child = document.createElement('a'),
+          estcId = eccoToEstcId(level);
+      child.href = 'http://estc.bl.uk/' + estcId;
+      child.target = '_blank';
+      child.className = 'gl-label';
+      child.textContent = level;
+      child.style.bottom = (17 + (yLevelToIdx[level] * 5.86)) + 'px';
+      yLevelsElem.appendChild(child);
+    }
+    // label y axis
+    var yLabel = document.createElement('div');
+    yLabel.id = 'gl-y-axis-label';
+    yLabel.textContent = 'Matching Text';
+    // label x axis
+    var xLabel = document.createElement('div');
+    xLabel.id = 'gl-x-axis-label';
+    xLabel.innerHTML = 'Passage in Moore\'s <i>Voyages and Travels</i>';
+    // append to DOM
+    var container = find('.gl-container')
+    container.appendChild(yLevelsElem);
+    container.appendChild(yLabel);
+    container.appendChild(xLabel);
   }
 
   // get the world coordinates of the current mouse position
@@ -487,6 +522,16 @@
       vertexShader: prefix + vert,
       fragmentShader: prefix + frag,
     });
+  }
+
+  function eccoToEstcId(eccoId) {
+    var s = eccoId[0],
+        trimmed = false;
+    for (var i=1; i<eccoId.length; i++) {
+      if (eccoId[i] !== '0') trimmed = true;
+      if (trimmed) s += eccoId[i];
+    }
+    return s;
   }
 
   function get(url, onSuccess, onErr, onProgress) {
