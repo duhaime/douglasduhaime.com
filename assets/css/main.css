@@ -379,7 +379,7 @@ body {
 
   .home-post .date {
     float: right;
-    margin-top: 10px;
+    margin-top: 12px;
   }
 }
 
@@ -432,7 +432,8 @@ body {
   right: 0;
   padding: 1px 7px;
   width: auto;
-  max-width: 100px;
+  max-width: 110px;
+  white-space: nowrap;
 }
 
 .home-project .project-links a {

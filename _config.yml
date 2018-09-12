@@ -12,9 +12,15 @@ bust_cache: true
 keep_files:
   - 'assets/bundle.js'
   - 'assets/style.css'
+
 exclude:
   - 'node_modules/'
-  - 'utils/'
+  - 'assets/utils/'
+  - '.git/'
+  - 'yarn.lock'
+  - 'Gemfile'
+  - 'Gemfile.lock'
+  - 'assets/posts/spenserian-networks/utils/json'
 
 # collections config
 collections:
