@@ -4,7 +4,7 @@
 
 require_relative 'resize'
 
-input = ARGV[0]
+input = ARGV[0].dup
 width = 1380
 height = 580
 gravity = 'northwest'

@@ -1,6 +1,4 @@
 def resize(path, width=nil, height=nil, gravity=nil)
-  out_path = get_out_path(path)
-
   cmd =  'convert ' + path + ' '
   cmd += '-sampling-factor 4:2:0 '
   cmd += '-strip '
@@ -24,7 +22,7 @@ def resize(path, width=nil, height=nil, gravity=nil)
     cmd += 'gravity ' + gravity + ' '
   end
 
-  cmd += path
+  cmd += get_out_path(path)
 
   # run the command
   puts(' * ' + cmd)

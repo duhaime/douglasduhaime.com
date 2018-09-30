@@ -4,7 +4,7 @@
 
 require_relative 'resize'
 
-input = ARGV[0]
+input = ARGV[0].dup
 width = 1400
 height = 151
 resize(input, width, height)

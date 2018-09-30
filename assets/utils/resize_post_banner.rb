@@ -2,8 +2,8 @@
 # usage: ruby utils/resize_post_banner.rb {input.png} {output.png}
 # nb: requires imagemagick (brew install imagemagick)
 
-input = ARGV[0]
-output = ARGV[1]
+input = ARGV[0].dup
+output = ARGV[1].dup
 
 # reduce banner size
 command =  'convert ' + input
