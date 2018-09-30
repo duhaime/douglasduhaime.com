@@ -834,3 +834,20 @@ label {
 #disqus_thread {
   margin-top: 40px;
 }
+
+/**
+* Captions
+**/
+
+.caption {
+  color: #999;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 10px 60px 20px;
+}
+
+@media (max-width: 600px) {
+  .caption {
+    margin: 10px 10px 20px;
+  }
+}
