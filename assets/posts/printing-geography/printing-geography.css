@@ -1,0 +1,84 @@
+/**
+* County-Level Publication Counts
+**/
+
+#county-publications {
+  text-align: center;
+  overflow: auto;
+}
+
+.graticule {
+  display: none;
+}
+
+path.inactive {
+  opacity: 0.3;
+}
+
+/**
+* Reprint Edition Sampler
+**/
+
+#reprint-sample-target {
+  font-family: courier;
+  line-height: 1em;
+}
+
+.sample-match-row {
+  width: 600px;
+  font-size: 14px;
+  margin: 6px auto;
+  position: relative;
+}
+
+.sample-match-row::before {
+  content: '+';
+  left: -15px;
+  top: 3px;
+  position: absolute;
+  width: 13px;
+}
+
+.group-matches {
+  transition: height .5s;
+  height: 0px;
+  overflow: hidden;
+}
+
+.sample-match-row.active .group-matches {
+  height: 400px;
+  overflow: auto;
+}
+
+.sample-match-teaser {
+  background: #efefef;
+  padding: 4px;
+  max-height: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.sample-match {
+  box-sizing: border-box;
+  padding: 6px;
+  white-space: nowrap;
+}
+
+span.sample-match-author {
+  color: #aaa;
+}
+
+.sample-match-estc-id {
+  display: inline-block;
+  color: orange;
+  font-weight: 600;
+}
+
+/**
+* References
+**/
+
+#references div {
+  margin-bottom: 20px;
+  line-height: 20px;
+}
