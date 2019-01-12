@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Press Piracy from Tonson v. Baker (1710)<br/> to Cary v. Kearsley (1803)
+title: Press Piracy from Tonson v. Baker (1710) to Cary v. Kearsley (1803)
 date: 2018-03-18
 categories: copyright
-thumbnail:
+thumbnail: /assets/posts/press-piracy/press-piracy-thumb.jpg
 banner: /assets/posts/press-piracy/press-piracy-banner.png
 css: /assets/posts/press-piracy/press-piracy.css
 js:
@@ -289,9 +289,7 @@ Both of the volumes above contain images that were reprinted in subsequent editi
   The number of ECCO publications that copied images is substantially lower than the number that copied passages of text, perhaps because recreating engravings cost substantially more time and money than copying text, or because ECCO contains roughly 3 billion text windows but only a quarter million images.
 </div>
 
-While it appears as if image reproductions increased at the end of the eighteenth century, this evident trend is merely an artifact of the increasing volume of images produced during the closing decades of the century. If one controls for the growing rate of image production, image reprinting rates remain fairly constant across the period:
-
-<img src='{{ image_dir }}/plots/derivate-image-counts-normalized.jpg'>
+While it appears as if image reproductions increased at the end of the eighteenth century, this evident trend is merely an artifact of the increasing volume of images produced during the closing decades of the century. If one controls for the growing rate of image production, however, image reprinting rates remain fairly constant across the period.
 
 In sum, just as there was no "sudden flood" of text reprints in the wake of either the <i>Gyles v. Wilcox</i> (1741) or <i>Donaldson v. Beckett</i> (1774) decisions, one finds no great inflection point within the history of eighteenth-century image reprints. On the contrary, the evidence presented above suggests that volumes containing derivative images were printed at a roughly constant rate throughout the eighteenth century. This is fairly remarkable, as the eighteenth century was home to several prolific pirates, some of whom can be studied more closely with the matching image dataset discussed above. To focus on only one example, we turn now to one of the great printer barons of the eighteenth century: John Hamilton Moore.
 
@@ -578,7 +576,7 @@ Text similarities were measured by a modified version of the Ratcliff/Obershelp 
 
 <div id='alexander-b'>Alexander, Isabella: "Manacles Upon Science: Re-evaluating Copyright in Informational Works in Light of 18th Century Case Law" <i>Melbourne University Law Review</i> 38 (2014): 317-360.</div>
 
-<div id='alexander-c'>Alexander, Isabella: "A Map, a Poem, and Two Copyright Statutes" <i>Legal Studies Research Paper Series</i> 2014.</div>
+<div id='alexander-c'>Alexander, Isabella: "A Map, a Poem, and Two Copyright Statutes" <i>Legal Studies Research Paper Series</i>, 2014.</div>
 
 <div id='alexander-d'>Alexander, Isabella: <i>Copyright Law and the Public Interest in the Nineteenth Century</i>. Bloomsbury Publishing, 2010.</div>
 
@@ -668,7 +666,7 @@ Century Map-Making" <i>Imago Mundi</i> 20 (1966): 27-48.</div>
 
 <div id='kirschbaum'>Kirschbaum, Leo: "Author's Copyright in England before 1640" <i>The Papers of the Bibliographical Society of America</i> 40 (1946): 43-80.</div>
 
-<div id='lang'>Lang, Sabine; Ommer, Björn: "Attesting similarity: Supporting the organization and study of art image collections with computer vision" <i>Digital Scholarship in the Humanities</i> fqy006, 2018.</div>
+<div id='lang'>Lang, Sabine; Ommer, Björn: "Attesting similarity: Supporting the organization and study of art image collections with computer vision" <i>Digital Scholarship in the Humanities</i>, 2018.</div>
 
 <div id='leskovec'>Leskovec, Jure; Rajaraman, Anand; Ullman, Jeffrey David: <i>Mining of Massive Datasets</i> Cambridge University Press, 2014.</div>
 
