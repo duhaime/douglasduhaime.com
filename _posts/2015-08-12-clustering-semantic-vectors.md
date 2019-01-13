@@ -22,7 +22,7 @@ gunzip glove.6B.300d.txt.gz
 
 If you unzip and then glance at glove.6B.300d.txt, you'll see that it's organized as follows:
 
-{% highlight bash %}
+{% highlight plaintext %}
 the 0.04656 0.21318 -0.0074364 [...] 0.053913
 , -0.25539 -0.25723 0.13169 [...] 0.35499
 . -0.12559 0.01363 0.10306 [...] 0.13684
@@ -34,7 +34,7 @@ sandberger 0.429191 -0.296897 0.15011 [...] -0.0590532
 
 Each new line contains a token followed by 300 signed floats, and those values appear to be organized from most to least common. Given this ready format, it's fairly straightforward to get straight to clustering!
 
-There are a variety of methods for clustering vectors, including density-based clustering, hierarchical clustering, and centroid clustering. One of the most intuitive and most commonly used centroid-based methods is K-Means. Given a collection of points in a space, K-Means uses a Hunger Games style random lottery to pick a few lucky points (colored green below), then assigns each of the non-lucky points to the lucky point to which it's closest. Using these preliminary groupings, the next step is to find the "centroid" (or geometric center) of each group, using the same technique one would use to find the center of a square. These centroids become the new lucky points, and again each non-lucky point is again assigned to the lucky point to which it's closest. This process continues until the centroids settle down and stop moving, after which the clustering is complete. Here's a nice visual description of K-Means [[source]][kmeans-source]:
+There are a variety of methods for clustering vectors, including density-based clustering, hierarchical clustering, and centroid clustering. One of the most intuitive and most commonly used centroid-based methods is K-Means. Given a collection of points in a space, K-Means uses a Hunger Games style random lottery to pick a few lucky points (colored green below), then assigns each of the non-lucky points to the lucky point to which it's closest. Using these preliminary groupings, the next step is to find the "centroid" (or geometric center) of each group, using the same technique one would use to find the center of a square. These centroids become the new lucky points, and again each non-lucky point is again assigned to the lucky point to which it's closest. This process continues until the centroids settle down and stop moving, after which the clustering is complete. Here's a nice visual description of K-Means [[source][kmeans-source]]:
 
 <img src='{{ site.baseurl }}/assets/posts/clustering-semantic-vectors/kmeans.gif' id='gif' alt='Visualization of the K-Means clustering algorithm.'/>
 
