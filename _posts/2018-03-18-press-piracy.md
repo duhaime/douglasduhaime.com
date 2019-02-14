@@ -504,7 +504,7 @@ Elsewhere in Moore's <i>Voyages and Travels</i>, one encounters images that seve
 </div>
 
 <div class='caption'>
-  Shown above from left to right are the kangaroos in John Hawkesworth's <i>Account of the Voyages Undertaken ... in the Southern Hemisphere</i> (1773, T074467), Oliver Goldsmith's <i>History of the Earth, and Animated Nature</i> (1774, T146096), John Hamilton Moore's <i>Voyages and Travels (1778, T113413)</i>, and Thomas Bankes's <i>Complete System of Universal Geography (1788, N42049). Each etching introduces slight departures from the original scene.</i>
+  Shown above from left to right are the kangaroos in John Hawkesworth's <i>Account of the Voyages Undertaken ... in the Southern Hemisphere</i> (1773, T074467), Oliver Goldsmith's <i>History of the Earth, and Animated Nature</i> (1774, T146096), John Hamilton Moore's <i>Voyages and Travels</i> (1778, T113413), and Thomas Bankes's <i>Complete System of Universal Geography</i> (1788, N42049). Each etching introduces slight departures from the original scene.
 </div>
 
 The maps and illustrations above represent only a small fraction of the materials Moore reprints in his <i>Voyages and Travels</i>, which is only one of thousands of works that reprint earlier textual and visual materials during the eighteenth century. Even this small sample, however, reveals new insights about the nature of eighteenth-century printing. By tracking piracies in works like Moore's <i>Voyages and Travels</i>, we see first hand the ways in which visual and textual culture circulated in the eighteenth century. The editorial transformations Moore and his contemporaries introduced into the works they appropriated reveal that authors and publishers from the period saw artistic culture as a public commons of sorts&mdash;one meant to be continually remixed into new enterprising creations.
@@ -724,7 +724,7 @@ Century Map-Making" <i>Imago Mundi</i> 20 (1966): 27-48.</div>
 
 <div id='tushnet'>Tushnet, Rebecca: "Worth a Thousand Words: The Images of Copyright Law" <i>Harvard Law Review</i> 125 (2012): 683-759.</div>
 
-<div id='underwood'>Underwood, Ted: <i>Why Literary Periods Mattered: Historical Contrast and the Prestige of English Studies</i> Stanford University Press, 2013.</div>
+<div id='underwood'>Underwood, Ted: <i>Why Literary Periods Mattered: Historical Contrast and the Prestige of English Studies</i>. Stanford University Press, 2013.</div>
 
 <div id='vaver'>Vaver, David: "Abridgments and Abstracts: Copyright Implications" <i>European Intellectual Property Review</i> 17.5 (1994): 225-235.</div>
 
