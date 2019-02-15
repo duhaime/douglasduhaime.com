@@ -2,6 +2,10 @@
 process: true
 ---
 
+html {
+  scroll-behavior: smooth;
+}
+
 /**
 * Page overrides
 **/
