@@ -12,7 +12,7 @@
   var projection = d3
     .geoMercator()
     .scale(480) // zoom
-    .center([39.0, 40.0]); // starting lat,lng
+    .center([41.0, 40.0]); // starting lat,lng
 
   var graticule = d3.geoGraticule()
     .step([2,2])
@@ -21,14 +21,14 @@
 
   d3.json(dir + 'county_publication_counts.geojson', function(json) {
     data = json;
-    for (var i=0; i<12; i++) draw(1580 + (i*20));
+    for (var i=0; i<16; i++) draw(1500 + (i*20));
   })
 
   var draw = function(year) {
 
     var map = d3.select(container)
       .append('svg')
-      .attr('width', 218)
+      .attr('width', 165)
       .attr('height', 135)
       .attr('id', 'map-' + year)
 
@@ -58,6 +58,7 @@
       .attr('fill', getFill.bind(null, year, exp))
 
     paths.transition()
+      .delay(function(d, idx) { return idx * 10; })
       .duration(1000)
       .attr('fill', getFill.bind(null, year, exp))
   };
