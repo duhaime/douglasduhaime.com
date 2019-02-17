@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 /**
 * County-Level Publication Counts
 **/
@@ -72,6 +76,55 @@ span.sample-match-author {
   display: inline-block;
   color: orange;
   font-weight: 600;
+}
+
+/**
+* Book Pages
+**/
+
+div#book-pages {
+  text-align: center;
+}
+
+div#book-pages .default-image img {
+  display: inline-block;
+  height: 240px;
+  border: 1px solid #777;
+  margin: 5px;
+}
+
+/**
+* Cropped Words
+**/
+
+#cropped-words {
+  line-height: 24px;
+  text-align: center;
+}
+
+#cropped-words .cropped-word {
+  height: 20px;
+  display: inline-block;
+  margin: 0 4px;
+  width: 43px;
+}
+
+.city-word-col {
+  max-width: 204px;
+  text-align: left;
+  display: inline-block;
+}
+
+.cropped-word.London {
+  outline: 2px solid #ee6559;
+}
+
+.cropped-word.Edinburgh {
+  outline: 2px solid #e7ba52;
+}
+
+.cropped-word.Dublin {
+  outline: 2px solid #1f77b4;
 }
 
 /**
