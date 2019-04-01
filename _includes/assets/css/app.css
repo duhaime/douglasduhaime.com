@@ -1,0 +1,5 @@
+{% include assets/css/reset.css %}
+{% include assets/css/main.css %}
+{% include assets/css/monokai.css %}
+{% include assets/css/loader.css %}
+{% include assets/css/404.css %}

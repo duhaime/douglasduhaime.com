@@ -7,13 +7,13 @@
 <meta name='twitter:creator' content='@{{ site.twitter }}'>
 <meta property='og:url' content='{{ site.url }}{{ page.url }}'>
 {% if page.title %}
-  <meta name='og:title' content="{{ page.title }}">
+  <meta name='og:title' content='{{ page.title }}'>
 {% else %}
-  <meta name='og:title' content="{{ site.title }}">
+  <meta name='og:title' content='{{ site.title }}'>
 {% endif %}
 {% if page.description %}
-  <meta name='description' content="{{ page.description }}">
-  <meta name='og:description' content="{{ page.description }}">
+  <meta name='description' content='{{ page.description }}'>
+  <meta name='og:description' content='{{ page.description }}'>
 {% else %}
   <meta name='description' content='{{ site.description }}'>
   <meta name='og:description' content='{{ site.description }}'>
