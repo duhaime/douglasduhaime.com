@@ -1,6 +1,0 @@
-require('./css/monokai.css')
-require('./css/loader.css')
-require('./css/reset.css')
-require('./css/main.css')
-require('./css/404.css')
-require('./js/404.js')

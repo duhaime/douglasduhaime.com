@@ -7,26 +7,32 @@ title: Douglas Duhaime | Data Mining + Visualization
   <div class='container'>
     <h1>{{ site.name }}</h1>
     <div class='about'>Full Stack Developer in Yale University's Digital Humanities <a href='http://dhlab.yale.edu' target='_blank'>Lab.</a></div>
-
+    <!-- Posts -->
     <div class='home-posts'>
-      {%- for post in site.posts %}
-        {%- if post.thumbnail %}
+      {% assign posts = site.records | sort: 'date' | reverse %}
+      {% for post in posts %}
+        {% if post.categories contains 'posts' and post.thumbnail and post.displayed != false %}
           <div class='home-post'>
-            <a href='{{ post.url | prepend: site.baseurl }}'>
+            {% if post.route %}
+              {% assign url = post.route %}
+            {% else %}
+              {% assign url = post.url | prepend: site.baseurl %}
+            {% endif %}
+            <a href='{{ url }}'>
               <img src='{{ post.thumbnail | strip | prepend: site.baseurl }}'>
               <div class='title'>{{ post.title }}</div>
               <div class='date'>{{ post.date | date_to_string }}</div>
             </a>
           </div>
         {% endif %}
-      {%- endfor %}
+      {% endfor %}
     </div>
-
+    <!-- Projects -->
     <div class='home-projects'>
       <h2>Recent Projects</h2>
-      {%- assign projects = site.projects | sort: 'order' | reverse -%}
-      {%- for project in projects -%}
-        {% unless project.displayed == false %}
+      {% assign projects = site.records | sort: 'order' | reverse %}
+      {% for project in projects %}
+        {% if project.categories contains 'projects' and project.displayed != false %}
           <div class='home-project'>
             <div class='project-image'>
               <img src='{{ project.image | prepend : site.baseurl }}'>
@@ -39,16 +45,19 @@ title: Douglas Duhaime | Data Mining + Visualization
             <div class='project-content'>
               <div class='project-title'>{{ project.title }}</div>
               <div class='project-tech'>
-                {%- for item in project.tech -%}
+                {% for item in project.tech %}
                   <div>{{ item }}</div>
-                {%- endfor -%}
+                {% endfor %}
               </div>
               <div class='project-text'>{{ project.content }}</div>
             </div>
           </div>
-        {% endunless %}
-      {%- endfor %}
+        {% endif %}
+      {% endfor %}
     </div>
-    {% include home_icons.html %}
+    <div class='home-footer'>
+      {% assign icon_style='light' %}
+      {% include icons.html %}
+    </div>
   </div>
 </div>

@@ -1,0 +1,184 @@
+/**
+* 404
+**/
+
+.lost {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.lost .message {
+  font-family: 'Press Start 2P',cursive;
+  font-size: 90px;
+  margin-top: 90px;
+  margin-top: 22vh;
+  margin-bottom: 40px;
+  line-height: 90px;
+  color: #6991ab;
+}
+
+.lost .return-home {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  background: rgb(213, 58, 38);
+}
+
+@media(max-height: 500px) {
+  .lost .return-home {
+    display: none;
+  }
+}
+
+.lost .sky {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 35%;
+  left: 0;
+  background: #caf0ff;
+  text-align: center;
+}
+
+.lost .cave {
+  position: absolute;
+  bottom: 35%;
+  right: -120px;
+  width: 500px;
+}
+
+.lost .cave-door {
+  position: absolute;
+  bottom: 35%;
+  right: 0;
+  width: 112px;
+  overflow: hidden;
+  z-index: 100;
+  height: 400px;
+}
+
+.lost .cave-right {
+  bottom: 0;
+}
+
+.lost .cloud {
+  width: 250px;
+  position: absolute;
+  right: 100px;
+}
+
+.lost .grass {
+  width: 100%;
+  height: 35%;
+  position: absolute;
+  bottom: 0;
+  background-color: #3eb96e;
+}
+
+.lost .big-grass-patch,
+.lost .small-grass-patch {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+.lost .big-grass-patch:after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: transparent;
+  box-shadow:
+    4px 10px #1c5437,
+    8px 6px #1c5437,
+    12px 10px #1c5437,
+    16px 6px #1c5437,
+    20px 10px #1c5437;
+}
+
+.lost .small-grass-patch:after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: transparent;
+  box-shadow:
+    4px 10px #1c5437,
+    8px 6px #1c5437,
+    12px 10px #1c5437;
+}
+
+/**
+* Caveman by @Richard on Codepen
+* @source: http://codepen.io/Ketziel/pen/ukCpt;
+**/
+
+.lost .caveman {
+  width: 180px; height:180px;
+  position: absolute;
+  bottom: 35%;
+  transition: left 0.2s;
+  transform: rotateX(0deg);
+}
+
+.lost .caveman div {
+  width:12px; height:12px;
+  background: transparent;
+  box-shadow:
+    48px 72px #222222, 60px 72px #222222, 72px 72px #222222,
+    84px 72px #222222, 96px 72px #222222, 36px 84px #171717,
+    48px 84px #E3BE89, 60px 84px #FBD298, 72px 84px #FBD298,
+    84px 84px #FBD298, 96px 84px #FBD298, 120px 84px #747269,
+    36px 96px #E3BE89, 48px 96px #E3BE89, 60px 96px #0E0C09,
+    72px 96px #FBD298, 84px 96px #FBD298, 96px 96px #0E0C09,
+    120px 96px #747269, 36px 108px #171717, 48px 108px #E3BE89,
+    60px 108px #FBD298, 72px 108px #FBD298, 84px 108px #FBD298,
+    96px 108px #FBD298, 120px 108px #747269, 36px 120px #171717,
+    48px 120px #171717, 60px 120px #222222, 72px 120px #222222,
+    84px 120px #222222, 96px 120px #222222, 120px 120px #747269,
+    24px 132px #A78408, 36px 132px #A78408, 48px 132px #171717,
+    60px 132px #171717, 72px 132px #171717, 84px 132px #222222,
+    96px 132px #171717, 108px 132px #A78408, 120px 132px #FBD298,
+    24px 144px #FBD298, 36px 144px #583617, 48px 144px #71451D,
+    60px 144px #71451D, 72px 144px #71451D, 84px 144px #5E5650,
+    96px 144px #71451D, 36px 156px #A78408, 48px 156px #A78408,
+    60px 156px #A78408, 72px 156px #BF9709, 84px 156px #BF9709,
+    96px 156px #BF9709, 36px 168px #583617, 96px 168px #71451D;
+}
+
+.lost .caveman.charge div {
+  box-shadow:
+    48px 72px #222222, 60px 72px #222222, 72px 72px #222222,
+    84px 72px #222222, 96px 72px #222222, 156px 72px #747269,
+    36px 84px #171717, 48px 84px #E3BE89, 60px 84px #FBD298,
+    72px 84px #FBD298, 84px 84px #FBD298, 96px 84px #FBD298,
+    144px 84px #747269, 36px 96px #E3BE89, 48px 96px #E3BE89,
+    60px 96px #0E0C09, 72px 96px #FBD298, 84px 96px #FBD298,
+    96px 96px #0E0C09, 132px 96px #747269, 36px 108px #171717,
+    48px 108px #E3BE89, 60px 108px #FBD298, 72px 108px #FBD298,
+    84px 108px #FBD298, 96px 108px #FBD298, 120px 108px #FBD298,
+    36px 120px #171717, 48px 120px #171717, 60px 120px #222222,
+    72px 120px #222222, 84px 120px #222222, 96px 120px #222222,
+    108px 120px #A78408, 24px 132px #A78408, 36px 132px #A78408,
+    48px 132px #171717, 60px 132px #171717, 72px 132px #171717,
+    84px 132px #222222, 96px 132px #171717, 12px 144px #FBD298,
+    36px 144px #583617, 48px 144px #71451D, 60px 144px #71451D,
+    72px 144px #71451D, 84px 144px #5E5650, 96px 144px #71451D,
+    36px 156px #A78408, 48px 156px #A78408, 60px 156px #A78408,
+    72px 156px #BF9709, 84px 156px #BF9709, 96px 156px #BF9709,
+    36px 168px #583617, 96px 168px #71451D;
+}
+
+@media(max-width: 800px) {
+  .lost .cave,
+  .lost .caveman {
+    display: none;
+  }
+}

@@ -2,36 +2,30 @@
 plugins:
   - octopress-minify-html
 
+# minify all inlined css
+sass:
+  style: compressed
+
 # minify html
-minify_html: true
+minify_html: false
 
 # bust html cache
 bust_cache: true
 
-# files to keep and exclude
-keep_files:
-  - 'assets/bundle.js'
-  - 'assets/style.css'
+# files to include
+include:
+  - _includes
 
+# files to exclude
 exclude:
-  - 'node_modules/'
-  - 'assets/utils/'
   - '.git/'
-  - 'yarn.lock'
   - 'Gemfile'
   - 'Gemfile.lock'
-  - 'assets/posts/spenserian-networks/utils/json'
 
-# collections config
 collections:
-  posts:
+  records:
     output: true
-    permalink: /posts/:title.html
-  pages:
-    output: true
-    permalink: /pages/:title.html
-  projects:
-    output: false
+    permalink: /:categories/:title.html
 
 # site location
 url: http://douglasduhaime.com
@@ -41,8 +35,5 @@ baseurl: ''
 name: Douglas Duhaime
 title: Data Mining + Visualization
 description: Working notes on data mining and interactive data visualization.
-fallback_image: /assets/images/fallback.png
+fallback_image: /assets/images/douglas-duhaime.png
 github: duhaime
-twitter: douglasduhaime
-dark: 213, 58, 38
-light: 255, 236, 179
