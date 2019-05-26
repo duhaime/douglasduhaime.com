@@ -3,28 +3,31 @@ process: true
 ---
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd' xmlns='http://www.sitemaps.org/schemas/sitemap/0.9' xmlns:image='http://www.google.com/schemas/sitemap-image/1.1'>
-  {%- for page in site.pages %}
+  {% for page in site.pages %}
   <url>
     <loc>{{ page.url | prepend: site.url }}</loc>
     <lastmod>{{ site.time | date_to_xmlschema }}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  {%- endfor %}
-  {%- for post in site.posts %}
-  <url>
-    <loc>{{ post.url | prepend: site.url }}</loc>
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    {%- for image in site.static_files %}
-      {%- if image.path contains post.preview %}
-      <image:image>
-        <image:loc>{{ image.path | prepend: site.url }}</image:loc>
-        <image:caption>{{ post.description | strip_newlines }}</image:caption>
-      </image:image>
-      {%- endif %}
-    {%- endfor %}
-  </url>
-  {%- endfor %}
+  {% endfor %}
+  {% assign posts = site.records | sort: 'date' | reverse %}
+  {% for post in posts %}
+    {% if post.categories contains 'posts' and post.thumbnail and post.displayed != false %}
+      <url>
+        <loc>{{ post.url | prepend: site.url }}</loc>
+        <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        {% for image in site.static_files %}
+          {% if image.path contains post.preview %}
+          <image:image>
+            <image:loc>{{ image.path | prepend: site.url }}</image:loc>
+            <image:caption>{{ post.description | strip_newlines }}</image:caption>
+          </image:image>
+          {% endif %}
+        {% endfor %}
+      </url>
+      {% endif %}
+  {% endfor %}
 </urlset>
