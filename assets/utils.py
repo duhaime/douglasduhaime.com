@@ -9,16 +9,16 @@ deploy = 's3://douglasduhaime.com/'
 # build jekyll site
 build = 'JEKYLL_ENV=production bundle exec jekyll build'
 
-# push to bucket {0}
+# push to bucket
 def push(bucket):
   return build + ' && ' + \
-    "aws s3 cp _site/ " + bucket + \
+    "aws s3 cp _site/ " + bucket + " " + \
       "--include '*' " + \
       "--acl public-read " + \
       "--cache-control max-age=604800 " + \
       "--recursive " + \
       "--metadata-directive='REPLACE' " + \
-      "--profile default"
+      "--profile default "
 
 # resize sys.argv[2]
 def resize(img_path, w, h):
