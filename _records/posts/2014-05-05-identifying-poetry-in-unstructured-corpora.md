@@ -23,7 +23,7 @@ But where on earth can one find enormous quantities of eighteenth-century poetry
 
 In the first place, we wanted to be able to differentiate poetic texts from non-poetic texts. While I imagine it would be possible to complete this task by analyzing the relative frequency of strings from each of these texts in the manner described in the previous post, we didn't have reliable publication dates for the Gutenberg texts, so we needed an alternative method. Operating on the hypothesis that poetic texts have more line breaks and fewer words per line than prose works, we decided to measure the number of words in each line of each file. We then collected a random sample of poetic works to see what their words-per-line profiles looked like:
 
-<img class='large' src='{{ img_dir }}//gutenberg_poetry.jpg' alt='Visualization of line length frequency in Project Gutenberg poetry.'>
+<img class='large' src='{{ img_dir }}/gutenberg_poetry.jpg' alt='Visualization of line length frequency in Project Gutenberg poetry.'>
 
 In these plots—each of which represents a single poetic text—the numbers along the x-axis indicate the number of words in a line of the text file, and the y-axis indicates the relative frequency of lines that contain such-and-such a number of words within the text. In <i>The Poetical Works of James Beattie</i>, for instance, only ~5% of lines had 12 or 13 words in them, whereas almost 20% of the text's lines had 7 or 8 words in them. In other words, <i>The Poetical Works of James Beattie</i> is dominated by lines with seven or eight words in them, a fact that applies to all of the poetic works plotted above. With these figures in hand, we plotted the words-per-line profiles for a random assortment of prose works from roughly the same period:
 

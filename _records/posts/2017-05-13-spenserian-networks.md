@@ -15,10 +15,11 @@ js:
   - /assets/posts/spenserian-networks/js/steam-chart.js
   - /assets/posts/spenserian-networks/js/multiple-foci-chart.js
   - /assets/posts/spenserian-networks/js/discrete-scatterplot.js
+  - /assets/posts/spenserian-networks/js/lightbox.js
 css: /assets/posts/spenserian-networks/css/spenserian-networks.css
 ---
 
-{% capture img_dir %}{{ site.baseurl }}/assets/posts/spenserian-networks/images/{% endcapture %}
+{% capture img_dir %}{{ site.baseurl }}/assets/posts/spenserian-networks/images{% endcapture %}
 
 In 1906, William Sumner defined ethnocentrism as the "view of things in which one's own group is the center of everything, and all others are scaled and rated with reference to it". Among the ethnocentric, Sumner continued, "each group nourishes its own pride and vanity, boasts itself superior, exists in its own divinities, and looks with contempt on outsiders" [[13](https://books.google.com/books?id=3E8TAAAAYAAJ)]. This notion of "in-group favoritism" continues to inspire research and new questions on a wide range of social groups. In an attempt to bring some of these questions back in time, the analysis below uses social network data to evaluate in-group and out-of-group dynamics in a network of historical writers.
 
@@ -116,7 +117,7 @@ The following chart visualizes these relationships. By hovering on individual wr
 
 Those familiar with literary history might recognize that the y-axis of the network above indicates the passage of time&mdash;from Spenser at the top through the Metaphysical poets, on through the Neoclassical poets, and finally to the Romantics at the bottom. Each poet's position along the y axis is set by the publication year of their first work within the Spenserian database.
 
-Given this fact, it becomes interesting to consider the historical range of a poet's associates. There are perhaps three groups of writers here: poets like Horace Walpole (left below) who were associated almost exclusively with earlier writers, those like William Godwin (right below) who were associated almost exclusively with later writers, and those like Anna Seward (center below) who were squarely of their times and had roughly equal shares of earlier and later associates:
+Given this fact, it becomes interesting to consider the historical range of a poet's associates. There are perhaps three groups of writers here: poets like Horace Walpole (top below) who were associated almost exclusively with earlier writers, those like William Godwin (middle below) who were associated almost exclusively with later writers, and those like Anna Seward (bottom below) who were squarely of their times and had roughly equal shares of earlier and later associates:
 
 <div class='inline-trio'></div>
 
