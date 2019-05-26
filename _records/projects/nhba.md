@@ -4,7 +4,7 @@ categories: projects
 site: https://nhba.yale.edu
 source: https://github.com/yaledhlab/nhba
 image: /assets/projects/nhba/nhba-thumbnail.jpg
-order: null
+order:
 tech:
   - Express.js
   - MongoDB
