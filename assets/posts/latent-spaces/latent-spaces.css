@@ -1,0 +1,136 @@
+/**
+* Autoencoder diagram
+**/
+
+#auto-dashboard {
+  text-align: center;
+}
+
+#auto-dashboard * {
+  display: inline-block;
+}
+
+#auto-dashboard #train-button {
+  float: left;
+}
+
+#auto-dashboard #new-sample-button {
+  display: none;
+}
+
+span#auto-epochs,
+span#auto-loss {
+  color: rgb(0, 122, 255);
+  font-weight: 800;
+}
+
+.center-text {
+  margin-bottom: 5px;
+}
+
+.center-text button {
+  display: inline-block;
+  margin: 0 1px;
+  background: rgb(0, 122, 255);
+}
+
+/**
+* Autoencoder diagram
+**/
+
+#auto-container {
+  position: relative;
+}
+
+#auto-diagram {
+  padding: 20px 15%;
+}
+
+#auto-input,
+#auto-output {
+  width: 20%;
+  position: absolute;
+  top: 25%;
+  text-align: center;
+}
+
+#auto-input {
+  left: 0;
+}
+
+#auto-output {
+  right: 0;
+}
+
+@media (max-width: 400px) {
+  #auto-input,
+  #auto-output {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+
+/**
+* MNIST
+**/
+
+#mnist-target {
+  height: 410px;
+  width: 100%;
+  z-index: 100;
+  background: #f9f9f9;
+  position: relative;
+}
+
+#layout-buttons {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.layout-button {
+  display: inline-block;
+  padding: 7px 12px;
+  background: gold;
+  margin: 10px 3px;
+  border-radius: 3px;
+  font-family: courier;
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+  opacity: 0.4;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.layout-button.active {
+  opacity: 1;
+}
+
+/**
+* Sampling
+**/
+
+#sampling {
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sampling-buttons {
+  text-align: center;
+}
+
+#sampling-buttons img {
+  display: inline-block;
+  margin: 5px;
+  padding: 7px;
+  border: 3px solid red;
+  border-radius: 3px;
+  border-color: #d53a26;
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+#sampling-buttons img.active {
+  opacity: 1.0;
+}
