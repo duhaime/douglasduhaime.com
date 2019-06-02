@@ -3,15 +3,16 @@
   window.mnist = window.mnist || {};
 
   // globals
-  var trainY, // arr of class labels for each input observation
-      mesh,
-      //
+  var mesh,
+      // trainY config
+      trainYLocation = '/assets/posts/latent-spaces/data/trainY.json',
+      trainY, // arr of class labels for each input observation
+      // image config
       imageCount = 2,
       imageSize = 2048,
       imageDir = 'https://s3.amazonaws.com/duhaime/blog/latent-spaces/atlas-images',
-      //imageDir = '/assets/posts/latent-spaces/images/atlas-images',
       images = {},
-      trainYLocation = '/assets/posts/latent-spaces/data/trainY.json',
+      // layout config
       layoutDir = '/assets/posts/latent-spaces/data/mnist-positions',
       layoutFiles = {
         'umap': layoutDir + '/umap_positions.json',
@@ -25,7 +26,7 @@
     layout: 'umap',
     settingLayout: false,
     rotate: false,
-    initializedNext: false,
+    drewNext: false,
   };
 
   // boilerplate
@@ -132,7 +133,7 @@
     // compose the mesh
     mesh = new THREE.Points(geometry, material);
     mesh.frustumCulled = false;
-    mesh.rotation.y = Math.PI;
+    //mesh.rotation.y = Math.PI;
     scene.add(mesh);
     addLayoutButtons();
   }
@@ -199,8 +200,8 @@
   }
 
   function setLayout(layout) {
-    if (layout in layouts &&
-        !state.settingLayout &&
+    if (!state.settingLayout &&
+        layout in layouts &&
         layouts[layout].length >= layouts[state.layout].length) {
       state.settingLayout = true;
       state.layout = layout;
@@ -262,16 +263,21 @@
     requestAnimationFrame(render);
     renderer.render(scene, camera);
     controls.update();
+
     if (mesh && state.rotate) mesh.rotation.y += 0.0005;
 
-    // set some data for the next visualization to consume
-    if (!state.drewNext && mesh && trainY && images && layouts.auto) {
+    // draw the next visualization
+    if (!state.drewNext && mesh && layouts.auto && window.mnist.drawGl) {
       state.drewNext = true;
-      window.mnist.trainY = trainY;
-      window.mnist.images = images;
-      window.mnist.layouts = layouts;
-      window.mnist.getBuffers = getBuffers;
-      window.mnist.draw();
+      var m = new THREE.Points(mesh.geometry.clone(), mesh.material),
+          pos = getBuffers('auto', 'auto').targets;
+      m.frustumCulled = false;
+      //m.rotation.y = Math.PI;
+      m.geometry.attributes.target.array = pos;
+      m.geometry.attributes.target.needsUpdate = true;
+      m.geometry.attributes.translation.array = pos;
+      m.geometry.attributes.translation.needsUpdate = true;
+      window.mnist.drawGl(m);
     }
   };
 

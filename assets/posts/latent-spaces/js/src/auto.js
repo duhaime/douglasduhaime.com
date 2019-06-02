@@ -1,10 +1,19 @@
 (function() {
 
+  window.mnist = window.mnist || {};
+
   var dir = '/assets/posts/latent-spaces/data',
-      model,
-      trainX,
       epochs = d3.select('#auto-epochs'),
-      loss = d3.select('#auto-loss');
+      loss = d3.select('#auto-loss'),
+      colors = ['#81a8d4','#c4ccd8','#f0d8b0','#f1ca7e','#e9b053','#ee7d58','#e55646','#d53a26'],
+      domain = colors.reduce(function(arr, i, idx) {
+          arr.push((idx+1)/colors.length); return arr;
+        }, [0]),
+      colorScale = d3.scaleLinear()
+        .domain(domain)
+        .range(colors),
+      model,
+      trainX;
 
   // state
   var nEpochs = 0,
@@ -15,18 +24,15 @@
   * SVG setup
   **/
 
-  var width = height = 140,
-      perSide = 28,
-      containers = ['#auto-input', '#auto-output'];
-
-  var colorScale = d3.scaleLinear().domain([0, 1])
-    .interpolate(d3.interpolateHcl)
-    .range([d3.rgb('#007AFF'), d3.rgb('#FFF500')]);
-
-  containers.forEach(function(i) {
-    var svg = d3.select(i).select('svg')
-      .attr('viewBox', '0 0 ' + width + ' ' + height);
-
+  function drawSvg(selector, width, height, scale) {
+    var perSide = 28,
+        svg = d3.select(selector).select('svg');
+    if (scale) {
+      svg.attr('viewBox', '0 0 ' + width + ' ' + height);
+    } else {
+      svg.attr('width', width);
+      svg.attr('height', height);
+    }
     for (var y=0; y<perSide; y++) {
       for (var x=0; x<perSide; x++) {
         svg.append('rect')
@@ -34,12 +40,12 @@
           .attr('height', height/perSide)
           .attr('x', x * width/perSide)
           .attr('y', y * height/perSide)
-          .attr('fill', 'rgb(10, 122, 255)')
+          .attr('fill', colors[0])
       }
     }
-  })
+  }
 
-  function colorBoxes(selector, data) {
+  function updateSvg(selector, data) {
     var target = d3.select(selector).select('svg');
     target.selectAll('rect').data(data).transition()
       .duration(500)
@@ -52,9 +58,9 @@
         start = n * sampleIdx,
         end = n * (sampleIdx+1);
     var data = trainX.dataSync().slice(start, end);
-    colorBoxes('#auto-input', data);
+    updateSvg('#auto-input', data);
     var data = model.auto.predict(trainX).dataSync().slice(start, end);
-    colorBoxes('#auto-output', tf.abs(data).dataSync());
+    updateSvg('#auto-output', tf.abs(data).dataSync());
   }
 
   function drawNewSample() {
@@ -100,14 +106,6 @@
     this.auto.compile({optimizer: 'adam', loss: 'meanSquaredError', lr: 0.1})
   }
 
-  d3.json(dir + '/trainX-sample.json').then(function(x) {
-    model = new Autoencoder();
-    trainX = tf.div(tf.tensor(x), 255); // scale {0:1}
-    window.trainX = trainX;
-    train();
-    setTimeout(drawNewSample, 1000);
-  })
-
   function train(args, cb) {
     if (training) return;
     args = args || {};
@@ -116,9 +114,11 @@
     args.callbacks = args.callbacks || {
       onEpochEnd: function(epoch, d) {
         nEpochs++;
-        if (nEpochs % 10 == 0) {
-          epochs.text(nEpochs);
-          loss.text(d.loss);
+        if (nEpochs % 1 == 0) {
+          requestAnimationFrame(function() {
+            epochs.text(nEpochs);
+            loss.text(d.loss)
+          });
         }
       },
       onTrainBegin: function() {
@@ -132,10 +132,26 @@
     model.auto.fit(trainX, trainX, args); // returns promise
   }
 
+  /**
+  * Main
+  **/
+
+  var width = height = 140,
+      perSide = 28;
+  ['#auto-input', '#auto-output'].forEach(function(i) {
+    drawSvg(i, width, height, perSide, true);
+  })
+
+  d3.json(dir + '/trainX-sample.json').then(function(x) {
+    model = new Autoencoder();
+    trainX = tf.div(tf.tensor(x), 255); // scale {0:1}
+    train();
+    setTimeout(drawNewSample, 1000);
+  })
+
   d3.select('#train-button').on('click', train);
   d3.select('#sample-button').on('click', drawNewSample);
 
-  window.trainAuto = train;
-  window.renderAutoSample = renderSample;
-
+  window.mnist.drawSvg = drawSvg;
+  window.mnist.updateSvg = updateSvg;
 })();
