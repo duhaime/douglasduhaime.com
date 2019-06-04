@@ -1,12 +1,14 @@
 (function() {
 
+  // show how an autoencoder samples from a latent space
   window.mnist = window.mnist || {};
 
   // globals
   var dataDir = '/assets/posts/latent-spaces/data/model',
       decoder,
       domains,
-      mesh;
+      mesh,
+      mouseDown = {x: null, y: null}; // identify clicks vs drags on canvas
 
   // boilerplate
   var container = document.querySelector('#sampling-target'),
@@ -24,14 +26,24 @@
   renderer.setSize(w, h);
   container.appendChild(canvas);
 
-  canvas.addEventListener('click', sample);
+  // add event listeners
+  canvas.addEventListener('mousedown', function(e) {
+    mouseDown.x = e.clientX;
+    mouseDown.y = e.clientY;
+  });
+
+  canvas.addEventListener('click', function(e) {
+    if (e.clientX == mouseDown.x &&
+        e.clientY == mouseDown.y) sample(e);
+  });
+
   window.addEventListener('resize', function() {
     w = container.clientWidth;
     h = container.clientHeight;
     camera.aspect = w/h;
     camera.updateProjectionMatrix();
     renderer.setSize(w, h);
-  })
+  });
 
   /**
   * Rendering
@@ -41,6 +53,7 @@
   function drawGl(m) {
     mesh = m;
     scene.add(mesh);
+    console.log('add torus and move to click location')
   }
 
   function createButtons() {
@@ -52,10 +65,6 @@
       parent.appendChild(img);
     }
     container.appendChild(parent);
-  }
-
-  function drawSvg() {
-    window.mnist.drawSvg(container, 112, 112, false);
   }
 
   function render() {
@@ -117,8 +126,8 @@
     domains = data;
     tf.loadLayersModel(dataDir + '/decoder/model.json').then(function(model) {
       decoder = model;
+      window.mnist.drawSvg(container, 112, 112, false);
       createButtons();
-      drawSvg();
       render();
     })
   })

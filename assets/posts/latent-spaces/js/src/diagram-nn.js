@@ -1,5 +1,4 @@
 (function() {
-
   // config
   var layers = [6,4,2,4,6],
       r = 20,

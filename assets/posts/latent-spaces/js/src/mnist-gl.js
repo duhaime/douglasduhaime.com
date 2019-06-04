@@ -1,5 +1,6 @@
 (function() {
 
+  // draw the mnist digits in reduced dimensionality
   window.mnist = window.mnist || {};
 
   // globals
@@ -59,7 +60,7 @@
       e.preventDefault();
       e.stopPropagation();
     }
-  })
+  }, {passive: false})
 
   function loadAtlases(cb) {
     var loaded = 0;
