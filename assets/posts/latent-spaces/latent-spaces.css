@@ -1,3 +1,11 @@
+#digits {
+  text-align: center;
+}
+
+#digits * {
+  display: inline;
+}
+
 /**
 * Autoencoder diagram
 **/
@@ -18,10 +26,16 @@
   display: none;
 }
 
+#auto-stats {
+  text-align: center;
+  margin-top: 10px;
+}
+
 span#auto-epochs,
 span#auto-loss {
   color: #1f77b4;
   font-weight: 800;
+  font-family: courier;
 }
 
 .center-text {
@@ -43,7 +57,7 @@ span#auto-loss {
 }
 
 #auto-diagram {
-  padding: 20px 15%;
+  padding: 0px 15% 20px;
 }
 
 #auto-input,
@@ -144,4 +158,74 @@ span#auto-loss {
   right: 12px;
   z-index: 10;
   background: #ddd;
+}
+
+/**
+* Loader
+**/
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -1rem;
+  margin-top: -1rem;
+  width: 2rem;
+  height: 2rem;
+  color: #c54223;
+}
+
+.loader::before {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  display: block;
+  content: '';
+  background: currentColor;
+  box-shadow: 1.25rem 0 0, 1.25rem 1.25rem 0, 0 1.25rem 0;
+  -webkit-transform-origin: 1rem 1rem;
+          transform-origin: 1rem 1rem;
+  -webkit-animation: move 1s infinite ease-in-out;
+          animation: move 1s infinite ease-in-out;
+}
+
+.loader::after {
+  content: 'loading';
+  font-family: 'courier', monospace;
+  position: absolute;
+  display: block;
+  top: 2.5rem;
+  color: #999;
+  left: 1rem;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  -webkit-animation: text 1s infinite ease-in-out alternate;
+          animation: text 1s infinite ease-in-out alternate;
+}
+
+@keyframes text {
+  30% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes move {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    box-shadow: 1.25rem 0 0, 1.25rem 1.25rem 0, 0 1.25rem 0;
+  }
+  100% {
+    -webkit-transform: translateX(1.25rem);
+            transform: translateX(1.25rem);
+    box-shadow: 0 1.25rem 0, -1.25rem 1.25rem 0, -1.25rem 0 0;
+  }
+}
+
+/**
+* Celeba sampler
+**/
+
+div#celeba-scene {
+  height: 400px;
+  position: relative;
 }
