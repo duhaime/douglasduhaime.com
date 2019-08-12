@@ -41,7 +41,7 @@
       window.decoder = model;
       sample({x: 0, y: 0})
       world.render();
-      new Controls2D({ onDrag: sample, container: container, });
+      window.c2d = new Controls2D({ onDrag: sample, container: container, });
     })
 
 })()
