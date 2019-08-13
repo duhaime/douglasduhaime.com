@@ -3,7 +3,7 @@
   <head>
     {% include meta.html %}
     <title>{{ page.title | strip_html }}</title>
-    <link rel='icon' href='{{ site.baseurl }}/_includes/assets/images/favicon.ico' type='image/x-icon'>
+    <link rel='icon' href='{{ site.baseurl }}/assets/images/favicon.ico' type='image/x-icon'>
     {% capture styles %}{% include assets/css/app.css %}{% endcapture %}
     <style>{{ styles | scssify }}</style>
     {% include page-css.html %}

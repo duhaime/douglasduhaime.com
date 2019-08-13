@@ -4,7 +4,7 @@ categories: projects
 site: http://dhrees.yale.edu/
 source: https://github.com/YaleDHLab/dh-rees
 image: /assets/projects/dhrees/dhrees-thumbnail.jpg
-order: null
+order:
 tech:
   - Wordpress
   - MySQL

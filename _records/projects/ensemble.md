@@ -4,7 +4,7 @@ categories: projects
 site: http://ensemble.yale.edu
 source: https://github.com/YaleDHLab/ensemble-at-yale
 image: /assets/projects/ensemble/ensemble-thumbnail.jpg
-order: 2
+order: 3
 tech:
   - Rails
   - MongoDB

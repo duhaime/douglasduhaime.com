@@ -8,14 +8,17 @@ process: true
     <description>{{ site.description }}</description>
     <link>{{ site.url }}</link>
     <atom:link href='{{ site.url }}/feed.xml' rel='self' type='application/rss+xml'></atom:link>
-    {% for post in site.posts %}
-      <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | strip_html | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.url }}</link>
-        <guid isPermaLink='true'>{{ post.url | prepend: site.url }}</guid>
-      </item>
+    {% assign posts = site.records | sort: 'date' | reverse %}
+    {% for post in posts %}
+      {% if post.categories contains 'posts' and post.thumbnail and post.displayed != false %}
+        <item>
+          <title>{{ post.title | xml_escape }}</title>
+          <description>{{ post.content | strip_html | xml_escape }}</description>
+          <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+          <link>{{ post.url | prepend: site.url }}</link>
+          <guid isPermaLink='true'>{{ post.url | prepend: site.url }}</guid>
+        </item>
+      {% endif %}
     {% endfor %}
   </channel>
 </rss>

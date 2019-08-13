@@ -18,9 +18,9 @@ include:
 
 # files to exclude
 exclude:
-  - '.git/'
-  - 'Gemfile'
-  - 'Gemfile.lock'
+  - .git/
+  - Gemfile
+  - Gemfile.lock
 
 collections:
   records:

@@ -237,9 +237,15 @@ div#multiple-foci {
 }
 
 /**
-* Inline trio
+* Inline Trio
 **/
 
+.inline-trio {
+  display: block;
+}
+
 .inline-trio .default-image {
-  padding-bottom: 20%;
+  width: 100%;
+  display: block;
+  padding: 0;
 }
