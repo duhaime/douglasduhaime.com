@@ -6,6 +6,12 @@
   display: inline;
 }
 
+@media(max-width: 400px) {
+  #digits * {
+    width: 20px;
+  }
+}
+
 /**
 * Autoencoder diagram
 **/
@@ -58,6 +64,7 @@ span#auto-loss {
 
 #auto-diagram {
   padding: 0px 15% 20px;
+  position: relative;
 }
 
 #auto-input,
@@ -92,7 +99,7 @@ span#auto-loss {
 #sampling-target {
   height: 410px;
   width: 100%;
-  z-index: 100;
+  z-index: 1;
   background: #f5f5f5;
   position: relative;
 }
@@ -166,59 +173,20 @@ span#auto-loss {
 
 .loader {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
   top: 50%;
-  margin-left: -1rem;
-  margin-top: -1rem;
-  width: 2rem;
-  height: 2rem;
-  color: #c54223;
-}
-
-.loader::before {
-  position: absolute;
-  width: 0.75rem;
-  height: 0.75rem;
-  display: block;
-  content: '';
-  background: currentColor;
-  box-shadow: 1.25rem 0 0, 1.25rem 1.25rem 0, 0 1.25rem 0;
-  -webkit-transform-origin: 1rem 1rem;
-          transform-origin: 1rem 1rem;
-  -webkit-animation: move 1s infinite ease-in-out;
-          animation: move 1s infinite ease-in-out;
-}
-
-.loader::after {
-  content: 'loading';
-  font-family: 'courier', monospace;
-  position: absolute;
-  display: block;
-  top: 2.5rem;
-  color: #999;
-  left: 1rem;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
+  color: #aaa;
   -webkit-animation: text 1s infinite ease-in-out alternate;
-          animation: text 1s infinite ease-in-out alternate;
+  animation: text 1s infinite ease-in-out alternate;
+  font-family: courier;
 }
 
 @keyframes text {
   30% { opacity: 1; }
   100% { opacity: 0; }
-}
-
-@keyframes move {
-  0% {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-    box-shadow: 1.25rem 0 0, 1.25rem 1.25rem 0, 0 1.25rem 0;
-  }
-  100% {
-    -webkit-transform: translateX(1.25rem);
-            transform: translateX(1.25rem);
-    box-shadow: 0 1.25rem 0, -1.25rem 1.25rem 0, -1.25rem 0 0;
-  }
 }
 
 /**
@@ -228,4 +196,22 @@ span#auto-loss {
 div#celeba-scene {
   height: 400px;
   position: relative;
+}
+
+/**
+* Mobile warning
+**/
+
+.mobile-warning {
+  display: none;
+}
+
+@media(max-width: 400px) {
+  .mobile-warning {
+    display: block;
+    color: #aaa;
+    margin: 15px 0;
+    line-height: 17px;
+    font-size: 13px;
+  }
 }
