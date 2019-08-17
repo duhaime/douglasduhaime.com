@@ -1,5 +1,5 @@
 ---
-title: Yale Digital Humanities Lab Website
+title: Yale Digital Humanities Lab
 categories: projects
 site: http://dhlab.yale.edu/
 source: https://github.com/YaleDHLab/dhlab-site
