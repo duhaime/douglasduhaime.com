@@ -1,5 +1,5 @@
 ---
-title: Yale Digital Humanities Lab
+title: Yale Digital Humanities Lab Website
 categories: projects
 site: http://dhlab.yale.edu/
 source: https://github.com/YaleDHLab/dhlab-site
@@ -12,4 +12,4 @@ tech:
 displayed: true
 ---
 
-A fresh redesign of the Yale Digital Humanities Lab's central web presence, this application leverages a minimal and fast static site generator to make it easy for admins to advertise DHLab projects, news, and events.
+A fresh redesign of the Yale Digital Humanities Lab's central web presence, this application uses Jekyll to make it easy for admins to advertise DHLab projects, news, and events.

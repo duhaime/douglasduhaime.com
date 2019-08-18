@@ -406,7 +406,7 @@ body {
 }
 
 .home-project .project-title {
-  font-weight: 100;
+  font-weight: 300;
   font-size: 22px;
   margin: 7px 0 0;
   color: #444;
@@ -439,7 +439,7 @@ body {
 
 .home-project .project-text p {
   line-height: 1.4em;
-  font-weight: 100;
+  font-weight: 300;
   margin: 0;
 }
 
@@ -521,12 +521,13 @@ noscript {
   margin-top: 4px;
 }
 
-/***
+/**
 * Syntax Highlighting
-***/
+**/
 
 pre {
   margin: 0;
+  padding: 20px;
 }
 
 code {
@@ -550,7 +551,7 @@ p code {
 
 figure.highlight {
   margin: 0;
-  padding: 20px;
+  padding: 0;
   border-radius: 4px;
 }
 
@@ -626,9 +627,9 @@ textarea {
   border: 1px solid #ccc;
 }
 
-/***
+/**
 * Buttons
-***/
+**/
 
 button,
 input[type=submit],

@@ -5,5 +5,5 @@ date: 2017-09-12
 categories: posts
 thumbnail: /assets/posts/press-piracy/press-piracy-thumb.jpg
 permalink: '_'
-route: https://earlybookmarket.com/chapters/press-piracy.html
+route: https://earlybookmarket.com/press-piracy.html
 ---

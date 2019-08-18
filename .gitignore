@@ -6,4 +6,5 @@ ngrok
 *.DS_Store
 .ruby_version
 .ipynb_checkpoints
+.jekyll-metadata
 node_modules

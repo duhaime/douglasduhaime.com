@@ -1,0 +1,5 @@
+*.zip
+*.tar.gz
+*.swp
+atlas-images
+trainX.json
