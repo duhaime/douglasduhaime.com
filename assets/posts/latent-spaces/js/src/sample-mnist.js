@@ -15,6 +15,7 @@
 
   // boilerplate
   var container = document.querySelector('#sampling-target'),
+      loader = container.querySelector('.loader'),
       w = container.clientWidth,
       h = container.clientHeight,
       scene = new THREE.Scene(),
@@ -158,15 +159,18 @@
   * Main
   **/
 
-  d3.json(dataDir + '/decoder-domains.json').then(function(data) {
-    domains = data;
-    tf.loadLayersModel(dataDir + '/decoder/model.json').then(function(model) {
-      decoder = model;
-      window.mnist.drawSvg(container, 112, 112, false);
-      render();
+  // pause before main render
+  setTimeout(function() {
+    d3.json(dataDir + '/decoder-domains.json').then(function(data) {
+      domains = data;
+      tf.loadLayersModel(dataDir + '/decoder/model.json').then(function(model) {
+        decoder = model;
+        window.mnist.drawSvg(container, 112, 112, false);
+        loader.parentNode.removeChild(loader);
+        render();
+      })
     })
-  })
-
-  window.mnist.drawGl = drawGl;
+    window.mnist.drawGl = drawGl;
+  }, 2000)
 
 })()

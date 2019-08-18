@@ -95,6 +95,8 @@ js:
   }
 </script>
 
+<div class='mobile-warning'>NB: This page loads several neural network models and large image atlases which may take time to load on a mobile device.</div>
+
 An autoencoder is a type of neural network that is comprised of two functions: an **encoder** that projects data from high to low dimensionality, and a **decoder** that projects data from low to high dimensionality. To understand how these two functions work, let's consider the following images:
 
 <div id='digits'>
@@ -112,7 +114,9 @@ An autoencoder is a type of neural network that is comprised of two functions: a
 
 Since each of these images is 28 pixels by 28 pixels, we can consider each as a 748-dimensional vector (or list of numbers), and can construct an autoencoder in which the **encoder** projects these 748-dimensional vectors to a two-dimensional vector, just as one might perform dimension reduction using UMAP or TSNE:
 
-<div id='mnist-target'></div>
+<div id='mnist-target'>
+  <div class='loader'>Loading</div>
+</div>
 
 <div class='caption'>
   The visualization above shows the ways UMAP, TSNE, and the encoder from a vanilla autoencoder reduce the dimensionality of the popular MNIST dataset from 748 to 2 dimensions. Click a button to change the layout, or scroll in to see how images with similar shapes (e.g. 8 and 3) appear proximate to one another in the two-dimensional embedding.
@@ -120,7 +124,10 @@ Since each of these images is 28 pixels by 28 pixels, we can consider each as a 
 
 While the **encoder** reduces the dimensionality of input data, the **decoder** projects samples from low dimensionality back to higher dimensionality. For example, if one constructs a decoder that projects data from 2 dimensions to 748 dimensions, it becomes possible to project arbitrary positions in a two dimensional plane into a 748 pixel image. Click around in the figure below to see how a decoder projects from 2 to 748 dimensions. Note that you can click in areas where there are no samples and the decoder will still generate an image:
 
-<div id='sampling-target'><svg/></div>
+<div id='sampling-target'>
+  <div class='loader'>Loading</div>
+  <svg></svg>
+</div>
 
 <div class='caption'>
   The visualization above shows the ways the decoder from a vanilla autoencoder projects data from a two-dimensional embedding to a 748-dimensional image shown in color in the lower-right. Click different positions to see how the decoder translates a 2D vector (or pair of x,y coordinates) into an image.
@@ -379,7 +386,9 @@ If all this came together, you're ready to create some interactive models with T
 
 The code above creates an interactive widget like the following:
 
-<div id='celeba-scene'></div>
+<div id='celeba-scene'>
+  <div class='loader'>Loading</div>
+</div>
 
 By interacting with the two-dimensional range slider, users can explore the autoencoder's latent space, sampling from a continuous range of latent space positions and examining the image the decoder generates for each. That's all it takes to visualize a latent space with Tensorflow.js!
 

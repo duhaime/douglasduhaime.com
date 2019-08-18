@@ -32,6 +32,7 @@
 
   // boilerplate
   var container = document.querySelector('#mnist-target'),
+      loader = container.querySelector('.loader'),
       w = container.clientWidth,
       h = container.clientHeight,
       scene = new THREE.Scene(),
@@ -278,7 +279,6 @@
       m.geometry.attributes.target.needsUpdate = true;
       m.geometry.attributes.translation.array = pos;
       m.geometry.attributes.translation.needsUpdate = true;
-      console.log('calling drawgl')
       window.mnist.drawGl(m);
     }
   };
@@ -293,6 +293,11 @@
       });
     });
   });
-  render();
+
+  // pause before initial render
+  setTimeout(function() {
+    render();
+    loader.parentNode.removeChild(loader);
+  }, 1000)
 
 })();
