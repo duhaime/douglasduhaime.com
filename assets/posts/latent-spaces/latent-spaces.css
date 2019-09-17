@@ -67,6 +67,10 @@ span#auto-loss {
   position: relative;
 }
 
+#auto-diagram svg {
+  width: 100%;
+}
+
 #auto-input,
 #auto-output {
   width: 20%;
