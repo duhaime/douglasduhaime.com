@@ -187,7 +187,7 @@ zipfile.ZipFile('celeba-sample.zip').extractall()
 # combine all images in "celeba-sample" into a numpy array
 read_img = lambda i: img_to_array(load_img(i, color_mode='grayscale'))
 files = glob.glob('celeba-sample/*.jpg')
-X = np.array([read_img(i) for i in files]).squeeze()
+X = np.array([read_img(i) for i in files]).squeeze() / 255.0 # scale 0:1
 {% endhighlight %}
 
 Running these lines will create a directory named `celeba-sample` that contains a collection of 20,000 images with uniform size (218 pixels tall by 178 pixels wide), and will read all of those images into a numpy array `X` with shape (20000, 218, 178).
