@@ -206,14 +206,14 @@ class Autoencoder:
     i = h = Input(img_shape) # the encoder takes as input images
     h = Flatten()(h) # flatten the image into a 1D vector
     for _ in range(n_layers): # add the "hidden" layers
-      h = Dense(n_units)(h) # add the units in the ith hidden layer
+      h = Dense(n_units, activation='relu')(h) # add the units in the ith hidden layer
     o = Dense(latent_dim)(h) # this layer indicates the lower dimensional size
     self.encoder = Model(inputs=[i], outputs=[o])
 
     # create the decoder
     i = h = Input((latent_dim,)) # the decoder takes as input lower dimensional vectors
     for _ in range(n_layers): # add the "hidden" layers
-      h = Dense(n_units)(h) # add the units in the ith hidden layer
+      h = Dense(n_units, activation='relu')(h) # add the units in the ith hidden layer
     h = Dense(img_shape[0] * img_shape[1])(h) # one unit per pixel in inputs
     o = Reshape(img_shape)(h) # create outputs with the shape of input images
     self.decoder = Model(inputs=[i], outputs=[o])
@@ -230,13 +230,23 @@ autoencoder = Autoencoder()
 
 Let's step through the code above a little. First, we import the building blocks with which we'll construct the autoencoder from the `keras` library. Then we define the encoder, decoder, and "stacked" autoencoder, which combines the encoder and decoder into a single model. Each of these models is defined inside a single class that takes as input several named parameters which collectively define the hyperparameters that will be used to define the model. The inline comments above detail how each line contributes to the construction of the encoder, decoder, and stacked autoencoder.
 
-Now that the autoencoder is defined, we can "train" it by passing each observation from the numpy array `X` through the model:
+Now that the autoencoder is defined, we can "train" it by passing observations from the numpy array `X` through the model. Note that we hold out some images from `X` to use as validation data:
 
 {% highlight python %}
-autoencoder.model.fit(X, X, batch_size=64, epochs=8)
+train = X[:-1000]
+text = X[-1000:]
+autoencoder.model.fit(train, train, validation_data=(test, test), batch_size=64, epochs=1000)
 {% endhighlight %}
 
-If you run that line, you should see that the model's aggregate "loss" (or measure of the difference between model inputs and reconstructed outputs) decreases for a period of time and then eventually levels out. Once the model's loss seems to stop diminishing, we can treat the model as trained and ready for action.
+If you run that line, you should see that the model's aggregate "loss" (or measure of the difference between model inputs and reconstructed outputs) decreases for a period of time and then eventually levels out. Once the loss starts to level out, you can sometimes try to decrease the model's learning rate and continue training:
+
+{% highlight python %}
+import keras.backend as K
+K.eval(autoencoder.model.optimizer.lr)
+K.set_value(autoencoder.model.optimizer.lr, 0.0001)
+{% endhighlight %}
+
+Once the model's loss seems to stop diminishing, we can treat the model as trained and ready for action.
 
 ## Analyzing the Trained Autoencoder
 
