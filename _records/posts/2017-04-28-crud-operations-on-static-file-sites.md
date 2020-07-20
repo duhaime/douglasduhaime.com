@@ -147,7 +147,7 @@ function writeToSheet(e) {
 
 {% endhighlight %}
 
-This script has two main methods. `doPost()` is a [special function]((https://developers.google.com/apps-script/guides/web)) defined within Google Apps Script that is called when an app receives a HTTP POST request. `writeToSheet()` is a custom function that adds the posted data to the sheet. Together, they receive data sent through POST requests and save them to your Google Sheet.
+This script has two main methods. `doPost()` is a [special function](https://developers.google.com/apps-script/guides/web) defined within Google Apps Script that is called when an app receives a HTTP POST request. `writeToSheet()` is a custom function that adds the posted data to the sheet. Together, they receive data sent through POST requests and save them to your Google Sheet.
 
 After adding these functions to your script, click <b>Save</b> and type a name for your project when prompted. Then we need to publish the script as an app so that we can allow other web services to send POST requests to the script. To do so, one can click <b>Publish &rarr; Deploy as Web App</b>. Select "Execute the app as me", and grant "Everyone, even anonymous" access to the app, in order to allow outside web traffic to communicate with the app. Once those values are set, click <b>Deploy</b>, then click <b>Review Submissions</b> and accept the permissions. You should then see a modal that indicates your "Current web app URL". Copy this url to your clipboard and save it for later use.
 
