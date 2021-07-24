@@ -7,6 +7,7 @@ description: |
   Using ngram frequencies as features for intrinsic plagiarism detection in historic documents.
 thumbnail: /assets/posts/ngram-frequency/ngram-frequency-thumb.jpg
 banner: /assets/posts/ngram-frequency/ngram-frequency-banner.png
+thumbnail_color: '779860'
 js: /assets/posts/ngram-frequency/js/lightbox.js
 ---
 

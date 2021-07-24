@@ -7,6 +7,7 @@ description: |
   Exploring patterns in historic text reuse with Approximate Nearest Neighbors (Oh Ya!) and D3.js.
 thumbnail: /assets/posts/plagiary-poets/plagiary-poets-thumb.jpg
 banner: /assets/posts/plagiary-poets/plagiary-poets-banner.png
+thumbnail_color: 'FED931'
 invert: true
 ---
 

@@ -5,6 +5,7 @@ date: 2017-04-15
 categories: posts
 thumbnail: /assets/posts/image-transitions/image-transitions-thumb.jpg
 banner: /assets/posts/image-transitions/image-transitions-banner.jpg
+thumbnail_color: '656F67'
 description: |
   Fun and simple transitions between images using D3.js and @fogleman's Primitive library.
 js:

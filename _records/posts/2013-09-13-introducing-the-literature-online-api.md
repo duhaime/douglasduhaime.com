@@ -7,6 +7,7 @@ description: |
   The Literature Online API allows researchers to run automated analysis on nearly half a million classic works of literature.
 thumbnail: /assets/posts/lion-api/lion-api-thumb.jpg
 banner: /assets/posts/lion-api/lion-api-banner.png
+thumbnail_color: 'F3F3F1'
 ---
 
 {% capture img_dir %}{{ site.baseurl }}/assets/posts/lion-api/images{% endcapture %}

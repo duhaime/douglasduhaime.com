@@ -5,6 +5,7 @@ date: 2018-06-08
 categories: posts
 thumbnail: /assets/posts/s3-auth/s3-auth-thumb.jpg
 banner: /assets/posts/s3-auth/s3-auth-banner.png
+thumbnail_color: 'FECA5B'
 css: /assets/posts/s3-auth/css/s3-auth.css
 ---
 

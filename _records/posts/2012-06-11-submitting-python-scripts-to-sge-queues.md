@@ -7,6 +7,7 @@ description: |
   A brief guide on submitting Python scripts to Sun Grid Engine server clusters.
 thumbnail: /assets/posts/sge-queues/sge-thumb.jpg
 banner: /assets/posts/sge-queues/sge-banner.png
+thumbnail_color: '000000'
 invert: true
 ---
 

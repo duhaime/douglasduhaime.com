@@ -7,6 +7,7 @@ description: |
   Identifying a minimal set of metadata features for classifying the genre of Shakespearean plays.
 thumbnail: /assets/posts/classifying-shakespeare/classifying-shakespeare-thumb.jpg
 banner: /assets/posts/classifying-shakespeare/classifying-shakespeare-banner.png
+thumbnail_color: '6E9AF2'
 js: /assets/posts/classifying-shakespeare/js/lightbox.js
 ---
 

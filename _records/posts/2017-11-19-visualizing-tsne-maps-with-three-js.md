@@ -7,6 +7,7 @@ thumbnail: |
   /assets/posts/tsne-webgl/tsne-webgl-thumb.jpg
 banner: |
   /assets/posts/tsne-webgl/tsne-webgl-banner.jpg
+thumbnail_color: 'F7E4C2'
 css:
 js:
   - https://production-assets.codepen.io/assets/embed/ei.js

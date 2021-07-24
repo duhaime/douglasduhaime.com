@@ -19,7 +19,7 @@ title: Douglas Duhaime | Data Mining + Visualization
               {% assign url = post.url | prepend: site.baseurl %}
             {% endif %}
             <a href='{{ url }}'>
-              <img src='{{ post.thumbnail | strip | prepend: site.baseurl }}'>
+              <div class='post-thumbnail' style='background-color: #{{ post.thumbnail_color }}; background-image: url({{ post.thumbnail  }});' src='{{ post.thumbnail | strip | prepend: site.baseurl }}'></div>
               <div class='title'>{{ post.title }}</div>
               <div class='date'>{{ post.date | date_to_string }}</div>
             </a>

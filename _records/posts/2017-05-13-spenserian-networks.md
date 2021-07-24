@@ -5,6 +5,7 @@ date: 2017-05-13
 categories: posts
 thumbnail: /assets/posts/spenserian-networks/spenserian-networks-thumb.jpg
 banner: /assets/posts/spenserian-networks/spenserian-networks-banner.jpg
+thumbnail_color: '0F0F0F'
 description: |
   Visualizing in-group and out-of-group statistics among early modern poets across gendered, educational, and professional lines.
 js:

@@ -7,6 +7,7 @@ description: |
   Hard clustering semantic vectors using Stanford's GloVe word embeddings and Scikit Learn's K-Means implementation.
 thumbnail: /assets/posts/semantic-vectors/semantic-vectors-thumb.jpg
 banner: /assets/posts/semantic-vectors/semantic-vectors-banner.png
+thumbnail_color: 'FBA1A3'
 ---
 
 {% capture img_dir %}{{ site.baseurl }}/assets/posts/semantic-vectors/images{% endcapture %}
