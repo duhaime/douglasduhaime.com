@@ -295,7 +295,7 @@ Sampling from different regions of the latent space will create rather different
 
 ## Exploring Latent Spaces Dynamically
 
-To explore the autoencoder's latent space in realtime, we can use Tensorflow.js, a stunning open source project built by the Google Brain team. To get started, install the package with `tensorflowjs==3.8.0`. That command will install a package that includes the resources needed to save a Keras model to disk a format with which the Tensorflow.js clientside library can interact. After that package finishes installing, you should have `tensorflowjs_converter` on your system path. Using that binary, one can save the decoder defined above to disk by running:
+To explore the autoencoder's latent space in realtime, we can use Tensorflow.js, a stunning open source project built by the Google Brain team. To get started, install the package with `pip install tensorflowjs==3.8.0`. That command will install a package that includes the resources needed to save a Keras model to disk a format with which the Tensorflow.js clientside library can interact. After that package finishes installing, you should have `tensorflowjs_converter` on your system path. Using that binary, one can save the decoder defined above to disk by running:
 
 {% highlight python %}
 import subprocess, os
@@ -305,7 +305,11 @@ autoencoder.decoder.save(model_name + '-decoder.hdf5', include_optimizer=True)
 
 out_dir = model_name + '-decoder-js'
 if not os.path.exists(out_dir): os.makedirs(out_dir)
-cmd = 'tensorflowjs_converter --input_format keras_saved_model ' + model_name + '-decoder.hdf5 ' + out_dir
+
+cmd = 'tensorflowjs_converter '
+cmd += '--input_format keras_saved_model '
+cmd += model_name + '-decoder.hdf5 '
+cmd += out_dir
 subprocess.check_output(cmd, shell=True)
 {% endhighlight %}
 
@@ -319,7 +323,7 @@ This command will create `celeba-decoder.hdf5` and `celeba-decoder-js`, the latt
     <title>Visualizing Autoencoders with Tensorflow.js</title>
   </head>
   <body>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.7/tf.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.8.0/tf.min.js'></script>
     <script>
     var modelPath = 'celeba-decoder-js/model.json';
     tf.loadLayersModel(modelPath).then(function(model) {
