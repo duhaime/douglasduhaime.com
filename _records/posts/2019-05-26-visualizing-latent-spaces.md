@@ -235,7 +235,7 @@ Now that the autoencoder is defined, we can "train" it by passing observations f
 
 {% highlight python %}
 train = X[:-1000]
-text = X[-1000:]
+test = X[-1000:]
 autoencoder.model.fit(train, train, validation_data=(test, test), batch_size=64, epochs=1000)
 {% endhighlight %}
 
@@ -280,6 +280,8 @@ Having trained the autoencoder, we can now pick a random location in the two-dim
 
 {% highlight python %}
 # sample from the region 10, 50 in the latent space
+import matplotlib.pyplot as plt
+
 y = np.array([[10, 50]])
 prediction = autoencoder.decoder.predict(y)
 plt.imshow(prediction.squeeze(), cmap='gray')
@@ -293,13 +295,18 @@ Sampling from different regions of the latent space will create rather different
 
 ## Exploring Latent Spaces Dynamically
 
-To explore the autoencoder's latent space in realtime, we can use Tensorflow.js, a stunning open source project built by the Google Brain team. To get started, install the package with `pip install tensorflowjs`. That command will install a package that includes the resources needed to save a Keras model to disk a format with which the Tensorflow.js clientside library can interact. After that package finishes installing, you should have `tensorflowjs_converter` on your system path. Using that binary, one can save the decoder defined above to disk by running:
+To explore the autoencoder's latent space in realtime, we can use Tensorflow.js, a stunning open source project built by the Google Brain team. To get started, install the package with `tensorflowjs==3.8.0`. That command will install a package that includes the resources needed to save a Keras model to disk a format with which the Tensorflow.js clientside library can interact. After that package finishes installing, you should have `tensorflowjs_converter` on your system path. Using that binary, one can save the decoder defined above to disk by running:
 
 {% highlight python %}
+import subprocess, os
+
 model_name = 'celeba' # string used to define filename of saved model
-autoencoder.decoder.save(model_name + '-decoder.hdf5')
-cmd = 'tensorflowjs_converter --input_format keras ' + model_name + '-decoder.hdf5 ' + model_name + '-decoder-js'
-os.system(cmd)
+autoencoder.decoder.save(model_name + '-decoder.hdf5', include_optimizer=True)
+
+out_dir = model_name + '-decoder-js'
+if not os.path.exists(out_dir): os.makedirs(out_dir)
+cmd = 'tensorflowjs_converter --input_format keras_saved_model ' + model_name + '-decoder.hdf5 ' + out_dir
+subprocess.check_output(cmd, shell=True)
 {% endhighlight %}
 
 This command will create `celeba-decoder.hdf5` and `celeba-decoder-js`, the latter of which is a directory full of files that collectively specify the decoder's internal parameters. Once those files are saved to disk, one can load the decoder and sample from the position 10, 50 in the latent space (just as we did above) with the following HTML:
@@ -343,7 +350,7 @@ If all this came together, you're ready to create some interactive models with T
     </style>
   </head>
   <body>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.7/tf.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.8.0/tf.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/97/three.min.js'></script>
     <script src='https://duhaime.s3.amazonaws.com/blog/latent-spaces/Controls2D.js'></script>
     <script src='https://duhaime.s3.amazonaws.com/blog/latent-spaces/ThreeWorld.js'></script>
