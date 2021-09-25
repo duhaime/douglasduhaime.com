@@ -4,6 +4,7 @@ ngrok
 *.swp
 *.pyc
 *.DS_Store
+.ruby-version
 .ruby_version
 .ipynb_checkpoints
 .jekyll-metadata
