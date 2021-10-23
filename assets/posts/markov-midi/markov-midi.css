@@ -1,0 +1,34 @@
+.highlighter-rouge,
+.midi-block > img,
+#shakespeare-target {
+  border-radius: 4px;
+}
+
+.midi-block {
+  display: inline-block;
+}
+
+.midi-block img {
+  margin: 0;
+}
+
+.midi-block .icon {
+  margin: 10px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  text-align: center;
+  padding: 12px;
+  background: #efefef;
+  border-radius: 100%;
+  font-size: 12px;
+  line-height: 1em;
+  box-shadow: 0 0 3px #aaa;
+  vertical-align: top;
+}
+
+#shakespeare-target {
+  padding: 20px;
+  font-family: courier;
+}
