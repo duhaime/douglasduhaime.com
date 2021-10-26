@@ -32,3 +32,8 @@
   padding: 20px;
   font-family: courier;
 }
+
+.pad-midi {
+  padding: 10px;
+  background: #1d7c2d;
+}

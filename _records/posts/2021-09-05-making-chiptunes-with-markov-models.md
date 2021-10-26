@@ -13,15 +13,13 @@ js:
   - /assets/posts/markov-midi/js/player.js
 ---
 
+https://stackoverflow.com/questions/61964836/classifying-64x4-images-representing-piano-rolls-as-real-or-fake
+
+https://github.com/bjourne/musicgen
+
 ## Building Markov Models
 
-To better understand Markov models, let's start with a simple text generation task. Our goal will be to train a model using the writings of William Shakespeare, then to generate new pseudo-Shakespearean text with that trained model. We can download the training data with the following command:
-
-{% highlight bash %}
-wget https://bit.ly/tiny-shakespeare
-{% endhighlight %}
-
-If you open that file, you'll see it contains the raw text from Shakespeare's plays. Here are the first few lines:
+To help us get started with Markov models, let's begin with a simple text generation task. Our goal will be to train a model using the writings of William Shakespeare, then to generate new pseudo-Shakespearean text with that trained model. We'll train our model using [tiny-shakespeare.txt](https://douglasduhaime.com/assets/posts/markov-midi/tiny-shakespeare.txt), a single file that contains raw text from Shakespeare's plays. Here are the first few lines from the file:
 
 ```
 First Citizen:
@@ -162,38 +160,45 @@ The generated text looks vaguely Shakespearean! Next let's see if we can train s
 
 ## Making Music with Markov Models
 
-As it turns out, we can use essentially the same strategy we used above to generate music with Markov models. To do so, we just need to convert an audio file into a text file. To accomplish this goal, we can parse a midi file and convert each note into a word in that file. The fantastic [`music21`](https://web.mit.edu/music21/) library in Python, written by Michael Scott Cuthbert's lab at MIT, makes this task fairly strightforward. In what follows below, we'll convert `ambrosia.midi`, a banger from the 8-bit Nintendo game Ultima III: Exodus, into a string. [Here's the midi file](https://douglasduhaime.com/assets/posts/markov-midi/midis/mid/ambrosia.midi), and here's how we'll convert it into a string:
+As it turns out, we can use essentially the same strategy we used above to generate music with Markov models. To do so, we just need to convert an audio file into a text file. To accomplish this goal, we can parse a midi file and convert each note into a word in that file. The fantastic [`music21`](https://web.mit.edu/music21/) library in Python, written by Michael Scott Cuthbert's lab at MIT, makes this task fairly strightforward. In what follows below, we'll convert `ambrosia.midi` (a banger from the 8-bit Nintendo game Ultima III: Exodus) into a string. [Here's the midi file](https://douglasduhaime.com/assets/posts/markov-midi/midis/mid/ambrosia.midi), and here's how we'll convert it into a string:
 
 {% highlight python %}
-
 import music21
 
-# identify the midi file to analyze
-path = 'ambrosia.midi'
-# parse the musical information stored in the midi file
-score = music21.converter.parse(path, quantizePost=False)
-# create the string that will store the sequence of notes
-s = ''
-# keep a record of the last time offset seen in the score
-last_offset = 0
-# iterate over each note in the score
-for n in score.flat.notes:
-    # handle the case that n is a note
-    if isinstance(n, music21.note.Note):
+def midi_to_string(midi_path):
+    # parse the musical information stored in the midi file
+    score = music21.converter.parse(midi_path,
+      quantizePost=True, # quantize note length
+      quarterLengthDivisors=(4,3)) # set agreeable note lengths
+    # create the string that will store the sequence of notes
+    s = ''
+    # keep a record of the last time offset seen in the score
+    last_offset = 0
+    # iterate over each note in the score
+    for n in score.flat.notes:
         # measure the time between this note and the previous
         delta = n.offset - last_offset
-        # if some time elapsed, add a "wait" token
-        if delta: s += 'w_{} '.format(delta)
-        # else add a "note" token with pitch and duration
-        pitch = n.pitch.midi
+        # get the duration of this note
         duration = n.duration.components[0].type
-        s += 'n_{}_{} '.format(pitch, duration)
         # store the time at which the last event occurred
         last_offset = n.offset
+        # if some time elapsed, add a "wait" token
+        if delta: s += 'w_{} '.format(delta)
+        # handle notes and chords
+        if isinstance(n, music21.note.Note):
+          notes = [n]
+        else
+          notes = n.notes
+        for i in notes:
+            # add this keypress to the sequence
+            s += 'n_{}_{} '.format(i.pitch.midi, duration)
+    return s
+
+s = midi_to_string('ambrosia.midi')
 
 {% endhighlight %}
 
-The block above turns `ambrosia.midi` into the string `s`. Each note in `ambrosia.midi` is represented by a token that begins with "n_" and each pause between notes is represented by a token that begins with "w_". This string format is quite flexible, and can handle polyphony, syncopation, and any number of other musical features with ease.
+The block above turns `ambrosia.midi` into the string `s`. Each note in `ambrosia.midi` is represented by a token that begins with "n_" and each pause between notes is represented by a token that begins with "w_". This string format is quite flexible, and can easily handle polyphony, syncopation, and any number of other musical features.
 
 To determine if this conversion worked, let's reverse the process and convert the string `s` into a new midi file. If both conversions were successful, we should expect that new midi file to sound like the original `ambrosia.midi` file. Happily `music21` makes the conversion from string to midi straightforward as well:
 
@@ -201,28 +206,31 @@ To determine if this conversion worked, let's reverse the process and convert th
 
 from fractions import Fraction
 
-# initialize the stream into which we'll add notes
-stream = music21.stream.Stream()
-# keep track of the last observed time
-time = 1
-# iterate over each token in our string
-for i in s.split():
-    # if the token starts with 'n' it's a note
-    if i.startswith('n'):
-        # identify the note and its duration
-        note, duration = i.lstrip('n_').split('_')
-        # create a new note object
-        n = music21.note.Note(int(note))
-        # specify the note's duration
-        n.duration.type = duration
-        # add the note to the stream
-        stream.insert(time, n)
-    # if the token starts with 'w' it's a wait, or pause
-    elif i.startswith('w'):
-        # add the wait duration to the current time
-        time += float(Fraction(i.lstrip('w_')))
-# save the stream as a midi file named 'converted.midi'
-stream.write('midi', 'converted.midi')
+def string_to_midi(s):
+    # initialize the stream into which we'll add notes
+    stream = music21.stream.Stream()
+    # keep track of the last observed time
+    time = 1
+    # iterate over each token in our string
+    for i in s.split():
+        # if the token starts with 'n' it's a note
+        if i.startswith('n'):
+            # identify the note and its duration
+            note, duration = i.lstrip('n_').split('_')
+            # create a new note object
+            n = music21.note.Note(int(note))
+            # specify the note's duration
+            n.duration.type = duration
+            # add the note to the stream
+            stream.insert(time, n)
+        # if the token starts with 'w' it's a wait, or pause
+        elif i.startswith('w'):
+            # add the wait duration to the current time
+            time += float(Fraction(i.lstrip('w_')))
+    # return the stream we created
+    return stream
+
+midi = string_to_midi(s)
 
 {% endhighlight %}
 
@@ -235,56 +243,51 @@ The resulting midi file should indeed sound like the original:
   </div>
 </div>
 
-Now we're rolling! From here, all we have to do is convert a bunch of midi files into strings, add START and END tokens before and after each (to mark song boundaries), and train a Markov model on that text stream.
+Now we're rolling! From here, all we have to do is convert some midi files into strings and train a Markov model on that text stream. To do so, we can use this function:
 
-There are a few other curliques (we should probably only process songs in one time signature, say 4/4, and we should convert all songs to C major )
+```python
+from collections import defaultdict
+from nltk import ngrams
 
+def markov(s, sequence_length=6, output_length=250):
+    # train the markov model
+    d = defaultdict(list)
+    tokens = list(ngrams(s.split(), sequence_length))
+    for idx, i in enumerate(tokens[:-1]):
+      d[i].append(tokens[idx+1])
+    # sample from the markov model
+    generated = [random.choice(tokens)]
+    while len(generated) < output_length:
+        generated.append(random.choice(d[generated[-1]]))
+    # format the result into a string
+    return ' '.join([' '.join(i) for i in generated])
 
+# sample a new string from s then convert to midi
+generated_midi = string_to_midi(markov(s))
+# save the midi data in "generated.midi"
+generated_midi.write('midi', 'generated.midi')
+```
 
-
-
-
-Mozart
+If we run the `markov` function we'll get a new string that contains a sequence of notes expressed in text form. We can then then convert that string to a proper midi file using the `string_to_midi` we defined above. The result sounds like a pair of drunken sailors stuttering away on a piano:
 
 <div class='midi-block'>
-  <img src='https://via.placeholder.com/600x80'>
-  <div class='icon play-button' data-id='mozart.txt'>
+  <img src='/assets/posts/markov-midi/midis/images/generated.png' class='pad-midi'>
+  <div class='icon play-button' data-id='generated.midi'>
     <img src='/assets/posts/markov-midi/images/play.svg'>
   </div>
 </div>
 
-Chopin
+The good news is if you don't like that audio you can just rerun the `markov` function until you get a keeper! Before you give up on our sample, though, let's try pushing it through our chiptune meatgrinder below.
 
-<div class='midi-block'>
-  <img src='https://via.placeholder.com/600x80'>
-  <div class='icon play-button' data-id='chopin.txt'>
-    <img src='/assets/posts/markov-midi/images/play.svg'>
-  </div>
-</div>
+# Markov Models Meet Chiptunes
 
-Bach
 
-<div class='midi-block'>
-  <img src='https://via.placeholder.com/600x80'>
-  <div class='icon play-button' data-id='bach.txt'>
-    <img src='/assets/posts/markov-midi/images/play.svg'>
-  </div>
-</div>
 
-Lakh
 
-<div class='midi-block'>
-  <img src='https://via.placeholder.com/600x80'>
-  <div class='icon play-button' data-id='lakh.txt'>
-    <img src='/assets/posts/markov-midi/images/play.svg'>
-  </div>
-</div>
 
-Tokens
 
-<div class='midi-block'>
-  <img src='https://via.placeholder.com/600x80'>
-  <div class='icon play-button' data-id='constrained.txt'>
-    <img src='/assets/posts/markov-midi/images/play.svg'>
-  </div>
-</div>
+pull request https://github.com/chrisdonahue/nesmdb/pull/11
+
+```
+pip install https://github.com/duhaime/nesmdb/archive/python-3-support.zip
+```
