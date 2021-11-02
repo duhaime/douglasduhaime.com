@@ -1,0 +1,58 @@
+.highlighter-rouge,
+.midi-block > img,
+#shakespeare-target,
+.highlighter-rouge > .highlight {
+  border-radius: 4px;
+}
+
+.midi-block {
+  display: inline-block;
+}
+
+.midi-block img {
+  margin: 0;
+}
+
+.midi-block > img {
+  padding: 10px;
+  box-sizing: border-box;
+  background: #1d7c2d;
+}
+
+.midi-block.chiptune > img {
+  filter: invert(1) sepia(1) saturate(6) brightness(54%) hue-rotate(318deg)
+}
+
+.midi-block .icon {
+  margin: 10px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  text-align: center;
+  padding: 12px;
+  background: #efefef;
+  border-radius: 100%;
+  font-size: 12px;
+  line-height: 1em;
+  box-shadow: 0 0 3px #aaa;
+  vertical-align: top;
+  margin-bottom: 0;
+}
+
+#shakespeare-target {
+  padding: 20px;
+  font-family: courier;
+}
+
+audio {
+  margin: 15px;
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

@@ -9,6 +9,9 @@ sass:
 # minify html
 minify_html: false
 
+# live in the future and build what's missing
+future: true
+
 # bust html cache
 bust_cache: true
 
@@ -30,6 +33,7 @@ collections:
 # site location
 url: http://douglasduhaime.com
 baseurl: ''
+host: 0.0.0.0
 
 # hello cello
 name: Douglas Duhaime
