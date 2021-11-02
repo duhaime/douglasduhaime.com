@@ -33,6 +33,7 @@ collections:
 # site location
 url: http://douglasduhaime.com
 baseurl: ''
+host: 0.0.0.0
 
 # hello cello
 name: Douglas Duhaime

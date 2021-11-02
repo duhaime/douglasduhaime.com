@@ -1,6 +1,7 @@
 .highlighter-rouge,
 .midi-block > img,
-#shakespeare-target {
+#shakespeare-target,
+.highlighter-rouge > .highlight {
   border-radius: 4px;
 }
 
@@ -10,6 +11,16 @@
 
 .midi-block img {
   margin: 0;
+}
+
+.midi-block > img {
+  padding: 10px;
+  box-sizing: border-box;
+  background: #1d7c2d;
+}
+
+.midi-block.chiptune > img {
+  filter: invert(1) sepia(1) saturate(6) brightness(54%) hue-rotate(318deg)
 }
 
 .midi-block .icon {
@@ -26,6 +37,7 @@
   line-height: 1em;
   box-shadow: 0 0 3px #aaa;
   vertical-align: top;
+  margin-bottom: 0;
 }
 
 #shakespeare-target {
@@ -33,7 +45,14 @@
   font-family: courier;
 }
 
-.pad-midi {
-  padding: 10px;
-  background: #1d7c2d;
+audio {
+  margin: 15px;
+  display: block;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }

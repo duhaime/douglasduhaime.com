@@ -1,12 +1,13 @@
-function Markov(s, sequenceLength=4) {
+function Markov(s, config) {
   this.d = {}
   this.text = s;
   this.sep = '#';
-  this.build(sequenceLength=sequenceLength);
+  this.build(config);
   this.last = null; // last generated sample
 }
 
-Markov.prototype.build = function(sequenceLength=6) {
+Markov.prototype.build = function(config) {
+  config = config || {sequenceLength: 4};
   // get the list of token sequences
   var sequences = [];
   var sequence = [];
@@ -14,7 +15,7 @@ Markov.prototype.build = function(sequenceLength=6) {
     // skip empty tokens
     if (t) {
       sequence.push(t);
-      if (sequence.length === sequenceLength) {
+      if (sequence.length === config.sequenceLength) {
         sequences.push(sequence.join(this.sep));
         sequence = [];
       }
