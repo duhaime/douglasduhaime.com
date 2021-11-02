@@ -9,6 +9,7 @@ thumbnail: |
   /assets/posts/batch-processing/batch-processing-thumb.jpg
 banner: |
   /assets/posts/batch-processing/batch-processing-banner.png
+thumbnail_color: '000000'
 invert: true
 ---
 

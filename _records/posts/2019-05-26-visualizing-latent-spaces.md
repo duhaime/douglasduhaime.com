@@ -6,6 +6,7 @@ categories: posts
 thumbnail: /assets/posts/latent-spaces/latent-spaces-thumb.jpg
 banner: /assets/posts/latent-spaces/latent-spaces-banner.png
 css: /assets/posts/latent-spaces/latent-spaces.css
+thumbnail_color: '000000'
 js:
   - /assets/posts/latent-spaces/js/vendor/d3.min.js
   - /assets/posts/latent-spaces/js/vendor/tf.min.js

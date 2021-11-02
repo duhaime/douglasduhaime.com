@@ -7,6 +7,7 @@ description: |
   A simple solution to renewing authentication tokens and prolonging user sessions on AFS filesystems.
 thumbnail: /assets/posts/afs-sessions/afs-sessions-thumb.jpg
 banner: /assets/posts/afs-sessions/afs-sessions-banner.png
+thumbnail_color: '000000'
 invert: true
 ---
 

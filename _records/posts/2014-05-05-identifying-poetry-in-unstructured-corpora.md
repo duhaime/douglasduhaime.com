@@ -7,6 +7,7 @@ description: |
   A simple method for classifying poetic works in unstructured text corpora.
 thumbnail: /assets/posts/identifying-poetry/identifying-poetry-thumb.jpg
 banner: /assets/posts/identifying-poetry/identifying-poetry-banner.png
+thumbnail_color: 'E5E5E5'
 ---
 
 {% capture img_dir %}{{ site.baseurl }}/assets/posts/identifying-poetry/images{% endcapture %}

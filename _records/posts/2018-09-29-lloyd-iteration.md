@@ -5,6 +5,7 @@ date: 2018-09-29
 categories: posts
 thumbnail: /assets/posts/lloyd-iteration/lloyd-iteration-thumb.jpg
 banner: /assets/posts/lloyd-iteration/lloyd-iteration-banner.png
+thumbnail_color: 'E5E7B7'
 css:
 js:
   - https://d3js.org/d3.v4.min.js

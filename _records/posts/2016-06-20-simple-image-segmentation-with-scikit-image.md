@@ -7,6 +7,7 @@ description: |
   A guide to segmenting images using pixel dilations and Otsu thresholding with Scikit Image.
 thumbnail: /assets/posts/image-segmentation/image-segmentation-thumb.jpg
 banner: /assets/posts/image-segmentation/image-segmentation-banner.jpg
+thumbnail_color: '21B2C5'
 css: /assets/posts/image-segmentation/css/image-segmentation.css
 ---
 

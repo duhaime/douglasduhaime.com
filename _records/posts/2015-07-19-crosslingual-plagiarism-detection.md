@@ -7,6 +7,7 @@ description: |
   Using Word2Vec and Scikit Learn to identify text reuse between French and English language historic documents.
 thumbnail: /assets/posts/crosslingual-plagiarism/crosslingual-plagiarism-thumb.jpg
 banner: /assets/posts/crosslingual-plagiarism/crosslingual-plagiarism-banner.png
+thumbnail_color: 'F8D0B9'
 ---
 
 {% capture img_dir %}{{ site.baseurl }}/assets/posts/crosslingual-plagiarism/images{% endcapture %}

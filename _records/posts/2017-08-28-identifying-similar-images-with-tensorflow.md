@@ -5,6 +5,7 @@ date: 2017-08-28
 categories: posts
 thumbnail: /assets/posts/similar-images/similar-images-thumb.jpg
 banner: /assets/posts/similar-images/similar-images-banner.jpg
+thumbnail_color: '655B45'
 description: |
   Detecting similar images in large data collections with Tensorflow and Scikit Learn's TSNE implementation.
 css: /assets/posts/similar-images/css/similar-images.css

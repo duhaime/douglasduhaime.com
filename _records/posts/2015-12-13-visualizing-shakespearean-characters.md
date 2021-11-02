@@ -15,6 +15,7 @@ js:
   - /assets/posts/shakespearean-characters/js/shakespeare-cooccurrence.js
 thumbnail: /assets/posts/shakespearean-characters/shakespearean-characters-thumb.jpg
 banner: /assets/posts/shakespearean-characters/shakespearean-characters-banner.png
+thumbnail_color: 'EEEEEE'
 ---
 
 Some time ago, I was intrigued to discover that Shakespeare’s Histories have a noticeable lack of female characters [[link]][previous-shakes-post]. Since then, I’ve been curious to further explore the nuances of Shakespearean characters, paying particular respect to the gender dynamics of the Bard’s plays. This post is a quick sketch of some of the insights to which that curiosity has led.

@@ -7,6 +7,7 @@ description: |
   A brief walkthrough of the process my team used to train Stanford's Named Entity Recognizer to better identify nineteenth-century locations.
 thumbnail: /assets/posts/stanford-ner/stanford-ner-thumb.jpg
 banner: /assets/posts/stanford-ner/stanford-ner-banner.png
+thumbnail_color: 'ACACAC'
 ---
 
 {% capture img_dir %}{{ site.baseurl }}/assets/posts/stanford-ner/images{% endcapture %}
