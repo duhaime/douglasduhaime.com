@@ -378,28 +378,33 @@ midi_to_nintendo_wav('generated.midi')
 The original NES synthesizer supported five concurrent audio tracks: two pulse-wave tracks ("p1", "p2"), a triangle-wave track ("tr"), a noise track ("no"), and a sampling track that's not implemented in nesmdb. In the function above, we simply assign each note from the input midi file to the first unused track in our synthesizer (excluding the "no" track, which is assigned a dance beat later in the function). There are certainly more clever ways to assign notes to the synthesizer tracks, but we'll use this approach for the sake of simplicity. Here are some sample results:
 
 <div class='row'>
-  <audio id='generated-0' src='/assets/posts/markov-midi/mp3/0.mp3' controls></audio>
-  <audio id='generated-1' src='/assets/posts/markov-midi/mp3/1.mp3' controls></audio>
+  <audio id='generated-0' src='/assets/posts/markov-midi/mp3/0.mp3' controls preload='auto'></audio>
+  <audio id='generated-1' src='/assets/posts/markov-midi/mp3/1.mp3' controls preload='auto'></audio>
 </div>
 
 <div class='row'>
-  <audio id='generated-2' src='/assets/posts/markov-midi/mp3/2.mp3' controls></audio>
-  <audio id='generated-3' src='/assets/posts/markov-midi/mp3/3.mp3' controls></audio>
+  <audio id='generated-2' src='/assets/posts/markov-midi/mp3/2.mp3' controls preload='auto'></audio>
+  <audio id='generated-3' src='/assets/posts/markov-midi/mp3/3.mp3' controls preload='auto'></audio>
 </div>
 
 <div class='row'>
-  <audio id='generated-4' src='/assets/posts/markov-midi/mp3/4.mp3' controls></audio>
-  <audio id='generated-5' src='/assets/posts/markov-midi/mp3/5.mp3' controls></audio>
+  <audio id='generated-4' src='/assets/posts/markov-midi/mp3/4.mp3' controls preload='auto'></audio>
+  <audio id='generated-5' src='/assets/posts/markov-midi/mp3/5.mp3' controls preload='auto'></audio>
 </div>
 
 <div class='row'>
-  <audio id='generated-6' src='/assets/posts/markov-midi/mp3/6.mp3' controls></audio>
-  <audio id='generated-7' src='/assets/posts/markov-midi/mp3/7.mp3' controls></audio>
+  <audio id='generated-6' src='/assets/posts/markov-midi/mp3/6.mp3' controls preload='auto'></audio>
+  <audio id='generated-7' src='/assets/posts/markov-midi/mp3/7.mp3' controls preload='auto'></audio>
 </div>
 
 <div class='row'>
-  <audio id='generated-8' src='/assets/posts/markov-midi/mp3/8.mp3' controls></audio>
-  <audio id='generated-9' src='/assets/posts/markov-midi/mp3/9.mp3' controls></audio>
+  <audio id='generated-8' src='/assets/posts/markov-midi/mp3/8.mp3' controls preload='auto'></audio>
+  <audio id='generated-9' src='/assets/posts/markov-midi/mp3/9.mp3' controls preload='auto'></audio>
+</div>
+
+<div class='row'>
+  <audio id='generated-10' src='/assets/posts/markov-midi/mp3/10.mp3' controls preload='auto'></audio>
+  <audio id='generated-11' src='/assets/posts/markov-midi/mp3/11.mp3' controls preload='auto'></audio>
 </div>
 
 If you're curious to try making your own audio, feel free to try this [Colab notebook](https://colab.research.google.com/drive/1sFzItp1ZdQr_eKpDMpHb0dlsWorDxkrP?usp=sharing), which will download the `ambrosia.midi` file and process it using the steps discussed above. There's a cell in that notebook to make it easier to upload custom MIDI files for processing as well.
