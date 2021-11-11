@@ -3,8 +3,9 @@ title: Neural Neighbors
 categories: projects
 site: https://yaledhlab.github.io/neural-neighbors/
 source: https://github.com/YaleDHLab/neural-neighbors
-image: /assets/projects/neural-neighbors/neural-neighbors.jpg
+image: /assets/projects/neural-neighbors/neural-neighbors.png
 order: 6
+thumbnail_color: 'ECB959'
 tech:
   - Tensorflow
   - cuDNN

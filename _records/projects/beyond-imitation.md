@@ -4,7 +4,8 @@ categories: projects
 site: http://beyondimitation.com/
 source: https://github.com/mariel-pettee/choreography
 image: /assets/projects/beyond-imitation/beyond-imitation.jpg
-order: 7
+order: 8
+thumbnail_color: 'deb315'
 tech:
   - Keras
   - Three.js
