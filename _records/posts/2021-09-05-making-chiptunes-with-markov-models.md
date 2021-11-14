@@ -181,8 +181,9 @@ As it turns out, we can use essentially the same strategy we used above to gener
 
 ```
 pip install music21==7.1.0
-pip install pretty-midi==0.2.9
 pip install nltk==3.6.2
+pip install pretty-midi==0.2.9
+pip install scipy==1.4.0
 pip install https://github.com/duhaime/nesmdb/archive/python-3-support.zip
 ```
 
@@ -331,7 +332,7 @@ The good news is if you don't like that audio you can just rerun the `markov` fu
 from pretty_midi import Instrument as Tone
 from nesmdb.convert import midi_to_wav
 from music21.note import Note
-import pretty_midi, math
+import pretty_midi, math, scipy
 
 def midi_to_nintendo_wav(midi_path, length=None, scalar=0.3):
   # create a list of tones and the time each is free
@@ -372,7 +373,11 @@ def midi_to_nintendo_wav(midi_path, length=None, scalar=0.3):
   midi.write('chiptune.midi')
   return midi_to_wav(open('chiptune.midi', 'rb').read())
 
-midi_to_nintendo_wav('generated.midi')
+# convert our generated midi sequence to a numpy array
+wav = midi_to_nintendo_wav('generated.midi')
+
+# save the numpy array as a wav file
+scipy.io.wavfile.write('generated.wav', 44100, wav)
 {% endhighlight %}
 
 The original NES synthesizer supported five concurrent audio tracks: two pulse-wave tracks ("p1", "p2"), a triangle-wave track ("tr"), a noise track ("no"), and a sampling track that's not implemented in nesmdb. In the function above, we simply assign each note from the input midi file to the first unused track in our synthesizer (excluding the "no" track, which is assigned a dance beat later in the function). There are certainly more clever ways to assign notes to the synthesizer tracks, but we'll use this approach for the sake of simplicity. Here are some sample results:
