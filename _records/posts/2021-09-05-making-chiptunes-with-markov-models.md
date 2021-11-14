@@ -375,7 +375,6 @@ def midi_to_nintendo_wav(midi_path, length=None, scalar=0.3):
 
 # convert our generated midi sequence to a numpy array
 wav = midi_to_nintendo_wav('generated.midi')
-
 # save the numpy array as a wav file
 scipy.io.wavfile.write('generated.wav', 44100, wav)
 {% endhighlight %}
