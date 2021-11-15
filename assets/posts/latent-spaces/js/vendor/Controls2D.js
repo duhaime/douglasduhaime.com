@@ -72,25 +72,35 @@ function Controls2D(obj) {
       x: scale(x),
       y: scale(y),
     });
-    // prevent propagation of event
+  }
+
+  function start(e) {
     e.preventDefault();
     e.stopPropagation();
+    this.down = true;
+    this.moveToggle(e);
+  }
+
+  function move(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.down) this.moveToggle(e);
+  }
+
+  function end(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.down = false;
   }
 
   // add event listeners to controls
   this.addListeners = function() {
-    this.box.addEventListener('mousedown', function(e) {
-      this.down = true;
-      this.moveToggle(e);
-    }.bind(this))
-
-    this.box.addEventListener('mousemove', function(e) {
-      if (this.down) this.moveToggle(e);
-    }.bind(this))
-
-    document.addEventListener('mouseup', function(e) {
-      this.down = false;
-    }.bind(this))
+    this.box.addEventListener('mousedown', start.bind(this))
+    this.box.addEventListener('touchstart', start.bind(this))
+    this.box.addEventListener('mousemove', move.bind(this))
+    this.box.addEventListener('touchmove', start.bind(this))
+    document.addEventListener('mouseup', end.bind(this))
+    document.addEventListener('touchend', end.bind(this))
   }
 
   // scale sampled value `v` from 0:82 to 0:1
@@ -103,9 +113,32 @@ function Controls2D(obj) {
     var target = e.target;
     if (target.id == 'ui-toggle') target = target.parentNode;
     var rect = target.getBoundingClientRect();
-    var x = e.clientX - rect.left;
-    var y = e.clientY - rect.top;
-    return {x: x, y: y};
+    var coords = getEventClientCoords(e);
+    var x = coords.x - rect.left;
+    var y = coords.y - rect.top;
+    return {
+      x: x,
+      y: y,
+    };
+  }
+
+  function getEventClientCoords(e) {
+    return {
+      x: e.touches && e.touches[0] && 'clientX' in e.touches[0]
+        ? e.touches[0].clientX
+        : e.changedTouches && e.changedTouches[0] && 'clientX' in e.changedTouches[0]
+        ? e.changedTouches[0].clientX
+        : e.clientX
+        ? e.clientX
+        : e.pageX,
+      y: e.touches && e.touches[0] && 'clientY' in e.touches[0]
+        ? e.touches[0].clientY
+        : e.changedTouches && e.changedTouches[0] && 'clientY' in e.changedTouches[0]
+        ? e.changedTouches[0].clientY
+        : e.clientY
+        ? e.clientY
+        : e.pageY,
+    }
   }
 
   this.style();
