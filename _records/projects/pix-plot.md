@@ -4,7 +4,8 @@ categories: projects
 site: https://s3-us-west-2.amazonaws.com/lab-apps/pix-plot/index.html
 source: https://github.com/YaleDHLab/pix-plot
 image: /assets/projects/pix-plot/pix-plot.jpg
-order: 8
+order: 9
+thumbnail_color: 'AD9F98'
 tech:
   - Three.js
   - Tween.js

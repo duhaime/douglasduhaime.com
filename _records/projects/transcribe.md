@@ -5,6 +5,7 @@ site: http://transcribe.library.yale.edu/projects/
 source: https://github.com/YaleDHLab/omeka-plugin-PaginateCollections
 image: /assets/projects/transcribe/transcribe-thumbnail.jpg
 order: 2
+thumbnail_color: '947358'
 tech:
   - Omeka
   - MySQL

@@ -3,10 +3,8 @@ layout: post
 title: Visualizing TSNE Maps with Three.js
 date: 2017-11-19
 categories: posts
-thumbnail: |
-  /assets/posts/tsne-webgl/tsne-webgl-thumb.jpg
-banner: |
-  /assets/posts/tsne-webgl/tsne-webgl-banner.jpg
+thumbnail: /assets/posts/tsne-webgl/tsne-webgl-thumb.jpg
+banner: /assets/posts/tsne-webgl/tsne-webgl-banner.jpg
 thumbnail_color: 'F7E4C2'
 css:
 js:

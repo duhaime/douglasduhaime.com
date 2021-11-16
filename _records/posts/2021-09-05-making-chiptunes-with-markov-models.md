@@ -5,7 +5,7 @@ date: 2021-11-02
 categories: posts
 thumbnail: /assets/posts/markov-midi/markov-midi-thumb.png
 banner: /assets/posts/markov-midi/markov-midi-thumb.png
-thumbnail_color: '1aa432'
+thumbnail_color: '1D7C2D'
 css: /assets/posts/markov-midi/markov-midi.css
 js:
   - /assets/posts/markov-midi/js/midi.js
@@ -13,13 +13,13 @@ js:
   - /assets/posts/markov-midi/js/player.js
 ---
 
-Over the last year or so, several curious circumstances have sent me down the rabbit hole of algorithmic music composition. First an intriguing [question](https://stackoverflow.com/questions/61964836/classifying-64x4-images-representing-piano-rolls-as-real-or-fake) on classifying genuine and fake piano rolls, then a brilliant professor writing [an opera on the life of Alan Turing](https://dhlab.yale.edu/projects/i-am-alan-turing/), and finally a gifted graduate student asking probing questions about OpenAI's [VQ-VAE model](https://arxiv.org/abs/2005.00341) all made me increasingly interested in generating music with machine learning. I dove into algorithmic composition for a few months, and when I returned to the surface and showed some of the results of my explorations, a few friends were interested in learning more. This post is my attempt to lay out some relatively easy ways to get started with automatic music generation.
+Over the last year or so, several curious circumstances sent me down the rabbit hole of algorithmic music composition. First an intriguing [question](https://stackoverflow.com/questions/61964836/classifying-64x4-images-representing-piano-rolls-as-real-or-fake) on classifying genuine and fake piano rolls, then a brilliant professor writing [an opera on the life of Alan Turing](https://dhlab.yale.edu/projects/i-am-alan-turing/), and finally a gifted graduate student asking probing questions about OpenAI's [VQ-VAE model](https://arxiv.org/abs/2005.00341) all made me increasingly interested in generating music with machine learning. After I shared some early results from my explorations, a few friends were interested in learning more. This post is my attempt to share some of the paths I've been pursuing, and to lay out some relatively easy ways to get started with automatic music generation.
 
-To keep things as simple as possbile, the post below describes how one can use simple Markov models to generate MIDI audio. We'll first examine how Markov models work by building a simple text generation model in a dozen or so lines of Python. Then we'll discuss how one can convert MIDI data to text sequences, which will let us use the same Markov model approach to generate MIDI audio. Finally, to spice things up a bit, we'll convert our generated MIDI files into chiptune waveform audio with a disco dance beat. Let's dive in!
+To keep things as simple as possbile, the post below describes how one can use basic Markov models to generate MIDI audio. We'll first examine how Markov models work by building a simple text generation model in a dozen or so lines of Python. Then we'll discuss how one can convert MIDI data to text sequences, which will let us use the same Markov model approach to generate MIDI audio. Finally, to spice things up a bit, we'll convert our generated MIDI files into chiptune waveform audio with a disco dance beat. Let's dive in!
 
 ## Building Markov Models
 
-While the term "Markov model" is used to describe a wide range of statistical models, essentially all Markov models follow a simple basic rule: the model generates a sequence of outputs, and each element in the sequence is conditioned only on the prior element in the sequence. Given a single word, a Markov model can [predict](https://medium.com/hackernoon/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71) the next word in the sequence. Given a pixel, a Markov model can [predict](https://jonnoftw.github.io/2017/01/18/markov-chain-image-generation) the next pixel in the sequence. Given an item in a sequence, a Markov model can predict the next item in the sequence.
+While the term "Markov model" is used to describe a wide range of statistical models, essentially all Markov models follow a simple basic rule: the model generates a sequence of outputs, and each element in the sequence is conditioned only on the prior element in the sequence. Given a single word, a Markov model can [predict the next word](https://medium.com/hackernoon/from-what-is-a-markov-model-to-here-is-how-markov-models-work-1ac5f4629b71) in the sequence. Given a pixel, a Markov model can [predict the next pixel](https://jonnoftw.github.io/2017/01/18/markov-chain-image-generation) in the sequence. Given an item in a sequence, a Markov model can predict the next item in the sequence.
 
 As an example, let's build a Markov model that can accomplish a simple text generation task. Our goal will be to train a model using the plays of William Shakespeare, then to use that model to generate new pseudo-Shakespearean play text. We'll train our model using [tiny-shakespeare.txt](https://douglasduhaime.com/assets/posts/markov-midi/tiny-shakespeare.txt), a single file that contains raw text from Shakespeare's plays. Here are the first few lines from the file:
 
@@ -181,12 +181,13 @@ As it turns out, we can use essentially the same strategy we used above to gener
 
 ```
 pip install music21==7.1.0
-pip install pretty-midi==0.2.9
 pip install nltk==3.6.2
+pip install pretty-midi==0.2.9
+pip install scipy==1.4.0
 pip install https://github.com/duhaime/nesmdb/archive/python-3-support.zip
 ```
 
-After installing music21, we can use the function below to convert `ambrosia.midi` (a charming melody from the 8-bit Nintendo game Ultima III) into a string. [Here's the midi file](https://douglasduhaime.com/assets/posts/markov-midi/midis/mid/ambrosia.midi), and here's how we'll convert it into a string:
+After installing music21, we can use the function below to convert `ambrosia.midi` (a charming melody from the 8-bit Nintendo game Ultima III) into a string. [Here's the midi file](https://douglasduhaime.com/assets/posts/markov-midi/midi/ambrosia.midi), and here's how we'll convert it into a string:
 
 {% highlight python %}
 
@@ -224,9 +225,21 @@ s = midi_to_string('ambrosia.midi')
 
 {% endhighlight %}
 
-The block above turns `ambrosia.midi` into the string `s`. Each note in `ambrosia.midi` is represented by a token that begins with "n_" and each pause between notes is represented by a token that begins with "w_". This string format is quite flexible, and can easily handle polyphony, syncopation, and any number of other musical features.
+The block above turns ambrosia.midi into the string `s`. Within that string, each note in ambrosia.midi is represented by a token that begins with "n_" and each pause between notes is represented by a token that begins with "w_". If we print `s` we can see the string representation of our MIDI data more clearly:
 
-To determine if this conversion worked, let's reverse the process and convert the string `s` into a new midi file. If both conversions were successful, we should expect that new midi file to sound like the original `ambrosia.midi` file. Happily `music21` makes the conversion from string to midi straightforward as well:
+{% highlight python %}
+>>> print(s)
+w_1.0
+n_65_quarter
+n_38_half
+w_0.5
+n_62_eighth
+...
+{% endhighlight %}
+
+This string indicates that the file begins with a full bar of rest. Next we play notes 65 and 38 for a quarter bar and half bar respectively, then wait half a bar, then play note 62 for an eighth bar, and so on. In this way, using just two token types ("n_" tokens and "w_" tokens) we can record each keystroke that should be played as well as the durations of time between those keystrokes. We leave note durations in fractional form to prevent floating point truncation.
+
+To test if this conversion worked, let's reverse the process and convert the string `s` into a new midi file. If both conversions were successful, we should expect that new midi file to sound like the original ambrosia.midi file. Happily `music21` makes the conversion from string to midi straightforward as well:
 
 {% highlight python %}
 
@@ -263,14 +276,14 @@ midi = string_to_midi(s)
 As you can see, the block above simply reverses the operations performed in `midi_to_string`, converting each token into a midi note. The resulting midi file should indeed sound like the midi with which we started:
 
 <div class='midi-block'>
-  <img src='/assets/posts/markov-midi/midis/images/ambrosia.png'>
-  <div class='icon play-button' data-id='ambrosia.midi'>
+  <img src='/assets/posts/markov-midi/images/ambrosia.png'>
+  <div class='icon play-button'>
     <audio id='ambrosia-mp3' src='/assets/posts/markov-midi/mp3/ambrosia.mp3'></audio>
     <img src='/assets/posts/markov-midi/images/play.svg'>
   </div>
 </div>
 
-Now we're rolling! From here, all we have to do train a Markov model on the string representation of our MIDI file. To do so, we can transform the approach we used above to generate Shakespearean text into a reusable function:
+Now we're rolling! From here, all we have to do train a Markov model on the string representation of our MIDI file. To do so, let's transform the Markov model we used above into a reusable function:
 
 ```python
 from collections import defaultdict
@@ -301,8 +314,8 @@ generated_midi.write('midi', 'generated.midi')
 If we run the `markov` function we'll get a new string that contains a sequence of notes expressed in text form. We can then then convert that string to a proper midi file using the `string_to_midi` function we defined above. The result sounds like a pair of drunken sailors wailing away on a piano:
 
 <div class='midi-block'>
-  <img src='/assets/posts/markov-midi/midis/images/generated.png'>
-  <div class='icon play-button' data-id='generated.midi'>
+  <img src='/assets/posts/markov-midi/images/generated.png'>
+  <div class='icon play-button'>
     <audio id='generated-mp3' src='/assets/posts/markov-midi/mp3/generated.mp3'></audio>
     <img src='/assets/posts/markov-midi/images/play.svg'>
   </div>
@@ -319,7 +332,7 @@ The good news is if you don't like that audio you can just rerun the `markov` fu
 from pretty_midi import Instrument as Tone
 from nesmdb.convert import midi_to_wav
 from music21.note import Note
-import pretty_midi, math
+import pretty_midi, math, scipy
 
 def midi_to_nintendo_wav(midi_path, length=None, scalar=0.3):
   # create a list of tones and the time each is free
@@ -360,24 +373,42 @@ def midi_to_nintendo_wav(midi_path, length=None, scalar=0.3):
   midi.write('chiptune.midi')
   return midi_to_wav(open('chiptune.midi', 'rb').read())
 
-midi_to_nintendo_wav('generated.midi')
+# convert our generated midi sequence to a numpy array
+wav = midi_to_nintendo_wav('generated.midi')
+# save the numpy array as a wav file
+scipy.io.wavfile.write('generated.wav', 44100, wav)
 {% endhighlight %}
 
 The original NES synthesizer supported five concurrent audio tracks: two pulse-wave tracks ("p1", "p2"), a triangle-wave track ("tr"), a noise track ("no"), and a sampling track that's not implemented in nesmdb. In the function above, we simply assign each note from the input midi file to the first unused track in our synthesizer (excluding the "no" track, which is assigned a dance beat later in the function). There are certainly more clever ways to assign notes to the synthesizer tracks, but we'll use this approach for the sake of simplicity. Here are some sample results:
 
 <div class='row'>
-  <audio id='generated-l' src='/assets/posts/markov-midi/mp3/l.mp3' controls></audio>
-  <audio id='generated-a' src='/assets/posts/markov-midi/mp3/a.mp3' controls></audio>
+  <audio id='generated-0' src='/assets/posts/markov-midi/mp3/0.mp3' controls preload='auto'></audio>
+  <audio id='generated-1' src='/assets/posts/markov-midi/mp3/1.mp3' controls preload='auto'></audio>
 </div>
 
 <div class='row'>
-  <audio id='generated-d' src='/assets/posts/markov-midi/mp3/d.mp3' controls></audio>
-  <audio id='generated-j' src='/assets/posts/markov-midi/mp3/j.mp3' controls></audio>
+  <audio id='generated-2' src='/assets/posts/markov-midi/mp3/2.mp3' controls preload='auto'></audio>
+  <audio id='generated-3' src='/assets/posts/markov-midi/mp3/3.mp3' controls preload='auto'></audio>
 </div>
 
 <div class='row'>
-  <audio id='generated-h' src='/assets/posts/markov-midi/mp3/h.mp3' controls></audio>
-  <audio id='generated-c' src='/assets/posts/markov-midi/mp3/c.mp3' controls></audio>
+  <audio id='generated-4' src='/assets/posts/markov-midi/mp3/4.mp3' controls preload='auto'></audio>
+  <audio id='generated-5' src='/assets/posts/markov-midi/mp3/5.mp3' controls preload='auto'></audio>
+</div>
+
+<div class='row'>
+  <audio id='generated-6' src='/assets/posts/markov-midi/mp3/6.mp3' controls preload='auto'></audio>
+  <audio id='generated-7' src='/assets/posts/markov-midi/mp3/7.mp3' controls preload='auto'></audio>
+</div>
+
+<div class='row'>
+  <audio id='generated-8' src='/assets/posts/markov-midi/mp3/8.mp3' controls preload='auto'></audio>
+  <audio id='generated-9' src='/assets/posts/markov-midi/mp3/9.mp3' controls preload='auto'></audio>
+</div>
+
+<div class='row'>
+  <audio id='generated-10' src='/assets/posts/markov-midi/mp3/10.mp3' controls preload='auto'></audio>
+  <audio id='generated-11' src='/assets/posts/markov-midi/mp3/11.mp3' controls preload='auto'></audio>
 </div>
 
 If you're curious to try making your own audio, feel free to try this [Colab notebook](https://colab.research.google.com/drive/1sFzItp1ZdQr_eKpDMpHb0dlsWorDxkrP?usp=sharing), which will download the `ambrosia.midi` file and process it using the steps discussed above. There's a cell in that notebook to make it easier to upload custom MIDI files for processing as well.

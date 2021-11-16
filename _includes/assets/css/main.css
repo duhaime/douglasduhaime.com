@@ -359,7 +359,7 @@ body {
   padding-bottom: 11%;
   margin: 0;
   background-size: cover;
-  background-position: center center;
+  background-position: left center;
   background-repeat: no-repeat;
 }
 
@@ -405,6 +405,9 @@ body {
   width: 100%;
   background-position: top center;
   position: relative;
+  padding-bottom: 41%;
+  background-size: cover;
+  background-position: center center;
 }
 
 .home-project .project-image img {

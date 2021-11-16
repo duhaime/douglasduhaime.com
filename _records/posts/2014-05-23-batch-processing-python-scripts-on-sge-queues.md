@@ -5,10 +5,8 @@ date: 2014-06-26
 categories: posts
 description: |
   How to run parameter sweeps over variable ranges and submit each to a Sun Grid Engine server cluster.
-thumbnail: |
-  /assets/posts/batch-processing/batch-processing-thumb.jpg
-banner: |
-  /assets/posts/batch-processing/batch-processing-banner.png
+thumbnail: /assets/posts/batch-processing/batch-processing-thumb.jpg
+banner: /assets/posts/batch-processing/batch-processing-banner.png
 thumbnail_color: '000000'
 invert: true
 ---

@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Douglas Duhaime | Data Mining + Visualization
+title: Douglas Duhaime
 ---
 
 <div class='home'>
   <div class='container'>
-    <h1>{{ site.name }}</h1>
-    <div class='about'>Full Stack Developer in Yale University's Digital Humanities <a href='http://dhlab.yale.edu' target='_blank'>Lab.</a></div>
+    <h1>Douglas Duhaime</h1>
+    <div class='about'>Product Engineer at <a href='https://ycombinator.com' target='_blank'>Y Combinator</a></div>
     <!-- Posts -->
     <div class='home-posts'>
       {% assign posts = site.records | sort: 'date' | reverse %}
@@ -19,7 +19,9 @@ title: Douglas Duhaime | Data Mining + Visualization
               {% assign url = post.url | prepend: site.baseurl %}
             {% endif %}
             <a href='{{ url }}'>
-              <div class='post-thumbnail' style='background-color: #{{ post.thumbnail_color }}; background-image: url({{ post.thumbnail  }});' src='{{ post.thumbnail | strip | prepend: site.baseurl }}'></div>
+              <div class='post-thumbnail'
+                style='background-color: #{{ post.thumbnail_color }}; background-image: url("{{ post.thumbnail | prepend : site.baseurl }}")'>
+              </div>
               <div class='title'>{{ post.title }}</div>
               <div class='date'>{{ post.date | date_to_string }}</div>
             </a>
@@ -34,11 +36,13 @@ title: Douglas Duhaime | Data Mining + Visualization
       {% for project in projects %}
         {% if project.categories contains 'projects' and project.displayed != false %}
           <div class='home-project'>
-            <div class='project-image'>
-              <img src='{{ project.image | prepend : site.baseurl }}'>
+            <div class='project-image'
+              style='background-color: #{{ project.thumbnail_color }}; background-image: url("{{ project.image | prepend : site.baseurl }}")'>
               <div class='project-links'>
-                <a href='{{ project.site }}'>Site</a>
-                <span>|</span>
+                {% if project.site %}
+                  <a href='{{ project.site }}'>Site</a>
+                  <span>|</span>
+                {% endif %}
                 <a href='{{ project.source }}'>Source</a>
               </div>
             </div>
