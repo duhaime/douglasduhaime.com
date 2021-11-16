@@ -36,8 +36,7 @@ baseurl: ''
 host: 0.0.0.0
 
 # hello cello
-name: Douglas Duhaime
-title: Data Mining + Visualization
+title: Working notes & digital experiments
 description: Working notes & digital experiments
 fallback_image: /assets/images/douglas-duhaime.png
 github: duhaime
