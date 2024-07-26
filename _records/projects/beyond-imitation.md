@@ -1,10 +1,10 @@
 ---
 title: Beyond Imitation
 categories: projects
-site: http://beyondimitation.com/
+site: https://duhaime.s3.amazonaws.com/yale-dh-lab/beyond-imitation/index.html
 source: https://github.com/mariel-pettee/choreography
 image: /assets/projects/beyond-imitation/beyond-imitation.jpg
-order: 8
+order: 9
 thumbnail_color: 'deb315'
 tech:
   - Keras

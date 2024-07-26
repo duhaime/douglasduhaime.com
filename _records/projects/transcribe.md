@@ -10,6 +10,7 @@ tech:
   - Omeka
   - MySQL
   - jQuery
+displayed: false
 ---
 
 Transcribe helps users hand-key historic Cherokee-language documents. Built on Iowa University's Scribe plugin for Omeka, Transcribe includes a number of plugins for authentication and paginated record displays.

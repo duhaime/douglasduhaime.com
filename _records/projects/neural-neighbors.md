@@ -1,7 +1,7 @@
 ---
 title: Neural Neighbors
 categories: projects
-site: https://yaledhlab.github.io/neural-neighbors/
+site: https://duhaime.s3.amazonaws.com/yale-dh-lab/neural-neighbors/demo/index.html
 source: https://github.com/YaleDHLab/neural-neighbors
 image: /assets/projects/neural-neighbors/neural-neighbors.png
 order: 6

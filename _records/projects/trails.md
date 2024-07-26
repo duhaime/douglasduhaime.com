@@ -1,10 +1,10 @@
 ---
 title: Trails
 categories: projects
-site: https://lab-apps.s3-us-west-2.amazonaws.com/sketches/trails/index.html
+site:
 source: https://github.com/YaleDHLab/trails
 image: /assets/projects/trails/trails-thumbnail.jpg
-order: 7
+order: 8
 thumbnail_color: 'A5D8DE'
 tech:
   - Three.js
