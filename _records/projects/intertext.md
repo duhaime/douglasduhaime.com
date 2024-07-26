@@ -1,7 +1,7 @@
 ---
 title: Intertext
 categories: projects
-site: https://github.com/YaleDHLab/intertext
+site: https://duhaime.s3.amazonaws.com/yale-dh-lab/intertext/demo/index.html
 source: https://github.com/YaleDHLab/intertext
 image: /assets/projects/intertext/intertext.jpg
 order: 5

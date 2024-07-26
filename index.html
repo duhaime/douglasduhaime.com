@@ -31,7 +31,7 @@ title: Douglas Duhaime
     </div>
     <!-- Projects -->
     <div class='home-projects'>
-      <h2>Recent Projects</h2>
+      <h2>Selected Projects</h2>
       {% assign projects = site.records | sort: 'order' | reverse %}
       {% for project in projects %}
         {% if project.categories contains 'projects' and project.displayed != false %}

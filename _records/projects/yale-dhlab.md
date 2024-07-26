@@ -9,7 +9,7 @@ tech:
   - Jekyll
   - D3.js
   - Amazon-CloudFront
-displayed: false
+displayed: true
 ---
 
 A fresh redesign of the Yale Digital Humanities Lab's central web presence, this application uses Jekyll to make it easy for admins to advertise DHLab projects, news, and events.
